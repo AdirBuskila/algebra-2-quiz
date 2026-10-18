@@ -1,0 +1,183 @@
+{
+ "examCode": "23A-A",
+ "examLabel": "אלגברה 2 - סמסטר א' תשפ\"ג מועד א'",
+ "year": 2023,
+ "examDate": "29.1.2023",
+ "sourceFile": "algebra-2-23A-A-exam",
+ "solutionFile": "algebra-2-23A-A-official-solution",
+ "contexts": {
+  "c3": {
+   "kind": "text",
+   "title": "שאלה 3 סעיף ב",
+   "text": "יהי $V$ מרחב מכפלה פנימית ממשי ותהי $\\{\\vec u,\\vec v,\\vec w\\}\\subset V$ מערכת אורתונורמלית. נסמן: $\\vec\\alpha=\\vec u+2\\vec v+\\vec w$ , $\\ \\vec\\beta=\\vec u-\\vec w$."
+  },
+  "c4": {
+   "kind": "text",
+   "title": "שאלה 4 סעיף א",
+   "text": "נתון מבנה אלגברי $\\left(\\mathbb{R}^2\\setminus\\{(0,0)\\},\\ *\\right)$, כאשר הפעולה $*$ מוגדרת באופן הבא: $\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}ay+bx\\\\by\\end{pmatrix}$ לכל $\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}x\\\\y\\end{pmatrix}\\in\\mathbb{R}^2\\setminus\\{(0,0)\\}$."
+  }
+ },
+ "questions": [
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "least_squares",
+   "question": "(15%) במחלקה למדעי המחשב במכון הטכנולוגי חולון פתחו בקמפיין פרסומי חדש למשיכת סטודנטים. לאחר שבוע אחד של קמפיין פנו למחלקה 20 סטודנטים מתעניינים, אחרי שבועיים פנו 24, אחרי שלושה שבועות פנו 31 ואחרי 4 שבועות פנו 32 סטודנטים. מהו צפי מספר הסטודנטים המתעניינים שיפנו למחלקה בשבוע החמישי? השתמשו בריבועים פחותים.",
+   "solution": "יש לנו מידע על מספר התלמידים הפונים בכל שבוע. ניתן לארגן זאת כך:\n$$\\begin{array}{c|c}x&y\\\\\\hline1&20\\\\2&24\\\\3&31\\\\4&32\\\\5&?\\end{array}$$\nשרטוט הנקודות במישור מתאים למודל לינארי מהצורה: $y=ax+b$.\n$$\\begin{pmatrix}1&1\\\\2&1\\\\3&1\\\\4&1\\end{pmatrix}\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}20\\\\24\\\\31\\\\32\\end{pmatrix}\\ \\Rightarrow\\ \\begin{pmatrix}1&2&3&4\\\\1&1&1&1\\end{pmatrix}\\begin{pmatrix}1&1\\\\2&1\\\\3&1\\\\4&1\\end{pmatrix}\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}30&10\\\\10&4\\end{pmatrix}\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}1&2&3&4\\\\1&1&1&1\\end{pmatrix}\\begin{pmatrix}20\\\\24\\\\31\\\\32\\end{pmatrix}=\\begin{pmatrix}289\\\\107\\end{pmatrix}$$\n$$\\Rightarrow\\left(\\begin{array}{cc|c}30&10&289\\\\10&4&107\\end{array}\\right)\\xrightarrow{3R_2-R_1\\to R_2}\\left(\\begin{array}{cc|c}30&10&289\\\\0&2&32\\end{array}\\right)\\xrightarrow{\\frac12R_2\\to R_2}\\left(\\begin{array}{cc|c}30&10&289\\\\0&1&16\\end{array}\\right)\\Rightarrow b=16\\ \\Rightarrow\\ a=4.3$$\nנציב ונקבל:\n$$y(x)=4.3x+16\\ \\Rightarrow\\ y(x=5)=37.5$$\nלפי המודל הזה, מספר הסטודנטים שהגיעו בשבוע החמישי הוא 37 (עיגול למטה) או 38 (עיגול למעלה).",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 15
+  },
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "projection",
+   "question": "(10%) במרחב וקטורי $M_2(\\mathbb{R})$ נגדיר מכפלה פנימית (אין צורך להוכיח זאת) ע״י $\\langle A,B\\rangle=\\mathrm{tr}(B^TA)$ לכל $A,B\\in M_2(\\mathbb{R})$. חשבו את ההיטל של $\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$ על $\\mathrm{Sp}\\left\\{\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix},\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}\\right\\}$.",
+   "solution": "המכפלה הפנימית הוגדרה כך: $\\langle A,B\\rangle=\\mathrm{tr}(B^TA)$ לכל $A,B\\in M_2(\\mathbb{R})$. נגדיר תת מרחב\n$$W=\\mathrm{Sp}\\left\\{\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix},\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}\\right\\}=\\mathrm{Sp}\\{\\vec w_1,\\vec w_2\\}\\ ,\\qquad W\\subset M_2(\\mathbb{R})$$\nנבדוק אם $\\vec w_1\\perp\\vec w_2$:\n$$\\langle\\vec w_1,\\vec w_2\\rangle=\\mathrm{tr}\\left(\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}^T\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}\\right)=\\mathrm{tr}\\left(\\begin{pmatrix}1&1\\\\3&1\\end{pmatrix}\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}\\right)=\\mathrm{tr}\\left(\\begin{pmatrix}1&1\\\\3&3\\end{pmatrix}\\right)=4\\ne0$$\nמשמע הם לא מאונכים זה לזה. נבנה בסיס אורתוגונלי ל-$W$ ע״י תהליך גרם-שמידט. נבחר $\\vec u_1=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$. אז\n$$\\vec u_2=\\vec w_2-\\frac{\\langle\\vec w_2,\\vec u_1\\rangle}{\\langle\\vec u_1,\\vec u_1\\rangle}\\vec u_1=\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}-\\frac42\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}=\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}$$\nלפיכך, ההיטל של $\\vec v=\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$ על $W$ הוא:\n$$\\mathrm{proj}_W\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}=\\frac{\\left\\langle\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix},\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}\\right\\rangle}{\\left\\|\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}\\right\\|^2}\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}+\\frac{\\left\\langle\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix},\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}\\right\\rangle}{\\left\\|\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}\\right\\|^2}\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}$$\n$$=\\frac{\\mathrm{tr}\\left(\\begin{pmatrix}1&0\\\\1&0\\end{pmatrix}\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}\\right)}{\\mathrm{tr}\\left(\\begin{pmatrix}1&0\\\\1&0\\end{pmatrix}\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}\\right)}\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}+\\frac{\\mathrm{tr}\\left(\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}\\right)}{\\mathrm{tr}\\left(\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}\\right)}\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}$$\n$$=\\frac{\\mathrm{tr}\\begin{pmatrix}1&2\\\\1&2\\end{pmatrix}}{\\mathrm{tr}\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}}\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}+\\frac{\\mathrm{tr}\\begin{pmatrix}2&-2\\\\4&2\\end{pmatrix}}{\\mathrm{tr}\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}}\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}=\\frac32\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}+\\frac44\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}=\\frac12\\begin{pmatrix}1&5\\\\2&2\\end{pmatrix}$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 10
+  },
+  {
+   "num": 2,
+   "kind": "proof",
+   "topic": "inner_product",
+   "question": "(15%) במרחב $C[0,1]$ של כל הפונקציות הרציפות בקטע $[0,1]$ נגדיר את הנוסחה הבאה: $\\langle f,g\\rangle=\\displaystyle\\int_0^1e^x\\cdot f(x)\\cdot g(x)\\,dx$. בדקו האם הנוסחה מגדירה מכפלה פנימית על $C[0,1]$.",
+   "solution": "אנחנו נראה ש-$\\langle f,g\\rangle=\\int_0^1e^xf(x)g(x)\\,dx$ אכן מגדירה מכפלה פנימית במרחב $C[0,1]$.\nעבור $\\langle f,f\\rangle=\\int_0^1e^xf^2(x)\\,dx$, האינטגרנד $e^xf^2(x)$ תמיד אי-שלילי, מלבד במקרה שבו $f(x)=0$, ולכן מתקיים $\\langle f,f\\rangle=\\|f\\|^2\\ge0$ לכל $f\\in C[0,1]$.\nכמו-כן, מתקיים לכל $f,g,h\\in C[0,1]$: $\\langle f,g\\rangle=\\int_0^1e^xf(x)g(x)\\,dx=\\int_0^1e^xg(x)f(x)\\,dx=\\langle g,f\\rangle$, וכן\n$$\\langle f+h,g\\rangle=\\int_0^1e^x\\big(f(x)+h(x)\\big)g(x)\\,dx=\\int_0^1e^x\\big(f(x)g(x)+h(x)g(x)\\big)dx$$\n$$=\\int_0^1e^xf(x)g(x)\\,dx+\\int_0^1e^xh(x)g(x)\\,dx=\\langle f,g\\rangle+\\langle h,g\\rangle$$\nלבסוף, מתקיים לכל $\\alpha\\in\\mathbb{R}$ ולכל $f\\in C[0,1]$:\n$$\\langle\\alpha f,g\\rangle=\\int_0^1e^x\\big(\\alpha f(x)\\big)g(x)\\,dx=\\alpha\\int_0^1e^xf(x)g(x)\\,dx=\\alpha\\langle f,g\\rangle$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 15
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "(10%) נתבונן בחבורה $G=\\{A\\in M_2(\\mathbb{Z}_5)\\mid\\det(A)\\ne0\\}$ ביחס לכפל מטריצות (חבורת המטריצות ההפיכות מגודל 2x2 עם רכיבים מ-$\\mathbb{Z}_5$). תהי $H=\\left\\{\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^n\\ \\middle|\\ n\\in\\mathbb{Z}\\right\\}$ תת-חבורה ציקלית של $G$. מצאו את הסדר של $H$. (כמובן שהכפל והחיבור של רכיבי המטריצות הם מודולו 5).",
+   "solution": "החבורה $H=\\left\\{\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^n\\ \\middle|\\ n\\in\\mathbb{Z}\\right\\}$ הינה תת חבורה ציקלית של $G$. נמצא את הסדר של $H$ ע״י מיפוי איבריה.\nנבחין שהאיבר הניטרלי של $G$ ביחס לפעולה של כפל מטריצות הוא מטריצת היחידה, $e=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$. לפי הגדרה, $\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^0=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$. נחשב את הערכים הבאים:\n$$\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^1=\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix},\\quad\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^2=\\begin{pmatrix}4^2\\ (\\mathrm{mod}\\ 5)&0\\\\0&3^2\\ (\\mathrm{mod}\\ 5)\\end{pmatrix}=\\begin{pmatrix}1&0\\\\0&4\\end{pmatrix}$$\n$$\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^3=\\begin{pmatrix}4^3\\ (\\mathrm{mod}\\ 5)&0\\\\0&3^3\\ (\\mathrm{mod}\\ 5)\\end{pmatrix}=\\begin{pmatrix}4&0\\\\0&2\\end{pmatrix},\\quad\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^4=\\begin{pmatrix}4^4\\ (\\mathrm{mod}\\ 5)&0\\\\0&3^4\\ (\\mathrm{mod}\\ 5)\\end{pmatrix}=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$$\nלפיכך\n$$H=\\left\\{\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix},\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix},\\begin{pmatrix}1&0\\\\0&4\\end{pmatrix},\\begin{pmatrix}4&0\\\\0&2\\end{pmatrix}\\right\\}\\ \\Rightarrow\\ |H|=4$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 10
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "pos_def",
+   "question": "(13%) עבור אילו ערכי הפרמטר $a$ המטריצה $\\begin{pmatrix}a&0&1\\\\0&2a&0\\\\1&0&a\\end{pmatrix}$ היא: מוגדרת חיובית, מוגדרת חיובית לחלוטין, מוגדרת שלילית, מוגדרת שלילית לחלוטין, או אף אחת מהן?",
+   "solution": "נמצא את הע״ע:\n$$0=|xI-A|=\\begin{vmatrix}x-a&0&-1\\\\0&x-2a&0\\\\-1&0&x-a\\end{vmatrix}=(x-2a)\\begin{vmatrix}x-a&-1\\\\-1&x-a\\end{vmatrix}=(x-2a)\\left((x-a)^2-1\\right)=(x-2a)(x-a-1)(x-a+1)$$\nכלומר, יש שלושה ערכים עצמיים: $2a,\\ a-1,\\ a+1$.\nבשביל שהמטריצה תהיה מוגדרת חיובית לחלוטין, כולם צריכים להיות חיוביים: $0<2a,\\ a-1,\\ a+1$, כלומר: $1<a$.\nבאופן דומה, המטריצה מוגדרת חיובית כאשר: $1\\le a$.\nמצד שני, המטריצה שלילית לחלוטין כאשר כולם שליליים: $0>2a,\\ a-1,\\ a+1$, כלומר: $-1>a$.\nבאופן דומה, המטריצה מוגדרת שלילית כאשר $-1\\ge a$.\nהערכים שנותרו - ומתאימים למטריצה שאינה חיובית, שלילית וכו' - הם $-1<a<1$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 13
+  },
+  {
+   "num": 3,
+   "kind": "truefalse",
+   "topic": "orthogonality",
+   "question": "סעיף ב.1. האם $\\vec\\beta\\perp\\vec\\alpha$ ? (6%)",
+   "solution": "נבדוק האם המכפלה מתאפסת:\n$$\\langle\\vec\\alpha,\\vec\\beta\\rangle=\\langle\\vec u+2\\vec v+\\vec w,\\ \\vec u-\\vec w\\rangle=$$\nנפתח לפי תכונות הלינאריות והסימטריות ונקבל:\n$$\\langle\\vec u,\\vec u\\rangle-\\langle\\vec u,\\vec w\\rangle+2\\langle\\vec v,\\vec u\\rangle-2\\langle\\vec v,\\vec w\\rangle+\\langle\\vec w,\\vec u\\rangle-\\langle\\vec w,\\vec w\\rangle$$\nמכיוון שהמערכת אורתונורמלית, מכפלת וקטורים שונים זה מזה שווה ל-0, בעוד שמכפלת וקטור בעצמו שווה ל-1. נקבל:\n$$1-0+2\\cdot0-2\\cdot0+0-1=0$$\nכלומר $\\langle\\vec\\alpha,\\vec\\beta\\rangle=0$, ולכן $\\vec\\beta\\perp\\vec\\alpha$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 6,
+   "contextId": "c3",
+   "verdict": true
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "orthogonality",
+   "question": "סעיף ב.2. חשבו את $\\|\\vec\\alpha\\|$ ו-$\\|\\vec\\beta\\|$. (6%)",
+   "solution": "נורמה היא שורש של המכפלה הפנימית; אפשר לפתוח לפי ההגדרה ולפי תכונות המכפלה הפנימית, שימוש באורתונורמליות יוביל לתוצאה, כמו בסעיף הקודם.\nבאופן כללי, אם $\\{\\vec u_1,\\dots,\\vec u_k\\}$ קבוצה אורתונורמלית ו-$\\vec x=\\alpha_1\\vec u_1+\\dots+\\alpha_k\\vec u_k$ אז: $\\|\\vec x\\|=\\sqrt{\\alpha_1^2+\\dots+\\alpha_k^2}$. במקרה שלנו:\n$$\\|\\vec\\alpha\\|=\\sqrt{1^2+2^2+1^2}=\\sqrt6,\\qquad\\|\\vec\\beta\\|=\\sqrt{1^2+(-1)^2}=\\sqrt2$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ג",
+   "points": 6,
+   "contextId": "c3"
+  },
+  {
+   "num": 4,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.1. האם הפעולה היא קומוטטיבית? (5%)",
+   "solution": "נראה כי הפעולה קומוטטיבית, ז״א מתקיים $\\begin{pmatrix}x\\\\y\\end{pmatrix}*\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}x\\\\y\\end{pmatrix}$.\n$$\\begin{pmatrix}x\\\\y\\end{pmatrix}*\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}xb+ya\\\\yb\\end{pmatrix}\\ ,\\qquad\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}ay+bx\\\\by\\end{pmatrix}$$\nמכיוון שלכל $a,b,x,y\\in\\mathbb{R}$ מתקיימת סגירות לפעולות כפל וחיבור נובע $\\begin{pmatrix}x\\\\y\\end{pmatrix}*\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}x\\\\y\\end{pmatrix}$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 5,
+   "contextId": "c4",
+   "verdict": true
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף א.2. מצאו את האיבר הניטרלי ביחס לפעולת $*$ (במידה וקיים). (6%)",
+   "solution": "נחפש $e=\\begin{pmatrix}e_1\\\\e_2\\end{pmatrix}\\in\\mathbb{R}^2\\setminus\\{(0,0)\\}$ שמקיים לכל $\\begin{pmatrix}a\\\\b\\end{pmatrix}\\in\\mathbb{R}^2\\setminus\\{(0,0)\\}$:\n$$\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}e_1\\\\e_2\\end{pmatrix}=\\begin{pmatrix}a\\\\b\\end{pmatrix}$$\n$$\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}e_1\\\\e_2\\end{pmatrix}=\\begin{pmatrix}ae_2+be_1\\\\be_2\\end{pmatrix}=\\begin{pmatrix}a\\\\b\\end{pmatrix}\\ \\Rightarrow\\ \\begin{cases}ae_2+be_1=a\\\\be_2=b\\end{cases}\\ \\Rightarrow\\ \\begin{cases}e_1=0\\\\e_2=1\\end{cases}$$\n$$e=\\begin{pmatrix}0\\\\1\\end{pmatrix}\\in\\mathbb{R}^2\\setminus\\{(0,0)\\}$$\n*מכיוון שהפעולה קומוטטיבית (הוכחנו בסעיף א) אין צורך להראות כי $\\begin{pmatrix}e_1\\\\e_2\\end{pmatrix}*\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}a\\\\b\\end{pmatrix}$ מתקיים.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 6,
+   "contextId": "c4"
+  },
+  {
+   "num": 4,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.3. האם המבנה $\\left(\\mathbb{R}^2\\setminus\\{(0,0)\\},*\\right)$ הוא חבורה? (7%)",
+   "solution": "ניתן להראות כי לא לכל איבר קיים הופכי ובכך להוכיח שהמבנה הנתון אינו חבורה:\nאם $\\begin{pmatrix}a\\\\b\\end{pmatrix}^{-1}=\\begin{pmatrix}x\\\\y\\end{pmatrix}$ אז מתקיים $\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$, מכאן\n$$\\begin{cases}ay+bx=0\\\\by=1\\end{cases}\\ \\Rightarrow\\ \\begin{cases}x=-\\dfrac{a}{b^2}\\\\[2mm]y=\\dfrac1b\\end{cases}$$\nז״א עבור הוקטורים בהם $b=0$ אין הופכי. למשל $\\begin{pmatrix}5\\\\0\\end{pmatrix}\\in\\mathbb{R}^2\\setminus\\{(0,0)\\}$ אך לא קיים לו הופכי.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ג",
+   "points": 7,
+   "contextId": "c4",
+   "verdict": false
+  },
+  {
+   "num": 4,
+   "kind": "proof",
+   "topic": "cauchy_schwarz",
+   "question": "סעיף ב. בעזרת אי-שוויון קושי-שוורץ הוכיחו ש: $(ab+ba)^2\\le(a^2+b^2)^2$ לכל $a,b\\in\\mathbb{R}$. (7%)",
+   "solution": "לפי משפט קושי-שוורץ לכל שני וקטורים $\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}b\\\\a\\end{pmatrix}\\in\\mathbb{R}^2$ מתקיים:\n$$\\left\\langle\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}b\\\\a\\end{pmatrix}\\right\\rangle\\le\\left\\|\\begin{pmatrix}a\\\\b\\end{pmatrix}\\right\\|\\cdot\\left\\|\\begin{pmatrix}b\\\\a\\end{pmatrix}\\right\\|$$\nמכאן $ab+ba\\le\\sqrt{a^2+b^2}\\cdot\\sqrt{a^2+b^2}$, ז״א $ab+ba\\le a^2+b^2$ ולכן $(ab+ba)^2\\le(a^2+b^2)^2$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ד",
+   "points": 7
+  },
+  {
+   "num": 5,
+   "part": "א",
+   "kind": "computation",
+   "topic": "svd",
+   "points": 18,
+   "question": "(18%) מצאו פירוק SVD עבור המטריצה $A=\\begin{pmatrix}-1&1\\\\-1&1\\\\1&1\\end{pmatrix}$.",
+   "hold": "no-key: the official solution for 5a is only a link to an online SVD calculator, no worked answer"
+  },
+  {
+   "num": 5,
+   "kind": "computation",
+   "topic": "crt",
+   "question": "סעיף ב. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\\begin{cases}2x\\equiv1\\pmod 3\\\\x\\equiv3\\pmod 5\\\\x\\equiv4\\pmod 7\\end{cases}$. (7%)",
+   "solution": "נסדר את המשוואה הראשונה במערכת (על ידי ההכפלה בהופכי של 2):\n$$\\begin{cases}2x\\equiv1\\pmod 3\\\\x\\equiv3\\pmod 5\\\\x\\equiv4\\pmod 7\\end{cases}\\ \\Rightarrow\\ \\begin{cases}x\\equiv2\\pmod 3\\\\x\\equiv3\\pmod 5\\\\x\\equiv4\\pmod 7\\end{cases}$$\nנסמן: $m_1=3,\\ m_2=5,\\ m_3=7$ והם אכן זרים בזוגות. נסמן: $m=m_1m_2m_3=3\\cdot5\\cdot7=105$, ולכן: $M_1=35,\\ M_2=21,\\ M_3=15$.\nלכן הפתרון למערכת הוא:\n$$x=\\left(a_1M_1x_1+a_2M_2x_2+a_3M_3x_3\\right)\\bmod m=\\left(2\\cdot35\\cdot x_1+3\\cdot21\\cdot x_2+4\\cdot15\\cdot x_3\\right)\\bmod105$$\nנחשב את הערכים של $x_1,x_2,x_3$:\n$$35x_1\\equiv1\\pmod 3\\Rightarrow2x_1\\equiv1\\pmod 3\\Rightarrow x_1=2$$\n$$21x_2\\equiv1\\pmod 5\\Rightarrow x_2\\equiv1\\pmod 5\\Rightarrow x_2=1$$\n$$15x_3\\equiv1\\pmod 7\\Rightarrow x_3\\equiv1\\pmod 7\\Rightarrow x_3=1$$\nמכאן:\n$$x=\\left(a_1M_1x_1+a_2M_2x_2+a_3M_3x_3\\right)\\bmod m=\\left(2\\cdot35\\cdot2+3\\cdot21\\cdot1+4\\cdot15\\cdot1\\right)\\bmod105=263\\bmod105$$\n$$x\\equiv53\\pmod{105}$$\nבדיקה: $2\\cdot53\\equiv1\\pmod 3$ , $\\ 53\\equiv3\\pmod 5$ , $\\ 53\\equiv4\\pmod 7$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 7
+  }
+ ]
+}
