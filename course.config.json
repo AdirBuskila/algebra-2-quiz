@@ -1,0 +1,91 @@
+{
+  "slug": "algebra-2",
+  "titleHe": "אלגברה 2",
+  "descriptionHe": "תרגול מבחנים - אלגברה 2",
+  "accent": "#f0abfc",
+  "accent2": "#7c3aed",
+  "sourceFolder": "C:/Users/Adir/Desktop/BSC/שנה ב/סמסטר ב/אלגברה 2",
+  "topics": [
+    [
+      "inner_product",
+      "מכפלה פנימית"
+    ],
+    [
+      "cauchy_schwarz",
+      "נורמה וקושי-שוורץ"
+    ],
+    [
+      "orthogonality",
+      "אורתוגונליות וגרהם-שמידט"
+    ],
+    [
+      "projection",
+      "היטל אורתוגונלי"
+    ],
+    [
+      "least_squares",
+      "ריבועים פחותים"
+    ],
+    [
+      "parseval_bessel",
+      "פרסבל ובסל"
+    ],
+    [
+      "orthodiag",
+      "לכסון אורתוגונלי"
+    ],
+    [
+      "pos_def",
+      "מטריצות מוגדרות חיובית"
+    ],
+    [
+      "qr",
+      "פירוק QR"
+    ],
+    [
+      "svd",
+      "פירוק SVD"
+    ],
+    [
+      "crt",
+      "משפט השאריות הסיני"
+    ],
+    [
+      "groups",
+      "חבורות וסדר איבר"
+    ]
+  ],
+  "briefs": [],
+  "needHelp": [
+    {
+      "id": "proj_gs",
+      "titleHe": "היטל וגרהם-שמידט",
+      "icon": "📐",
+      "topic": "projection",
+      "entryLabelHe": "צריך עזרה בהיטל ובגרהם-שמידט?"
+    },
+    {
+      "id": "orthodiag",
+      "titleHe": "לכסון אורתוגונלי והגדרה חיובית",
+      "icon": "♦️",
+      "topic": "orthodiag",
+      "entryLabelHe": "צריך עזרה בלכסון אורתוגונלי ובמוגדרות חיובית?"
+    },
+    {
+      "id": "svd",
+      "titleHe": "פירוק SVD",
+      "icon": "🧬",
+      "topic": "svd",
+      "entryLabelHe": "צריך עזרה ב-SVD?"
+    },
+    {
+      "id": "groups_crt",
+      "titleHe": "חבורות ומשפט השאריות הסיני",
+      "icon": "🔐",
+      "topic": "groups",
+      "entryLabelHe": "צריך עזרה בחבורות ובשאריות הסיני?"
+    }
+  ],
+  "storePrefix": "algebra-2",
+  "includeDrafts": false
+}
