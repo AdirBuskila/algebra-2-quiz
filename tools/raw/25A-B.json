@@ -1,0 +1,170 @@
+{
+ "examCode": "25A-B",
+ "examLabel": "אלגברה 2 - סמסטר א' תשפ\"ה מועד ב'",
+ "year": 2025,
+ "examDate": "23.3.2025",
+ "sourceFile": "algebra-2-25A-B-exam",
+ "solutionFile": "student-solution-1",
+ "contexts": {
+  "c2b": {
+   "kind": "text",
+   "title": "שאלה 2 סעיף א",
+   "text": "תהי $G$ חבורה. הוכיחו שאם לכל $x\\in G$ מתקיים $x^2=e$, כאשר $e$ הוא האיבר הניטרלי של $G$, אז:"
+  },
+  "c4a": {
+   "kind": "text",
+   "title": "שאלה 4 סעיף א",
+   "text": "תהי $(G,\\cdot)$ חבורה ויהיו $x,y\\in G$. הוכיחו כי"
+  }
+ },
+ "questions": [
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "least_squares",
+   "question": "סעיף א. נתונות 5 נקודות במישור: $(9,8),(7,5),(5,6),(3,5),(1,4)$. מצאו את משוואת הישר הקרוב ביותר לנקודות הללו במובן של הריבועים הפחותים. (10%)",
+   "solution": "נחפש $y=mx+n$ הקרוב ביותר לנקודות $(1,4),(3,5),(5,6),(7,5),(9,8)$ בשיטת הריבועים הפחותים:\n$$\\begin{pmatrix}1&1\\\\3&1\\\\5&1\\\\7&1\\\\9&1\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}4\\\\5\\\\6\\\\5\\\\8\\end{pmatrix}$$\nנכפול ב-$A^T$ משמאל:\n$$\\begin{pmatrix}1&3&5&7&9\\\\1&1&1&1&1\\end{pmatrix}\\begin{pmatrix}1&1\\\\3&1\\\\5&1\\\\7&1\\\\9&1\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}1&3&5&7&9\\\\1&1&1&1&1\\end{pmatrix}\\begin{pmatrix}4\\\\5\\\\6\\\\5\\\\8\\end{pmatrix}$$\n$$\\begin{pmatrix}165&25\\\\25&5\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}156\\\\28\\end{pmatrix}\\ \\Rightarrow\\ m=0.4\\ ,\\ n=3.6$$\n$$y=0.4x+3.6$$",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "א",
+   "points": 10
+  },
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "svd",
+   "question": "סעיף ב. מצאו פירוק $SVD$ עבור המטריצה $A=\\begin{pmatrix}1&-1\\\\2&2\\\\-1&1\\end{pmatrix}$. (15%)",
+   "solution": "$$U=\\begin{pmatrix}0&-\\frac{\\sqrt2}2&\\frac{\\sqrt2}2\\\\1&0&0\\\\0&\\frac{\\sqrt2}2&\\frac{\\sqrt2}2\\end{pmatrix},\\qquad\\Sigma=\\begin{pmatrix}2\\sqrt2&0\\\\0&2\\\\0&0\\end{pmatrix},\\qquad V=\\begin{pmatrix}\\frac{\\sqrt2}2&-\\frac{\\sqrt2}2\\\\\\frac{\\sqrt2}2&\\frac{\\sqrt2}2\\end{pmatrix}$$\n($A=U\\Sigma V^T$; הערכים העצמיים של $A^TA=\\begin{pmatrix}6&2\\\\2&6\\end{pmatrix}$ הם $8,4$.)",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ב",
+   "points": 15
+  },
+  {
+   "num": 2,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "סעיף א.1. $G$ חבורה אבלית, כלומר לכל $x,y\\in G$ מתקיים $x\\cdot y=y\\cdot x$. (5%)",
+   "solution": "נתון $(xy)^2=e$. כלומר $xyxy=e$. נכפול ב-$x$ משמאל וב-$y$ מימין ונשתמש ב-$x^2=e$ וב-$y^2=e$:\n$$x^2\\,y\\,x\\,y^2=x\\,e\\,y$$\n$$e\\cdot y\\cdot x\\cdot e=xy$$\n$$yx=xy$$",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "א",
+   "points": 5,
+   "contextId": "c2b"
+  },
+  {
+   "num": 2,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "סעיף א.2. אם $x,y\\in G$ ו-$x^5=y^9$ אז $x=y$. (5%)",
+   "solution": "נתון $x^5=y^9$. מכיוון ש-$x^2=e$ נקבל $x^4=e$, ומכיוון ש-$y^2=e$ נקבל $y^8=e$. לכן\n$$x^4\\cdot x=y^8\\cdot y\\ \\Rightarrow\\ e\\cdot x=e\\cdot y\\ \\Rightarrow\\ x=y$$",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ב",
+   "points": 5,
+   "contextId": "c2b"
+  },
+  {
+   "num": 2,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "סעיף ב. הוכיחו כי הקבוצה $G=\\left\\{A=\\begin{pmatrix}a&0\\\\0&b\\end{pmatrix}\\in M_2(\\mathbb{R})\\ \\middle|\\ ab=1\\right\\}$ עם כפל מטריצות מהווה חבורה. (15%)",
+   "solution": "**סגירות ביחס לפעולה:** $A=\\begin{pmatrix}a&0\\\\0&b\\end{pmatrix},\\ B=\\begin{pmatrix}c&0\\\\0&d\\end{pmatrix}\\in G,\\ ab=1,\\ cd=1\\ \\to\\ AB=\\begin{pmatrix}ac&0\\\\0&bd\\end{pmatrix}$ ומתקיים $acbd=1$, לכן $AB\\in G$.\n**אסוציאטיביות:** $(AB)C=\\begin{pmatrix}ace&0\\\\0&bdf\\end{pmatrix}=A(BC)$ (לכל $A,B,C\\in G$ עם $C=\\begin{pmatrix}e&0\\\\0&f\\end{pmatrix}$).\n**איבר ניטרלי:** $I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\in G$ ומתקיים $AI=IA=A$.\n**איבר הופכי:** כיוון ש-$ab=1$, מתקיים $a,b\\ne0$ וניתן להגדיר $A^{-1}=\\begin{pmatrix}\\frac1a&0\\\\0&\\frac1b\\end{pmatrix}$, ומתקיים $\\frac1a\\cdot\\frac1b=1$ ולכן $A^{-1}\\in G$.\nובכן $G$ חבורה.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ג",
+   "points": 15
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "pos_def",
+   "question": "סעיף א. עבור אילו ערכי הפרמטר $a$ המטריצה $\\begin{pmatrix}a&0&1\\\\0&2a&0\\\\1&0&a\\end{pmatrix}$ היא: מוגדרת חיובית, מוגדרת חיובית לחלוטין, מוגדרת שלילית, מוגדרת שלילית לחלוטין, או אף אחת מהן? (15%)",
+   "solution": "הערכים העצמיים של המטריצה הם: $\\lambda_1=a-1,\\ \\lambda_2=a+1,\\ \\lambda_3=2a$.\nהמטריצה מוגדרת חיובית כאשר $\\begin{cases}a-1\\ge0\\\\a+1\\ge0\\\\2a\\ge0\\end{cases}\\Rightarrow\\begin{cases}a\\ge1\\\\a\\ge-1\\\\a\\ge0\\end{cases}$ כלומר כאשר $a\\ge1$.\nהמטריצה מוגדרת חיובית לחלוטין כאשר $a>1$.\nהמטריצה מוגדרת שלילית כאשר $\\begin{cases}a-1\\le0\\\\a+1\\le0\\\\2a\\le0\\end{cases}\\Rightarrow\\begin{cases}a\\le1\\\\a\\le-1\\\\a\\le0\\end{cases}$ ומכאן $a\\le-1$.\nהמטריצה מוגדרת שלילית לחלוטין כאשר $a<-1$.\nהמטריצה לא מוגדרת כלל כאשר $-1<a<1$.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "א",
+   "points": 15
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "pos_def",
+   "question": "סעיף ב. תהי $C=\\begin{pmatrix}1&3\\\\3&8\\end{pmatrix}$. מצאו וקטורים $\\vec x,\\vec y\\in\\mathbb{R}^2$ כך ש: $\\vec x^TC\\vec x<0$ ו-$\\vec y^TC\\vec y>0$. (10%)",
+   "solution": "יהי $\\bar v=\\begin{pmatrix}a\\\\b\\end{pmatrix}\\in\\mathbb{R}^2$. מתקיים:\n$$\\bar v^TC\\bar v=\\begin{pmatrix}a&b\\end{pmatrix}\\begin{pmatrix}1&3\\\\3&8\\end{pmatrix}\\begin{pmatrix}a\\\\b\\end{pmatrix}=a^2+6ab+8b^2$$\nבהנחה ש-$b\\ne0$ נוציא את $b^2$ ונקבל $b^2\\left[\\left(\\frac ab\\right)^2+6\\frac ab+8\\right]$. נסמן $t=\\frac ab$ ונבדוק את הביטוי $t^2+6t+8$, שהשורשים שלו הם $t_1=-2,\\ t_2=-4$. הביטוי שלילי בדיוק עבור $-4<t<-2$ וחיובי מחוץ לקטע.\nלמשל $t=1$, כלומר $a=b=1$, נותן $\\bar v^TC\\bar v=15>0$ ולכן $\\bar y=\\begin{pmatrix}1\\\\1\\end{pmatrix}$ מתאים.\nלמשל $t=-3$, כלומר $a=-3,\\ b=1$ (או $a=3,\\ b=-1$), נותן $\\bar v^TC\\bar v=9-18+8=-1<0$ ולכן $\\bar x=\\begin{pmatrix}-3\\\\1\\end{pmatrix}$ מתאים.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ב",
+   "points": 10
+  },
+  {
+   "num": 4,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "סעיף א.1. $o(x)=o\\left(y^{-1}xy\\right)$, כלומר ל-$x$ ול-$y^{-1}xy$ אותו סדר. (8%)",
+   "solution": "נסמן $o(x)=n$ ו-$o\\left(y^{-1}xy\\right)=m$. נוכיח כי $n=m$.\nלפי הגדרת הסדר, $n$ ו-$m$ הם המספרים הטבעיים המינימליים המקיימים $x^n=e$ ו-$\\left(y^{-1}xy\\right)^m=e$ בהתאמה.\nמתקיים\n$$\\left(y^{-1}xy\\right)^n=\\left(y^{-1}xy\\right)\\cdots\\left(y^{-1}xy\\right)=y^{-1}x^ny=y^{-1}ey=e$$\nכלומר $m\\le n$.\nמצד שני\n$$y^{-1}x^my=\\left(y^{-1}xy\\right)^m=e\\ \\Rightarrow\\ x^m=yey^{-1}=e$$\nולכן $n\\le m$. הוכחנו $n=m$.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "א",
+   "points": 8,
+   "contextId": "c4a"
+  },
+  {
+   "num": 4,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "סעיף א.2. אם $xy=yx$ אז $xy^{-1}=y^{-1}x$. (7%)",
+   "solution": "נתון $xy=yx$. נכפול את שני האגפים ב-$y^{-1}$ מימין וב-$y^{-1}$ משמאל:\n$$y^{-1}(xy)y^{-1}=y^{-1}(yx)y^{-1}$$\nונקבל את התוצאה המבוקשת: $y^{-1}x=xy^{-1}$.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ב",
+   "points": 7,
+   "contextId": "c4a"
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "crt",
+   "question": "סעיף ב. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\\begin{cases}x\\equiv3\\pmod4\\\\x\\equiv4\\pmod5\\\\x\\equiv2\\pmod7\\end{cases}$. (10%)",
+   "solution": "נסמן $m_1=4,\\ m_2=5,\\ m_3=7$ והם אכן זרים בזוגות. נסמן $m=m_1m_2m_3=140$, ולכן:\n$$M_1=\\frac m{m_1}=35,\\qquad M_2=\\frac m{m_2}=28,\\qquad M_3=\\frac m{m_3}=20$$\nכעת יש למצוא פתרונות לשלוש משוואות:\n$$35x_1\\equiv1\\pmod4,\\qquad28x_2\\equiv1\\pmod5,\\qquad20x_3\\equiv1\\pmod7$$\nלמשוואה הראשונה הפתרון הוא $x_1\\equiv3\\pmod4$, למשוואה השנייה הפתרון הוא $x_2\\equiv2\\pmod5$, ולמשוואה השלישית הפתרון הוא $x_3\\equiv6\\pmod7$.\nלכן הפתרון למערכת הוא:\n$$x_0=(a_1M_1x_1+a_2M_2x_2+a_3M_3x_3)\\pmod m=(3\\cdot35\\cdot3+4\\cdot28\\cdot2+2\\cdot20\\cdot6)\\pmod{140}=(315+224+240)\\pmod{140}=79\\pmod{140}$$",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ג",
+   "points": 10
+  },
+  {
+   "num": 5,
+   "kind": "computation",
+   "topic": "orthodiag",
+   "question": "סעיף א. בצעו לכסון אורתוגונלי למטריצה הבאה: $A=\\begin{pmatrix}1&1&0\\\\1&1&0\\\\0&0&2\\end{pmatrix}$. (15%)",
+   "solution": "$$D=\\begin{pmatrix}2&0&0\\\\0&2&0\\\\0&0&0\\end{pmatrix},\\qquad P=\\begin{pmatrix}\\frac1{\\sqrt2}&0&-\\frac1{\\sqrt2}\\\\\\frac1{\\sqrt2}&0&\\frac1{\\sqrt2}\\\\0&1&0\\end{pmatrix},\\qquad A=PDP^{-1}=PDP^T$$\n(הערכים העצמיים של $A$ הם $2,2,0$; עמודות $P$ הן וקטורים עצמיים אורתונורמליים.)",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "א",
+   "points": 15
+  },
+  {
+   "num": 5,
+   "kind": "proof",
+   "topic": "cauchy_schwarz",
+   "question": "סעיף ב. הוכיחו כי לכל שלושה מספרים ממשיים חיוביים $x,y,z$ מתקיים: $\\dfrac13\\le\\dfrac{x+y+z}{\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2}<1$. (10%)",
+   "solution": "**אי השוויון הימני:** מכיוון ש-$x,y,z>0$:\n$$x+y+z<\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2=x+y+z+2\\sqrt{xy}+2\\sqrt{xz}+2\\sqrt{yz}\\iff2\\left(\\sqrt{xy}+\\sqrt{yz}+\\sqrt{xz}\\right)>0$$\nוזה נכון. לכן $\\dfrac{x+y+z}{\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2}<1$.\n**אי השוויון השמאלי:** נגדיר $\\bar u=\\begin{pmatrix}\\sqrt x\\\\\\sqrt y\\\\\\sqrt z\\end{pmatrix},\\ \\bar v=\\begin{pmatrix}1\\\\1\\\\1\\end{pmatrix}$. לפי אי-שוויון קושי-שוורץ:\n$$\\bar u\\cdot\\bar v=\\sqrt x\\cdot1+\\sqrt y\\cdot1+\\sqrt z\\cdot1\\le\\sqrt{x+y+z}\\cdot\\sqrt3=\\|\\bar u\\|\\cdot\\|\\bar v\\|$$\nולכן, בריבוע, $\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2\\le3(x+y+z)$, כלומר $\\dfrac13\\le\\dfrac{x+y+z}{\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2}$.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ב",
+   "points": 10
+  }
+ ]
+}
