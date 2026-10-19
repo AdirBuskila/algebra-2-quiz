@@ -27,4 +27,32 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Needed: confirm shipping the corrected answer as a non-official solution, or keep held.
 - Status: hold
 
+### 26B-A (whole sitting) - no answer source
+- Path: sitting 26B-A exam, 2 pages (no solution exists)
+- Page: 1-2
+- Question: all 15 items are held "no-key". A 17-page scan in the folder is a handwritten student solution of this sitting with a student grade-report page (personal data); it is not a distinct sitting and was not used.
+- Needed: route to the solver and refuter, or confirm using the scan for the parts that earned full marks.
+- Status: hold
+
+### 26A-B (Q1c, Q2d, Q4a-c, Q5a) - no answer source
+- Path: sitting 26A-B exam; the only solution is a partial handwritten student solution
+- Page: 1-2 (exam)
+- Question: 9 items are shipped from the student solution (official false, recomputed with sympy); Q1c, Q2.4, Q4a, Q4b, Q4c and Q5a have no solution and are held no-key. Student slip fixed silently: Q5b last coordinate of u (1/sqrt2 for 1/sqrt n).
+- Needed: route the 6 held items to the solver.
+- Status: hold
+
+### 25B-A Q3b - official solution omits the order of G
+- Path: sitting 25B-A handwritten solution (the "lecturers' solution" file in the folder belongs to a different exam and was not used)
+- Page: 7-8 of the solution
+- Question: Q3b asks to prove G is a group AND to find its order; the solution proves the group axioms only. The order (infinite) was added, so the item ships as solved, official false, with the prefix "הפתרון הרשמי עם השלמה". Slips fixed silently: Q6c first line prints (sum a_i^2)^2 for (sum a_i)^2.
+- Needed: confirm the completion, or keep it held.
+- Status: shipped, to confirm
+
+### 25B-B Q3a.3 / Q5a - slips in intermediate lines
+- Path: sitting 25B-B handwritten solution
+- Page: 5 and 8 of the solution
+- Question: Q3a.3 prints "(a-1)e = a" where the equation is e(a-1) = 2a (at a=1: 0 = 2, printed 0 = 1); the conclusion is unchanged. Q5a writes the range with lambda instead of c. Q1a gives decimals only; exact 37/59 and 99/59 added. All fixed silently in the transcription; no final answer is wrong.
+- Needed: nothing, FYI.
+- Status: resolved in transcription
+
 ## Resolved
