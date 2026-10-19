@@ -4,7 +4,7 @@ Run: PYTHONUTF8=1 py -W error::SyntaxWarning tools/gen/gen_25B-A.py
 
 Source: exam 3 pp. (header misprints the semester as A; the date 09.07.25 and the file name make it semester B moed A)
 + handwritten solution 12 pp. (scan, read from the rendered pages). Sheet: 6 questions, "best 4", 25% each; all 6 are
-transcribed, 17 items. Solutions are handwritten without an author name, solutionSource "lecturer-solution".
+transcribed, 17 items. Solutions are handwritten without an author name, solutionSource "student-solution" (unknown-author handwritten scan; not presented as the lecturer's).
 NOTE: the second file in the folder ("lecturers' solution", 11 pp.) belongs to a DIFFERENT exam (Q1 is an integral inner
 product on C[0,1], Q2 a group on R x R*), so it is not used here.
 
@@ -29,7 +29,7 @@ OUT = pathlib.Path(__file__).resolve().parents[1] / "raw" / "25B-A.json"
 
 def Q(num, kind, topic, question, solution, **kw):
     q = {"num": num, "kind": kind, "topic": topic, "question": question, "solution": solution,
-         "solutionSource": "lecturer-solution", "official": True, "confidence": "med"}
+         "solutionSource": "student-solution", "official": False, "confidence": "med"}
     q.update(kw)
     return q
 
@@ -97,7 +97,7 @@ S3A = (
 )
 
 S3B = (
-    "הפתרון הרשמי עם השלמה: הפתרון הרשמי מוכיח שהמבנה חבורה אך לא כותב את הסדר של $G$, והסדר נוסף כאן.\n"
+    "השלמה לפתרון שבקובץ: הפתרון שבקובץ מוכיח שהמבנה חבורה אך לא כותב את הסדר של $G$, והסדר נוסף כאן.\n"
     r"**סגירות:** לכל $n,m\in\mathbb{Z}$ מתקיים" "\n"
     r"$$\begin{pmatrix}1&n\\0&1\end{pmatrix}\begin{pmatrix}1&m\\0&1\end{pmatrix}=\begin{pmatrix}1&m+n\\0&1\end{pmatrix}\in G$$" "\n"
     r"כי $m+n\in\mathbb{Z}$." "\n"

@@ -5,7 +5,7 @@ Run: PYTHONUTF8=1 py -W error::SyntaxWarning tools/gen/gen_25B-B.py
 Source: exam 3 pp. (header misprints the semester as A; the date 07.08.25 and the file name make it semester B moed B)
 + handwritten solution 10 pp. (scan, read from the rendered pages). Sheet: 6 questions, "best 4", 25% each; all 6 are
 transcribed, 17 items. Solutions are handwritten and carry no official typeset text, so solutionSource is
-"lecturer-solution" (the scan accompanying the exam; no author named).
+"student-solution" (unknown-author handwritten scan; not presented as the lecturer's) (the scan accompanying the exam; no author named).
 
 Part letters: numbered sub-parts get letters in order (Q2: 1,2,3 -> a,b,c and printed b -> d; Q3 likewise).
 Every question text starts with its printed label.
@@ -24,7 +24,7 @@ OUT = pathlib.Path(__file__).resolve().parents[1] / "raw" / "25B-B.json"
 
 def Q(num, kind, topic, question, solution, **kw):
     q = {"num": num, "kind": kind, "topic": topic, "question": question, "solution": solution,
-         "solutionSource": "lecturer-solution", "official": True, "confidence": "med"}
+         "solutionSource": "student-solution", "official": False, "confidence": "med"}
     q.update(kw)
     return q
 
