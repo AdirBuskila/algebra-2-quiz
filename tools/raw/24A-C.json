@@ -1,0 +1,153 @@
+{
+ "examCode": "24A-C",
+ "examLabel": "אלגברה 2 - סמסטר א' תשפ\"ד מועד ג'",
+ "year": 2024,
+ "sourceFile": "algebra-2-24A-C-exam",
+ "solutionFile": "student-solution-1",
+ "contexts": {
+  "c2": {
+   "kind": "text",
+   "title": "שאלה 2 סעיף א",
+   "text": "נתון מבנה אלגברי $\\left(\\mathbb{R}^2\\setminus\\{(0,0)\\},*\\right)$, כאשר פעולת $*$ מוגדרת באופן הבא: $\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}ay+bx\\\\by\\end{pmatrix}$ לכל $\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}x\\\\y\\end{pmatrix}\\in\\mathbb{R}^2\\setminus\\{(0,0)\\}$."
+  }
+ },
+ "questions": [
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "least_squares",
+   "question": "נתונות 5 הנקודות במישור $(-4,-1),(-2,0),(2,4),(4,5),(5,6)$ מצאו את משוואת הישר הקרוב ביותר לנקודות הללו במובן הריבועים הפחותים. (12%)",
+   "solution": "$y=mx+n$\n$$\\begin{cases}-4m+n=-1\\\\-2m+n=0\\\\2m+n=4\\\\4m+n=5\\\\5m+n=6\\end{cases}\\Rightarrow\\begin{pmatrix}-4&1\\\\-2&1\\\\2&1\\\\4&1\\\\5&1\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}-1\\\\0\\\\4\\\\5\\\\6\\end{pmatrix}\\qquad A\\vec x=\\vec b$$\nאם נפתור את המערכת, בסבירות גבוהה לא נמצא פתרון כי אין ישר שעובר דרך כל הנקודות. לכן פותרים את בעיית הריבועים הפחותים $A^TA\\vec x=A^T\\vec b$:\n$$A^TA=\\begin{pmatrix}65&5\\\\5&5\\end{pmatrix},\\qquad A^T\\vec b=\\begin{pmatrix}62\\\\14\\end{pmatrix}$$\n$$\\begin{cases}65m+5n=62\\\\5m+5n=14\\end{cases}\\Rightarrow60m=48\\Rightarrow m=\\frac45,\\qquad5\\cdot\\frac45+5n=14\\Rightarrow n=2$$\n$$y=\\frac45x+2$$",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "high",
+   "part": "א",
+   "points": 12
+  },
+  {
+   "num": 1,
+   "kind": "proof",
+   "topic": "cauchy_schwarz",
+   "question": "הוכיחו כי $\\left(\\int_0^1x^3f(x)\\,dx\\right)^2\\le\\dfrac17\\int_0^1f^2(x)\\,dx$ כאשר $f(x)\\in C_{[0,1]}$. (13%)",
+   "solution": "לפי קושי-שוורץ $\\langle u,v\\rangle\\le\\|u\\|\\cdot\\|v\\|$; לפי הצורה של הביטוי, $\\langle f,g\\rangle\\le\\|f\\|\\cdot\\|g\\|$ עבור $g(x)=x^3$ ו-$f(x)=f(x)$, כאשר $\\langle f,g\\rangle=\\int_0^1x^3f(x)\\,dx$.\n$$\\|f\\|=\\sqrt{\\langle f,f\\rangle}=\\sqrt{\\int_0^1f^2(x)\\,dx},\\qquad\\|g\\|=\\|x^3\\|=\\sqrt{\\langle x^3,x^3\\rangle}=\\sqrt{\\int_0^1x^6\\,dx}=\\sqrt{\\left.\\frac{x^7}7\\right|_0^1}=\\sqrt{\\frac17}$$\n$$\\int_0^1x^3f(x)\\,dx\\le\\sqrt{\\int_0^1f^2(x)\\,dx}\\cdot\\sqrt{\\frac17}$$\nנעלה בריבוע: $$\\left(\\int_0^1x^3f(x)\\,dx\\right)^2\\le\\frac17\\int_0^1f^2(x)\\,dx$$",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ב",
+   "points": 13
+  },
+  {
+   "num": 2,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.1. האם הפעולה היא קומוטטיבית? (5%)",
+   "solution": "$$\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}ay+bx\\\\by\\end{pmatrix},\\qquad\\begin{pmatrix}x\\\\y\\end{pmatrix}*\\begin{pmatrix}a\\\\b\\end{pmatrix}=\\begin{pmatrix}xb+ya\\\\yb\\end{pmatrix}$$\nשני האגפים שווים, לכן הפעולה קומוטטיבית.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "high",
+   "part": "א",
+   "points": 5,
+   "contextId": "c2",
+   "verdict": true
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף א.2. מצאו את האיבר הניטרלי ביחס לפעולת $*$ (במידה וקיים). (6%)",
+   "solution": "נחפש $\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}e_1\\\\e_2\\end{pmatrix}=\\begin{pmatrix}a\\\\b\\end{pmatrix}$:\n$$\\begin{pmatrix}ae_2+be_1\\\\be_2\\end{pmatrix}=\\begin{pmatrix}a\\\\b\\end{pmatrix}\\Rightarrow\\begin{cases}ae_2+be_1=a\\\\be_2=b\\end{cases}\\Rightarrow e_2=1$$\n$$a\\cdot1+be_1=a\\Rightarrow be_1=0\\Rightarrow e_1=0$$\n$$e=\\begin{pmatrix}0\\\\1\\end{pmatrix}$$",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "high",
+   "part": "ב",
+   "points": 6,
+   "contextId": "c2"
+  },
+  {
+   "num": 2,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.3. האם המבנה $\\left(\\mathbb{R}^2\\setminus\\{(0,0)\\},*\\right)$ הוא חבורה? (7%)",
+   "solution": "נבדוק את התנאים: הופכי, אסוציאטיביות, סגירות.\n**הופכי:** נחפש $\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}a^{-1}\\\\b^{-1}\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$, כלומר $\\begin{pmatrix}ab^{-1}+ba^{-1}\\\\bb^{-1}\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$. נדרש $bb^{-1}=1$, כלומר $b^{-1}=\\dfrac1b$ ($b\\ne0$). לוקטורים מהצורה $\\begin{pmatrix}a\\\\0\\end{pmatrix}$ אין הופכי.\nלכן המבנה אינו חבורה.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ג",
+   "points": 7,
+   "contextId": "c2",
+   "verdict": false
+  },
+  {
+   "num": 2,
+   "kind": "proof",
+   "topic": "pos_def",
+   "question": "סעיף ב. תהי $A$ מטריצה מוגדרת חיובית לחלוטין. הוכיחו כי $I+A^2$ מוגדרת חיובית לחלוטין. (7%)",
+   "solution": "נוכיח ש-$I+A^2$ סימטרית, וש-$\\langle(I+A^2)\\vec v,\\vec v\\rangle>0$ לכל $\\vec0\\ne\\vec v\\in\\mathbb{R}^n$.\n**(I)** $(I+A^2)^T=I^T+(A^2)^T=I+(A^T)^2=I+A^2$, כי $I^T=I$, $A^T=A$ ו-$(A^k)^T=(A^T)^k$.\n**(II)** $\\langle(I+A^2)\\vec v,\\vec v\\rangle=\\vec v^T(I+A^2)\\vec v=\\vec v^TI\\vec v+\\vec v^TA^2\\vec v>0$.\nביאור $\\vec v^TI\\vec v$: $\\vec v^TI\\vec v=\\vec v^T\\vec v=\\|\\vec v\\|^2>0$ לכל $\\vec v\\ne\\vec0$ (דרך נוספת: $I$ מוגדרת חיובית לחלוטין כי $\\lambda=1>0$).\nביאור $\\vec v^TA^2\\vec v$: $\\vec v^TA\\cdot A\\vec v=\\vec v^TA^TA\\vec v=(A\\vec v)^T(A\\vec v)=\\vec u^T\\vec u=\\|\\vec u\\|^2\\ge0$, כאשר $A^T=A$, $(AB)^T=B^TA^T$ ו-$\\vec u=A\\vec v$.\nמכאן $\\langle(I+A^2)\\vec v,\\vec v\\rangle>0$, ולכן $I+A^2$ מוגדרת חיובית לחלוטין.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "med",
+   "part": "ד",
+   "points": 7
+  },
+  {
+   "num": 3,
+   "part": "א",
+   "kind": "computation",
+   "topic": "svd",
+   "points": 18,
+   "question": "מצאו פירוק $SVD$ עבור המטריצה $A=\\begin{pmatrix}0&-1&1\\\\1&1&0\\end{pmatrix}$. (18%)",
+   "hold": "no-key: the file has no solution for this question"
+  },
+  {
+   "num": 3,
+   "part": "ב",
+   "kind": "proof",
+   "topic": "inner_product",
+   "points": 7,
+   "question": "יהי $V$ מרחב מכפלה פנימית ממשי. הוכיחו כי עבור כל $\\vec v,\\vec u\\in V$ מתקיים $\\langle\\vec u,\\vec v\\rangle=\\dfrac14\\left(\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2\\right)$. (7%)",
+   "hold": "no-key: the file has no solution for this question"
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "pos_def",
+   "question": "(17%) עבור אילו ערכי הפרמטר $a$ המטריצה $\\begin{pmatrix}a^2&0&1\\\\0&a&0\\\\1&0&a^2\\end{pmatrix}$ היא: מוגדרת חיובית, מוגדרת חיובית לחלוטין, מוגדרת שלילית, מוגדרת שלילית לחלוטין, או אף אחת מהן?",
+   "solution": "$\\lambda>0$ לכל $\\lambda$: מוגדרת חיובית לחלוטין; $\\lambda\\ge0$ לכל $\\lambda$: מוגדרת חיובית; $\\lambda<0$: שלילית לחלוטין; $\\lambda\\le0$: שלילית.\n$$\\begin{vmatrix}a^2-\\lambda&0&1\\\\0&a-\\lambda&0\\\\1&0&a^2-\\lambda\\end{vmatrix}=(a-\\lambda)\\left((a^2-\\lambda)^2-1^2\\right)=0$$\n$$a-\\lambda=0\\Rightarrow\\lambda=a,\\qquad(a^2-\\lambda)^2-1=0\\Rightarrow\\left((a^2-\\lambda)-1\\right)\\left((a^2-\\lambda)+1\\right)=0\\Rightarrow\\lambda=a^2-1,\\ \\ \\lambda=a^2+1$$\nהערכים העצמיים הם $a$, $a^2-1$, $a^2+1$. (בדיקה נוספת של הפולינום: $\\lambda^2-2a^2\\lambda+a^4-1=0$ נותן $\\lambda=\\dfrac{2a^2\\pm\\sqrt4}2=a^2\\pm1$.)\n- $\\lambda>0$ לכל ערך עצמי $\\Leftarrow$ $a>1$: מוגדרת חיובית לחלוטין.\n- $\\lambda\\ge0$ לכל ערך עצמי $\\Leftarrow$ $a\\ge1$: מוגדרת חיובית.\n- עבור $a<1$ המטריצה אינה מוגדרת (לא שלילית: $a^2+1>0$ תמיד).",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "high",
+   "part": "א",
+   "points": 17
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "crt",
+   "question": "פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\\begin{cases}x\\equiv5\\pmod3\\\\x\\equiv4\\pmod2\\\\x\\equiv6\\pmod7\\end{cases}$. (8%)",
+   "solution": "נסדר את המקדמים: $x\\equiv2\\pmod3$ (כי $5\\equiv2$), $x\\equiv0\\pmod2$ (כי $4\\equiv0$), $x\\equiv6\\pmod7$.\n$a_1=2,\\ a_2=0,\\ a_3=6$; $m_1=3,\\ m_2=2,\\ m_3=7$; $M_1=2\\cdot7=14,\\ M_2=21,\\ M_3=6$; $x_1=2,\\ x_2=1,\\ x_3=6$.\n$$x_iM_i\\equiv1\\pmod{m_i}:\\quad2\\cdot14\\equiv1\\pmod3,\\quad1\\cdot21\\equiv1\\pmod2,\\quad6\\cdot6\\equiv1\\pmod7$$\n$$x\\equiv(a_1M_1x_1+\\dots+a_kM_kx_k)\\pmod{m_1m_2\\cdots m_k}=(2\\cdot14\\cdot2+0\\cdot21\\cdot1+6\\cdot6\\cdot6)\\pmod{3\\cdot2\\cdot7}=272\\pmod{42}$$\n$$x=20\\pmod{42}$$\nבדיקה: $20\\equiv5\\pmod3$, $20\\equiv4\\pmod2$, $20\\equiv6\\pmod7$.",
+   "solutionSource": "student-solution",
+   "official": false,
+   "confidence": "high",
+   "part": "ב",
+   "points": 8
+  },
+  {
+   "num": 5,
+   "part": "א",
+   "kind": "proof",
+   "topic": "groups",
+   "points": 18,
+   "question": "הוכיחו כי הקבוצה $G=\\left\\{A=\\begin{pmatrix}1&a&b\\\\0&1&c\\\\0&0&1\\end{pmatrix}\\in M_3(\\mathbb{R})\\ \\middle|\\ a,b,c\\in\\mathbb{R}\\right\\}$ עם כפל מטריצות מהווה חבורה. (18%)",
+   "hold": "no-key: the file has no solution for this question"
+  },
+  {
+   "num": 5,
+   "part": "ב",
+   "kind": "proof",
+   "topic": "groups",
+   "points": 7,
+   "question": "תהי $(G,*)$ חבורה כך שלכל $x\\in G$ מתקיים $x*x=e$, כלומר $x^{-1}=x$. יהיו $a,b\\in G$. נסמן $c=(a*b)*a$. הוכיחו כי $c=b$. (7%)",
+   "hold": "no-key: the file has no solution for this question"
+  }
+ ]
+}

@@ -1,0 +1,213 @@
+{
+ "examCode": "24A-A",
+ "examLabel": "אלגברה 2 - סמסטר א' תשפ\"ד מועד א'",
+ "year": 2024,
+ "examDate": "28.3.2024",
+ "sourceFile": "algebra-2-24A-A-exam",
+ "solutionFile": "algebra-2-24A-A-official-solution",
+ "contexts": {
+  "c2": {
+   "kind": "text",
+   "title": "שאלה 2 סעיף א",
+   "text": "נסמן $\\mathbb{R}^*=\\{x\\in\\mathbb{R}:x>0\\}$. לכל $a,b\\in\\mathbb{R}^*$ נגדיר את הפעולה הבאה: $a\\odot b=\\dfrac{ab}{a+b}$."
+  },
+  "c4": {
+   "kind": "text",
+   "title": "שאלה 4 סעיף א",
+   "text": "נתבונן בחבורה $G=\\left\\{A\\in M_2(\\mathbb{Z}_7)\\ \\middle|\\ \\det(A)\\ne0\\right\\}$ ביחס לכפל מטריצות (חבורת המטריצות ההפיכות מסדר 2x2 עם הרכיבים מ-$\\mathbb{Z}_7$).\nתהי $H=\\left\\{\\begin{pmatrix}a&c\\\\0&b\\end{pmatrix}\\in M_2(\\mathbb{Z}_7)\\ \\middle|\\ a\\cdot b\\ne0\\right\\}$ תת-חבורה של $G$."
+  }
+ },
+ "questions": [
+  {
+   "num": 1,
+   "kind": "proof",
+   "topic": "cauchy_schwarz",
+   "question": "(10%) יהיו $\\vec u,\\vec v\\in\\mathbb{R}^n$ שני וקטורים השונים מ-$\\vec0$. הוכיחו כי $\\|\\vec u+\\vec v\\|=\\|\\vec u\\|+\\|\\vec v\\|$ אם ורק אם קיים סקלר $t>0$ כך ש-$\\vec v=t\\vec u$.",
+   "solution": "**(⇒)** נתון $\\vec v=t\\vec u$ עם $t>0$. אז\n$$\\|\\vec u+\\vec v\\|=\\|\\vec u+t\\vec u\\|=\\|(1+t)\\vec u\\|\\overset{t>0}{=}(1+t)\\|\\vec u\\|$$\nמצד שני:\n$$\\|\\vec u\\|+\\|\\vec v\\|=\\|\\vec u\\|+\\|t\\vec u\\|=\\|\\vec u\\|+|t|\\cdot\\|\\vec u\\|\\overset{t>0}{=}(1+t)\\cdot\\|\\vec u\\|$$\n**(⇐)** נתון $\\|\\vec u+\\vec v\\|=\\|\\vec u\\|+\\|\\vec v\\|$, כלומר $\\|\\vec u+\\vec v\\|^2=\\left(\\|\\vec u\\|+\\|\\vec v\\|\\right)^2$.\n$$\\|\\vec u+\\vec v\\|^2=\\langle\\vec u+\\vec v,\\vec u+\\vec v\\rangle=\\|\\vec u\\|^2+2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2$$\n$$\\left(\\|\\vec u\\|+\\|\\vec v\\|\\right)^2=\\|\\vec u\\|^2+2\\|\\vec u\\|\\cdot\\|\\vec v\\|+\\|\\vec v\\|^2$$\n$$\\Rightarrow\\ \\langle\\vec u,\\vec v\\rangle=\\|\\vec u\\|\\cdot\\|\\vec v\\|\\ \\Rightarrow\\ \\frac{\\langle\\vec u,\\vec v\\rangle}{\\|\\vec u\\|\\cdot\\|\\vec v\\|}=\\cos\\alpha=1$$\nמכאן נובע שהוקטורים מקבילים ויוצרים זווית 0 ביניהם. מסקנה: $t>0$, $\\vec v=t\\vec u$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 10
+  },
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "projection",
+   "question": "(15%) במרחב $M_2(\\mathbb{R})$ נגדיר מכפלה פנימית (אין צורך להוכיח זאת) ע\\\"י $\\langle A,B\\rangle=\\mathrm{tr}\\left(B^TA\\right)$ לכל $A,B\\in M_2(\\mathbb{R})$. חשבו את ההיטל של $\\vec v=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$ על $\\mathrm{Sp}\\left\\{\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix},\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}\\right\\}$.",
+   "solution": "קודם כל נמצא בסיס אורתונורמלי עבור $W=\\mathrm{Sp}\\left\\{\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix},\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}\\right\\}$ בעזרת תהליך גרם-שמידט:\n$$\\vec u_1=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$$\n$$\\vec u_2=\\vec v_2-\\frac{\\langle\\vec v_2,\\vec u_1\\rangle}{\\|\\vec u_1\\|^2}\\vec u_1=\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}-\\frac12\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}=\\begin{pmatrix}-\\frac12&1\\\\0&\\frac12\\end{pmatrix}\\ \\xrightarrow{\\ \\cdot2\\ }\\ \\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}$$\nהמערכת $\\left\\{\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix},\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}\\right\\}$ אורתוגונלית. ננרמל ונקבל את המערכת האורתונורמלית\n$$\\left\\{\\frac1{\\sqrt2}\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix},\\ \\frac1{\\sqrt6}\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}\\right\\}$$\nכעת ניתן לחשב את ההיטל של $\\vec v=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$ על $W$:\n$$\\mathbf{proj}_W(\\vec v)=\\left\\langle\\vec v,\\frac1{\\sqrt2}\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\right\\rangle\\frac1{\\sqrt2}\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}+\\left\\langle\\vec v,\\frac1{\\sqrt6}\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}\\right\\rangle\\frac1{\\sqrt6}\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}$$\n$$=\\frac12\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}+\\frac16\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}=\\begin{pmatrix}\\frac13&\\frac13\\\\0&\\frac23\\end{pmatrix}$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 15
+  },
+  {
+   "num": 2,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.1. האם הפעולה אסוציאטיבית? (4%)",
+   "solution": "נוכיח כי $(a\\odot b)\\odot c=a\\odot(b\\odot c)$.\n$$(a\\odot b)\\odot c=\\frac{ab}{a+b}\\odot c=\\frac{\\frac{ab}{a+b}\\cdot c}{\\frac{ab}{a+b}+c}=\\frac{abc}{ab+ac+bc}$$\n$$a\\odot(b\\odot c)=a\\odot\\frac{bc}{b+c}=\\frac{a\\cdot\\frac{bc}{b+c}}{a+\\frac{bc}{b+c}}=\\frac{abc}{ab+ac+bc}$$\nהוכחנו כי הפעולה אסוציאטיבית.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 4,
+   "contextId": "c2",
+   "verdict": true
+  },
+  {
+   "num": 2,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.2. האם המבנה $(\\mathbb{R}^*,\\odot)$ הוא חבורה אבלית (קומוטטיבית)? (5%)",
+   "solution": "**סגירות:** עבור $a,b\\in\\mathbb{R}^*$ מתקיים $a+b,\\ ab>0$ ולכן $a\\odot b=\\dfrac{ab}{a+b}\\in\\mathbb{R}^*$.\n**אסוציאטיביות:** הוכחה בסעיף 1.\n**קיום איבר ניטרלי:** נחפש אם קיים $e\\in\\mathbb{R}^*$ כך ש-$a\\odot e=a$ וגם $e\\odot a=a$. נקבל:\n$$a\\odot e=\\frac{ae}{a+e}=a\\ \\Rightarrow\\ ae=a(a+e)\\ \\Rightarrow\\ a^2=0$$\nלא קיים איבר ניטרלי.\n**מסקנה:** המבנה $(\\mathbb{R}^*,\\odot)$ אינו חבורה, קל וחומר שאינו חבורה אבלית.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 5,
+   "contextId": "c2",
+   "verdict": false
+  },
+  {
+   "num": 2,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.3. האם קיים $x\\in\\mathbb{R}^*$ כך ש: $x\\odot x=x$ ? (4%)",
+   "solution": "$$x\\odot x=\\frac{x^2}{2x}\\overset{x\\ne0}{=}\\frac x2=x$$\nלמשוואה אין פתרון עבור $x\\ne0$. **מסקנה:** לא קיים $x$ כזה.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ג",
+   "points": 4,
+   "contextId": "c2",
+   "verdict": false
+  },
+  {
+   "num": 2,
+   "kind": "truefalse",
+   "topic": "groups",
+   "question": "סעיף א.4. הוכיחו או הפריכו: לכל $a\\in\\mathbb{N}$ קיים $n\\in\\mathbb{N}$ כך ש-$a^n=1$, כאשר $a^n=\\underbrace{a\\odot\\cdots\\odot a}_{n\\ \\text{times}}$. (6%)",
+   "solution": "נשים לב לחוקיות תחת הפעולה הנ\"ל:\n$$x^1=x=\\frac x1,\\quad x^2=x\\odot x=\\frac x2,\\quad x^3=x^2\\odot x=\\frac x2\\odot x=\\frac x3,\\quad\\dots,\\quad x^n=\\frac xn$$\nלכן לכל $a=n\\in\\mathbb{N}$ מתקיים $n^n=\\dfrac nn=1$. **מסקנה:** הטענה נכונה.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ד",
+   "points": 6,
+   "contextId": "c2",
+   "verdict": true
+  },
+  {
+   "num": 2,
+   "kind": "proof",
+   "topic": "pos_def",
+   "question": "סעיף ב. תהי $A$ מטריצה מוגדרת חיובית ו-$c>0$. הוכיחו כי $cI+A+A^2$ מוגדרת חיובית לחלוטין. (6%)",
+   "solution": "יהי $\\vec0\\ne\\vec v\\in\\mathbb{R}^n$ כאשר $n$ הוא סדר המטריצה $A$. מתקיים $\\left(cI+A+A^2\\right)^T=cI+A+A^2$. בנוסף:\n$$\\left\\langle\\left(cI+A+A^2\\right)\\vec v,\\vec v\\right\\rangle=\\vec v^T\\left(cI+A+A^2\\right)\\vec v=c\\vec v^T\\vec v+\\vec v^TA\\vec v+\\vec v^TA^TA\\vec v=c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+c\\|A\\vec v\\|^2$$\nנתון כי $A$ מוגדרת חיובית, לכן $\\langle A\\vec v,\\vec v\\rangle\\ge0$. בנוסף $c>0$ ו-$\\vec v\\ne\\vec0$, לכן $c\\|\\vec v\\|^2>0$. ברור ש-$c\\|A\\vec v\\|^2\\ge0$.\nמכאן נובע כי $c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+c\\|A\\vec v\\|^2>0$, כלומר $cI+A+A^2$ מוגדרת חיובית לחלוטין.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ה",
+   "points": 6
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "pos_def",
+   "question": "(15%) עבור אילו ערכי הפרמטרים $a$ ו-$b$ המטריצה $\\begin{pmatrix}1&0&a^2\\\\0&3a-1&0\\\\a^2&b&1\\end{pmatrix}$ היא: מוגדרת חיובית, מוגדרת חיובית לחלוטין, מוגדרת שלילית, מוגדרת שלילית לחלוטין, או אף אחת מהן?",
+   "solution": "על מנת שהמטריצה תהיה סימטרית חייב להתקיים $b=0$. נחשב את הערכים העצמיים של המטריצה:\n$$\\begin{vmatrix}1-\\lambda&0&a^2\\\\0&3a-1-\\lambda&0\\\\a^2&0&1-\\lambda\\end{vmatrix}=(3a-1-\\lambda)\\begin{vmatrix}1-\\lambda&a^2\\\\a^2&1-\\lambda\\end{vmatrix}=(3a-1-\\lambda)\\left(\\lambda^2-2\\lambda+1-a^4\\right)$$\nלכן הערכים העצמיים הם $\\lambda=3a-1$, $\\lambda=a^2+1$, $\\lambda=1-a^2$. המטריצה **מוגדרת חיובית** כאשר\n$$\\begin{cases}3a-1\\ge0\\\\1+a^2\\ge0\\\\1-a^2\\ge0\\end{cases}\\Rightarrow\\begin{cases}a\\ge\\frac13\\\\-1\\le a\\le1\\end{cases}\\Rightarrow\\ \\frac13\\le a\\le1$$\nהמטריצה **מוגדרת חיובית לחלוטין** כאשר $\\dfrac13<a<1$.\nהמטריצה **מוגדרת שלילית** כאשר $3a-1\\le0,\\ 1+a^2\\le0,\\ 1-a^2\\le0$, כלומר $a\\in\\emptyset$. אין ערכי $a$ עבור המטריצה מוגדרת שלילית, בפרט שלילית לחלוטין.\n**סיכום:**\n- המטריצה מוגדרת חיובית כאשר $b=0$ ו-$\\dfrac13\\le a\\le1$.\n- המטריצה מוגדרת חיובית לחלוטין כאשר $b=0$ ו-$\\dfrac13<a<1$.\n- בשאר המקרים המטריצה אינה מוגדרת.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 15
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "least_squares",
+   "question": "(10%) נתונות 4 נקודות במישור: $(1,3),\\ (3,5),\\ (-2,5),\\ (2,2)$. מצאו את משוואת הישר הקרוב ביותר לנקודות הללו במובן הריבועים הפחותים.",
+   "solution": "$y=mx+n$\n$$\\begin{cases}m+n=3\\\\3m+n=5\\\\-2m+n=5\\\\2m+n=2\\end{cases}\\Rightarrow\\begin{pmatrix}1&1\\\\3&1\\\\-2&1\\\\2&1\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}3\\\\5\\\\5\\\\2\\end{pmatrix}$$\n$$A^TA\\begin{pmatrix}m\\\\n\\end{pmatrix}=A^T\\vec b\\ \\Rightarrow\\ \\begin{pmatrix}18&4\\\\4&4\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}12\\\\15\\end{pmatrix}\\ \\Rightarrow\\ m=-\\frac3{14},\\ n=\\frac{111}{28}$$\n$$y=-\\frac3{14}x+\\frac{111}{28}$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 10
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף א.1. מהו הסדר של $H$ ? (5%)",
+   "solution": "**1.** התנאי $a\\cdot c\\ne0\\pmod7$ מתקיים אם ורק אם $a\\ne0\\pmod7\\ \\wedge\\ c\\ne0\\pmod7$. לכן $\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}\\in H$ כאשר $a=1,\\dots,6\\pmod7$ (6 אפשרויות), $c=1,\\dots,6\\pmod7$ (6 אפשרויות), ו-$b\\in\\mathbb{Z}_7$ (7 אפשרויות). לפי עקרון הכפל: $|H|=6\\cdot6\\cdot7=252$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 5,
+   "contextId": "c4"
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף א.2. מהו הסדר של האיבר $\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}$ ? (5%)",
+   "solution": "מתקיימים $3^6\\equiv1\\pmod7$ ו-$4^3\\equiv1\\pmod7$. לכן סדר האיבר $\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}$ הוא 6.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 5,
+   "contextId": "c4"
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף א.3. מצאו את האיבר ההופכי של $\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}$ . (7%)",
+   "solution": "נסמן $\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}^{-1}=\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}$. מתקיים $\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}\\cdot\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}=\\begin{pmatrix}a&b+2c\\\\0&3c\\end{pmatrix}=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$. מכאן:\n$$\\begin{cases}a\\equiv1\\pmod7\\\\b+2c\\equiv0\\pmod7\\\\3c\\equiv1\\pmod7\\end{cases}\\Rightarrow\\begin{cases}a\\equiv1\\pmod7\\\\b+2c\\equiv0\\pmod7\\\\c\\equiv5\\pmod7\\end{cases}\\Rightarrow\\begin{cases}a\\equiv1\\pmod7\\\\b\\equiv4\\pmod7\\\\c\\equiv5\\pmod7\\end{cases}$$\n$$\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}^{-1}=\\begin{pmatrix}1&4\\\\0&5\\end{pmatrix}$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ג",
+   "points": 7,
+   "contextId": "c4"
+  },
+  {
+   "num": 4,
+   "kind": "proof",
+   "topic": "cauchy_schwarz",
+   "question": "סעיף ב. נתונה הפונקציה $f(x)=\\dfrac{(x+k)^2}{x^2+1}$, $k\\in\\mathbb{N}$. הוכיחו שלכל $x\\in\\mathbb{R}$ מתקיים $f(x)\\le k^2+1$. (8%)",
+   "solution": "עלינו להוכיח כי לכל $x\\in\\mathbb{R}$: $\\dfrac{(x+k)^2}{x^2+1}\\le k^2+1$, או $(x+k)^2\\le(k^2+1)(x^2+1)$ לכל $x\\in\\mathbb{R}$.\nנגדיר 2 וקטורים ב-$\\mathbb{R}^2$: $\\vec u=\\begin{pmatrix}x\\\\1\\end{pmatrix}$, $\\vec v=\\begin{pmatrix}1\\\\k\\end{pmatrix}$. לפי אי-שוויון קושי-שוורץ:\n$$\\left|\\left\\langle\\begin{pmatrix}x\\\\1\\end{pmatrix},\\begin{pmatrix}1\\\\k\\end{pmatrix}\\right\\rangle\\right|\\le\\left\\|\\begin{pmatrix}x\\\\1\\end{pmatrix}\\right\\|\\cdot\\left\\|\\begin{pmatrix}1\\\\k\\end{pmatrix}\\right\\|$$\nכלומר $|x+k|\\le\\sqrt{x^2+1}\\cdot\\sqrt{1+k^2}$. נעלה בריבוע את שני האגפים ונקבל $(x+k)^2\\le(k^2+1)(x^2+1)$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ד",
+   "points": 8
+  },
+  {
+   "num": 5,
+   "kind": "computation",
+   "topic": "svd",
+   "question": "סעיף א. מצאו פירוק $SVD$ עבור המטריצה $A=\\begin{pmatrix}2&0\\\\0&2\\\\1&\\sqrt3\\end{pmatrix}$. (18%)",
+   "solution": "$$\\begin{pmatrix}2&0\\\\0&2\\\\1&\\sqrt3\\end{pmatrix}=\\begin{pmatrix}\\frac{\\sqrt2}4&-\\frac{\\sqrt3}2&-\\frac{\\sqrt2}4\\\\\\frac{\\sqrt6}4&\\frac12&-\\frac{\\sqrt6}4\\\\\\frac{\\sqrt2}2&0&\\frac{\\sqrt2}2\\end{pmatrix}\\cdot\\begin{pmatrix}2\\sqrt2&0\\\\0&2\\\\0&0\\end{pmatrix}\\cdot\\begin{pmatrix}\\frac12&\\frac{\\sqrt3}2\\\\-\\frac{\\sqrt3}2&\\frac12\\end{pmatrix}$$",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 18
+  },
+  {
+   "num": 5,
+   "kind": "computation",
+   "topic": "crt",
+   "question": "סעיף ב. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\\begin{cases}2x\\equiv1\\pmod5\\\\3x\\equiv5\\pmod{11}\\\\x\\equiv2\\pmod3\\end{cases}$. (7%)",
+   "solution": "נסדר את המקדמים במשוואות:\n$$\\begin{cases}x\\equiv3\\pmod5\\\\x\\equiv9\\pmod{11}\\\\x\\equiv2\\pmod3\\end{cases}$$\nנסמן: $m_1=5,\\ m_2=11,\\ m_3=3$ והם אכן זרים בזוגות. נסמן $m=m_1m_2m_3=5\\cdot11\\cdot3=165$, ולכן $M_1=33,\\ M_2=15,\\ M_3=55$. לכן הפתרון למערכת הוא:\n$$x=(a_1M_1x_1+a_2M_2x_2+a_3M_3x_3)\\bmod m=(3\\cdot33\\cdot x_1+9\\cdot15\\cdot x_2+2\\cdot55\\cdot x_3)\\bmod165$$\nנחשב את הערכים של $x_1,x_2,x_3$:\n$$33x_1\\equiv1\\pmod5\\Rightarrow3x_1\\equiv1\\pmod5\\Rightarrow x_1=2$$\n$$15x_2\\equiv1\\pmod{11}\\Rightarrow4x_2\\equiv1\\pmod{11}\\Rightarrow x_2=3$$\n$$55x_3\\equiv1\\pmod3\\Rightarrow x_3\\equiv1\\pmod3\\Rightarrow x_3=1$$\nמכאן: $x=(3\\cdot33\\cdot2+9\\cdot15\\cdot3+2\\cdot55\\cdot1)\\bmod165=713\\bmod165$, כלומר\n$$x=53\\pmod{165}$$\nבדיקה: $2\\cdot53\\equiv1\\pmod5$, $3\\cdot53\\equiv5\\pmod{11}$, $53\\equiv2\\pmod3$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 7
+  }
+ ]
+}
