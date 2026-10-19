@@ -1,0 +1,164 @@
+{
+ "examCode": "26B-A",
+ "examLabel": "אלגברה 2 - סמסטר ב' תשפ\"ו מועד א'",
+ "year": 2026,
+ "examDate": "17.6.2026",
+ "sourceFile": "algebra-2-26B-A-exam",
+ "solutionFile": "none",
+ "contexts": {
+  "c1": {
+   "kind": "text",
+   "title": "שאלה 1 סעיף א",
+   "text": "במרחב וקטורי $M_2(\\mathbb{R})$ נגדיר מכפלה פנימית (אין צורך להוכיח זאת) ע״י $\\langle A,B\\rangle=tr\\left(B^TA\\right)$."
+  },
+  "c2": {
+   "kind": "text",
+   "title": "שאלה 2",
+   "text": "נסתכל בחבורה $G=\\left\\{\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}\\in M_2(\\mathbb{Z}_5)\\ \\middle|\\ a\\cdot c\\neq0\\pmod5\\right\\}$ ביחס לכפל מטריצות (חבורת המטריצות המשולשות העליונות ההפיכות מסדר $2\\times2$ עם רכיבים מ-$\\mathbb{Z}_5$). תהי $H=\\{J^n\\mid n\\in\\mathbb{Z}\\}$ תת-חבורה ציקלית של $G$ כאשר $J=\\begin{pmatrix}1&1\\\\0&2\\end{pmatrix}$."
+  }
+ },
+ "questions": [
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "orthogonality",
+   "question": "סעיף א.1. בצעו תהליך גרם-שמידט עבור המערכת $\\left\\{A=\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix},\\ B=\\begin{pmatrix}1&1\\\\0&-1\\end{pmatrix}\\right\\}$. (9%)",
+   "hold": "no-key",
+   "part": "א",
+   "points": 9,
+   "contextId": "c1"
+  },
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "projection",
+   "question": "סעיף א.2. חשבו את ההיטל של $C=\\begin{pmatrix}2&3\\\\1&0\\end{pmatrix}$ על $U=\\mathrm{Sp}\\{A,B\\}$. (6%)",
+   "hold": "no-key",
+   "part": "ב",
+   "points": 6,
+   "contextId": "c1"
+  },
+  {
+   "num": 1,
+   "kind": "proof",
+   "topic": "pos_def",
+   "question": "סעיף ב. תהי $A$ מטריצה מוגדרת חיובית לחלוטין. הוכיחו כי $A+A^2$ ו-$A+A^{-1}$ הן גם מוגדרות חיובית לחלוטין. (10%)",
+   "hold": "no-key",
+   "part": "ג",
+   "points": 10
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף 1. מהו הסדר של $G$ ? (6%)",
+   "hold": "no-key",
+   "part": "א",
+   "points": 6,
+   "contextId": "c2"
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף 2. חשבו את כל האיברים של $H$. (6%)",
+   "hold": "no-key",
+   "part": "ב",
+   "points": 6,
+   "contextId": "c2"
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף 3. מצאו את $J^{-1}$. (4%)",
+   "hold": "no-key",
+   "part": "ג",
+   "points": 4,
+   "contextId": "c2"
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף 4. מהו הסדר של $H$ ? (3%)",
+   "hold": "no-key",
+   "part": "ד",
+   "points": 3,
+   "contextId": "c2"
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף 5. מצאו $A\\in G$ כך $AJA^{-1}\\notin H$. (6%)",
+   "hold": "no-key",
+   "part": "ה",
+   "points": 6,
+   "contextId": "c2"
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "pos_def",
+   "question": "סעיף א. עבור אילו ערכי הפרמטר $a$ המטריצה $\\begin{pmatrix}1&0&2a\\\\0&4-a^2&0\\\\2a&0&1\\end{pmatrix}$ היא: מוגדרת חיובית, מוגדרת חיובית לחלוטין, מוגדרת שלילית, מוגדרת שלילית לחלוטין, או אף אחת מהן? (15%)",
+   "hold": "no-key",
+   "part": "א",
+   "points": 15
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "least_squares",
+   "question": "סעיף ב. נתונות 5 נקודות במישור: $(0,2),\\ (1,2),\\ (2,4),\\ (3,8),\\ (4,9)$. מצאו את משוואת הישר הקרוב ביותר לנקודות הללו בעזרת שיטת הריבועים הפחותים. (10%)",
+   "hold": "no-key",
+   "part": "ב",
+   "points": 10
+  },
+  {
+   "num": 4,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "סעיף א. תהי $G$ חבורה בה לכל $x,y\\in G$ מתקיים $(xy)^2=x^2y^2$. הוכיחו כי $G$ חבורה אבלית, כלומר לכל $x,y\\in G$ מתקיים $x\\cdot y=y\\cdot x$. (7%)",
+   "hold": "no-key",
+   "part": "א",
+   "points": 7
+  },
+  {
+   "num": 4,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "סעיף ב. תהי $K$ חבורה ו-$x,y\\in K$. הוכיחו כי אם $xyx^{-1}=y^2$, אז $x^2yx^{-2}=y^4$. (7%)",
+   "hold": "no-key",
+   "part": "ב",
+   "points": 7
+  },
+  {
+   "num": 4,
+   "kind": "proof",
+   "topic": "cauchy_schwarz",
+   "question": "סעיף ג. הוכיחו את אי השוויון הבא: $\\displaystyle\\left(\\sum_{k=1}^n\\sqrt{(2k-1)\\ln k}\\right)^2\\le n^2\\ln(n!)$. (11%)",
+   "hold": "no-key",
+   "part": "ג",
+   "points": 11
+  },
+  {
+   "num": 5,
+   "kind": "computation",
+   "topic": "svd",
+   "question": "סעיף ג. מצאו פירוק SVD עבור המטריצה $A=\\begin{pmatrix}3&2\\\\2&3\\\\2&-2\\end{pmatrix}$. (17%)",
+   "hold": "no-key",
+   "part": "ג",
+   "points": 17
+  },
+  {
+   "num": 5,
+   "kind": "computation",
+   "topic": "crt",
+   "question": "סעיף ד. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\\begin{cases}x\\equiv3\\pmod5\\\\x\\equiv2\\pmod8\\\\x\\equiv4\\pmod9\\end{cases}$. (8%)",
+   "hold": "no-key",
+   "part": "ד",
+   "points": 8
+  }
+ ]
+}
