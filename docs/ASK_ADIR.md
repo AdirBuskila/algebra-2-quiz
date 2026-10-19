@@ -55,4 +55,22 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Needed: nothing, FYI.
 - Status: resolved in transcription
 
+### 24B-B Q5a - official final answer wrong (U, third column)
+- Path: sitting 24B-B official solution (compilation)
+- Page: 7 of the sitting (compilation p.240)
+- Question: the SVD answer prints the third column of U as (-2/sqrt3, 4/sqrt3, sqrt5/3), not a unit vector and not orthogonal to the others. Checked with sympy: the correct column is (-2,4,5)/(3 sqrt5); S and V are right. Q1b.1 also says "for W" (space is U) and Q3a prints c in place of 0 in the determinant; fixed silently.
+- Needed: nothing blocking. Shipped as solutionSource "solved", official false, prefix "הפתרון הרשמי עם תיקון". Confirm or revert.
+- Status: shipped with correction
+
+### 25A-A, 25A-B - handwritten student solutions
+- Page: whole sittings
+- 25A-A has no solution for Q4b (CRT) and Q5b: held as no-key for the solver. Other items ship as student-solution, official false. 25A-A Q3b (=>) used "cos = 1 so the angle is 0"; a direct argument was added as a labelled remark. 25A-B Q4a.1 had equalities in the wrong order (rewritten). 25A-B Q4b is (10%) on the sheet, (8%) in the solution copy.
+- Status: logged
+
+### 25A-C - no key; Q2b.2 flawed as printed
+- Page: 2 of the sitting (compilation p.274)
+- All 15 items held as no-key. Q2b.2 asks to prove B^T A B positive definite for any B in M_n(R); false for singular B (only semidefinite).
+- Needed: decide whether the solver states "B invertible" as an assumption.
+- Status: hold
+
 ## Resolved
