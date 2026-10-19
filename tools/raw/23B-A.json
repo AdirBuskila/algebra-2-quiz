@@ -1,0 +1,160 @@
+{
+ "examCode": "23B-A",
+ "examLabel": "אלגברה 2 - סמסטר ב' תשפ״ג מועד א'",
+ "year": 2023,
+ "examDate": "20.6.2023",
+ "sourceFile": "algebra-2-23B-A-exam",
+ "solutionFile": "algebra-2-23B-A-official-solution",
+ "contexts": {
+  "c2a": {
+   "kind": "text",
+   "title": "שאלה 2 סעיף א",
+   "text": "נסתכל בחבורה $G=\\left\\{\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}\\in M_2(\\mathbb{Z}_3)\\ \\middle|\\ a\\cdot c\\ne0\\pmod 3\\right\\}$ ביחס לכפל (חבורת המטריצות ההפיכות מסדר $2\\times2$ עם רכיבים מ-$\\mathbb{Z}_3$). תהי $H=\\left\\{\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}^n\\ \\middle|\\ n\\in\\mathbb{Z}\\right\\}$ תת-חבורה ציקלית של $G$. (הכפל והחיבור של רכיבי המטריצות הם מודולו 3)"
+  },
+  "c5a": {
+   "kind": "text",
+   "title": "שאלה 5 סעיף א",
+   "text": "במרחב וקטורי $M_2(\\mathbb{R})$ נגדיר מכפלה פנימית (אין צורך להוכיח זאת) ע״י $\\langle A,B\\rangle=tr\\left(B^TA\\right)$ לכל $A,B\\in M_2(\\mathbb{R})$."
+  },
+  "c5b": {
+   "kind": "text",
+   "title": "שאלה 5 סעיף ב",
+   "text": "תהי $(G,*)$ חבורה כך שלכל $x\\in G$ מתקיים $x^{-1}=x$, כלומר $x*x=e$. יהיו $a,b\\in G$."
+  }
+ },
+ "questions": [
+  {
+   "num": 1,
+   "kind": "computation",
+   "topic": "least_squares",
+   "question": "(13%) נתונות 5 נקודות במישור $(6,8)$ , $(2,2)$ , $(0,0)$ , $(-1,0)$ , $(-2,4)$. מצאו את משוואת הישר הקרוב ביותר לנקודות הללו במובן הריבועים הפחותים.",
+   "solution": "נחפש את המודל הליניארי מהצורה $y=mx+n$ לפי שיטת הריבועים הפחותים:\n$$\\begin{pmatrix}-2&1\\\\-1&1\\\\0&1\\\\2&1\\\\6&1\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}\\approx\\begin{pmatrix}4\\\\0\\\\0\\\\2\\\\8\\end{pmatrix}\\ \\mapsto\\ \\begin{pmatrix}-2&-1&0&2&6\\\\1&1&1&1&1\\end{pmatrix}\\begin{pmatrix}-2&1\\\\-1&1\\\\0&1\\\\2&1\\\\6&1\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}-2&-1&0&2&6\\\\1&1&1&1&1\\end{pmatrix}\\begin{pmatrix}4\\\\0\\\\0\\\\2\\\\8\\end{pmatrix}$$\n$$\\Rightarrow\\ \\begin{pmatrix}45&5\\\\5&5\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}44\\\\14\\end{pmatrix}\\ \\Rightarrow\\ m=0.75,\\ \\ n=2.05$$\nנציב ונקבל: $y=0.75x+2.05$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 13
+  },
+  {
+   "num": 1,
+   "kind": "proof",
+   "topic": "cauchy_schwarz",
+   "question": "(12%) הוכיחו כי $\\displaystyle\\sum_{k=1}^{n}\\sqrt{2k\\cdot\\ln k}\\ \\le\\ \\sqrt{n\\cdot(n+1)\\cdot\\ln(n!)}$.",
+   "solution": "נגדיר $\\vec u=\\begin{pmatrix}\\sqrt2\\\\\\sqrt4\\\\\\vdots\\\\\\sqrt{2n}\\end{pmatrix}$ , $\\vec v=\\begin{pmatrix}\\sqrt{\\ln1}\\\\\\sqrt{\\ln2}\\\\\\vdots\\\\\\sqrt{\\ln n}\\end{pmatrix}$, שני וקטורים ב-$\\mathbb{R}^n$, וניעזר באי-שוויון קושי-שוורץ:\n$$\\left|\\langle\\vec u,\\vec v\\rangle\\right|=\\sum_{k=1}^{n}\\sqrt{2k\\cdot\\ln k}$$\n$$\\|\\vec u\\|=\\sqrt{\\sum_{k=1}^n2k}=\\sqrt{2\\sum_{k=1}^nk}=\\sqrt{n(n+1)}$$\n$$\\|\\vec v\\|=\\sqrt{\\sum_{k=1}^n\\ln k}=\\sqrt{\\ln1+\\ln2+\\dots+\\ln n}=\\sqrt{\\ln(n!)}$$\nמכאן נובעת התוצאה: $\\displaystyle\\sum_{k=1}^{n}\\sqrt{2k\\cdot\\ln k}\\ \\le\\ \\sqrt{n\\cdot(n+1)\\cdot\\ln(n!)}$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 12
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף א.1. מהו הסדר של $G$ ? (7%)",
+   "solution": "התנאי $a\\cdot c\\ne0\\pmod 3$ מתקיים אם ורק אם $a\\ne0\\pmod 3\\ \\wedge\\ c\\ne0\\pmod 3$. לכן $\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}\\in G$ כאשר $a=1,2\\pmod 3$ (2 אפשרויות), $c=1,2\\pmod 3$ (2 אפשרויות) ו-$b=0,1,2\\pmod 3$ (3 אפשרויות). לפי עקרון הכפל: $|G|=2\\cdot2\\cdot3=12$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 7,
+   "contextId": "c2a"
+  },
+  {
+   "num": 2,
+   "kind": "computation",
+   "topic": "groups",
+   "question": "סעיף א.2. מהו הסדר של $H$ ? (8%)",
+   "solution": "הסדר של תת החבורה $H$ שווה לסדר האיבר $\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}$. כלומר $|H|=o\\left(\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}\\right)$. מתקיים:\n$$\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}^2=\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}\\cdot\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\pmod 3$$\n$$\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}^3=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\cdot\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}\\pmod 3$$\n$$\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}^4=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}\\cdot\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\pmod 3$$\n$$\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}^5=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\cdot\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}=\\begin{pmatrix}2&2\\\\0&2\\end{pmatrix}\\pmod 3$$\n$$\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}^6=\\begin{pmatrix}2&2\\\\0&2\\end{pmatrix}\\cdot\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\pmod 3$$\nלכן $|H|=6$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 8,
+   "contextId": "c2a"
+  },
+  {
+   "num": 2,
+   "kind": "proof",
+   "topic": "pos_def",
+   "question": "סעיף ב. תהי $A$ מטריצה מוגדרת חיובית. הוכיחו כי $I+A$ ו-$A^2$ הן גם מוגדרות חיובית. תזכורת: $A=A^T$. (10%)",
+   "solution": "יהי $\\vec v\\in\\mathbb{R}^n$ כאשר $n$ הוא סדר המטריצה $A$. מתקיים:\n$$\\langle(I+A)\\vec v,\\vec v\\rangle=\\vec v^T(I+A)\\vec v=\\vec v^TI\\vec v+\\vec v^TA\\vec v=\\vec v^T\\vec v+\\vec v^TA\\vec v=\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle\\ge0$$\nלכן $I+A$ מוגדרת חיובית.\nבאופן דומה:\n$$\\langle A^2\\vec v,\\vec v\\rangle=\\vec v^TA^2\\vec v=\\vec v^TA^TA\\vec v=(A\\vec v)^TA\\vec v=\\|A\\vec v\\|^2\\ge0$$\nזאת אומרת ש-$A^2$ מוגדרת חיובית.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ג",
+   "points": 10
+  },
+  {
+   "num": 3,
+   "kind": "computation",
+   "topic": "pos_def",
+   "question": "(15%) עבור אילו ערכי הפרמטר $a$ המטריצה $\\begin{pmatrix}1&0&2a\\\\0&4-a^2&0\\\\2a&0&1\\end{pmatrix}$ היא: מוגדרת חיובית, מוגדרת חיובית לחלוטין, מוגדרת שלילית, מוגדרת שלילית לחלוטין, או אף אחת מהן?",
+   "solution": "נחשב את הערכים העצמיים של המטריצה:\n$$\\begin{vmatrix}1-\\lambda&0&2a\\\\0&4-a^2-\\lambda&0\\\\2a&0&1-\\lambda\\end{vmatrix}=\\left(4-a^2-\\lambda\\right)\\begin{vmatrix}1-\\lambda&2a\\\\2a&1-\\lambda\\end{vmatrix}=\\left(4-a^2-\\lambda\\right)\\left(\\lambda^2-2\\lambda+1-4a^2\\right)$$\nלכן הערכים העצמיים הם: $\\lambda=4-a^2$ , $\\lambda=1+2a$ , $\\lambda=1-2a$.\nהמטריצה **מוגדרת חיובית** כאשר\n$$\\begin{cases}4-a^2\\ge0\\\\1+2a\\ge0\\\\1-2a\\ge0\\end{cases}\\ \\Rightarrow\\ \\begin{cases}-2\\le a\\le2\\\\a\\ge-0.5\\\\a\\le0.5\\end{cases}\\ \\Rightarrow\\ -0.5\\le a\\le0.5$$\nהמטריצה **מוגדרת חיובית לחלוטין** כאשר $-0.5<a<0.5$.\nהמטריצה **מוגדרת שלילית** כאשר\n$$\\begin{cases}4-a^2\\le0\\\\1+2a\\le0\\\\1-2a\\le0\\end{cases}\\ \\Rightarrow\\ \\begin{cases}a\\le-2\\ \\vee\\ a\\ge2\\\\a\\le-0.5\\\\a\\ge0.5\\end{cases}$$\nכלומר **אין** ערכי $a$ עבורם המטריצה מוגדרת שלילית, בפרט שלילית לחלוטין.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 15
+  },
+  {
+   "num": 3,
+   "kind": "proof",
+   "topic": "inner_product",
+   "question": "(10%) יהי $V$ מרחב מכפלה פנימית ויהיו $\\vec u,\\vec v\\in V$ שני וקטורים שונים מ-$\\vec 0$. הוכיחו כי $\\|\\vec u\\|=\\|\\vec v\\|$ אם ורק אם $\\|\\alpha\\cdot\\vec u+\\beta\\cdot\\vec v\\|=\\|\\beta\\cdot\\vec u+\\alpha\\cdot\\vec v\\|$ לכל $\\alpha,\\beta\\in\\mathbb{R}$.",
+   "solution": "**כיוון ראשון:** נניח כי $\\|\\vec u\\|=\\|\\vec v\\|$. אזי\n$$\\|\\alpha\\vec u+\\beta\\vec v\\|^2=\\langle\\alpha\\vec u+\\beta\\vec v,\\ \\alpha\\vec u+\\beta\\vec v\\rangle=\\alpha^2\\|\\vec u\\|^2+2\\alpha\\beta\\langle\\vec u,\\vec v\\rangle+\\beta^2\\|\\vec v\\|^2$$\n$$=\\alpha^2\\|\\vec v\\|^2+2\\langle\\beta\\vec u,\\alpha\\vec v\\rangle+\\beta^2\\|\\vec u\\|^2=\\|\\beta\\vec u+\\alpha\\vec v\\|^2$$\nולכן $\\|\\alpha\\vec u+\\beta\\vec v\\|=\\|\\beta\\vec u+\\alpha\\vec v\\|$.\n**כיוון שני:** נניח כי $\\|\\alpha\\vec u+\\beta\\vec v\\|=\\|\\beta\\vec u+\\alpha\\vec v\\|$ לכל $\\alpha,\\beta\\in\\mathbb{R}$. אזי\n$$\\|\\alpha\\vec u+\\beta\\vec v\\|^2=\\langle\\alpha\\vec u+\\beta\\vec v,\\ \\alpha\\vec u+\\beta\\vec v\\rangle=\\alpha^2\\|\\vec u\\|^2+2\\alpha\\beta\\langle\\vec u,\\vec v\\rangle+\\beta^2\\|\\vec v\\|^2$$\n$$\\|\\beta\\vec u+\\alpha\\vec v\\|^2=\\langle\\beta\\vec u+\\alpha\\vec v,\\ \\beta\\vec u+\\alpha\\vec v\\rangle=\\alpha^2\\|\\vec v\\|^2+2\\alpha\\beta\\langle\\vec u,\\vec v\\rangle+\\beta^2\\|\\vec u\\|^2$$\nולכן\n$$\\alpha^2\\|\\vec u\\|^2+2\\alpha\\beta\\langle\\vec u,\\vec v\\rangle+\\beta^2\\|\\vec v\\|^2=\\alpha^2\\|\\vec v\\|^2+2\\alpha\\beta\\langle\\vec u,\\vec v\\rangle+\\beta^2\\|\\vec u\\|^2$$\n$$\\alpha^2\\|\\vec u\\|^2+\\beta^2\\|\\vec v\\|^2=\\alpha^2\\|\\vec v\\|^2+\\beta^2\\|\\vec u\\|^2$$\n$$\\alpha^2\\left(\\|\\vec u\\|^2-\\|\\vec v\\|^2\\right)=\\beta^2\\left(\\|\\vec u\\|^2-\\|\\vec v\\|^2\\right)$$\nהשוויון מתקיים לכל $\\alpha,\\beta\\in\\mathbb{R}$, לכן $\\|\\vec u\\|=\\|\\vec v\\|$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 10
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "svd",
+   "question": "(18%) מצאו פירוק $SVD$ עבור המטריצה $A=\\begin{pmatrix}1&0&2\\\\2&0&1\\end{pmatrix}$.",
+   "solution": "נמצא את פירוק ה-$SVD$ של $A=\\begin{pmatrix}1&0&2\\\\2&0&1\\end{pmatrix}$.\n$$A^T=\\begin{pmatrix}1&2\\\\0&0\\\\2&1\\end{pmatrix},\\qquad Y=A^TA=\\begin{pmatrix}5&0&4\\\\0&0&0\\\\4&0&5\\end{pmatrix}$$\nערכים עצמיים ווקטורים עצמיים של $Y$:\n$$\\lambda=9:\\ \\begin{pmatrix}1\\\\0\\\\1\\end{pmatrix},\\qquad\\lambda=1:\\ \\begin{pmatrix}-1\\\\0\\\\1\\end{pmatrix},\\qquad\\lambda=0:\\ \\begin{pmatrix}0\\\\1\\\\0\\end{pmatrix}$$\nהערכים הסינגולריים (שורשי הערכים העצמיים השונים מאפס): $\\sigma_1=3,\\ \\sigma_2=1$.\n$$U=\\begin{pmatrix}\\frac{\\sqrt2}2&\\frac{\\sqrt2}2\\\\\\frac{\\sqrt2}2&-\\frac{\\sqrt2}2\\end{pmatrix},\\qquad V=\\begin{pmatrix}\\frac{\\sqrt2}2&-\\frac{\\sqrt2}2&0\\\\0&0&1\\\\\\frac{\\sqrt2}2&\\frac{\\sqrt2}2&0\\end{pmatrix},\\qquad\\Sigma=\\begin{pmatrix}3&0&0\\\\0&1&0\\end{pmatrix}$$\nכלומר $A=U\\Sigma V^T$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "א",
+   "points": 18
+  },
+  {
+   "num": 4,
+   "kind": "computation",
+   "topic": "crt",
+   "question": "(7%) פתרו את המערכות הבאות באמצעות משפט השאריות הסיני: $\\begin{cases}x\\equiv3\\pmod 5\\\\x\\equiv1\\pmod 7\\\\x\\equiv6\\pmod 8\\end{cases}$.",
+   "solution": "נסמן: $a_1=3,\\ a_2=1,\\ a_3=6$ ($a_i$ הן השאריות הנתונות) והמודולים $m_1=5,\\ m_2=7,\\ m_3=8$ הם אכן זרים בזוגות. כמו כן נסמן: $m=m_1m_2m_3=5\\cdot7\\cdot8=280$, ולכן: $M_1=56,\\ M_2=40,\\ M_3=35$.\nהפתרון למערכת הוא:\n$$x=\\left(a_1M_1x_1+a_2M_2x_2+a_3M_3x_3\\right)\\pmod m=\\left(3\\cdot56\\cdot x_1+1\\cdot40\\cdot x_2+6\\cdot35\\cdot x_3\\right)\\pmod{280}$$\nנחשב את הערכים של $x_1,x_2,x_3$:\n$$56x_1\\equiv1\\pmod 5\\ \\Rightarrow\\ x_1\\equiv1\\pmod 5\\ \\Rightarrow\\ x_1=1$$\n$$40x_2\\equiv1\\pmod 7\\ \\Rightarrow\\ 5x_2\\equiv1\\pmod 7\\ \\Rightarrow\\ x_2=3$$\n$$35x_3\\equiv1\\pmod 8\\ \\Rightarrow\\ 3x_3\\equiv1\\pmod 8\\ \\Rightarrow\\ x_3=3$$\nמכאן:\n$$x=\\left(3\\cdot56\\cdot1+1\\cdot40\\cdot3+6\\cdot35\\cdot3\\right)\\pmod{280}=918\\pmod{280}$$\nכלומר $x\\equiv78\\pmod{280}$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 7
+  },
+  {
+   "num": 5,
+   "part": "א",
+   "kind": "computation",
+   "topic": "projection",
+   "points": 15,
+   "contextId": "c5a",
+   "question": "(15%) חשבו את ההיטל של $\\begin{pmatrix}0&a\\\\b&0\\end{pmatrix}$ על $Sp\\left\\{\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix},\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}\\right\\}$, לכל $a,b\\in\\mathbb{R}$.",
+   "hold": "official final answer wrong: it prints (a+b)/3 (-1 1; 1 0) + (5b-3a)/51 (4 -1; 5 3), but <(0 a; b 0),(4 -1; 5 3)> = 5b-a; the correct projection is [[-7a+b, 6a+4b],[4a+14b, -a+5b]]/17"
+  },
+  {
+   "num": 5,
+   "kind": "proof",
+   "topic": "groups",
+   "question": "(10%) נסמן $c=(a*b)*a$. הוכיחו כי $c=b$.",
+   "solution": "נתון ש-$c=(a*b)*a$. נכפיל את השוויון ב-$b$ מצד ימין ונקבל\n$$c*b=\\big((a*b)*a\\big)*b=(a*b)*(a*b)=e$$\nכלומר $b=c^{-1}$. אבל $c^{-1}=c$, לכן $c=b$.",
+   "solutionSource": "official-pdf",
+   "official": true,
+   "confidence": "high",
+   "part": "ב",
+   "points": 10,
+   "contextId": "c5b"
+  }
+ ]
+}
