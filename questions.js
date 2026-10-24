@@ -93,7 +93,7 @@ window.OPEN_BANK = {
    "proof",
    "truefalse"
   ],
-  "built": "2026-10-24T17:47:32Z",
+  "built": "2026-10-24T23:03:34Z",
   "exams": [
    {
     "examCode": "23A-A",

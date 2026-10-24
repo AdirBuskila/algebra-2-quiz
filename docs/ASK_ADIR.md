@@ -2,7 +2,13 @@
 
 Open questions for Adir. One entry per item; the orchestrator moves it to Resolved when answered.
 
-## Open
+## Open (short list, as of QA)
+
+1. 25B-A Q3b: official solution omits the order of G; shipped with the order added. Confirm.
+2. Corrected-official items (26A-A Q4c, 23B-A Q5a, 24B-B Q5a) ship under the typo ruling (prefix 'official solution with correction'). Confirm.
+3. Everything else below is resolved. All 255 items are refuted and verified; the 'pending refuter' notes in the entries below are stale. Nothing is held.
+
+## Details
 
 <!-- Entry format:
 ### <exam code> Q<number> - <short title>
