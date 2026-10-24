@@ -28,7 +28,70 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בחירת הווקטורים $\\vec u=(\\sqrt k)_k$ ו-$\\vec v=\\left(\\frac1{\\sqrt n}\\right)_k$",
+     "points": 3
+    },
+    {
+     "text": "חישוב $\\|\\vec u\\|^2=\\frac{n(n+1)}2$ ו-$\\|\\vec v\\|=1$",
+     "points": 3
+    },
+    {
+     "text": "חישוב $\\langle\\vec u,\\vec v\\rangle=\\sum\\sqrt{\\frac kn}$",
+     "points": 2
+    },
+    {
+     "text": "הצבה בקושי-שוורץ וסיום",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לבחור וקטורים שהמכפלה הפנימית שלהם אינה הסכום הנתון (למשל בלי הגורם $\\frac1{\\sqrt n}$).",
+    "לשכוח את הנוסחה $1+2+\\dots+n=\\frac{n(n+1)}2$ ולכן לא לקבל $\\|\\vec u\\|^2$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=4$, מהו $\\|\\vec u\\|^2=1+2+3+4$?",
+     "answer": 10,
+     "tol": 0,
+     "explain": "$\\frac{4\\cdot5}2=10$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=4$, מהו $\\|\\vec v\\|$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$\\sqrt{4\\cdot\\frac14}=1$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "נבחר $\\vec u=\\left(\\sqrt1,\\sqrt2,\\dots,\\sqrt n\\right)$ ו-$\\vec v=\\left(\\frac1{\\sqrt n},\\dots,\\frac1{\\sqrt n}\\right)$",
+      "$\\|\\vec u\\|=\\sqrt{\\frac{n(n+1)}2}$, $\\ \\|\\vec v\\|=1$, $\\ \\langle\\vec u,\\vec v\\rangle=\\sum_{k=1}^n\\sqrt{\\frac kn}$",
+      "קושי-שוורץ: $\\sum_{k=1}^n\\sqrt{\\frac kn}\\le\\sqrt{\\frac{n(n+1)}2}\\cdot1$",
+      "$\\sum_{k=1}^n\\sqrt{\\frac kn}\\le\\sqrt{\\frac{n^2+n}2}$"
+     ],
+     "explain": "הבחירה באה ראשונה, אחריה החישובים, ואז קושי-שוורץ."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "נבחר $\\vec u=\\left(\\sqrt1,\\sqrt2,\\dots,\\sqrt n\\right)$ ו-$\\vec v=\\left(\\frac1{\\sqrt n},\\dots,\\frac1{\\sqrt n}\\right)$",
+      "$\\|\\vec u\\|=\\sqrt{\\frac{n(n+1)}2}$, $\\ \\|\\vec v\\|=n$, $\\ \\langle\\vec u,\\vec v\\rangle=\\sum_{k=1}^n\\sqrt{\\frac kn}$",
+      "קושי-שוורץ: $\\sum_{k=1}^n\\sqrt{\\frac kn}\\le\\sqrt{\\frac{n(n+1)}2}\\cdot1$",
+      "$\\sum_{k=1}^n\\sqrt{\\frac kn}\\le\\sqrt{\\frac{n^2+n}2}$"
+     ],
+     "bugIndex": 1,
+     "explain": "$\\|\\vec v\\|^2=n\\cdot\\frac1n=1$, ולא $n^2$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -40,7 +103,54 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 9
+   "points": 9,
+   "rubric": [
+    {
+     "text": "$\\vec u_1=A=I$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $\\langle B,\\vec u_1\\rangle=1$ ו-$\\|\\vec u_1\\|^2=2$",
+     "points": 3
+    },
+    {
+     "text": "$\\vec u_2=B-\\frac12I=\\begin{pmatrix}-0.5&1\\\\0&0.5\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "הכפלה ב-2 לבסיס $\\left\\{I,\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}\\right\\}$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לחשב את המכפלה הפנימית $\\mathrm{tr}(B^TA)$ כמכפלת מטריצות רגילה בלי העקבה.",
+    "לשכוח להפחית את ההיטל: $\\vec u_2=B$ אינו אורתוגונלי ל-$I$ (המכפלה הפנימית שלהם 1)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle B,I\\rangle$ עבור $B=\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "סכום מכפלות האיברים התואמים: $0+0+0+1=1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|I\\|^2$ במכפלה הפנימית $\\mathrm{tr}(B^TA)$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$1+0+0+1=2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי הכניסה הימנית העליונה של $\\vec u_2$?",
+     "answer": -0.5,
+     "tol": 1e-09,
+     "explain": "$0-\\frac12\\cdot1=-0.5$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -52,7 +162,50 @@
    "official": true,
    "confidence": "high",
    "part": "ג",
-   "points": 6
+   "points": 6,
+   "rubric": [
+    {
+     "text": "המקדם של $I$: $\\frac{\\langle C,I\\rangle}{2}=1.5$",
+     "points": 2
+    },
+    {
+     "text": "המקדם של $\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}$: $\\frac36=0.5$",
+     "points": 2
+    },
+    {
+     "text": "חיבור ותשובה $\\begin{pmatrix}1&1\\\\0&2\\end{pmatrix}$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "להשתמש ב-$B$ במקום בווקטור האורתוגונלי $\\vec u_2$ (או כפולתו) בנוסחת ההיטל.",
+    "לחלק ב-$\\|\\vec u_2\\|^2=1.5$ במקום ב-6 כשמשתמשים בווקטור המוכפל ב-2."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle C,I\\rangle$ עבור $C=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$1+0+0+2=3$, ולכן המקדם $\\frac32=1.5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו המקדם $\\frac{\\langle C,w\\rangle}{\\|w\\|^2}$ עבור $w=\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}$?",
+     "answer": 0.5,
+     "tol": 1e-09,
+     "explain": "$\\langle C,w\\rangle=-1+2+0+2=3$ ו-$\\|w\\|^2=6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי הכניסה הימנית התחתונה של ההיטל?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$1.5\\cdot1+0.5\\cdot1=2$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -65,7 +218,84 @@
    "confidence": "high",
    "part": "א",
    "points": 15,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "סגירות: חישוב $AB$ ושהוא מהצורה של $G$",
+     "points": 4
+    },
+    {
+     "text": "אסוציאטיביות מכפל מטריצות",
+     "points": 2
+    },
+    {
+     "text": "איבר ניטרלי $I\\in G$",
+     "points": 2
+    },
+    {
+     "text": "חישוב ההופכי בעזרת דירוג",
+     "points": 5
+    },
+    {
+     "text": "ההופכי שייך ל-$G$ ומסקנה",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לשכוח שהאיבר הימני העליון במכפלה הוא $y+ax+b$ (ולא $y+b$).",
+    "לבדוק את ההופכי מעל $\\mathbb{R}$ ולא להסביר שהכניסות נשארות ב-$\\mathbb{Z}_3$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=1,b=2$ ו-$x=2,y=1$ ב-$\\mathbb{Z}_3$, מהי הכניסה הימנית העליונה $y+ax+b$ במכפלה (מודולו 3)?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$1+2+2=5\\equiv2\\pmod3$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו ההופכי של $\\begin{pmatrix}1&a&b\\\\0&1&a\\\\0&0&1\\end{pmatrix}$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&-a&a^2-b\\\\0&1&-a\\\\0&0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&-a&-b\\\\0&1&-a\\\\0&0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&-a&a^2+b\\\\0&1&-a\\\\0&0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&a&-b\\\\0&1&a\\\\0&0&1\\end{pmatrix}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "בדיקה בכפל: רק הראשונה נותנת $I$. בשאר האפשרויות המכפלה אינה $I$ (למשל, בשנייה הכניסה הימנית העליונה היא $-a^2$)."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה של ההוכחה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "סגירות: $AB=\\begin{pmatrix}1&x+a&y+ax+b\\\\0&1&x+a\\\\0&0&1\\end{pmatrix}\\in G$",
+      "אסוציאטיביות: כפל מטריצות אסוציאטיבי",
+      "איבר ניטרלי: $I\\in G$",
+      "הופכי: $A^{-1}=\\begin{pmatrix}1&-a&a^2+b\\\\0&1&-a\\\\0&0&1\\end{pmatrix}\\in G$"
+     ],
+     "bugIndex": 3,
+     "explain": "בדירוג מתקבל $a^2-b$ בכניסה הימנית העליונה. עם $a^2+b$ המכפלה $AA^{-1}$ נותנת $2b$ במקום 0."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -78,7 +308,39 @@
    "confidence": "high",
    "part": "ב",
    "points": 5,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "כל אחד מ-$a,b$ מקבל 3 ערכים ב-$\\mathbb{Z}_3$",
+     "points": 3
+    },
+    {
+     "text": "עקרון המכפלה: $3\\cdot3=9$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לספור גם את הכניסות הקבועות (1 ו-0) כבחירות חופשיות ולקבל $3^3$ או יותר.",
+    "לחשוב שהסדר הוא 3, כי יש רק פרמטר אחד ($a$ קובע שתי כניסות, אך $b$ בלתי תלוי)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה ערכים אפשריים יש ל-$a$ ב-$\\mathbb{Z}_3$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "הערכים 0, 1, 2."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $G$?",
+     "answer": 9,
+     "tol": 0,
+     "explain": "$3\\cdot3=9$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -91,7 +353,50 @@
    "confidence": "high",
    "part": "ג",
    "points": 5,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "חישוב $A^2\\equiv\\begin{pmatrix}1&1&1\\\\0&1&1\\\\0&0&1\\end{pmatrix}\\pmod3$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $A^3\\equiv I\\pmod3$",
+     "points": 2
+    },
+    {
+     "text": "מסקנה: הסדר 3, כי $A\\ne I$ ו-$A^2\\ne I$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח להפחית מודולו 3 (כגון $4\\equiv1$) ולכן לא לקבל $A^3=I$.",
+    "להסיק שהסדר 3 בלי לבדוק ש-$A^2\\ne I$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי הכניסה הימנית העליונה של $A^2$ מודולו 3, עבור $A=\\begin{pmatrix}1&2&0\\\\0&1&2\\\\0&0&1\\end{pmatrix}$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$1\\cdot0+2\\cdot2+0\\cdot1=4\\equiv1\\pmod3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי הכניסה האמצעית העליונה של $A^3$ מודולו 3?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$A^3\\equiv I$, ולכן הכניסה 0."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $A$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$A^3=I$, ו-$A,A^2\\ne I$ (ל-$A^2$ יש כניסות 1 מעל האלכסון)."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -103,7 +408,79 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חישוב הדטרמיננטה: $(k+1-\\lambda)\\left((k^2-\\lambda)^2-4k^2\\right)$",
+     "points": 5
+    },
+    {
+     "text": "הערכים העצמיים $k+1,\\ k^2+2k,\\ k^2-2k$",
+     "points": 2
+    },
+    {
+     "text": "מוגדרת חיובית: $k\\in[2,\\infty)$ או $k=0$",
+     "points": 3
+    },
+    {
+     "text": "מוגדרת חיובית לחלוטין: $k>2$",
+     "points": 2
+    },
+    {
+     "text": "אינה שלילית, ואינה מוגדרת עבור $k\\in(-\\infty,0)\\cup(0,2)$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לשכוח את $k=0$: המטריצה היא $\\mathrm{diag}(0,1,0)$ שהיא מוגדרת חיובית (אך לא לחלוטין).",
+    "לכלול את $k=2$ במוגדרת חיובית לחלוטין: שם $k^2-2k=0$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי $k^2+2k$ עבור $k=3$?",
+     "answer": 15,
+     "tol": 0,
+     "explain": "$9+6=15$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הקטן ביותר עבור $k=1$? (הערכים $k+1,\\ k^2+2k,\\ k^2-2k$)",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$2,\\ 3,\\ -1$, ולכן המינימום $-1$ והמטריצה אינה מוגדרת."
+    },
+    {
+     "type": "choice",
+     "prompt": "לאילו $k$ המטריצה מוגדרת חיובית (אי-שלילית)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$k\\ge2$ או $k=0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$k\\ge2$ בלבד"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$k\\ge0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$k>2$ בלבד"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $k=0$ המטריצה $\\mathrm{diag}(0,1,0)$ אי-שלילית; עבור $k=1$ יש ערך עצמי $-1$; עבור $k=2$ הערכים $3,8,0$ אי-שליליים."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -115,7 +492,61 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בניית $A\\vec x=\\vec b$",
+     "points": 2
+    },
+    {
+     "text": "המשוואות הנורמליות $\\begin{pmatrix}65&15\\\\15&5\\end{pmatrix}\\vec x=\\begin{pmatrix}92\\\\20\\end{pmatrix}$",
+     "points": 4
+    },
+    {
+     "text": "פתרון $m=1.6,\\ n=-0.8$",
+     "points": 3
+    },
+    {
+     "text": "הישר $y=1.6x-0.8$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להשמיט את הנקודה $(0,0)$ מהסכומים, או לשכוח שהיא תורמת 1 לכניסת ה-5 ב-$A^TA$.",
+    "טעות חשבונית ב-$\\sum x_iy_i=92$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_i^2$ עבור $x=0,2,3,4,6$?",
+     "answer": 65,
+     "tol": 0,
+     "explain": "$0+4+9+16+36=65$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_iy_i$ עבור $(0,0),(2,1),(3,4),(4,6),(6,9)$?",
+     "answer": 92,
+     "tol": 0,
+     "explain": "$0+2+12+24+54=92$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$?",
+     "answer": 1.6,
+     "tol": 1e-09,
+     "explain": "$65m+15n=92$ ו-$15m+5n=20$; מהשנייה כפול 3: $45m+15n=60$, ולכן $20m=32$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $n$?",
+     "answer": -0.8,
+     "tol": 1e-09,
+     "explain": "$5n=20-15\\cdot1.6=-4$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -129,7 +560,64 @@
    "part": "א",
    "points": 5,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "$x\\ne0$ ו-$u\\ne0$",
+     "points": 1
+    },
+    {
+     "text": "$2xu\\ne0$ ולכן $(2xu,y+v)\\in A$",
+     "points": 3
+    },
+    {
+     "text": "מסקנה: $A$ סגורה לפעולה",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לדרוש $2xu>0$: אין חיוביות ב-$A$, רק $x\\ne0$.",
+    "לבדוק גם שהרכיב השני שונה מאפס, אף שאין הגבלה עליו."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מה צריך להראות כדי ש-$A$ תהיה סגורה ביחס ל-$*$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "שהרכיב הראשון $2xu$ שונה מאפס"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "שהרכיב השני $y+v$ שונה מאפס"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "שהרכיב הראשון $2xu$ חיובי"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "ש-$x=u$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "ב-$A$ רק הרכיב הראשון מוגבל ($x\\ne0$). חיוביות אינה נדרשת: $x=-1,u=1$ נותן $2xu=-2$ וגם $(-2,\\cdot)\\in A$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הראשון של $(1,2)*(3,4)$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$2\\cdot1\\cdot3=6$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -143,7 +631,43 @@
    "part": "ב",
    "points": 5,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "חישוב $\\big((x,y)*(u,v)\\big)*(a,b)=(4xua,y+v+b)$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $(x,y)*\\big((u,v)*(a,b)\\big)=(4xua,y+v+b)$",
+     "points": 2
+    },
+    {
+     "text": "השוואה ומסקנה: אסוציאטיבית",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לחשב רק אגף אחד ולהסיק מסקנה.",
+    "לשכוח את גורם 2 בכל כפל: ביטוי כמו $2xua$ במקום $4xua$ (מכפילים פעמיים)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $(x,y)=(1,0),\\ (u,v)=(2,1),\\ (a,b)=(3,2)$, מהו הרכיב הראשון של $\\big((x,y)*(u,v)\\big)*(a,b)$?",
+     "answer": 24,
+     "tol": 0,
+     "explain": "$(1,0)*(2,1)=(4,1)$ ואז $(4,1)*(3,2)=(24,3)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "ומהו הרכיב השני של אותה מכפלה?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$1+2=3$. גם בצד השני: $(2,1)*(3,2)=(12,3)$ ואז $(1,0)*(12,3)=(24,3)$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -157,7 +681,64 @@
    "part": "ג",
    "points": 5,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "דרישה $e*(x,y)=(x,y)$ ופתרון הרכיב הראשון: $2e_1x=x$",
+     "points": 2
+    },
+    {
+     "text": "הרכיב השני $e_2=0$",
+     "points": 1
+    },
+    {
+     "text": "הצבה ובדיקה ש-$e=\\left(\\frac12,0\\right)$ ניטרלי",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לבחור $e=(1,0)$ מתוך הרגל: $(1,0)*(x,y)=(2x,y)$.",
+    "לבדוק רק את $e*(x,y)$; כאן הפעולה חילופית ולכן מספיק."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $e_1$ המקיים $2e_1x=x$ לכל $x\\ne0$?",
+     "answer": 0.5,
+     "tol": 1e-09,
+     "explain": "$2e_1=1$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו הרכיב השני של האיבר הניטרלי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$y$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$-y$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "צריך $e_2+y=y$ לכל $y$, ולכן $e_2=0$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -171,7 +752,43 @@
    "part": "ד",
    "points": 5,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "סגירות, אסוציאטיביות ואיבר ניטרלי מהסעיפים הקודמים",
+     "points": 2
+    },
+    {
+     "text": "מציאת ההופכי $\\left(\\frac1{4x},-y\\right)$",
+     "points": 2
+    },
+    {
+     "text": "בדיקת $(x,y)*\\left(\\frac1{4x},-y\\right)=e$ ושההופכי ב-$A$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לתת הופכי $\\left(\\frac1x,-y\\right)$: אז הרכיב הראשון במכפלה הוא $2$ ולא $\\frac12$.",
+    "לשכוח להראות שההופכי שייך ל-$A$ (הרכיב הראשון $\\frac1{4x}\\ne0$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הראשון של ההופכי של $(2,3)$? (תשובה עשרונית)",
+     "answer": 0.125,
+     "tol": 1e-09,
+     "explain": "$\\frac1{4x}=\\frac18$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של ההופכי של $(2,3)$?",
+     "answer": -3,
+     "tol": 0,
+     "explain": "$y+(-y)=0$, ולכן $-3$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -184,7 +801,71 @@
    "confidence": "high",
    "part": "ה",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "חישוב $(x,y)*(x,y)*(x,y)=(4x^3,3y)$",
+     "points": 2
+    },
+    {
+     "text": "פתרון $4x^3=x$ עם $x\\ne0$ ולכן $x=\\pm\\frac12$",
+     "points": 2
+    },
+    {
+     "text": "פתרון $3y=y$ ולכן $y=0$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח את הפתרון השלילי $x=-\\frac12$.",
+    "לצמצם ב-$x$ מבלי לציין ש-$x\\ne0$ (כך נפסלת $x=0$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך החיובי של $x$ המקיים $4x^3=x$, $x\\ne0$? (תשובה עשרונית)",
+     "answer": 0.5,
+     "tol": 1e-09,
+     "explain": "$4x^2=1$ ולכן $x=\\pm\\frac12$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $y$ המקיים $3y=y$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$2y=0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "כמה פתרונות $(x,y)\\in A$ יש?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "2"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "1"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "3"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "אינסוף"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$\\left(\\frac12,0\\right)$ ו-$\\left(-\\frac12,0\\right)$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -196,7 +877,62 @@
    "official": false,
    "confidence": "high",
    "part": "א",
-   "points": 17
+   "points": 17,
+   "rubric": [
+    {
+     "text": "חישוב $A^TA=\\mathrm{diag}(5,9)$ וערכיה העצמיים",
+     "points": 3
+    },
+    {
+     "text": "ערכים סינגולריים $3,\\ \\sqrt5$ ו-$S$",
+     "points": 3
+    },
+    {
+     "text": "$V=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "עמודות $U$ הראשונות $\\vec u_i=\\frac1{\\sigma_i}A\\vec v_i$",
+     "points": 4
+    },
+    {
+     "text": "העמודה השלישית של $U$ היא $\\frac1{3\\sqrt5}(-2,4,5)^T$ (הושלמה)",
+     "points": 3
+    },
+    {
+     "text": "$A=USV^T$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לסדר את הערכים הסינגולריים בסדר עולה בלי להתאים את העמודות של $V$ ו-$U$.",
+    "להעתיק את העמודה השלישית של $U$ כפי שהיא מודפסת בפתרון הרשמי: היא אינה וקטור יחידה."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי של $A^TA$ שמתאים לערך הסינגולרי הגדול $\\sigma_1=3$?",
+     "answer": 9,
+     "tol": 0,
+     "explain": "$\\sigma_1^2=9$. אכן $A^TA=\\mathrm{diag}(5,9)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $\\vec v_1=(0,1)^T$, מהי הכניסה הראשונה של $\\vec u_1=\\frac13A\\vec v_1$? (תשובה עשרונית)",
+     "answer": 0.3333333,
+     "tol": 1e-06,
+     "explain": "$A\\vec v_1=(1,-2,2)^T$, ולכן $\\vec u_1=\\left(\\frac13,-\\frac23,\\frac23\\right)^T$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האורך $\\|(-2,4,5)\\|$ של הווקטור שמנרמלים כדי לקבל את העמודה השלישית של $U$? (תשובה עשרונית)",
+     "answer": 6.7082039,
+     "tol": 1e-06,
+     "explain": "$\\sqrt{4+16+25}=\\sqrt{45}=3\\sqrt5$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -208,7 +944,50 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 8
+   "points": 8,
+   "rubric": [
+    {
+     "text": "שהמודולים 5, 8, 9 זרים בזוגות והמודולו המשותף 360",
+     "points": 2
+    },
+    {
+     "text": "פתרון המערכת בעזרת המשפט הסיני",
+     "points": 4
+    },
+    {
+     "text": "התשובה $\\{134+360k\\mid k\\in\\mathbb{Z}\\}$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לתת פתרון אחד בלבד ($134$) בלי המחלקה $134+360k$.",
+    "לבדוק את הפתרון רק מול משוואה אחת במקום שלוש."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו מודולו הפתרון (המודולים 5, 8, 9 זרים בזוגות)?",
+     "answer": 360,
+     "tol": 0,
+     "explain": "$5\\cdot8\\cdot9=360$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי השארית של 134 בחלוקה ב-8 (צריך להתאים ל-$x\\equiv6\\pmod8$)?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$134=16\\cdot8+6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי השארית של 134 בחלוקה ב-9 (צריך להתאים ל-$x\\equiv8\\pmod9$)?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$134=14\\cdot9+8$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   }
  ]
 }
