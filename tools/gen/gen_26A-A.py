@@ -264,6 +264,305 @@ questions = [
       S5B, part="ד", points=10),
 ]
 
+# ---------------------------------------------------------------------------------------------------------
+# Phase 4 (step author): rubric / pitfalls / guided steps, all derived from the stored solutions above.
+# Numeric values and factual claims are re-checked by tools/verify/26A-A/steps_check.py (sympy / brute force).
+IDS = "abcdef"
+
+
+def rub(*items):
+    return [{"text": t, "points": p} for t, p in items]
+
+
+def ch(prompt, right, wrongs, explain, pos=0):
+    vals = list(wrongs)
+    vals.insert(pos, right)
+    return {"type": "choice", "prompt": prompt, "options": [{"id": IDS[i], "type": "text", "value": v} for i, v in enumerate(vals)],
+            "correctId": IDS[pos], "explain": explain}
+
+
+def num(prompt, answer, explain, tol=0):
+    return {"type": "numeric", "prompt": prompt, "answer": answer, "tol": tol, "explain": explain}
+
+
+def order(prompt, lines, explain):
+    return {"type": "order", "prompt": prompt, "lines": lines, "explain": explain}
+
+
+def bug(prompt, lines, i, explain):
+    return {"type": "findbug", "prompt": prompt, "lines": lines, "bugIndex": i, "explain": explain}
+
+
+S26AA = {
+    (1, "א"): dict(
+        rubric=rub((r"פולינום אופייני ומציאת הערכים העצמיים $1,2,4$", 5),
+                   (r"וקטור עצמי לכל ערך עצמי (פתרון $(A-\lambda I)\vec v=\vec 0$)", 6),
+                   (r"נרמול הווקטורים העצמיים", 2),
+                   (r"כתיבת $A=PDP^T$ עם $P$ אורתוגונלית ו-$D$ אלכסונית", 2)),
+        pitfalls=[r"לשכוח לנרמל את הווקטורים העצמיים: אז $P$ אינה אורתוגונלית ו-$P^{-1}\ne P^T$.",
+                  r"לסדר את העמודות של $P$ בסדר שונה מסדר הערכים העצמיים על האלכסון של $D$."],
+        steps=[
+            num(r"מהי מכפלת הערכים העצמיים של $A$ (כלומר $\det A$)?", 8, r"הערכים העצמיים הם $4,2,1$, ומכפלתם $8$. אפשר לבדוק: $\det A=(9-1)\cdot1=8$."),
+            ch(r"מה מאפשר לקבל את $P$ אורתוגונלית ישירות מהווקטורים העצמיים (אחרי נרמול)?",
+               r"$A$ סימטרית, ולכן וקטורים עצמיים של ערכים עצמיים שונים ניצבים זה לזה",
+               [r"$A$ אנטי-סימטרית", r"$A$ מטריצה אלכסונית", r"ל-$A$ ערך עצמי יחיד"],
+               r"המטריצה $A$ סימטרית, ולכן הווקטורים העצמיים של ערכים עצמיים שונים ($1,2,4$) ניצבים. שאר האפשרויות שגויות: $A\ne-A^T$, $A$ אינה אלכסונית ולה שלושה ערכים עצמיים שונים.", 2),
+            num(r"מהו הרכיב הראשון של הווקטור העצמי המנורמל עבור $\lambda=4$ (עיגול עד $0.001$)?", 0.70711,
+                r"$\vec v_1=\frac1{\sqrt2}(1,1,0)^T$, ולכן הרכיב הראשון הוא $\frac1{\sqrt2}\approx0.7071$.", 0.001),
+            num(r"מהו הרכיב השלישי של הווקטור העצמי עבור $\lambda=1$?", 1, r"$\vec v_3=(0,0,1)^T$, כי $A-I$ מאפסת את הציר $z$."),
+        ]),
+    (1, "ב"): dict(
+        rubric=rub((r"בחירת הווקטורים $\bar u=\left(\frac{a_i}{\sqrt{b_i}}\right)$ ו-$\bar v=\left(\sqrt{b_i}\right)$", 4),
+                   (r"חישוב $(\bar u,\bar v)=\sum a_i$ והנורמות", 2),
+                   (r"הפעלת קושי-שוורץ", 2),
+                   (r"העלאה בריבוע וחלוקה ב-$\sum b_i$ לקבלת הטענה", 2)),
+        pitfalls=[r"לבחור $\bar u=\left(\frac{a_i}{b_i}\right)$ ו-$\bar v=(b_i)$: אז הנורמות הן $\sum\frac{a_i^2}{b_i^2}$ ו-$\sum b_i^2$ ולא מתקבל אי-השוויון הנדרש.",
+                  r"לשכוח שקושי-שוורץ נותן אי-שוויון על ריבוע הסכום רק אחרי העלאה בריבוע של שני האגפים."],
+        steps=[
+            ch(r"איזה זוג וקטורים בוחר הפתרון הרשמי, כך שהמכפלה הפנימית היא $\sum a_i$ והנורמות בריבוע הן $\sum\frac{a_i^2}{b_i}$ ו-$\sum b_i$?",
+               r"$\bar u=\left(\frac{a_i}{\sqrt{b_i}}\right)$ , $\bar v=\left(\sqrt{b_i}\right)$",
+               [r"$\bar u=\left(\frac{a_i}{b_i}\right)$ , $\bar v=(b_i)$", r"$\bar u=\left(a_i\sqrt{b_i}\right)$ , $\bar v=\left(\sqrt{b_i}\right)$", r"$\bar u=(a_i)$ , $\bar v=\left(\frac1{\sqrt{b_i}}\right)$"],
+               r"רק הבחירה הראשונה נותנת $(\bar u,\bar v)=\sum a_i$, $\|\bar u\|^2=\sum\frac{a_i^2}{b_i}$ ו-$\|\bar v\|^2=\sum b_i$. השנייה נותנת נורמות $\sum\frac{a_i^2}{b_i^2}$ ו-$\sum b_i^2$, השלישית מכפלה $\sum a_ib_i$, והרביעית מכפלה $\sum\frac{a_i}{\sqrt{b_i}}$."),
+            num(r"עבור $a=(1,3)$ ו-$b=(1,1)$, מהו $\sum\frac{a_i^2}{b_i}$ ?", 10, r"$1+9=10$."),
+            num(r"באותה דוגמה, מהו האגף הימני $\dfrac{\left(\sum a_i\right)^2}{\sum b_i}$ ?", 8, r"$\frac{4^2}{2}=8\le10$."),
+            order("סדרו את שלבי ההוכחה.",
+                  [r"נגדיר $\bar u=\left(\frac{a_i}{\sqrt{b_i}}\right)$ , $\bar v=\left(\sqrt{b_i}\right)$",
+                   r"נחשב $(\bar u,\bar v)=\sum a_i$ , $\|\bar u\|=\sqrt{\sum\frac{a_i^2}{b_i}}$ , $\|\bar v\|=\sqrt{\sum b_i}$",
+                   r"לפי קושי-שוורץ $|(\bar u,\bar v)|\le\|\bar u\|\cdot\|\bar v\|$",
+                   r"נעלה בריבוע ונחלק ב-$\sum b_i$ ונקבל $\sum\frac{a_i^2}{b_i}\ge\frac{\left(\sum a_i\right)^2}{\sum b_i}$"],
+                  "הגדרת הווקטורים, חישוב המכפלה והנורמות, קושי-שוורץ, ואז העלאה בריבוע וחלוקה."),
+        ]),
+    (2, "א"): dict(
+        rubric=rub((r"סגירות: המכפלה היא מהצורה $\begin{pmatrix}p&q\\-q&p\end{pmatrix}$", 3),
+                   ("אסוציאטיביות מכפל מטריצות", 1),
+                   (r"איבר ניטרלי $I$", 2),
+                   (r"הופכי: $\frac1{a^2+b^2}\begin{pmatrix}a&-b\\b&a\end{pmatrix}=\begin{pmatrix}a&-b\\b&a\end{pmatrix}\in K$", 3)),
+        pitfalls=[r"לשכוח שהחישוב הוא מודולו $7$, ושהגורם $\frac1{a^2+b^2}$ שווה $1$ בזכות התנאי $a^2+b^2=1$.",
+                  r"להסתפק בסגירות, אסוציאטיביות ואיבר ניטרלי, בלי להראות שההופכי עצמו שייך ל-$K$."],
+        steps=[
+            num(r"עבור $\begin{pmatrix}2&2\\5&2\end{pmatrix}\in K$ (כלומר $a=b=2$), מהו האיבר הימני-העליון בהופכי $\begin{pmatrix}a&-b\\b&a\end{pmatrix}$ (בין $0$ ל-$6$)?", 5, r"$-b=-2\equiv5\pmod7$."),
+            ch(r"מדוע ההופכי $\begin{pmatrix}a&-b\\b&a\end{pmatrix}$ שייך ל-$K$?",
+               r"הוא מהצורה הנדרשת, והסכום $a^2+(-b)^2=a^2+b^2=1$",
+               [r"כי כל מטריצה הפיכה ב-$M_2(\mathbb{Z}_7)$ שייכת ל-$K$", r"כי $a^2+b^2=0$", r"כי $\det=-1$"],
+               r"ההופכי הוא $\begin{pmatrix}a&-b\\b&a\end{pmatrix}$, מהצורה הנדרשת וסכום ריבועי רכיביו $1$. לא כל מטריצה הפיכה שייכת ל-$K$ (למשל $2I$ הפיכה ו-$4\ne1$)."),
+            order("סדרו את שלבי מציאת ההופכי.",
+                  [r"ההופכי של $\begin{pmatrix}a&b\\-b&a\end{pmatrix}$ הוא $\frac1{a^2+b^2}\begin{pmatrix}a&-b\\b&a\end{pmatrix}$",
+                   r"מכיוון ש-$a^2+b^2=1$, גורם הסקלר שווה $1$",
+                   r"ההופכי הוא $\begin{pmatrix}a&-b\\b&a\end{pmatrix}$",
+                   r"הוא מהצורה הנדרשת וסכום ריבועי רכיביו $a^2+(-b)^2=1$, ולכן הוא שייך ל-$K$"],
+                  "נוסחת ההופכי, פישוט הסקלר לפי התנאי, ואז בדיקה שהתוצאה שייכת ל-$K$."),
+            bug("באיזו שורה יש טעות?",
+                [r"סגירות: המכפלה היא $\begin{pmatrix}ac-bd&ad+bc\\-ad-bc&ac-bd\end{pmatrix}$, מאותה צורה",
+                 r"אסוציאטיביות נובעת מכך שכפל מטריצות הוא חילופי",
+                 r"איבר ניטרלי: מטריצת היחידה",
+                 r"הופכי: $\begin{pmatrix}a&-b\\b&a\end{pmatrix}\in K$"],
+                1, r"אסוציאטיביות נובעת מאסוציאטיביות של כפל מטריצות. כפל מטריצות אינו חילופי."),
+        ]),
+    (2, "ב"): dict(
+        rubric=rub((r"המקרה $a^2\equiv0$ ו-$b^2\equiv1$: שני זוגות ($a=0$ , $b=1,6$)", 1),
+                   (r"המקרה $b^2\equiv0$ ו-$a^2\equiv1$: שני זוגות", 1),
+                   (r"המקרה $a^2\equiv b^2\equiv4$: ארבעה זוגות", 1),
+                   (r"סכום המקרים $|K|=8$", 1)),
+        pitfalls=[r"לשכוח את המקרה $a^2\equiv b^2\equiv4$ (כלומר $a,b\in\{2,5\}$), שבו שני הרכיבים שונים מאפס.",
+                  r"לספור רק פתרון אחד לכל משוואה $x^2\equiv1$, כאשר יש שניים: $x=1,6$."],
+        steps=[
+            num(r"כמה זוגות $(a,b)$ מקיימים $a=0$ ו-$b^2\equiv1\pmod7$?", 2, r"$b=1,6$."),
+            num(r"כמה זוגות מקיימים $a^2\equiv4$ ו-$b^2\equiv4\pmod7$?", 4, r"$a,b\in\{2,5\}$, ולכן $2\cdot2=4$ זוגות."),
+            num("מהו הסדר של $K$?", 8, r"$2+2+4=8$."),
+        ]),
+    (2, "ג"): dict(
+        rubric=rub((r"בדיקה ש-$X\in K$", 1), (r"חישוב $X^2$", 1), (r"חישוב $X^4=-I$", 1), (r"$X^8=I$ ולכן הסדר $8$", 1)),
+        pitfalls=[r"להסיק שהסדר הוא $4$ כי $X^4$ ״כמעט״ יחידה: מתקבל $X^4=-I\ne I$.",
+                  r"לשכוח לעבוד מודולו $7$: $-1\equiv6$."],
+        steps=[
+            num(r"מהו $2^2+2^2$ מודולו $7$ (הסכום $a^2+b^2$ של $X$)?", 1, r"$8\equiv1\pmod7$, ולכן $X\in K$."),
+            num(r"מהו האיבר הימני-העליון ב-$X^2$ (מודולו $7$, בין $0$ ל-$6$)?", 1, r"$X^2=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$."),
+            num(r"מהו האיבר השמאלי-העליון ב-$X^4$ (מודולו $7$, בין $0$ ל-$6$)?", 6, r"$X^4=\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$, כלומר $-1\equiv6$."),
+            num(r"מהו הסדר של $X$?", 8, r"$X^4\ne I$ ו-$X^8=I$, ולכן הסדר מחלק את $8$ ואינו מחלק את $4$: $8$."),
+        ]),
+    (2, "ד"): dict(
+        rubric=rub((r"הצבת $X\cdot\begin{pmatrix}x&y\\-y&x\end{pmatrix}=I$", 1), (r"כפל המטריצות ומערכת מודולו $7$", 1),
+                   (r"פתרון המערכת $x=2$ , $y=5$", 1), (r"כתיבת ההופכי $\begin{pmatrix}2&5\\-5&2\end{pmatrix}$", 1)),
+        pitfalls=[r"לפתור את המערכת ממש (בלי מודולו): $2(x-y)=1$ אין פתרון שלם.",
+                  r"לטעות בסימן ב-$2(x+y)$: האיבר הימני-העליון במכפלה הוא $2y+2x$."],
+        steps=[
+            num(r"מהו ההופכי של $2$ ב-$\mathbb{Z}_7$?", 4, r"$2\cdot4=8\equiv1\pmod7$."),
+            num(r"מהו $x$ (בין $0$ ל-$6$)?", 2, r"$x-y\equiv4$ ו-$x+y\equiv0$ נותנים $2x\equiv4$, כלומר $x=2$."),
+            num(r"מהו $y$ (בין $0$ ל-$6$)?", 5, r"$y\equiv-x\equiv5\pmod7$."),
+        ]),
+    (2, "ה"): dict(
+        rubric=rub((r"הסדר של $X$ הוא $8$", 2), (r"$|K|=8$", 1), (r"איבר מסדר $|K|$ יוצר את החבורה, ולכן היא ציקלית", 1)),
+        pitfalls=[r"להסיק ציקליות רק מכך שהחבורה מסדר $8$ (חזקת $2$): ישנן חבורות מסדר $8$ שאינן ציקליות.",
+                  r"לשכוח לבדוק שהסדר של $X$ הוא בדיוק $8$ ולא מחלק שלו."],
+        steps=[
+            num(r"מהו הסדר של $X=\begin{pmatrix}2&2\\5&2\end{pmatrix}$ ?", 8, r"$X^4=-I$ ו-$X^8=I$, ולכן הסדר $8$."),
+            ch("איזו טענה מוכיחה ש-$K$ ציקלית?",
+               r"אם קיים איבר שסדרו שווה לסדר החבורה, החבורה ציקלית",
+               [r"כל חבורה מסדר זוגי היא ציקלית", r"כל חבורה אבלית היא ציקלית", r"כל חבורה מסדר חזקה של $2$ היא ציקלית"],
+               r"איבר מסדר $|K|=8$ יוצר את $K$. שלוש האפשרויות האחרות שגויות: $\mathbb{Z}_2\times\mathbb{Z}_2$ היא אבלית ומסדר זוגי וחזקת $2$ אך אינה ציקלית."),
+        ]),
+    (3, "א"): dict(
+        rubric=rub((r"פולינום אופייני $(1-\lambda)\left(\lambda^2-3\lambda-2x^2+2\right)$", 5),
+                   (r"ערכים עצמיים $1$ , $\frac{3\pm\sqrt{8x^2+1}}{2}$", 4),
+                   (r"תנאי חיוביות: $\frac{3-\sqrt{8x^2+1}}{2}\ge0$ ולכן $-1\le x\le1$", 4),
+                   (r"חיובית לחלוטין $-1<x<1$ ואין שלילית", 2)),
+        pitfalls=[r"לבלבל בין ״חיובית״ (אי-שלילית, $-1\le x\le1$) ל״חיובית לחלוטין״ ($-1<x<1$).",
+                  r"לשכוח שהערך העצמי $1$ תמיד חיובי, ולכן אין ערך $x$ שבו המטריצה שלילית."],
+        steps=[
+            num(r"עבור $x=1$, מהו הערך העצמי הקטן ביותר?", 0, r"$\frac{3-\sqrt{9}}{2}=0$."),
+            ch("עבור אילו $x$ המטריצה מוגדרת חיובית לחלוטין?", r"$-1<x<1$", [r"$-1\le x\le1$", r"$0<x<1$", r"$x>1$"],
+               r"נדרש $\frac{3-\sqrt{8x^2+1}}{2}>0$, כלומר $x^2<1$. עבור $x=\pm1$ הערך העצמי הקטן הוא $0$ (רק חיובית), ועבור $|x|>1$ הוא שלילי.", 0),
+            ch("האם יש $x$ שעבורו המטריצה מוגדרת שלילית?", "לא, כי הערך העצמי $1$ חיובי לכל $x$",
+               [r"כן, כאשר $x>1$", r"כן, כאשר $x<-1$", r"כן, כאשר $x=0$"],
+               r"הערך העצמי $1$ אינו תלוי ב-$x$, ולכן תמיד יש ערך עצמי חיובי. עבור $|x|>1$ יש ערך עצמי שלילי וגם חיובי (מטריצה לא מוגדרת)."),
+        ]),
+    (3, "ג"): dict(
+        rubric=rub((r"הצבת $\vec c=\vec b-\vec p$ ופירוק לפי לינאריות", 2), (r"$\langle\vec p,\vec a\rangle=\frac{\langle\vec b,\vec a\rangle}{\|\vec a\|^2}\langle\vec a,\vec a\rangle$", 2),
+                   (r"$\langle\vec a,\vec a\rangle=\|\vec a\|^2$ והצמצום, ולכן $\langle\vec c,\vec a\rangle=0$", 1)),
+        pitfalls=[r"לכתוב $\langle\vec a,\vec a\rangle=\|\vec a\|$ במקום $\|\vec a\|^2$.",
+                  r"להניח $\vec c\perp\vec a$ בלי לחשב את המכפלה הפנימית."],
+        steps=[
+            num(r"עבור $\vec a=(1,1)$ ו-$\vec b=(3,1)$, מהו המקדם $\dfrac{\langle\vec b,\vec a\rangle}{\|\vec a\|^2}$ ?", 2, r"$\frac{4}{2}=2$, ולכן $\vec p=(2,2)$ ו-$\vec c=(1,-1)$."),
+            num(r"באותה דוגמה, מהו $\langle\vec c,\vec a\rangle$ ?", 0, r"$1\cdot1+(-1)\cdot1=0$."),
+            order("סדרו את שלבי ההוכחה.",
+                  [r"$\langle\vec c,\vec a\rangle=\langle\vec b-\vec p,\vec a\rangle=\langle\vec b,\vec a\rangle-\langle\vec p,\vec a\rangle$",
+                   r"$\langle\vec p,\vec a\rangle=\frac{\langle\vec b,\vec a\rangle}{\|\vec a\|^2}\langle\vec a,\vec a\rangle$",
+                   r"$\langle\vec a,\vec a\rangle=\|\vec a\|^2$, ולכן $\langle\vec p,\vec a\rangle=\langle\vec b,\vec a\rangle$",
+                   r"לכן $\langle\vec c,\vec a\rangle=\langle\vec b,\vec a\rangle-\langle\vec b,\vec a\rangle=0$"],
+                  "פתיחה לפי לינאריות, חישוב המכפלה של $\\vec p$, צמצום, ואז התוצאה."),
+            bug("באיזו שורה יש טעות?",
+                [r"$\langle\vec c,\vec a\rangle=\langle\vec b,\vec a\rangle-\langle\vec p,\vec a\rangle$",
+                 r"$\langle\vec p,\vec a\rangle=\frac{\langle\vec b,\vec a\rangle}{\|\vec a\|^2}\langle\vec a,\vec a\rangle$",
+                 r"$\langle\vec a,\vec a\rangle=\|\vec a\|$",
+                 r"לכן $\langle\vec c,\vec a\rangle=0$"],
+                2, r"$\langle\vec a,\vec a\rangle=\|\vec a\|^2$ ולא $\|\vec a\|$."),
+        ]),
+    (3, "ד"): dict(
+        rubric=rub((r"$\vec c\perp\vec p$ כי $\vec p$ כפולה של $\vec a$ ו-$\vec c\perp\vec a$", 2), (r"$\vec b=\vec c+\vec p$ ופתיחת $\|\vec c+\vec p\|^2$", 2), (r"האיבר המעורב מתאפס", 1)),
+        pitfalls=[r"לפתוח $\|\vec c+\vec p\|^2=\|\vec c\|^2+\|\vec p\|^2$ בלי לנמק מדוע האיבר המעורב מתאפס.",
+                  r"לשכוח את הגורם $2$ באיבר המעורב $2\langle\vec c,\vec p\rangle$."],
+        steps=[
+            ch(r"מדוע $\vec c\perp\vec p$ ?", r"$\vec p$ כפולה סקלרית של $\vec a$ ו-$\vec c\perp\vec a$",
+               [r"כי $\vec p=\vec b$", r"כי $\|\vec p\|=\|\vec c\|$", r"כי $\vec p=\vec 0$"],
+               r"$\vec p=t\vec a$ ולכן $\langle\vec c,\vec p\rangle=t\langle\vec c,\vec a\rangle=0$. בדוגמה $\vec a=(1,1),\vec b=(3,1)$: $\vec p=(2,2)\ne\vec b$, $\|\vec p\|=\sqrt8\ne\sqrt2=\|\vec c\|$ ו-$\vec p\ne\vec 0$."),
+            num(r"עבור $\vec a=(1,1)$ ו-$\vec b=(3,1)$, מהו $\|\vec p\|^2$ ?", 8, r"$\vec p=(2,2)$, ולכן $4+4=8$ (ו-$\|\vec c\|^2=2$, $\|\vec b\|^2=10$)."),
+            order("סדרו את שלבי ההוכחה.",
+                  [r"$\vec b=\vec c+\vec p$ ולכן $\|\vec b\|^2=\langle\vec c+\vec p,\vec c+\vec p\rangle$",
+                   r"$=\|\vec c\|^2+2\langle\vec c,\vec p\rangle+\|\vec p\|^2$",
+                   r"$\langle\vec c,\vec p\rangle=0$ כי $\vec c\perp\vec p$",
+                   r"לכן $\|\vec b\|^2=\|\vec c\|^2+\|\vec p\|^2$"],
+                  "הצבה, פתיחה, אפס האיבר המעורב, ותוצאה."),
+            bug("באיזו שורה יש טעות?",
+                [r"$\vec b=\vec c+\vec p$ ולכן $\|\vec b\|^2=\langle\vec c+\vec p,\vec c+\vec p\rangle$",
+                 r"$=\|\vec c\|^2+2\langle\vec c,\vec p\rangle+\|\vec p\|^2$",
+                 r"מכיוון ש-$\vec c\perp\vec p$ מתקיים $\langle\vec c,\vec p\rangle=\|\vec c\|\cdot\|\vec p\|$",
+                 r"לכן $\|\vec b\|^2=\|\vec c\|^2+\|\vec p\|^2$"],
+                2, r"אם $\vec c\perp\vec p$ אז $\langle\vec c,\vec p\rangle=0$."),
+        ]),
+    (4, "א"): dict(
+        rubric=rub(("סגירות", 3), ("אסוציאטיביות: חישוב שני האגפים והשוואתם", 5), (r"יחידה $(0,0)$", 3), (r"הופכי $(-a,(-1)^{1-a}b)$", 4)),
+        pitfalls=[r"לשכוח את החזקה $(-1)^a$ בחישוב האסוציאטיביות: $(-1)^a(-1)^x=(-1)^{a+x}$.",
+                  r"לבדוק רק יחידה מצד אחד ולא לבדוק שההופכי הוא גם הופכי מימין ומשמאל."],
+        steps=[
+            num(r"מהו הרכיב השני של $(1,2)\circ(3,4)$ ?", -2, r"$2+(-1)^1\cdot4=-2$ (והרכיב הראשון $4$)."),
+            num(r"מהו הרכיב השני של ההופכי של $(1,3)$, לפי הנוסחה $(-a,(-1)^{1-a}b)$ ?", 3,
+                r"$(-1)^{0}\cdot3=3$. בדיקה: $(1,3)\circ(-1,3)=(0,3-3)=(0,0)$."),
+            num(r"מהו הרכיב השני של ההופכי של $(2,5)$ ?", -5, r"$(-1)^{-1}\cdot5=-5$. בדיקה: $(2,5)\circ(-2,-5)=(0,5-5)=(0,0)$."),
+            bug("באיזו שורה בהוכחת האסוציאטיביות יש טעות?",
+                [r"$\big((a,b)\circ(x,y)\big)\circ(u,v)=\left(a+x+u,\ b+(-1)^a y+(-1)^{a+x}v\right)$",
+                 r"$(a,b)\circ\big((x,y)\circ(u,v)\big)=(a,b)\circ\left(x+u,\ y+(-1)^x v\right)=\left(a+x+u,\ b+(-1)^a y+(-1)^x v\right)$",
+                 r"הרכיבים השניים שווים, ולכן הפעולה אסוציאטיבית"],
+                1, r"הרכיב השני הוא $b+(-1)^a\left(y+(-1)^x v\right)=b+(-1)^a y+(-1)^{a+x}v$ ולא $(-1)^x v$."),
+        ]),
+    (4, "ב"): dict(
+        rubric=rub(("תשובה: לא אבלית", 1), (r"חישוב $(1,1)\circ(1,0)=(2,1)$", 2), (r"חישוב $(1,0)\circ(1,1)=(2,-1)$ והשוואה", 2)),
+        pitfalls=[r"לבדוק זוג שבו $a$ זוגי: אז $(-1)^a=1$ והאברים מתחלפים (למשל $(2,1)\circ(2,3)$).",
+                  r"להסיק אבליות מכך שהרכיב הראשון קומוטטיבי."],
+        steps=[
+            num(r"מהו הרכיב השני של $(1,1)\circ(1,0)$ ?", 1, r"$1+(-1)^1\cdot0=1$."),
+            num(r"מהו הרכיב השני של $(1,0)\circ(1,1)$ ?", -1, r"$0+(-1)^1\cdot1=-1\ne1$."),
+            ch("מה מספיק כדי להוכיח שהחבורה אינה אבלית?", "זוג איברים אחד שאינם מתחלפים",
+               [r"שהאיבר הניטרלי מתחלף עם כל איבר", r"שהחבורה אינסופית", r"שהאסוציאטיביות לא מתקיימת"],
+               r"אי-אבליות פירושה קיום זוג שאינו מתחלף. האיבר הניטרלי תמיד מתחלף, אינסופיות אינה קשורה, והאסוציאטיביות כן מתקיימת."),
+        ]),
+    (4, "ג"): dict(
+        rubric=rub((r"התנאי $y+(-1)^xb=b+(-1)^ay$ לכל $x,y$", 1), (r"הצבת $x=0,y=1$ ו-$a$ זוגי", 2), (r"הצבת $x=1$ ו-$b=0$", 1), (r"אימות והתשובה $\{(a,0):a\in2\mathbb{Z}\}$", 1)),
+        pitfalls=[r"לכתוב את התשובה כ-״$a$ זוגי ו-$x$ זוגי״: $x$ הוא המשתנה החופשי, והתנאי החסר הוא $b=0$.",
+                  r"לשכוח את התנאי $b=0$: האיבר $(2,1)$ אינו מתחלף עם $(1,1)$."],
+        steps=[
+            num(r"מהו $(-1)^a$ המתקבל מהצבת $x=0,y=1$ במשוואה $1+b=b+(-1)^a$ ?", 1, r"$(-1)^a=1$, ולכן $a$ זוגי."),
+            num(r"כאשר $a$ זוגי והצבת $x=1$ נותנת $-b=b$, מהו $b$ ?", 0, r"$2b=0$ ולכן $b=0$."),
+            ch("איזו קבוצה היא קבוצת כל האיברים המתחלפים עם כל איבר?", r"$\{(a,0)\mid a\in2\mathbb{Z}\}$",
+               [r"$\{(a,b)\mid a\in2\mathbb{Z}\}$", r"$\{(a,0)\mid a\in\mathbb{Z}\}$", r"$\{(0,0)\}$"],
+               r"למשל $(2,1)\circ(1,1)=(3,2)$ אך $(1,1)\circ(2,1)=(3,0)$, ו-$(1,0)\circ(0,1)=(1,-1)$ אך $(0,1)\circ(1,0)=(1,1)$. האיבר $(2,0)$ מתחלף עם כולם, ולכן הקבוצה אינה רק $\{(0,0)\}$."),
+        ]),
+    (5, "א"): dict(
+        rubric=rub((r"חישוב $P\vec u=\|\vec u\|^2\vec u$", 2), (r"חישוב $P\vec v=\|\vec v\|^2\vec v$", 1), (r"חישוב $P\vec w=\vec 0=0\cdot\vec w$", 1), ("מסקנה: שלושתם וקטורים עצמיים", 1)),
+        pitfalls=[r"לשכוח שהווקטור האפס אינו וקטור עצמי, אבל $\vec w\ne\vec 0$ ו-$P\vec w=0\cdot\vec w$ תקין.",
+                  r"לא להשתמש באורתוגונליות: $\vec v^T\vec u=0$ היא שמאפסת את האיבר השני."],
+        steps=[
+            ch("אילו תכונות של הבסיס האורתונורמלי משתמשים בהן?",
+               r"$\vec u^T\vec u=\vec v^T\vec v=1$ וכל מכפלה פנימית בין שני וקטורים שונים היא $0$",
+               [r"$\vec u^T\vec u=0$", r"$\vec u^T\vec v=1$", r"$\vec w=\vec u+\vec v$"],
+               r"בבסיס אורתונורמלי הנורמות $1$ והווקטורים השונים ניצבים. $\vec w$ בלתי תלוי ב-$\vec u,\vec v$, ולכן אינו סכומם."),
+            num(r"מהו הערך העצמי של $P$ עבור $\vec w$ ?", 0, r"$P\vec w=\vec u(\vec u^T\vec w)+\vec v(\vec v^T\vec w)=\vec 0$."),
+            num(r"מהו הערך העצמי של $P$ עבור $\vec u$ (כאשר $\|\vec u\|=1$) ?", 1, r"$P\vec u=\vec u(\vec u^T\vec u)+\vec v(\vec v^T\vec u)=\vec u$."),
+            bug("באיזו שורה יש טעות?",
+                [r"$P\vec u=\vec u\left(\vec u^T\vec u\right)+\vec v\left(\vec v^T\vec u\right)$",
+                 r"$\vec u^T\vec u=1$ ו-$\vec v^T\vec u=1$, ולכן $P\vec u=\vec u+\vec v$",
+                 r"לכן $\vec u$ אינו וקטור עצמי של $P$"],
+                1, r"$\vec v^T\vec u=0$ בבסיס אורתונורמלי, ולכן $P\vec u=\vec u$."),
+        ]),
+    (5, "ב"): dict(
+        rubric=rub((r"$P^T=P$ (סימטריה)", 2), (r"ערכים עצמיים $\|\vec u\|^2,\|\vec v\|^2,0$", 2), ("מסקנה: סימטרית עם ערכים עצמיים אי-שליליים, ולכן מוגדרת חיובית", 1)),
+        pitfalls=[r"לדרוש ערכים עצמיים חיוביים ממש: ל-$P$ ערך עצמי $0$, והיא מוגדרת חיובית (אי-שלילית) בלבד.",
+                  r"לשכוח לבדוק סימטריה, שהיא חלק מההגדרה."],
+        steps=[
+            ch("מה מראים כדי להוכיח ש-$P$ מוגדרת חיובית?", "ש-$P$ סימטרית וכל ערכיה העצמיים אי-שליליים",
+               [r"ש-$P$ הפיכה", r"ש-$P$ אנטי-סימטרית", r"שכל ערכיה העצמיים שווים"],
+               r"$P$ אינה הפיכה (הערך העצמי $0$), והיא סימטרית ולא אנטי-סימטרית, ויש לה ערכים עצמיים $\|\vec u\|^2,\|\vec v\|^2,0$ שאינם שווים."),
+            num(r"מהי העקבה (trace) של $P$ כאשר $\|\vec u\|=\|\vec v\|=1$ ?", 2, r"סכום הערכים העצמיים $1+1+0=2$."),
+            order("סדרו את שלבי ההוכחה.",
+                  [r"$P^T=\left(\vec u\vec u^T\right)^T+\left(\vec v\vec v^T\right)^T$",
+                   r"$\left(\vec u\vec u^T\right)^T=\vec u\vec u^T$ ובאופן דומה עבור $\vec v$, ולכן $P^T=P$",
+                   r"הערכים העצמיים הם $\|\vec u\|^2>0$ , $\|\vec v\|^2>0$ , $0$",
+                   r"$P$ סימטרית עם ערכים עצמיים אי-שליליים, לכן מוגדרת חיובית"],
+                  "סימטריה, ערכים עצמיים, ואז מסקנה."),
+        ]),
+    (5, "ג"): dict(
+        rubric=rub((r"כתיבת $\vec x=a\vec u+b\vec v+c\vec w$", 1), (r"הפעלת $P$ וקבלת $a\|\vec u\|^2\vec u+b\|\vec v\|^2\vec v$", 2), (r"אי-תלות לינארית נותנת $a=b=0$", 1), (r"התשובה $\vec x=c\vec w$", 1)),
+        pitfalls=[r"לכלול את $\vec u$ או $\vec v$ בפתרון: $P\vec u=\|\vec u\|^2\vec u\ne\vec 0$.",
+                  r"לשכוח שהפתרון הוא כל הכפולות של $\vec w$ ולא רק $\vec w$."],
+        steps=[
+            num(r"מהו המימד של קבוצת הפתרונות של $P\vec x=\vec 0$ ?", 1, r"הפתרונות הם $c\vec w$, כלומר ישר אחד."),
+            ch(r"מהי קבוצת כל $\vec x$ המקיימים $P\vec x=\vec 0$ ?", r"כל הכפולות של $\vec w$", [r"$\mathrm{Sp}\{\vec u,\vec v\}$", r"$\{\vec 0\}$ בלבד", r"$\mathrm{Sp}\{\vec u,\vec w\}$"],
+               r"$P\vec u=\|\vec u\|^2\vec u\ne\vec 0$ ו-$P\vec v\ne\vec 0$, ולכן אי אפשר לכלול אותם. $\vec w$ נמצא בגרעין."),
+            order("סדרו את שלבי הפתרון.",
+                  [r"נכתוב $\vec x=a\vec u+b\vec v+c\vec w$ (בסיס של $\mathbb{R}^3$)",
+                   r"$P\vec x=aP\vec u+bP\vec v+cP\vec w=a\|\vec u\|^2\vec u+b\|\vec v\|^2\vec v$",
+                   r"הווקטורים בלתי תלויים ולכן $a=b=0$",
+                   r"לכן $\vec x=c\vec w$ , $c\in\mathbb{R}$"],
+                  "הצגה בבסיס, הפעלת $P$, אי-תלות, ואז התשובה."),
+        ]),
+    (5, "ד"): dict(
+        rubric=rub((r"צמצום המשוואות: $x\equiv2\pmod3$ , $x\equiv3\pmod4$ , $x\equiv5\pmod7$", 3), (r"$M=84$ ו-$M_1,M_2,M_3$", 2), (r"הפתרונות $x_1,x_2,x_3$ של $M_ix_i\equiv1$", 3), (r"הרכבה ל-$x\equiv47\pmod{84}$", 2)),
+        pitfalls=[r"להציב את השאריות בלי לצמצם קודם: המשוואות הן $2x\equiv1$ ו-$3x\equiv1$ ולא $x\equiv1$.",
+                  r"לשכוח את הצמצום מודולו $84$ בסוף: $299\equiv47$."],
+        steps=[
+            num(r"מהי השארית $a_1$ במערכת המצומצמת ($2x\equiv1\pmod3$) ?", 2, r"$2^{-1}\equiv2\pmod3$, ולכן $x\equiv2$."),
+            num(r"מהי השארית $a_3$ במערכת המצומצמת ($2x\equiv3\pmod7$) ?", 5, r"$2^{-1}\equiv4\pmod7$, ולכן $x\equiv12\equiv5$."),
+            num(r"מהו $x_3$ , הפתרון של $12x_3\equiv1\pmod7$ ?", 3, r"$12\equiv5$ ו-$5\cdot3=15\equiv1\pmod7$."),
+            num(r"מהו הפתרון $x$ בין $0$ ל-$83$ ?", 47, r"$2\cdot28\cdot1+3\cdot21\cdot1+5\cdot12\cdot3=299\equiv47\pmod{84}$."),
+        ]),
+}
+for _q in questions:
+    _s = S26AA.get((_q["num"], _q.get("part")))
+    assert _s is not None, ("no steps for", _q["num"], _q.get("part"))
+    assert sum(r["points"] for r in _s["rubric"]) == _q["points"], ("rubric sum", _q["num"], _q.get("part"))
+    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-draft"
+    _q["pitfalls"] = _s["pitfalls"]
+    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-draft"
+
 exam = {
     "examCode": "26A-A",
     "examLabel": "אלגברה 2 - סמסטר א' תשפ\"ו מועד א'",

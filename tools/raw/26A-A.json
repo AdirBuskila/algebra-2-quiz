@@ -38,7 +38,82 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "פולינום אופייני ומציאת הערכים העצמיים $1,2,4$",
+     "points": 5
+    },
+    {
+     "text": "וקטור עצמי לכל ערך עצמי (פתרון $(A-\\lambda I)\\vec v=\\vec 0$)",
+     "points": 6
+    },
+    {
+     "text": "נרמול הווקטורים העצמיים",
+     "points": 2
+    },
+    {
+     "text": "כתיבת $A=PDP^T$ עם $P$ אורתוגונלית ו-$D$ אלכסונית",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח לנרמל את הווקטורים העצמיים: אז $P$ אינה אורתוגונלית ו-$P^{-1}\\ne P^T$.",
+    "לסדר את העמודות של $P$ בסדר שונה מסדר הערכים העצמיים על האלכסון של $D$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי מכפלת הערכים העצמיים של $A$ (כלומר $\\det A$)?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "הערכים העצמיים הם $4,2,1$, ומכפלתם $8$. אפשר לבדוק: $\\det A=(9-1)\\cdot1=8$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מה מאפשר לקבל את $P$ אורתוגונלית ישירות מהווקטורים העצמיים (אחרי נרמול)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A$ אנטי-סימטרית"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A$ מטריצה אלכסונית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$A$ סימטרית, ולכן וקטורים עצמיים של ערכים עצמיים שונים ניצבים זה לזה"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "ל-$A$ ערך עצמי יחיד"
+      }
+     ],
+     "correctId": "c",
+     "explain": "המטריצה $A$ סימטרית, ולכן הווקטורים העצמיים של ערכים עצמיים שונים ($1,2,4$) ניצבים. שאר האפשרויות שגויות: $A\\ne-A^T$, $A$ אינה אלכסונית ולה שלושה ערכים עצמיים שונים."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הראשון של הווקטור העצמי המנורמל עבור $\\lambda=4$ (עיגול עד $0.001$)?",
+     "answer": 0.70711,
+     "tol": 0.001,
+     "explain": "$\\vec v_1=\\frac1{\\sqrt2}(1,1,0)^T$, ולכן הרכיב הראשון הוא $\\frac1{\\sqrt2}\\approx0.7071$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השלישי של הווקטור העצמי עבור $\\lambda=1$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$\\vec v_3=(0,0,1)^T$, כי $A-I$ מאפסת את הציר $z$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -50,7 +125,86 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בחירת הווקטורים $\\bar u=\\left(\\frac{a_i}{\\sqrt{b_i}}\\right)$ ו-$\\bar v=\\left(\\sqrt{b_i}\\right)$",
+     "points": 4
+    },
+    {
+     "text": "חישוב $(\\bar u,\\bar v)=\\sum a_i$ והנורמות",
+     "points": 2
+    },
+    {
+     "text": "הפעלת קושי-שוורץ",
+     "points": 2
+    },
+    {
+     "text": "העלאה בריבוע וחלוקה ב-$\\sum b_i$ לקבלת הטענה",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבחור $\\bar u=\\left(\\frac{a_i}{b_i}\\right)$ ו-$\\bar v=(b_i)$: אז הנורמות הן $\\sum\\frac{a_i^2}{b_i^2}$ ו-$\\sum b_i^2$ ולא מתקבל אי-השוויון הנדרש.",
+    "לשכוח שקושי-שוורץ נותן אי-שוויון על ריבוע הסכום רק אחרי העלאה בריבוע של שני האגפים."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזה זוג וקטורים בוחר הפתרון הרשמי, כך שהמכפלה הפנימית היא $\\sum a_i$ והנורמות בריבוע הן $\\sum\\frac{a_i^2}{b_i}$ ו-$\\sum b_i$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\bar u=\\left(\\frac{a_i}{\\sqrt{b_i}}\\right)$ , $\\bar v=\\left(\\sqrt{b_i}\\right)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\bar u=\\left(\\frac{a_i}{b_i}\\right)$ , $\\bar v=(b_i)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\bar u=\\left(a_i\\sqrt{b_i}\\right)$ , $\\bar v=\\left(\\sqrt{b_i}\\right)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\bar u=(a_i)$ , $\\bar v=\\left(\\frac1{\\sqrt{b_i}}\\right)$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "רק הבחירה הראשונה נותנת $(\\bar u,\\bar v)=\\sum a_i$, $\\|\\bar u\\|^2=\\sum\\frac{a_i^2}{b_i}$ ו-$\\|\\bar v\\|^2=\\sum b_i$. השנייה נותנת נורמות $\\sum\\frac{a_i^2}{b_i^2}$ ו-$\\sum b_i^2$, השלישית מכפלה $\\sum a_ib_i$, והרביעית מכפלה $\\sum\\frac{a_i}{\\sqrt{b_i}}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=(1,3)$ ו-$b=(1,1)$, מהו $\\sum\\frac{a_i^2}{b_i}$ ?",
+     "answer": 10,
+     "tol": 0,
+     "explain": "$1+9=10$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "באותה דוגמה, מהו האגף הימני $\\dfrac{\\left(\\sum a_i\\right)^2}{\\sum b_i}$ ?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$\\frac{4^2}{2}=8\\le10$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "נגדיר $\\bar u=\\left(\\frac{a_i}{\\sqrt{b_i}}\\right)$ , $\\bar v=\\left(\\sqrt{b_i}\\right)$",
+      "נחשב $(\\bar u,\\bar v)=\\sum a_i$ , $\\|\\bar u\\|=\\sqrt{\\sum\\frac{a_i^2}{b_i}}$ , $\\|\\bar v\\|=\\sqrt{\\sum b_i}$",
+      "לפי קושי-שוורץ $|(\\bar u,\\bar v)|\\le\\|\\bar u\\|\\cdot\\|\\bar v\\|$",
+      "נעלה בריבוע ונחלק ב-$\\sum b_i$ ונקבל $\\sum\\frac{a_i^2}{b_i}\\ge\\frac{\\left(\\sum a_i\\right)^2}{\\sum b_i}$"
+     ],
+     "explain": "הגדרת הווקטורים, חישוב המכפלה והנורמות, קושי-שוורץ, ואז העלאה בריבוע וחלוקה."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -63,7 +217,91 @@
    "confidence": "high",
    "part": "א",
    "points": 9,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "סגירות: המכפלה היא מהצורה $\\begin{pmatrix}p&q\\\\-q&p\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "אסוציאטיביות מכפל מטריצות",
+     "points": 1
+    },
+    {
+     "text": "איבר ניטרלי $I$",
+     "points": 2
+    },
+    {
+     "text": "הופכי: $\\frac1{a^2+b^2}\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}=\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}\\in K$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שהחישוב הוא מודולו $7$, ושהגורם $\\frac1{a^2+b^2}$ שווה $1$ בזכות התנאי $a^2+b^2=1$.",
+    "להסתפק בסגירות, אסוציאטיביות ואיבר ניטרלי, בלי להראות שההופכי עצמו שייך ל-$K$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $\\begin{pmatrix}2&2\\\\5&2\\end{pmatrix}\\in K$ (כלומר $a=b=2$), מהו האיבר הימני-העליון בהופכי $\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}$ (בין $0$ ל-$6$)?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$-b=-2\\equiv5\\pmod7$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע ההופכי $\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}$ שייך ל-$K$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "הוא מהצורה הנדרשת, והסכום $a^2+(-b)^2=a^2+b^2=1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי כל מטריצה הפיכה ב-$M_2(\\mathbb{Z}_7)$ שייכת ל-$K$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $a^2+b^2=0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כי $\\det=-1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "ההופכי הוא $\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}$, מהצורה הנדרשת וסכום ריבועי רכיביו $1$. לא כל מטריצה הפיכה שייכת ל-$K$ (למשל $2I$ הפיכה ו-$4\\ne1$)."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי מציאת ההופכי.",
+     "lines": [
+      "ההופכי של $\\begin{pmatrix}a&b\\\\-b&a\\end{pmatrix}$ הוא $\\frac1{a^2+b^2}\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}$",
+      "מכיוון ש-$a^2+b^2=1$, גורם הסקלר שווה $1$",
+      "ההופכי הוא $\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}$",
+      "הוא מהצורה הנדרשת וסכום ריבועי רכיביו $a^2+(-b)^2=1$, ולכן הוא שייך ל-$K$"
+     ],
+     "explain": "נוסחת ההופכי, פישוט הסקלר לפי התנאי, ואז בדיקה שהתוצאה שייכת ל-$K$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "סגירות: המכפלה היא $\\begin{pmatrix}ac-bd&ad+bc\\\\-ad-bc&ac-bd\\end{pmatrix}$, מאותה צורה",
+      "אסוציאטיביות נובעת מכך שכפל מטריצות הוא חילופי",
+      "איבר ניטרלי: מטריצת היחידה",
+      "הופכי: $\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}\\in K$"
+     ],
+     "bugIndex": 1,
+     "explain": "אסוציאטיביות נובעת מאסוציאטיביות של כפל מטריצות. כפל מטריצות אינו חילופי."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -76,7 +314,54 @@
    "confidence": "high",
    "part": "ב",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "המקרה $a^2\\equiv0$ ו-$b^2\\equiv1$: שני זוגות ($a=0$ , $b=1,6$)",
+     "points": 1
+    },
+    {
+     "text": "המקרה $b^2\\equiv0$ ו-$a^2\\equiv1$: שני זוגות",
+     "points": 1
+    },
+    {
+     "text": "המקרה $a^2\\equiv b^2\\equiv4$: ארבעה זוגות",
+     "points": 1
+    },
+    {
+     "text": "סכום המקרים $|K|=8$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את המקרה $a^2\\equiv b^2\\equiv4$ (כלומר $a,b\\in\\{2,5\\}$), שבו שני הרכיבים שונים מאפס.",
+    "לספור רק פתרון אחד לכל משוואה $x^2\\equiv1$, כאשר יש שניים: $x=1,6$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה זוגות $(a,b)$ מקיימים $a=0$ ו-$b^2\\equiv1\\pmod7$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$b=1,6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה זוגות מקיימים $a^2\\equiv4$ ו-$b^2\\equiv4\\pmod7$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$a,b\\in\\{2,5\\}$, ולכן $2\\cdot2=4$ זוגות."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $K$?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$2+2+4=8$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -89,7 +374,61 @@
    "confidence": "high",
    "part": "ג",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "בדיקה ש-$X\\in K$",
+     "points": 1
+    },
+    {
+     "text": "חישוב $X^2$",
+     "points": 1
+    },
+    {
+     "text": "חישוב $X^4=-I$",
+     "points": 1
+    },
+    {
+     "text": "$X^8=I$ ולכן הסדר $8$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להסיק שהסדר הוא $4$ כי $X^4$ ״כמעט״ יחידה: מתקבל $X^4=-I\\ne I$.",
+    "לשכוח לעבוד מודולו $7$: $-1\\equiv6$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $2^2+2^2$ מודולו $7$ (הסכום $a^2+b^2$ של $X$)?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$8\\equiv1\\pmod7$, ולכן $X\\in K$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$X^2$ (מודולו $7$, בין $0$ ל-$6$)?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$X^2=\\begin{pmatrix}0&1\\\\-1&0\\end{pmatrix}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר השמאלי-העליון ב-$X^4$ (מודולו $7$, בין $0$ ל-$6$)?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$X^4=\\begin{pmatrix}-1&0\\\\0&-1\\end{pmatrix}$, כלומר $-1\\equiv6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $X$?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$X^4\\ne I$ ו-$X^8=I$, ולכן הסדר מחלק את $8$ ואינו מחלק את $4$: $8$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -102,7 +441,54 @@
    "confidence": "high",
    "part": "ד",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "הצבת $X\\cdot\\begin{pmatrix}x&y\\\\-y&x\\end{pmatrix}=I$",
+     "points": 1
+    },
+    {
+     "text": "כפל המטריצות ומערכת מודולו $7$",
+     "points": 1
+    },
+    {
+     "text": "פתרון המערכת $x=2$ , $y=5$",
+     "points": 1
+    },
+    {
+     "text": "כתיבת ההופכי $\\begin{pmatrix}2&5\\\\-5&2\\end{pmatrix}$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את המערכת ממש (בלי מודולו): $2(x-y)=1$ אין פתרון שלם.",
+    "לטעות בסימן ב-$2(x+y)$: האיבר הימני-העליון במכפלה הוא $2y+2x$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו ההופכי של $2$ ב-$\\mathbb{Z}_7$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$2\\cdot4=8\\equiv1\\pmod7$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x$ (בין $0$ ל-$6$)?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$x-y\\equiv4$ ו-$x+y\\equiv0$ נותנים $2x\\equiv4$, כלומר $x=2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $y$ (בין $0$ ל-$6$)?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$y\\equiv-x\\equiv5\\pmod7$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -116,7 +502,64 @@
    "part": "ה",
    "points": 4,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "הסדר של $X$ הוא $8$",
+     "points": 2
+    },
+    {
+     "text": "$|K|=8$",
+     "points": 1
+    },
+    {
+     "text": "איבר מסדר $|K|$ יוצר את החבורה, ולכן היא ציקלית",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להסיק ציקליות רק מכך שהחבורה מסדר $8$ (חזקת $2$): ישנן חבורות מסדר $8$ שאינן ציקליות.",
+    "לשכוח לבדוק שהסדר של $X$ הוא בדיוק $8$ ולא מחלק שלו."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $X=\\begin{pmatrix}2&2\\\\5&2\\end{pmatrix}$ ?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$X^4=-I$ ו-$X^8=I$, ולכן הסדר $8$."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזו טענה מוכיחה ש-$K$ ציקלית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "אם קיים איבר שסדרו שווה לסדר החבורה, החבורה ציקלית"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כל חבורה מסדר זוגי היא ציקלית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כל חבורה אבלית היא ציקלית"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כל חבורה מסדר חזקה של $2$ היא ציקלית"
+      }
+     ],
+     "correctId": "a",
+     "explain": "איבר מסדר $|K|=8$ יוצר את $K$. שלוש האפשרויות האחרות שגויות: $\\mathbb{Z}_2\\times\\mathbb{Z}_2$ היא אבלית ומסדר זוגי וחזקת $2$ אך אינה ציקלית."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -128,7 +571,96 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "פולינום אופייני $(1-\\lambda)\\left(\\lambda^2-3\\lambda-2x^2+2\\right)$",
+     "points": 5
+    },
+    {
+     "text": "ערכים עצמיים $1$ , $\\frac{3\\pm\\sqrt{8x^2+1}}{2}$",
+     "points": 4
+    },
+    {
+     "text": "תנאי חיוביות: $\\frac{3-\\sqrt{8x^2+1}}{2}\\ge0$ ולכן $-1\\le x\\le1$",
+     "points": 4
+    },
+    {
+     "text": "חיובית לחלוטין $-1<x<1$ ואין שלילית",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבלבל בין ״חיובית״ (אי-שלילית, $-1\\le x\\le1$) ל״חיובית לחלוטין״ ($-1<x<1$).",
+    "לשכוח שהערך העצמי $1$ תמיד חיובי, ולכן אין ערך $x$ שבו המטריצה שלילית."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $x=1$, מהו הערך העצמי הקטן ביותר?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$\\frac{3-\\sqrt{9}}{2}=0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $x$ המטריצה מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$-1<x<1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$-1\\le x\\le1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$0<x<1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$x>1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $\\frac{3-\\sqrt{8x^2+1}}{2}>0$, כלומר $x^2<1$. עבור $x=\\pm1$ הערך העצמי הקטן הוא $0$ (רק חיובית), ועבור $|x|>1$ הוא שלילי."
+    },
+    {
+     "type": "choice",
+     "prompt": "האם יש $x$ שעבורו המטריצה מוגדרת שלילית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "לא, כי הערך העצמי $1$ חיובי לכל $x$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כן, כאשר $x>1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כן, כאשר $x<-1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כן, כאשר $x=0$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הערך העצמי $1$ אינו תלוי ב-$x$, ולכן תמיד יש ערך עצמי חיובי. עבור $|x|>1$ יש ערך עצמי שלילי וגם חיובי (מטריצה לא מוגדרת)."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -141,7 +673,66 @@
    "confidence": "high",
    "part": "ג",
    "points": 5,
-   "contextId": "c3"
+   "contextId": "c3",
+   "rubric": [
+    {
+     "text": "הצבת $\\vec c=\\vec b-\\vec p$ ופירוק לפי לינאריות",
+     "points": 2
+    },
+    {
+     "text": "$\\langle\\vec p,\\vec a\\rangle=\\frac{\\langle\\vec b,\\vec a\\rangle}{\\|\\vec a\\|^2}\\langle\\vec a,\\vec a\\rangle$",
+     "points": 2
+    },
+    {
+     "text": "$\\langle\\vec a,\\vec a\\rangle=\\|\\vec a\\|^2$ והצמצום, ולכן $\\langle\\vec c,\\vec a\\rangle=0$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לכתוב $\\langle\\vec a,\\vec a\\rangle=\\|\\vec a\\|$ במקום $\\|\\vec a\\|^2$.",
+    "להניח $\\vec c\\perp\\vec a$ בלי לחשב את המכפלה הפנימית."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $\\vec a=(1,1)$ ו-$\\vec b=(3,1)$, מהו המקדם $\\dfrac{\\langle\\vec b,\\vec a\\rangle}{\\|\\vec a\\|^2}$ ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$\\frac{4}{2}=2$, ולכן $\\vec p=(2,2)$ ו-$\\vec c=(1,-1)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "באותה דוגמה, מהו $\\langle\\vec c,\\vec a\\rangle$ ?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$1\\cdot1+(-1)\\cdot1=0$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$\\langle\\vec c,\\vec a\\rangle=\\langle\\vec b-\\vec p,\\vec a\\rangle=\\langle\\vec b,\\vec a\\rangle-\\langle\\vec p,\\vec a\\rangle$",
+      "$\\langle\\vec p,\\vec a\\rangle=\\frac{\\langle\\vec b,\\vec a\\rangle}{\\|\\vec a\\|^2}\\langle\\vec a,\\vec a\\rangle$",
+      "$\\langle\\vec a,\\vec a\\rangle=\\|\\vec a\\|^2$, ולכן $\\langle\\vec p,\\vec a\\rangle=\\langle\\vec b,\\vec a\\rangle$",
+      "לכן $\\langle\\vec c,\\vec a\\rangle=\\langle\\vec b,\\vec a\\rangle-\\langle\\vec b,\\vec a\\rangle=0$"
+     ],
+     "explain": "פתיחה לפי לינאריות, חישוב המכפלה של $\\vec p$, צמצום, ואז התוצאה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$\\langle\\vec c,\\vec a\\rangle=\\langle\\vec b,\\vec a\\rangle-\\langle\\vec p,\\vec a\\rangle$",
+      "$\\langle\\vec p,\\vec a\\rangle=\\frac{\\langle\\vec b,\\vec a\\rangle}{\\|\\vec a\\|^2}\\langle\\vec a,\\vec a\\rangle$",
+      "$\\langle\\vec a,\\vec a\\rangle=\\|\\vec a\\|$",
+      "לכן $\\langle\\vec c,\\vec a\\rangle=0$"
+     ],
+     "bugIndex": 2,
+     "explain": "$\\langle\\vec a,\\vec a\\rangle=\\|\\vec a\\|^2$ ולא $\\|\\vec a\\|$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -154,7 +745,87 @@
    "confidence": "high",
    "part": "ד",
    "points": 5,
-   "contextId": "c3"
+   "contextId": "c3",
+   "rubric": [
+    {
+     "text": "$\\vec c\\perp\\vec p$ כי $\\vec p$ כפולה של $\\vec a$ ו-$\\vec c\\perp\\vec a$",
+     "points": 2
+    },
+    {
+     "text": "$\\vec b=\\vec c+\\vec p$ ופתיחת $\\|\\vec c+\\vec p\\|^2$",
+     "points": 2
+    },
+    {
+     "text": "האיבר המעורב מתאפס",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתוח $\\|\\vec c+\\vec p\\|^2=\\|\\vec c\\|^2+\\|\\vec p\\|^2$ בלי לנמק מדוע האיבר המעורב מתאפס.",
+    "לשכוח את הגורם $2$ באיבר המעורב $2\\langle\\vec c,\\vec p\\rangle$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מדוע $\\vec c\\perp\\vec p$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\vec p$ כפולה סקלרית של $\\vec a$ ו-$\\vec c\\perp\\vec a$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $\\vec p=\\vec b$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $\\|\\vec p\\|=\\|\\vec c\\|$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כי $\\vec p=\\vec 0$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$\\vec p=t\\vec a$ ולכן $\\langle\\vec c,\\vec p\\rangle=t\\langle\\vec c,\\vec a\\rangle=0$. בדוגמה $\\vec a=(1,1),\\vec b=(3,1)$: $\\vec p=(2,2)\\ne\\vec b$, $\\|\\vec p\\|=\\sqrt8\\ne\\sqrt2=\\|\\vec c\\|$ ו-$\\vec p\\ne\\vec 0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $\\vec a=(1,1)$ ו-$\\vec b=(3,1)$, מהו $\\|\\vec p\\|^2$ ?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$\\vec p=(2,2)$, ולכן $4+4=8$ (ו-$\\|\\vec c\\|^2=2$, $\\|\\vec b\\|^2=10$)."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$\\vec b=\\vec c+\\vec p$ ולכן $\\|\\vec b\\|^2=\\langle\\vec c+\\vec p,\\vec c+\\vec p\\rangle$",
+      "$=\\|\\vec c\\|^2+2\\langle\\vec c,\\vec p\\rangle+\\|\\vec p\\|^2$",
+      "$\\langle\\vec c,\\vec p\\rangle=0$ כי $\\vec c\\perp\\vec p$",
+      "לכן $\\|\\vec b\\|^2=\\|\\vec c\\|^2+\\|\\vec p\\|^2$"
+     ],
+     "explain": "הצבה, פתיחה, אפס האיבר המעורב, ותוצאה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$\\vec b=\\vec c+\\vec p$ ולכן $\\|\\vec b\\|^2=\\langle\\vec c+\\vec p,\\vec c+\\vec p\\rangle$",
+      "$=\\|\\vec c\\|^2+2\\langle\\vec c,\\vec p\\rangle+\\|\\vec p\\|^2$",
+      "מכיוון ש-$\\vec c\\perp\\vec p$ מתקיים $\\langle\\vec c,\\vec p\\rangle=\\|\\vec c\\|\\cdot\\|\\vec p\\|$",
+      "לכן $\\|\\vec b\\|^2=\\|\\vec c\\|^2+\\|\\vec p\\|^2$"
+     ],
+     "bugIndex": 2,
+     "explain": "אם $\\vec c\\perp\\vec p$ אז $\\langle\\vec c,\\vec p\\rangle=0$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -167,7 +838,65 @@
    "confidence": "high",
    "part": "א",
    "points": 15,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "סגירות",
+     "points": 3
+    },
+    {
+     "text": "אסוציאטיביות: חישוב שני האגפים והשוואתם",
+     "points": 5
+    },
+    {
+     "text": "יחידה $(0,0)$",
+     "points": 3
+    },
+    {
+     "text": "הופכי $(-a,(-1)^{1-a}b)$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את החזקה $(-1)^a$ בחישוב האסוציאטיביות: $(-1)^a(-1)^x=(-1)^{a+x}$.",
+    "לבדוק רק יחידה מצד אחד ולא לבדוק שההופכי הוא גם הופכי מימין ומשמאל."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של $(1,2)\\circ(3,4)$ ?",
+     "answer": -2,
+     "tol": 0,
+     "explain": "$2+(-1)^1\\cdot4=-2$ (והרכיב הראשון $4$)."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של ההופכי של $(1,3)$, לפי הנוסחה $(-a,(-1)^{1-a}b)$ ?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$(-1)^{0}\\cdot3=3$. בדיקה: $(1,3)\\circ(-1,3)=(0,3-3)=(0,0)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של ההופכי של $(2,5)$ ?",
+     "answer": -5,
+     "tol": 0,
+     "explain": "$(-1)^{-1}\\cdot5=-5$. בדיקה: $(2,5)\\circ(-2,-5)=(0,5-5)=(0,0)$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה בהוכחת האסוציאטיביות יש טעות?",
+     "lines": [
+      "$\\big((a,b)\\circ(x,y)\\big)\\circ(u,v)=\\left(a+x+u,\\ b+(-1)^a y+(-1)^{a+x}v\\right)$",
+      "$(a,b)\\circ\\big((x,y)\\circ(u,v)\\big)=(a,b)\\circ\\left(x+u,\\ y+(-1)^x v\\right)=\\left(a+x+u,\\ b+(-1)^a y+(-1)^x v\\right)$",
+      "הרכיבים השניים שווים, ולכן הפעולה אסוציאטיבית"
+     ],
+     "bugIndex": 1,
+     "explain": "הרכיב השני הוא $b+(-1)^a\\left(y+(-1)^x v\\right)=b+(-1)^a y+(-1)^{a+x}v$ ולא $(-1)^x v$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -181,7 +910,71 @@
    "part": "ב",
    "points": 5,
    "contextId": "c4",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "תשובה: לא אבלית",
+     "points": 1
+    },
+    {
+     "text": "חישוב $(1,1)\\circ(1,0)=(2,1)$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $(1,0)\\circ(1,1)=(2,-1)$ והשוואה",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק זוג שבו $a$ זוגי: אז $(-1)^a=1$ והאברים מתחלפים (למשל $(2,1)\\circ(2,3)$).",
+    "להסיק אבליות מכך שהרכיב הראשון קומוטטיבי."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של $(1,1)\\circ(1,0)$ ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$1+(-1)^1\\cdot0=1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של $(1,0)\\circ(1,1)$ ?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$0+(-1)^1\\cdot1=-1\\ne1$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מה מספיק כדי להוכיח שהחבורה אינה אבלית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "זוג איברים אחד שאינם מתחלפים"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "שהאיבר הניטרלי מתחלף עם כל איבר"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "שהחבורה אינסופית"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "שהאסוציאטיביות לא מתקיימת"
+      }
+     ],
+     "correctId": "a",
+     "explain": "אי-אבליות פירושה קיום זוג שאינו מתחלף. האיבר הניטרלי תמיד מתחלף, אינסופיות אינה קשורה, והאסוציאטיביות כן מתקיימת."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -194,7 +987,75 @@
    "confidence": "high",
    "part": "ג",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "התנאי $y+(-1)^xb=b+(-1)^ay$ לכל $x,y$",
+     "points": 1
+    },
+    {
+     "text": "הצבת $x=0,y=1$ ו-$a$ זוגי",
+     "points": 2
+    },
+    {
+     "text": "הצבת $x=1$ ו-$b=0$",
+     "points": 1
+    },
+    {
+     "text": "אימות והתשובה $\\{(a,0):a\\in2\\mathbb{Z}\\}$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לכתוב את התשובה כ-״$a$ זוגי ו-$x$ זוגי״: $x$ הוא המשתנה החופשי, והתנאי החסר הוא $b=0$.",
+    "לשכוח את התנאי $b=0$: האיבר $(2,1)$ אינו מתחלף עם $(1,1)$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $(-1)^a$ המתקבל מהצבת $x=0,y=1$ במשוואה $1+b=b+(-1)^a$ ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$(-1)^a=1$, ולכן $a$ זוגי."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כאשר $a$ זוגי והצבת $x=1$ נותנת $-b=b$, מהו $b$ ?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$2b=0$ ולכן $b=0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזו קבוצה היא קבוצת כל האיברים המתחלפים עם כל איבר?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\{(a,0)\\mid a\\in2\\mathbb{Z}\\}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\{(a,b)\\mid a\\in2\\mathbb{Z}\\}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\{(a,0)\\mid a\\in\\mathbb{Z}\\}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\{(0,0)\\}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "למשל $(2,1)\\circ(1,1)=(3,2)$ אך $(1,1)\\circ(2,1)=(3,0)$, ו-$(1,0)\\circ(0,1)=(1,-1)$ אך $(0,1)\\circ(1,0)=(1,1)$. האיבר $(2,0)$ מתחלף עם כולם, ולכן הקבוצה אינה רק $\\{(0,0)\\}$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -207,7 +1068,86 @@
    "confidence": "high",
    "part": "א",
    "points": 5,
-   "contextId": "c5"
+   "contextId": "c5",
+   "rubric": [
+    {
+     "text": "חישוב $P\\vec u=\\|\\vec u\\|^2\\vec u$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $P\\vec v=\\|\\vec v\\|^2\\vec v$",
+     "points": 1
+    },
+    {
+     "text": "חישוב $P\\vec w=\\vec 0=0\\cdot\\vec w$",
+     "points": 1
+    },
+    {
+     "text": "מסקנה: שלושתם וקטורים עצמיים",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שהווקטור האפס אינו וקטור עצמי, אבל $\\vec w\\ne\\vec 0$ ו-$P\\vec w=0\\cdot\\vec w$ תקין.",
+    "לא להשתמש באורתוגונליות: $\\vec v^T\\vec u=0$ היא שמאפסת את האיבר השני."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "אילו תכונות של הבסיס האורתונורמלי משתמשים בהן?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\vec u^T\\vec u=\\vec v^T\\vec v=1$ וכל מכפלה פנימית בין שני וקטורים שונים היא $0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\vec u^T\\vec u=0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\vec u^T\\vec v=1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\vec w=\\vec u+\\vec v$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "בבסיס אורתונורמלי הנורמות $1$ והווקטורים השונים ניצבים. $\\vec w$ בלתי תלוי ב-$\\vec u,\\vec v$, ולכן אינו סכומם."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי של $P$ עבור $\\vec w$ ?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$P\\vec w=\\vec u(\\vec u^T\\vec w)+\\vec v(\\vec v^T\\vec w)=\\vec 0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי של $P$ עבור $\\vec u$ (כאשר $\\|\\vec u\\|=1$) ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$P\\vec u=\\vec u(\\vec u^T\\vec u)+\\vec v(\\vec v^T\\vec u)=\\vec u$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$P\\vec u=\\vec u\\left(\\vec u^T\\vec u\\right)+\\vec v\\left(\\vec v^T\\vec u\\right)$",
+      "$\\vec u^T\\vec u=1$ ו-$\\vec v^T\\vec u=1$, ולכן $P\\vec u=\\vec u+\\vec v$",
+      "לכן $\\vec u$ אינו וקטור עצמי של $P$"
+     ],
+     "bugIndex": 1,
+     "explain": "$\\vec v^T\\vec u=0$ בבסיס אורתונורמלי, ולכן $P\\vec u=\\vec u$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -220,7 +1160,75 @@
    "confidence": "high",
    "part": "ב",
    "points": 5,
-   "contextId": "c5"
+   "contextId": "c5",
+   "rubric": [
+    {
+     "text": "$P^T=P$ (סימטריה)",
+     "points": 2
+    },
+    {
+     "text": "ערכים עצמיים $\\|\\vec u\\|^2,\\|\\vec v\\|^2,0$",
+     "points": 2
+    },
+    {
+     "text": "מסקנה: סימטרית עם ערכים עצמיים אי-שליליים, ולכן מוגדרת חיובית",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לדרוש ערכים עצמיים חיוביים ממש: ל-$P$ ערך עצמי $0$, והיא מוגדרת חיובית (אי-שלילית) בלבד.",
+    "לשכוח לבדוק סימטריה, שהיא חלק מההגדרה."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מה מראים כדי להוכיח ש-$P$ מוגדרת חיובית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "ש-$P$ סימטרית וכל ערכיה העצמיים אי-שליליים"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "ש-$P$ הפיכה"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "ש-$P$ אנטי-סימטרית"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "שכל ערכיה העצמיים שווים"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$P$ אינה הפיכה (הערך העצמי $0$), והיא סימטרית ולא אנטי-סימטרית, ויש לה ערכים עצמיים $\\|\\vec u\\|^2,\\|\\vec v\\|^2,0$ שאינם שווים."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי העקבה (trace) של $P$ כאשר $\\|\\vec u\\|=\\|\\vec v\\|=1$ ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "סכום הערכים העצמיים $1+1+0=2$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$P^T=\\left(\\vec u\\vec u^T\\right)^T+\\left(\\vec v\\vec v^T\\right)^T$",
+      "$\\left(\\vec u\\vec u^T\\right)^T=\\vec u\\vec u^T$ ובאופן דומה עבור $\\vec v$, ולכן $P^T=P$",
+      "הערכים העצמיים הם $\\|\\vec u\\|^2>0$ , $\\|\\vec v\\|^2>0$ , $0$",
+      "$P$ סימטרית עם ערכים עצמיים אי-שליליים, לכן מוגדרת חיובית"
+     ],
+     "explain": "סימטריה, ערכים עצמיים, ואז מסקנה."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -233,7 +1241,79 @@
    "confidence": "high",
    "part": "ג",
    "points": 5,
-   "contextId": "c5"
+   "contextId": "c5",
+   "rubric": [
+    {
+     "text": "כתיבת $\\vec x=a\\vec u+b\\vec v+c\\vec w$",
+     "points": 1
+    },
+    {
+     "text": "הפעלת $P$ וקבלת $a\\|\\vec u\\|^2\\vec u+b\\|\\vec v\\|^2\\vec v$",
+     "points": 2
+    },
+    {
+     "text": "אי-תלות לינארית נותנת $a=b=0$",
+     "points": 1
+    },
+    {
+     "text": "התשובה $\\vec x=c\\vec w$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לכלול את $\\vec u$ או $\\vec v$ בפתרון: $P\\vec u=\\|\\vec u\\|^2\\vec u\\ne\\vec 0$.",
+    "לשכוח שהפתרון הוא כל הכפולות של $\\vec w$ ולא רק $\\vec w$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו המימד של קבוצת הפתרונות של $P\\vec x=\\vec 0$ ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "הפתרונות הם $c\\vec w$, כלומר ישר אחד."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהי קבוצת כל $\\vec x$ המקיימים $P\\vec x=\\vec 0$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כל הכפולות של $\\vec w$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\mathrm{Sp}\\{\\vec u,\\vec v\\}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\{\\vec 0\\}$ בלבד"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\mathrm{Sp}\\{\\vec u,\\vec w\\}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$P\\vec u=\\|\\vec u\\|^2\\vec u\\ne\\vec 0$ ו-$P\\vec v\\ne\\vec 0$, ולכן אי אפשר לכלול אותם. $\\vec w$ נמצא בגרעין."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי הפתרון.",
+     "lines": [
+      "נכתוב $\\vec x=a\\vec u+b\\vec v+c\\vec w$ (בסיס של $\\mathbb{R}^3$)",
+      "$P\\vec x=aP\\vec u+bP\\vec v+cP\\vec w=a\\|\\vec u\\|^2\\vec u+b\\|\\vec v\\|^2\\vec v$",
+      "הווקטורים בלתי תלויים ולכן $a=b=0$",
+      "לכן $\\vec x=c\\vec w$ , $c\\in\\mathbb{R}$"
+     ],
+     "explain": "הצגה בבסיס, הפעלת $P$, אי-תלות, ואז התשובה."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -245,7 +1325,61 @@
    "official": true,
    "confidence": "high",
    "part": "ד",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "צמצום המשוואות: $x\\equiv2\\pmod3$ , $x\\equiv3\\pmod4$ , $x\\equiv5\\pmod7$",
+     "points": 3
+    },
+    {
+     "text": "$M=84$ ו-$M_1,M_2,M_3$",
+     "points": 2
+    },
+    {
+     "text": "הפתרונות $x_1,x_2,x_3$ של $M_ix_i\\equiv1$",
+     "points": 3
+    },
+    {
+     "text": "הרכבה ל-$x\\equiv47\\pmod{84}$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להציב את השאריות בלי לצמצם קודם: המשוואות הן $2x\\equiv1$ ו-$3x\\equiv1$ ולא $x\\equiv1$.",
+    "לשכוח את הצמצום מודולו $84$ בסוף: $299\\equiv47$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי השארית $a_1$ במערכת המצומצמת ($2x\\equiv1\\pmod3$) ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$2^{-1}\\equiv2\\pmod3$, ולכן $x\\equiv2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי השארית $a_3$ במערכת המצומצמת ($2x\\equiv3\\pmod7$) ?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$2^{-1}\\equiv4\\pmod7$, ולכן $x\\equiv12\\equiv5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_3$ , הפתרון של $12x_3\\equiv1\\pmod7$ ?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$12\\equiv5$ ו-$5\\cdot3=15\\equiv1\\pmod7$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בין $0$ ל-$83$ ?",
+     "answer": 47,
+     "tol": 0,
+     "explain": "$2\\cdot28\\cdot1+3\\cdot21\\cdot1+5\\cdot12\\cdot3=299\\equiv47\\pmod{84}$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }
