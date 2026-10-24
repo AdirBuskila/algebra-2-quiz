@@ -1,0 +1,736 @@
+{
+ "courseId": "svd",
+ "levels": [
+  {
+   "id": "C01",
+   "order": 1,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C01-Q1",
+     "question": "$A$ היא מטריצה מסדר $4\\times3$ ו-$A=USV^T$ הוא פירוק SVD שלה. מהם הגדלים של $U$, של $S$ ושל $V$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$U$ מסדר $4\\times4$, $S$ מסדר $4\\times3$, $V$ מסדר $3\\times3$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$U$ מסדר $3\\times3$, $S$ מסדר $4\\times3$, $V$ מסדר $4\\times4$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$U$ מסדר $4\\times4$, $S$ מסדר $3\\times3$, $V$ מסדר $3\\times3$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$U$ מסדר $4\\times3$, $S$ מסדר $3\\times3$, $V$ מסדר $3\\times3$"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A$ היא מטריצה מסדר $2\\times5$. כמה עמודות יש ב-$V$ בפירוק $A=USV^T$?"
+     }
+    },
+    {
+     "id": "C01-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "בפירוק SVD של מטריצה $A$ המטריצה $S$ היא $S=\\begin{pmatrix}4&0&0\\\\0&2&0\\\\0&0&0\\end{pmatrix}$. מהי הדרגה של $A$?"
+     }
+    },
+    {
+     "id": "C01-Q4",
+     "question": "איזה מהביטויים הבאים הוא הצורה הנכונה של פירוק SVD של $A$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A=U^TSV$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A=USV^T$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$A=VSU^T$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$A=USV$"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q5",
+     "question": "איזו מהמטריצות הבאות יכולה להיות המטריצה $S$ בפירוק SVD של מטריצה $A$ מסדר $2\\times3$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&0&0\\\\0&\\sqrt5&0\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}\\sqrt5&0\\\\0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}\\sqrt5&0&0\\\\0&1&0\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}\\sqrt5&0&0\\\\0&-1&0\\end{pmatrix}$"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C02",
+   "order": 2,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C02-Q1",
+     "question": "$A$ היא מטריצה מסדר $2\\times6$. מהי המטריצה הקטנה מבין $A^TA$ ו-$AA^T$, ומה גודלה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A^TA$ מסדר $2\\times2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$AA^T$ מסדר $6\\times6$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$AA^T$ מסדר $2\\times2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$A^TA$ מסדר $6\\times6$"
+      }
+     ]
+    },
+    {
+     "id": "C02-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}1&1&0\\\\0&1&1\\end{pmatrix}$. מהו סכום הערכים העצמיים של $AA^T$?"
+     }
+    },
+    {
+     "id": "C02-Q3",
+     "question": "$A$ היא מטריצה מסדר $3\\times2$ ול-$A^TA$ יש הערכים העצמיים $3$ ו-$1$. מהם שלושת הערכים העצמיים של $AA^T$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$9,\\ 1,\\ 0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\sqrt3,\\ 1,\\ 0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$3,\\ 1,\\ 1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$3,\\ 1,\\ 0$"
+      }
+     ]
+    },
+    {
+     "id": "C02-Q4",
+     "step": {
+      "type": "order",
+      "prompt": "$A$ היא מטריצה $2\\times4$, כלומר $m<n$. סדרו את שלבי בניית הפירוק בדרך הקצרה.",
+      "lines": [
+       "מוצאים ערכים עצמיים ווקטורים עצמיים מנורמלים של $AA^T$: אלה עמודות $U$ והערכים $\\sigma_i^2$",
+       "מחשבים $v_i=\\frac{1}{\\sigma_i}A^Tu_i$ לכל $\\sigma_i\\neq0$",
+       "משלימים את $V$ לבסיס אורתונורמלי של $\\mathbb{R}^4$",
+       "בונים את $S$ מסדר $2\\times4$ ובודקים ש-$USV^T=A$",
+       "בוחרים את הקטנה מבין $A^TA$ ו-$AA^T$: כאן $AA^T$, כי $m<n$"
+      ]
+     }
+    },
+    {
+     "id": "C02-Q5",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}1&0&2\\\\2&0&1\\end{pmatrix}$. מהו הערך העצמי הגדול ביותר של המטריצה $A^TA$ מסדר $3\\times3$?"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C03",
+   "order": 3,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C03-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}1&2\\\\2&1\\\\0&0\\end{pmatrix}$ ו-$A^TA=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$. מהו הערך הסינגולרי הגדול ביותר $\\sigma_1$?"
+     }
+    },
+    {
+     "id": "C03-Q2",
+     "question": "עבור אותה מטריצה $A=\\begin{pmatrix}1&2\\\\2&1\\\\0&0\\end{pmatrix}$ שערכיה העצמיים של $A^TA$ הם $9,1$: מהי $S$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&0\\\\0&3\\\\0&0\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}3&0&0\\\\0&1&0\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}9&0\\\\0&1\\\\0&0\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}3&0\\\\0&1\\\\0&0\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C03-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$ ו-$A^TA=\\begin{pmatrix}5&10\\\\10&20\\end{pmatrix}$ שערכיה העצמיים הם $25$ ו-$0$. מהי הדרגה של $A$?"
+     }
+    },
+    {
+     "id": "C03-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}1&1&0\\\\0&1&1\\end{pmatrix}$, כלומר $2\\times3$. חשבו את $\\sigma_1$ (ענו בקירוב עד שתי ספרות אחרי הנקודה)."
+     }
+    },
+    {
+     "id": "C03-Q5",
+     "step": {
+      "type": "order",
+      "prompt": "סדרו את שלבי החישוב של הערכים הסינגולריים ושל $S$.",
+      "lines": [
+       "מוצאים את הערכים העצמיים $\\lambda_i$ מהפולינום האופייני",
+       "מסדרים בסדר יורד ומוציאים שורש: $\\sigma_i=\\sqrt{\\lambda_i}$",
+       "שמים את $\\sigma_i$ על האלכסון של $S$ בגודל $m\\times n$",
+       "מחשבים את $A^TA$ (או את $AA^T$ אם היא קטנה יותר)"
+      ]
+     }
+    },
+    {
+     "id": "C03-Q6",
+     "step": {
+      "type": "findbug",
+      "prompt": "בפתרון הבא לחישוב הערכים הסינגולריים של $A=\\begin{pmatrix}1&2\\\\2&1\\\\0&0\\end{pmatrix}$ שורה אחת שגויה. איזו?",
+      "lines": [
+       "$A^TA=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$",
+       "הפולינום האופייני: $(5-\\lambda)^2-16=0$",
+       "הערכים העצמיים: $\\lambda_1=9$ ו-$\\lambda_2=1$",
+       "הערכים הסינגולריים: $\\sigma_1=9$ ו-$\\sigma_2=1$"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "C04",
+   "order": 4,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C04-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו האורך (הנורמה) של הווקטור $x=(1,2,2)$? זה הגורם שבו מחלקים כדי לנרמל אותו."
+     }
+    },
+    {
+     "id": "C04-Q2",
+     "question": "$A^TA=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$ עם הערך העצמי $\\lambda_1=9$. מהו $v_1$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac{1}{\\sqrt2}(1,-1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(1,1)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\frac{1}{\\sqrt2}(1,1)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\frac{1}{\\sqrt{41}}(4,5)$"
+      }
+     ]
+    },
+    {
+     "id": "C04-Q3",
+     "question": "ל-$A^TA=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$ הערכים העצמיים $\\lambda_1=9$ ו-$\\lambda_2=1$. איזו מהמטריצות הבאות היא $V$ תקינה בפירוק SVD (עמודות מנורמלות ובסדר המתאים לערכים הסינגולריים)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}\\begin{pmatrix}1&1\\\\-1&1\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C04-Q4",
+     "step": {
+      "type": "findbug",
+      "prompt": "בחישוב $v_2$ עבור $A^TA=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$ ו-$\\lambda_2=1$ שורה אחת שגויה. איזו?",
+      "lines": [
+       "$(A^TA-I)x=0$ נותן $\\begin{pmatrix}4&4\\\\4&4\\end{pmatrix}x=0$",
+       "כלומר $x_1+x_2=0$",
+       "הפתרון: $x=t\\,(1,1)$",
+       "מנרמלים: $v_2=\\frac1{\\sqrt2}(1,-1)$"
+      ]
+     }
+    },
+    {
+     "id": "C04-Q5",
+     "question": "$A^TA=\\begin{pmatrix}2&1&1\\\\1&2&1\\\\1&1&2\\end{pmatrix}$ עם הערכים העצמיים $4,1,1$, והווקטור $v_1=\\frac1{\\sqrt3}(1,1,1)$. הערך $1$ כפול, והמרחב העצמי שלו הוא $x_1+x_2+x_3=0$. איזה זוג יכול לשמש כ-$v_2,v_3$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,-1,0)$ ו-$\\frac1{\\sqrt2}(1,0,-1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,-1,0)$ ו-$\\frac1{\\sqrt3}(1,1,1)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,-1,0)$ ו-$\\frac1{\\sqrt6}(1,1,-2)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(1,-1,0)$ ו-$(1,1,-2)$"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C05",
+   "order": 5,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C05-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}1&2\\\\2&1\\\\0&0\\end{pmatrix}$, $\\sigma_1=3$ ו-$v_1=\\frac1{\\sqrt2}(1,1)$. מהו האורך $\\|Av_1\\|$ ?"
+     }
+    },
+    {
+     "id": "C05-Q2",
+     "question": "באותה מטריצה $A=\\begin{pmatrix}1&2\\\\2&1\\\\0&0\\end{pmatrix}$, עם $\\sigma_1=3$ ו-$v_1=\\frac1{\\sqrt2}(1,1)$: מהו $u_1$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(3,3,0)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,-1,0)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\frac13(1,1,0)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,1,0)$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q3",
+     "question": "באותה מטריצה, עם $\\sigma_2=1$ ו-$v_2=\\frac1{\\sqrt2}(1,-1)$ שנבחר מראש: מהו $u_2$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,-1,0)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(-1,1,0)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,1,0)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(-3,3,0)$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q4",
+     "question": "מדוע מחשבים את $u_i$ מהנוסחה $u_i=\\frac1{\\sigma_i}Av_i$ ולא מוצאים את העמודות של $U$ בפירוק נפרד של $AA^T$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי ל-$AA^T$ אין וקטורים עצמיים"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי הוקטורים העצמיים של $AA^T$ נקבעים עד כדי סימן, ובחירה בלתי תלויה עלולה לתת $Av_i=-\\sigma_iu_i$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי ל-$AA^T$ ול-$A^TA$ ערכים עצמיים שונים מאפס שונים זה מזה"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כי $u_i$ חייב להיות שווה ל-$v_i$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q5",
+     "step": {
+      "type": "order",
+      "prompt": "סדרו את שלבי החישוב של העמודה $u_i$ לערך סינגולרי $\\sigma_i\\ne0$.",
+      "lines": [
+       "מחשבים את המכפלה $Av_i$",
+       "מחלקים ב-$\\sigma_i$: $u_i=\\frac{1}{\\sigma_i}Av_i$",
+       "בודקים ש-$\\|u_i\\|=1$ ושה-$u_i$ ניצבים זה לזה",
+       "לוקחים את $v_i$ ואת $\\sigma_i\\neq0$ שחושבו קודם"
+      ]
+     }
+    },
+    {
+     "id": "C05-Q6",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}1&0\\\\1&1\\\\0&1\\end{pmatrix}$ ידוע ש-$\\sigma_1=\\sqrt3$ ו-$v_1=\\frac1{\\sqrt2}(1,1)$. מהי הקואורדינטה השנייה של $u_1$ ? (ענו בקירוב עד שתי ספרות אחרי הנקודה)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C06",
+   "order": 6,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C06-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A$ היא מטריצה מסדר $4\\times2$ מדרגה 2. כמה עמודות חסרות ב-$U$ אחרי שחישבנו את $u_1,u_2$ מהנוסחה?"
+     }
+    },
+    {
+     "id": "C06-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "נתון $a=(1,1,0)$ ו-$b=(-1,1,0)$. המכפלה הווקטורית $a\\times b$ היא $(p,q,s)$. מהו $s$ ?"
+     }
+    },
+    {
+     "id": "C06-Q3",
+     "question": "$m=3$ ו-$u_1=\\frac1{\\sqrt2}(1,1,0)$, $u_2=\\frac1{\\sqrt2}(-1,1,0)$. איזה מהווקטורים הבאים יכול לשמש כ-$u_3$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt3}(1,1,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(0,0,2)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(1,0,0)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(0,0,1)$"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q4",
+     "question": "$A=\\begin{pmatrix}1&0&2\\\\2&0&1\\end{pmatrix}$ מדרגה 2, ו-$V$ כבר כוללת את $v_1=\\frac1{\\sqrt2}(1,0,1)$ ואת $v_2=\\frac1{\\sqrt2}(-1,0,1)$. איזה וקטור יכול להיות $v_3$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(0,1,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(1,0,0)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(0,0,1)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(0,1,0)$"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q5",
+     "question": "$A=\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$ מדרגה 1, עם $\\sigma_1=5$, $\\sigma_2=0$ ו-$u_1=\\frac1{\\sqrt5}(1,2)$. איזה וקטור יכול להיות $u_2$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt5}(2,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt5}(1,2)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(-2,1)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt5}(-2,1)$"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q6",
+     "step": {
+      "type": "order",
+      "prompt": "$A$ היא $3\\times2$ מדרגה 2. סדרו את שלבי הבנייה של $U$.",
+      "lines": [
+       "לוקחים מכפלה וקטורית של $u_1$ ו-$u_2$, כי חסרה עמודה אחת ב-$\\mathbb{R}^3$",
+       "מנרמלים את תוצאת המכפלה הווקטורית לאורך 1",
+       "בודקים ש-$U$ אורתוגונלית: $U^TU=I$",
+       "מחשבים $u_i=\\frac1{\\sigma_i}Av_i$ לשני הערכים הסינגולריים השונים מאפס"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "C07",
+   "order": 7,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C07-Q1",
+     "question": "נתון פירוק תקין $A=USV^T$ של $A=\\begin{pmatrix}1&2\\\\2&1\\\\0&0\\end{pmatrix}$ עם $\\sigma_1=3$, $\\sigma_2=1$. איזה שינוי משאיר אותו פירוק תקין של אותה $A$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "מחליפים את $u_1$ ב-$-u_1$ בלבד"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "מחליפים את $v_2$ ב-$2v_2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "מחליפים את $u_1$ ב-$-u_1$ וגם את $v_1$ ב-$-v_1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "מחליפים את $\\sigma_1$ ו-$\\sigma_2$ ב-$S$ בלבד, ו-$U,V$ נשארות"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q2",
+     "question": "$A=\\begin{pmatrix}2&0\\\\0&1\\end{pmatrix}$. איזה פירוק הוא פירוק SVD תקין של $A$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$U=I,\\ S=\\begin{pmatrix}1&0\\\\0&2\\end{pmatrix},\\ V=I$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$U=-I,\\ S=\\begin{pmatrix}2&0\\\\0&1\\end{pmatrix},\\ V=I$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$U=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix},\\ S=\\begin{pmatrix}2&0\\\\0&1\\end{pmatrix},\\ V=I$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$U=I,\\ S=\\begin{pmatrix}2&0\\\\0&1\\end{pmatrix},\\ V=I$"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q3",
+     "step": {
+      "type": "findbug",
+      "prompt": "$A=\\begin{pmatrix}1&1\\\\0&1\\\\1&0\\end{pmatrix}$ עם $v_1=\\frac1{\\sqrt2}(1,1)$, $v_2=\\frac1{\\sqrt2}(1,-1)$, $\\sigma_1=\\sqrt3$, $\\sigma_2=1$, $u_1=\\frac1{\\sqrt6}(2,1,1)$, $u_2=\\frac1{\\sqrt2}(0,-1,1)$. בבדיקת $Av_i=\\sigma_iu_i$ שורה אחת שגויה. איזו?",
+      "lines": [
+       "$Av_1=\\frac1{\\sqrt2}(2,1,1)$",
+       "$\\sigma_1u_1=\\sqrt3\\cdot\\frac1{\\sqrt6}(2,1,1)=\\frac1{\\sqrt2}(2,1,1)$",
+       "$Av_2=\\frac1{\\sqrt2}(0,-1,1)$",
+       "$\\sigma_2u_2=1\\cdot\\frac1{\\sqrt2}(0,1,-1)$"
+      ]
+     }
+    },
+    {
+     "id": "C07-Q4",
+     "question": "שני סטודנטים פירקו את אותה מטריצה, קיבלו שתי $U$ ושתי $V$ שונות (בסימנים של עמודה אחת), ושניהם בדקו ש-$USV^T=A$. מה נכון?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "לפחות אחד מהם טעה, כי פירוק SVD יחיד"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "שניהם יכולים להיות צודקים, כי פירוק SVD אינו יחיד (למשל הפיכת סימן של $u_i$ ושל $v_i$ יחד)"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "רק מי שהכניסות בעמודה הראשונה של $U$ אצלו חיוביות צודק"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "אי אפשר, כי הערכים הסינגולריים שלהם בהכרח שונים זה מזה"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q5",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}3&1\\\\1&3\\\\0&0\\end{pmatrix}$. מהו הסכום $\\sigma_1^2+\\sigma_2^2$ ? (בדיקת בטחון, בלי למצוא את הפירוק)"
+     }
+    },
+    {
+     "id": "bank:25A-B-Q1b",
+     "bankId": "25A-B-Q1b"
+    }
+   ]
+  },
+  {
+   "id": "C08",
+   "order": 8,
+   "boss": true,
+   "questions": [
+    {
+     "id": "bank:23A-B-Q5a",
+     "bankId": "23A-B-Q5a"
+    },
+    {
+     "id": "bank:23B-A-Q4a",
+     "bankId": "23B-A-Q4a"
+    },
+    {
+     "id": "bank:24A-A-Q5a",
+     "bankId": "24A-A-Q5a"
+    },
+    {
+     "id": "bank:24B-B-Q5a",
+     "bankId": "24B-B-Q5a"
+    },
+    {
+     "id": "bank:26B-A-Q5c",
+     "bankId": "26B-A-Q5c"
+    }
+   ]
+  }
+ ]
+}
