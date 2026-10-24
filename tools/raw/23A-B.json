@@ -33,7 +33,62 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "בניית המערכת הנורמלית $A^TA\\vec x=A^T\\vec b$",
+     "points": 3
+    },
+    {
+     "text": "חישוב $A^TA=\\begin{pmatrix}6&6\\\\6&42\\end{pmatrix}$",
+     "points": 4
+    },
+    {
+     "text": "חישוב $A^T\\vec b=\\begin{pmatrix}6\\\\-6\\end{pmatrix}$",
+     "points": 4
+    },
+    {
+     "text": "פתרון המערכת וקבלת $m=\\frac43,\\ n=-\\frac13$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לחשב $AA^T$ במקום $A^TA$ (מטריצה $4\\times4$ במקום $2\\times2$).",
+    "טעות סימן בחישוב המכפלה $A^T\\vec b$, בעיקר ברכיבים של $-4$ ושל $-1$.",
+    "לפתור את $A\\vec x=\\vec b$ ישירות, אף שהמערכת אינה פתירה."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר בשורה 2 ועמודה 2 של $A^TA$ (סכום ריבועי העמודה השנייה של $A$)?",
+     "answer": 42,
+     "tol": 0.001,
+     "explain": "$(-2)^2+2^2+3^2+5^2=4+4+9+25=42$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של $A^T\\vec b$?",
+     "answer": -6,
+     "tol": 0.001,
+     "explain": "$-2\\cdot3+2\\cdot1+3\\cdot(-4)+5\\cdot2=-6+2-12+10=-6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו את המערכת הנורמלית. מהו $n$?",
+     "answer": -0.3333333333333333,
+     "tol": 0.002,
+     "explain": "מהמשוואות $m+n=1$ ו-$m+7n=-1$ מקבלים $6n=-2$, כלומר $n=-\\frac13$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $m$?",
+     "answer": 1.3333333333333333,
+     "tol": 0.002,
+     "explain": "$m=1-n=\\frac43$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -45,7 +100,85 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בחירת הוקטורים $\\vec u,\\vec v$ (השורשים של $\\ln k$ בסדר ישר והפוך)",
+     "points": 4
+    },
+    {
+     "text": "חישוב $\\vec u\\cdot\\vec v$ וזיהויו עם הסכום הנתון",
+     "points": 2
+    },
+    {
+     "text": "חישוב $\\|\\vec u\\|^2=\\|\\vec v\\|^2=\\ln(n!)$",
+     "points": 2
+    },
+    {
+     "text": "הצבה באי-שוויון קושי-שוורץ וקבלת הטענה",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבחור את $\\vec v$ באותו סדר כמו $\\vec u$: אז המכפלה הפנימית היא $\\sum\\ln k$ ולא הסכום הנתון.",
+    "לשכוח שהנורמה בריבוע של $\\vec u$ היא סכום של $\\ln k$, ולהסיק $\\ln(n!)$ רק מ-$\\ln1+\\dots+\\ln n$.",
+    "להפעיל קושי-שוורץ בלי לעבור לשורשים, ולא לקבל את הביטוי $\\sqrt{\\ln k\\cdot\\ln(n-k+1)}$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזה זוג וקטורים מקיים שהמכפלה הפנימית $\\vec u\\cdot\\vec v$ שווה לסכום $\\sum_{k=1}^{n}\\sqrt{\\ln k\\cdot\\ln(n-k+1)}$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\vec u=\\left(\\sqrt{\\ln k}\\right)_{k=1}^n$ ו-$\\vec v=\\vec u$"
+      },
+      {
+       "id": "b",
+       "value": "$\\vec u=\\left(\\sqrt{\\ln k}\\right)_{k=1}^n$ ו-$\\vec v=\\left(\\sqrt{\\ln(n-k+1)}\\right)_{k=1}^n$ (אותו וקטור בסדר הפוך)"
+      },
+      {
+       "id": "c",
+       "value": "$\\vec u=\\left(\\ln k\\right)_{k=1}^n$ ו-$\\vec v=\\left(\\ln(n-k+1)\\right)_{k=1}^n$"
+      },
+      {
+       "id": "d",
+       "value": "$\\vec u=\\left(\\sqrt{\\ln k}\\right)_{k=1}^n$ ו-$\\vec v=(1,1,\\dots,1)$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "רק הבחירה הראשונה נותנת בכל מקום $k$ את $\\sqrt{\\ln k}\\cdot\\sqrt{\\ln(n-k+1)}$. השנייה נותנת $\\sum\\ln k$, השלישית נותנת $\\sum\\ln k\\cdot\\ln(n-k+1)$ בלי שורש והרביעית נותנת $\\sum\\sqrt{\\ln k}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=3$, מהו הסכום $\\sum_{k=1}^{3}\\sqrt{\\ln k\\cdot\\ln(4-k)}$?",
+     "answer": 0.693147,
+     "tol": 0.001,
+     "explain": "האיבר הראשון והשלישי מכילים $\\ln1=0$, והאמצעי הוא $\\sqrt{\\ln2\\cdot\\ln2}=\\ln2\\approx0.693$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=3$, מהו $\\|\\vec u\\|^2=\\ln1+\\ln2+\\ln3$?",
+     "answer": 1.791759,
+     "tol": 0.001,
+     "explain": "$\\ln(1\\cdot2\\cdot3)=\\ln6\\approx1.792$, כלומר $\\ln(n!)$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בהוכחה הבאה שורה אחת שונתה כך שהיא שגויה. מצאו אותה.",
+     "lines": [
+      "נבחר $\\vec u=\\left(\\sqrt{\\ln1},\\dots,\\sqrt{\\ln n}\\right)$ ו-$\\vec v=\\left(\\sqrt{\\ln n},\\dots,\\sqrt{\\ln1}\\right)$.",
+      "$\\vec u\\cdot\\vec v=\\sum_{k=1}^n\\sqrt{\\ln k\\cdot\\ln(n-k+1)}$.",
+      "$\\|\\vec u\\|^2=\\|\\vec v\\|^2=\\ln1+\\ln2+\\dots+\\ln n=\\ln(n!)$.",
+      "לפי קושי-שוורץ $|\\vec u\\cdot\\vec v|\\ge\\|\\vec u\\|\\cdot\\|\\vec v\\|$.",
+      "לכן $\\sum_{k=1}^n\\sqrt{\\ln k\\cdot\\ln(n-k+1)}\\le\\ln(n!)$."
+     ],
+     "bugIndex": 3,
+     "explain": "קושי-שוורץ הוא $|\\vec u\\cdot\\vec v|\\le\\|\\vec u\\|\\cdot\\|\\vec v\\|$ ולא $\\ge$; עם $\\ge$ אי אפשר להגיע לטענה."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -58,7 +191,62 @@
    "confidence": "high",
    "part": "א",
    "points": 15,
-   "contextId": "c2a"
+   "contextId": "c2a",
+   "rubric": [
+    {
+     "text": "גרם-שמידט: $e_1=\\frac1{\\sqrt2}$ מחישוב $\\|1\\|^2=2$",
+     "points": 3
+    },
+    {
+     "text": "$e_2=\\sqrt6\\left(|x|-\\frac12\\right)$ מחישוב ההיטל על $e_1$ והנורמה $\\frac1{\\sqrt6}$",
+     "points": 5
+    },
+    {
+     "text": "נוסחת ההיטל $\\mathrm{Proj}_W(x^2)=\\sum\\langle x^2,e_i\\rangle e_i$",
+     "points": 3
+    },
+    {
+     "text": "חישוב האינטגרלים וקבלת $|x|-\\frac16$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשתמש ב-$1$ וב-$|x|$ כאילו הם אורתוגונליים: $\\langle1,|x|\\rangle=1\\ne0$.",
+    "לחשב את האינטגרל של $|x|$ בלי לפצל ל-$[-1,0]$ ול-$[0,1]$ ולקבל $0$ במקום $1$.",
+    "לשכוח לנרמל את $e_2$, כלומר להשתמש בנוסחת ההיטל בלי חלוקה בנורמה בריבוע."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|1\\|^2=\\int_{-1}^{1}1\\,dx$ במכפלה הנתונה?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "האינטגרל של $1$ על קטע באורך $2$ הוא $2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\dfrac{\\langle|x|,1\\rangle}{\\|1\\|^2}$, כלומר המקדם שמחסירים מ-$|x|$ בגרם-שמידט?",
+     "answer": 0.5,
+     "tol": 0.001,
+     "explain": "$\\int_{-1}^{1}|x|\\,dx=1$, וחילוק ב-$2$ נותן $\\frac12$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\left\\||x|-\\frac12\\right\\|^2=\\int_{-1}^{1}\\left(|x|-\\frac12\\right)^2dx$?",
+     "answer": 0.16666666666666666,
+     "tol": 0.0005,
+     "explain": "$2\\int_0^1\\left(x-\\frac12\\right)^2dx=2\\cdot\\frac1{12}=\\frac16$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "ההיטל הוא $|x|+c$ עבור קבוע $c$. מהו $c$?",
+     "answer": -0.16666666666666666,
+     "tol": 0.0005,
+     "explain": "ההיטל הוא $\\frac13+6\\cdot\\frac16\\left(|x|-\\frac12\\right)=|x|-\\frac16$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -71,7 +259,51 @@
    "confidence": "high",
    "part": "ב",
    "points": 10,
-   "contextId": "c2b"
+   "contextId": "c2b",
+   "rubric": [
+    {
+     "text": "מספר האפשרויות ל-$c$: כל איבר של $\\mathbb{Z}_5$, כלומר $5$",
+     "points": 3
+    },
+    {
+     "text": "מספר הזוגות $(a,b)$ עם $ab\\ne0$: מורידים את אלו עם $a=0$ או $b=0$, ונשארים עם $4\\cdot4=16$",
+     "points": 5
+    },
+    {
+     "text": "עקרון הכפל: $|H|=5\\cdot16=80$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לדרוש גם $c\\ne0$, אף שהתנאי הוא רק $ab\\ne0$.",
+    "לספור $5\\cdot5\\cdot5=125$ ולשכוח את התנאי $ab\\ne0$.",
+    "להחסיר רק את הזוגות עם $a=0$ ולשכוח את אלו עם $b=0$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה ערכים אפשריים יש ל-$c\\in\\mathbb{Z}_5$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "אין תנאי על $c$, ולכן כל $5$ הערכים $0,1,2,3,4$ מותרים."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה זוגות $(a,b)\\in\\mathbb{Z}_5^2$ מקיימים $ab\\ne0$?",
+     "answer": 16,
+     "tol": 0,
+     "explain": "ב-$\\mathbb{Z}_5$ המכפלה מתאפסת רק כש-$a=0$ או $b=0$, ולכן $a,b\\in\\{1,2,3,4\\}$: $4\\cdot4=16$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $|H|$?",
+     "answer": 80,
+     "tol": 0,
+     "explain": "$5\\cdot16=80$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -83,7 +315,66 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 18
+   "points": 18,
+   "rubric": [
+    {
+     "text": "פולינום אופייני $(x-2)^2(x-5)$ והערכים העצמיים $5,2,2$",
+     "points": 5
+    },
+    {
+     "text": "וקטור עצמי $(1,1,1)$ עבור $\\lambda=5$",
+     "points": 3
+    },
+    {
+     "text": "שני וקטורים עצמיים אורתוגונליים עבור $\\lambda=2$: $(-1,1,0)$ ו-$(1,1,-2)$",
+     "points": 5
+    },
+    {
+     "text": "נרמול הוקטורים",
+     "points": 2
+    },
+    {
+     "text": "כתיבת $P$ אורתוגונלית ו-$D$ אלכסונית עם $A=PDP^{-1}$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבחור שני וקטורים עצמיים של $\\lambda=2$ שאינם ניצבים זה לזה, ואז $P$ אינה אורתוגונלית.",
+    "לשכוח לנרמל את העמודות של $P$.",
+    "לרשום את $D$ בסדר שאינו תואם את סדר העמודות של $P$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\det A$ (המכפלה של הערכים העצמיים)?",
+     "answer": 20,
+     "tol": 0,
+     "explain": "הערכים העצמיים הם $5,2,2$ והמכפלה שלהם היא $20$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי של הוקטור $(1,1,1)$? (סכום כל שורה של $A$ הוא $5$)",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$A(1,1,1)^T=(5,5,5)^T$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו המימד של המרחב העצמי של $\\lambda=2$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "לכל שורות $A-2I$ אותה שורה $(1,1,1)$, לכן דרגתה $1$ והגרעין שלה ממימד $2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מצאנו $(-1,1,0)$. הוקטור $(1,1,z)$ שייך למרחב העצמי של $\\lambda=2$ (סכום הרכיבים $0$) וניצב לו. מהו $z$?",
+     "answer": -2,
+     "tol": 0,
+     "explain": "$1+1+z=0$ נותן $z=-2$, והמכפלה הפנימית $-1+1+0=0$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -95,7 +386,84 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 7
+   "points": 7,
+   "rubric": [
+    {
+     "text": "מעבר ל-$\\frac14\\left(\\langle u+v,u+v\\rangle-\\langle u-v,u-v\\rangle\\right)$",
+     "points": 2
+    },
+    {
+     "text": "פתיחה לפי בילינאריות וסימטריה של שני הביטויים",
+     "points": 3
+    },
+    {
+     "text": "חיסור וחילוק ב-$4$ וקבלת $\\langle u,v\\rangle$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשתמש בסימטריה $\\langle u,v\\rangle=\\langle v,u\\rangle$ בלי לציין שהמרחב ממשי.",
+    "טעות סימן בפתיחת $\\|u-v\\|^2$ (המכפלה המעורבת היא $-2\\langle u,v\\rangle$).",
+    "לחלק ב-$2$ במקום ב-$4$ בסוף."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "באיזו תכונה משתמשים כדי לאחד את $\\langle u,v\\rangle+\\langle v,u\\rangle$ ל-$2\\langle u,v\\rangle$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "חיוביות: $\\langle u,u\\rangle>0$ עבור $u\\ne0$"
+      },
+      {
+       "id": "b",
+       "value": "אי-שוויון קושי-שוורץ"
+      },
+      {
+       "id": "c",
+       "value": "סימטריה של המכפלה הפנימית הממשית: $\\langle u,v\\rangle=\\langle v,u\\rangle$"
+      },
+      {
+       "id": "d",
+       "value": "אי-שוויון המשולש"
+      }
+     ],
+     "correctId": "c",
+     "explain": "רק הסימטריה מאפשרת להחליף את סדר הוקטורים. שלוש האחרות הן תכונת חיוביות ושני אי-שוויונות, ואינן נותנות שוויון בין שני הביטויים."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$\\|u\\pm v\\|^2=\\langle u\\pm v,u\\pm v\\rangle$, ולכן אגף ימין הוא $\\frac14\\left(\\langle u+v,u+v\\rangle-\\langle u-v,u-v\\rangle\\right)$.",
+      "פותחים את שתי המכפלות לפי בילינאריות וסימטריה: $\\langle u,u\\rangle+2\\langle u,v\\rangle+\\langle v,v\\rangle$ ו-$\\langle u,u\\rangle-2\\langle u,v\\rangle+\\langle v,v\\rangle$.",
+      "מחסרים: נשאר $4\\langle u,v\\rangle$ ואיברי $\\langle u,u\\rangle,\\langle v,v\\rangle$ מצטמצמים.",
+      "מחלקים ב-$4$ ומקבלים $\\langle u,v\\rangle$, כנדרש."
+     ],
+     "explain": "כל שלב נשען על הקודם: קודם מזהים נורמה כמכפלה פנימית, אחר כך פותחים, מחסרים ומחלקים."
+    },
+    {
+     "type": "numeric",
+     "prompt": "בדקו על $u=(1,2)$ ו-$v=(3,-1)$ במכפלה הפנימית הרגילה: מהו $\\frac14\\left(\\|u+v\\|^2-\\|u-v\\|^2\\right)$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$\\|(4,1)\\|^2=17$ ו-$\\|(-2,3)\\|^2=13$, ו-$\\frac14(17-13)=1=1\\cdot3+2\\cdot(-1)$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
+     "lines": [
+      "$\\|u+v\\|^2=\\langle u,u\\rangle+2\\langle u,v\\rangle+\\langle v,v\\rangle$.",
+      "$\\|u-v\\|^2=\\langle u,u\\rangle-2\\langle u,v\\rangle+\\langle v,v\\rangle$.",
+      "$\\|u+v\\|^2-\\|u-v\\|^2=2\\langle u,v\\rangle$.",
+      "לכן $\\frac14\\left(\\|u+v\\|^2-\\|u-v\\|^2\\right)=\\langle u,v\\rangle$."
+     ],
+     "bugIndex": 2,
+     "explain": "ההפרש הוא $\\left(2\\langle u,v\\rangle\\right)-\\left(-2\\langle u,v\\rangle\\right)=4\\langle u,v\\rangle$, ולא $2\\langle u,v\\rangle$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -108,7 +476,81 @@
    "confidence": "high",
    "part": "א",
    "points": 15,
-   "contextId": "c4a"
+   "contextId": "c4a",
+   "rubric": [
+    {
+     "text": "חישוב $c*b=\\left((a*b)*a\\right)*b=(a*b)*(a*b)$ באסוציאטיביות",
+     "points": 5
+    },
+    {
+     "text": "שימוש בתכונה $x*x=e$ עבור $x=a*b$ וקבלת $c*b=e$",
+     "points": 3
+    },
+    {
+     "text": "$c=c*e=c*(c*b)=(c*c)*b$ באסוציאטיביות",
+     "points": 4
+    },
+    {
+     "text": "$(c*c)*b=e*b=b$ ולכן $c=b$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להניח שהפעולה קומוטטיבית; היא לא נתונה, ולכן אסור להחליף את הסדר של $a$ ו-$b$.",
+    "להפעיל את $x*x=e$ על איברים שאינם זהים, ולא לזהות שב-$(a*b)*(a*b)$ מתקיים $x=a*b$.",
+    "לשכוח את השלב $c=c*e$ שמאפשר להציב $e=c*b$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "אילו שני איברים זהים ב-$c*b=\\left((a*b)*a\\right)*b$, אחרי שינוי הסוגריים באסוציאטיביות, כך שאפשר להפעיל את התכונה $x*x=e$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$a$ ו-$a$"
+      },
+      {
+       "id": "b",
+       "value": "$b$ ו-$b$"
+      },
+      {
+       "id": "c",
+       "value": "$c$ ו-$c$"
+      },
+      {
+       "id": "d",
+       "value": "$a*b$ ו-$a*b$"
+      }
+     ],
+     "correctId": "d",
+     "explain": "$\\left((a*b)*a\\right)*b=(a*b)*(a*b)$, כלומר $x*x$ עבור $x=a*b$. בשאר האפשרויות אין שני גורמים צמודים זהים."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה ש-$c=b$.",
+     "lines": [
+      "$c*b=\\left((a*b)*a\\right)*b=(a*b)*(a*b)$, באסוציאטיביות.",
+      "$(a*b)*(a*b)=e$, כי $x*x=e$ לכל $x$. לכן $c*b=e$.",
+      "$c=c*e=c*(c*b)$, לפי הנטרלי והשלב הקודם.",
+      "$c*(c*b)=(c*c)*b=e*b=b$, באסוציאטיביות, בתכונה $x*x=e$ ובנטרלי."
+     ],
+     "explain": "השלב השני נשען על הראשון, השלישי על השני (הצבת $e=c*b$), והרביעי על השלישי."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
+     "lines": [
+      "$c*b=\\left((a*b)*a\\right)*b=(a*b)*(a*b)$.",
+      "$(a*b)*(a*b)=a*b$, לפי התכונה $x*x=e$.",
+      "$c=c*e=c*(c*b)$.",
+      "$c*(c*b)=(c*c)*b=e*b=b$."
+     ],
+     "bugIndex": 1,
+     "explain": "התכונה היא $x*x=e$ ולא $x*x=x$; המשוואה $x*x=x$ מתקיימת רק עבור $x=e$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -120,7 +562,79 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "פתיחה: $\\vec x^TB\\vec x=4a^2+10ab+6b^2$",
+     "points": 3
+    },
+    {
+     "text": "הוצאת $2b^2$ ומעבר לאי-שוויון $2t^2+5t+3<0$ עם $t=\\frac ab$",
+     "points": 3
+    },
+    {
+     "text": "פתרון: $-1.5<t<-1$",
+     "points": 2
+    },
+    {
+     "text": "בחירת $a,b$ מתאימים (למשל $-5,4$) ובדיקה שהערך שלילי",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להסיק ש-$B$ חיובית מכך שהאלכסון חיובי: ל-$B$ דטרמיננטה $-1$, ולכן יש לה ערך עצמי שלילי.",
+    "לבחור $a,b$ חיוביים, שנותנים תמיד ערך חיובי.",
+    "שגיאה בפתיחה: $\\vec x^TB\\vec x$ כולל את $2\\cdot5ab=10ab$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\det B$ עבור $B=\\begin{pmatrix}4&5\\\\5&6\\end{pmatrix}$?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$4\\cdot6-5\\cdot5=-1<0$, ולכן $B$ אינה מוגדרת חיובית וקיים $\\vec x$ כנדרש."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $2t^2+5t+3<0$, מהו השורש הקטן יותר של $2t^2+5t+3$?",
+     "answer": -1.5,
+     "tol": 0,
+     "explain": "השורשים הם $t=\\frac{-5\\pm1}{4}$, כלומר $-1.5$ ו-$-1$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו ערכי $t=\\frac ab$ מתקיים $2t^2+5t+3<0$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$-1.5<t<-1$"
+      },
+      {
+       "id": "b",
+       "value": "$t<-1.5$ או $t>-1$"
+      },
+      {
+       "id": "c",
+       "value": "$t>0$"
+      },
+      {
+       "id": "d",
+       "value": "$-1<t<1.5$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "פרבולה פתוחה כלפי מעלה שלילית בין שורשיה, ולכן בקטע בין $-1.5$ ל-$-1$. בשאר הקטעים הערך אי-שלילי."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=-5,\\ b=4$, מהו $4a^2+10ab+6b^2$?",
+     "answer": -4,
+     "tol": 0,
+     "explain": "$100-200+96=-4$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -132,7 +646,83 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 18
+   "points": 18,
+   "rubric": [
+    {
+     "text": "חישוב $W=AA^T$ וערכיו העצמיים $25,1,0$",
+     "points": 4
+    },
+    {
+     "text": "הערכים הסינגולריים $\\sigma_1=5,\\ \\sigma_2=1$ וכתיבת $\\Sigma$",
+     "points": 3
+    },
+    {
+     "text": "עמודות $U$: הוקטורים העצמיים המנורמלים של $AA^T$",
+     "points": 4
+    },
+    {
+     "text": "עמודות $V$ לפי $\\vec v_i=\\frac1{\\sigma_i}A^T\\vec u_i$",
+     "points": 4
+    },
+    {
+     "text": "כתיבת התוצאה $A=U\\Sigma V^T$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשתמש ב-$A^TA$ כדי למצוא את $U$; המימדים של $U$ ($3\\times3$) מתאימים רק ל-$AA^T$.",
+    "לרשום את הערכים העצמיים במקום הערכים הסינגולריים, כלומר לשכוח את השורש.",
+    "לבחור סימנים שרירותיים ל-$\\vec v_i$ במקום לחשב אותם מ-$\\vec u_i$, ואז $A\\ne U\\Sigma V^T$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מהי המטריצה שהוקטורים העצמיים המנורמלים שלה הם העמודות של $U$ (מטריצה $3\\times3$)?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$AA^T$"
+      },
+      {
+       "id": "b",
+       "value": "$A^TA$"
+      },
+      {
+       "id": "c",
+       "value": "$A+A^T$"
+      },
+      {
+       "id": "d",
+       "value": "$A^{-1}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$AA^T$ היא $3\\times3$ כמו $U$. $A^TA$ היא $2\\times2$ (נותנת את $V$), ואילו ל-$A+A^T$ ול-$A^{-1}$ אין משמעות כי $A$ אינה ריבועית."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הגדול ביותר של $AA^T$?",
+     "answer": 25,
+     "tol": 0,
+     "explain": "$A^TA=\\begin{pmatrix}1&0\\\\0&25\\end{pmatrix}$ ול-$AA^T$ אותם ערכים עצמיים השונים מאפס: $25,1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי השני $\\sigma_2$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$\\sigma_2=\\sqrt1=1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "נתון $\\vec v_1=\\begin{pmatrix}0\\\\1\\end{pmatrix}$. מהו הרכיב השלישי של $\\vec u_1=\\frac1{\\sigma_1}A\\vec v_1$?",
+     "answer": 0.8,
+     "tol": 0.0005,
+     "explain": "$A\\vec v_1=(0,3,4)^T$ ולכן $\\vec u_1=\\frac15(0,3,4)^T=(0,0.6,0.8)^T$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -144,7 +734,58 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 7
+   "points": 7,
+   "rubric": [
+    {
+     "text": "סימון $m=140$ וחישוב $M_1=28,\\ M_2=20,\\ M_3=35$",
+     "points": 2
+    },
+    {
+     "text": "חישוב ההופכיים $x_1=2,\\ x_2=6,\\ x_3=3$",
+     "points": 3
+    },
+    {
+     "text": "הצבה בנוסחה והקטנה מודולו $140$: $x\\equiv94$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לחשב את ההופכי $x_i$ מודולו $m$ ולא מודולו $m_i$.",
+    "טעות בחישוב $M_i$, כך ש-$M_ix_i$ אינו $1$ מודולו $m_i$.",
+    "לשכוח להקטין את הסכום $794$ מודולו $140$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $M_1=\\dfrac{m}{m_1}$ עבור $m=5\\cdot7\\cdot4=140$ ו-$m_1=5$?",
+     "answer": 28,
+     "tol": 0,
+     "explain": "$140/5=28$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_1$ שמקיים $28x_1\\equiv1\\pmod 5$ (בטווח $0$ עד $4$)?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$28\\equiv3\\pmod5$ ו-$3\\cdot2=6\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_2$ שמקיים $20x_2\\equiv1\\pmod 7$ (בטווח $0$ עד $6$)?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$20\\equiv6\\pmod7$ ו-$6\\cdot6=36\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בטווח $0$ עד $139$?",
+     "answer": 94,
+     "tol": 0,
+     "explain": "$4\\cdot28\\cdot2+3\\cdot20\\cdot6+2\\cdot35\\cdot3=224+360+210=794\\equiv94\\pmod{140}$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }
