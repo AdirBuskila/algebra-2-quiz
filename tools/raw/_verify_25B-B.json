@@ -1,0 +1,535 @@
+{
+ "examCode": "25B-B",
+ "refuter": "refute-2025-b",
+ "source": "student-solution (official:false); independent solve in tools/verify/25B-B/refute_mine.py and refute_claims.py",
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 4,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 2,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Order 4 correct. Rubric wording \"מכפלה משותפת מינימלית\" should be \"כפולה משותפת מינימלית\" (lcm). Cosmetic.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "num": 2,
+   "part": "ד",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "note": "explain cites options by position and out of order: says FIRST choice gives <u,v>=sum a_i with ||v||^2=n and SECOND is trivial equality, but correct is option b (second shown), option a (v=u) is the trivial one. Remove positional wording."
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 3,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "num": 3,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 3,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "e(a-1)=2a confirmed (silent fix right; handwritten key has (a-1)e=a, giving 0=1 at a=1; correct is 0=2).",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "num": 3,
+   "part": "ד",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "disagree",
+   "note": "Rubric and explain refer to \"סעיף ב\"/\"סעיף ג\", but in this exam \"סעיף ב\" is the orthonormal-basis question; displayed labels are א.2 and א.3.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "note": "explain \"בסעיף ב ... בסעיף ג\": wrong part labels (see item note)."
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 3,
+   "part": "ה",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "num": 4,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "num": 4,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 13,
+   "num": 5,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Eigenvalues 1,1+-sqrt2 c confirmed (lambda-for-c fix right; handwriting shows -1/sqrt2<=lambda<=1/sqrt2). Ranges correct.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 14,
+   "num": 5,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 15,
+   "num": 6,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 16,
+   "num": 6,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,403 @@
+{
+ "examCode": "25A-B",
+ "refuter": "refute-2025-b",
+ "source": "student-solution (official:false); independent solve in tools/verify/25A-B/refute_mine.py and refute_claims.py",
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 4,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Independent SVD matches (sigma 2sqrt2,2; U,V verified numerically, orthonormal, U S V^T=A). Final answers only; correct.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Correct. Minor: step S0/S1 ask smallest k>=0, but for x=e k=0 also works; intended general x gives 1.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 2,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "num": 3,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "a>=1 PSD, a>1 PD, a<=-1 NSD, a<-1 ND, -1<a<1 none: matches (eigs a-1,a+1,2a).",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 3,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "num": 4,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Proof is valid but assumes both orders finite; infinite-order case (x^m=e iff (y^-1xy)^m=e) not stated. Chain (y^-1xy)^n=y^-1x^ny rewrite confirmed correct (silent fix OK).",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 4,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "num": 4,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "79 mod 140 confirmed (brute force).",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 4,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 5,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "num": 5,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Both inequalities correct.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "note": "Explain cites option by position (\"בבחירה הראשונה\", \"הבחירות האחרות\"); correct here only if options are not shuffled. Reword without position."
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

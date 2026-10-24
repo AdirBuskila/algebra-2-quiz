@@ -1,0 +1,535 @@
+{
+ "examCode": "25B-A",
+ "refuter": "refute-2025-b",
+ "source": "student-solution (official:false); independent solve in tools/verify/25B-A/refute_mine.py and refute_claims.py",
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "y=0.35x+4 confirmed.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 4,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "disagree",
+     "note": "findbug: two lines differ from the correct derivation (line 2 has b=y and line 3 repeats the wrong inverse with +y). Only line 2 is the real error, bugIndex 2 right, but \"exactly one line changed\" is not met; line 3 should keep -y."
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 2,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "num": 2,
+   "part": "ד",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 3,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "num": 3,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Prefix \"השלמה לפתרון שבקובץ\", solutionSource solved, official false, order infinite: all correct per GATE1 ruling.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 4,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "num": 4,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "\"הבחירות האחרות\" generic, acceptable."
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 4,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "num": 4,
+   "part": "ד",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Correct (a=-1 has no inverse; e=0).",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "disagree",
+     "note": "explain says \"סעיפים ב-ג\" but the displayed parts are labelled א.2 and א.3 (exam part ב is the inner-product proof). Wrong part reference."
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "num": 4,
+   "part": "ה",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 13,
+   "num": 5,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "SVD final answer verified numerically. Final answer only; correct.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 14,
+   "num": 5,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "112 mod 165 confirmed. Final answer only; correct.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 15,
+   "num": 6,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 16,
+   "num": 6,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Handwritten key has (sum a_i^2)^2 on the left; transcriber fix to (sum a_i)^2 is right and matches the printed exam. Proof correct.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "note": "explain cites options by position and wrongly: says the FIRST choice has <u,v>=sum a_i, but the correct option is b (second). Others are a (sum a_i^2) and c (sum sqrt(a_i b_i)), not \"the last two\". Remove positional wording."
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}
