@@ -1,0 +1,426 @@
+{
+ "examCode": "23A-A",
+ "refuter": "refute-algebra-2-23A-A",
+ "source": "official-pdf solution (all but 5א); independent solve tools/verify/23A-A/refute_all.py and refute_claims.py",
+ "notes": "Transcription of exam checked against tools/raw/23A-A-SRC page images (all 13 items match; the printed '(0.0)' in Q4a is an exam typo for (0,0)). Silent fixes found in the official PDF: Q1a slope 21.5 -> 4.3, Q1b lower-left 3 -> 4. docs/ASK_ADIR.md lists no 23A-A slip other than Q5a (no key, solver).",
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "y=4.3x+16, y(5)=37.5 confirmed (normal eqs [[30,10],[10,4]] (a,b)=(289,107)). SILENT FIX CONFIRMED: the official page prints a=21.5 and y=21.5x+16 (inconsistent with its own y(5)=37.5); the transcription uses the correct a=4.3 without comment. Fix is right. Not listed in docs/ASK_ADIR.md.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "proj = 1/2[[1,5],[2,2]] confirmed (residual orthogonal to both spanning matrices). SILENT FIX CONFIRMED: official page prints tr of (2 -2; 3 2); the true product is (2 -2; 4 2). Trace (4) is unaffected; transcription writes (2 -2; 4 2), correct. Not listed in ASK_ADIR.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "solution": "disagree",
+   "rubricSum": "disagree",
+   "pitfalls": "agree",
+   "verdict": "disagree",
+   "note": "Answer (yes, inner product) is right, but the solution never argues <f,f>=0 => f=0. It only says the integrand e^x f^2 is nonnegative 'except where f(x)=0', which proves <f,f>>=0 and nothing about definiteness. Needed: e^x f^2 is continuous and >=0, so integral 0 forces e^x f^2 = 0 everywhere, so f=0 (e^x>0). Rubric gives 4 pts to 'positivity' only (>=0), no point for definiteness, although pitfall 1 itself says it is required. No step tests it. First divergence: the 'positivity' line of the solution.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ],
+   "severity": "moderate"
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 3,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "PD a>=1, strict a>1, ND a<=-1, strict a<-1, none for -1<a<1 (eigenvalues a+-1, 2a) confirmed. Minor: pitfall 2 (forgetting 2a) is vacuous, 2a never changes any region (a>=1 or a<=-1 already fixes its sign); the text admits this.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "num": 3,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 3,
+   "part": "ג",
+   "solution": "disagree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "disagree",
+   "note": "Math agrees (sqrt6, sqrt2). Solution text says 'כמו בסעיף הקודם' = cites a sub-part by position; rewrite as self-contained.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ],
+   "severity": "text-only"
+  },
+  {
+   "index": 7,
+   "num": 4,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 4,
+   "part": "ב",
+   "solution": "disagree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "disagree",
+   "note": "Math agrees (e=(0,1)). Solution text ends '(הוכחנו בסעיף א)' = cites a sub-part by position; say 'the operation is commutative (shown above)' or reprove in one line.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ],
+   "severity": "text-only"
+  },
+  {
+   "index": 9,
+   "num": 4,
+   "part": "ג",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "False confirmed. Not raised by the solution: the set is also not closed ((1,0)*(1,0)=(0,0) is outside it), a second reason it is not a group.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 4,
+   "part": "ד",
+   "solution": "disagree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "disagree",
+   "note": "Conclusion right, logic gap: Cauchy-Schwarz gives |ab+ba|<=a^2+b^2; the solution writes ab+ba<=a^2+b^2 and squares it, which is invalid when ab+ba<0. Pitfall 2 hints at it but the solution and the order step do not use |.|.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "disagree",
+     "note": "order step: first line keeps |<.,.>| but line 3 'ab+ba<=a^2+b^2' drops the absolute value before squaring (see item note). Order itself is the real order."
+    }
+   ],
+   "severity": "minor"
+  },
+  {
+   "index": 11,
+   "num": 5,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "SOLVED BLIND BEFORE READING CLAIM: sigma=2,sqrt2; A^TA=[[3,-1],[-1,3]]; claimed U,Sigma,V reconstruct A exactly and are orthogonal (sympy). Decomposition is valid (non-unique up to signs). Rubric 18 ok.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "num": 5,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "x=53 mod 105 confirmed.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

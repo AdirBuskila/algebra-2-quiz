@@ -1,0 +1,369 @@
+{
+ "examCode": "23B-A",
+ "refuter": "refute-algebra-2-23B-A",
+ "source": "official-pdf solution (5א corrected); independent solve tools/verify/23B-A/refute_all.py and refute_claims.py",
+ "notes": "No page images in repo for the exam; rendered pages 181-190 of the 2021-2024 compilation with tools/render_pdf.py (temp folder deleted). Transcription of all 11 items and official solutions matches the pages. No silent slips found in the other 10 items.",
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 2,
+   "part": "ג",
+   "solution": "disagree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "disagree",
+   "note": "Official proof shows only v^T(I+A)v>=0 and v^TA^2v>=0. The course defines positive definite for symmetric matrices, so symmetry of I+A and A^2 ((I+A)^T=I+A, (A^2)^T=A^T A^T=A^2) should be stated; it is not. Answer right.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ],
+   "severity": "minor"
+  },
+  {
+   "index": 5,
+   "num": 3,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "|a|<=0.5 PD, |a|<0.5 strict, no ND confirmed (eigenvalues 1+-2a, 4-a^2).",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 3,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Confirmed; second direction: alpha=1,beta=0 gives |u|=|v| (step 0 key right, other pairs add nothing).",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "num": 4,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "SVD confirmed: A=U S V^T with the printed U,S,V reconstructs A exactly. Rubric (ai-draft) sums to 18; official split was 2+5+3+3+2=15 plus unmarked remainder, harmless.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 4,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "x=78 mod 280 confirmed. The official page boxes '918 (mod 280)' unreduced (a correct congruence); the transcription adds 'x=78'. Pitfall 1 (leaving 918) is therefore slightly harsher than the official presentation, harmless.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "num": 5,
+   "part": "א",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "CORRECTION VERIFIED. Blind solve: proj = 1/17 [[-7a+b, 6a+4b],[4a+14b, -a+5b]]; <(0 a;b 0),(4 -1;5 3)> = -a+5b, ||(4 -1;5 3)||^2=51, so coefficient (5b-a)/51; the official page prints (5b-3a)/51 (seen on page image 190), which is wrong (7 vs 9 at a=1,b=2; step 2 key 9 is right). Attacked the correction: residual M-P is orthogonal to both basis matrices (sympy); normal equations and Gram-Schmidt agree. Prefix 'הפתרון הרשמי עם תיקון' is justified.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 5,
+   "part": "ב",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "verdict": "agree",
+   "note": "Confirmed. Pitfall 1 ('commutativity is not given') is true as a given, though it follows from x^2=e.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": ""
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}
