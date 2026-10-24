@@ -34,7 +34,76 @@
    "confidence": "med",
    "part": "א",
    "points": 8,
-   "contextId": "c1"
+   "contextId": "c1",
+   "rubric": [
+    {
+     "text": "כתיבת התנאי $\\langle ax+b,ax-b\\rangle=\\int_0^1(ax+b)(ax-b)\\,dx=0$",
+     "points": 2
+    },
+    {
+     "text": "פתיחה ואינטגרציה: $\\frac{a^2}3-b^2$",
+     "points": 3
+    },
+    {
+     "text": "פתרון $a=\\sqrt3\\,b$ (עם $a,b>0$)",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "להשתמש במכפלה סקלרית רגילה במקום באינטגרל.",
+    "לשכוח שהאינטגרל של הקבוע $b^2$ בקטע $[0,1]$ הוא $b^2$.",
+    "לכתוב $a=\\pm\\sqrt3\\,b$ אף שנתון $a,b>0$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=3$ ו-$b=1$ חשבו את $\\int_0^1(ax+b)(ax-b)\\,dx$.",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$\\int_0^1(9x^2-1)\\,dx=3-1=2$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי הפתרון.",
+     "lines": [
+      "$(ax+b)(ax-b)=a^2x^2-b^2$",
+      "$\\int_0^1\\left(a^2x^2-b^2\\right)dx=\\frac{a^2}3-b^2$",
+      "$\\frac{a^2}3-b^2=0$",
+      "$a=\\sqrt3\\,b$"
+     ],
+     "explain": "פותחים, מבצעים אינטגרציה, משווים לאפס ופותרים."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזה קשר בין $a$ ל-$b$ נותן מערכת אורתוגונלית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a=\\sqrt3\\,b$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a=\\frac{b}{\\sqrt3}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a=3b$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$a=b$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "רק עבור $a=\\sqrt3\\,b$ מתקיים $\\frac{a^2}3-b^2=0$. עבור $a=b$ מתקבל $-\\frac23b^2\\ne0$, עבור $a=3b$ מתקבל $2b^2\\ne0$, ועבור $a=\\frac b{\\sqrt3}$ מתקבל $-\\frac89b^2\\ne0$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -47,7 +116,71 @@
    "confidence": "med",
    "part": "ב",
    "points": 8,
-   "contextId": "c1"
+   "contextId": "c1",
+   "rubric": [
+    {
+     "text": "שימוש באורתוגונליות $a=\\sqrt3\\,b$",
+     "points": 2
+    },
+    {
+     "text": "כתיבת תנאי הנורמה $\\langle u,u\\rangle=1$ לשני האיברים",
+     "points": 2
+    },
+    {
+     "text": "חישוב האינטגרלים: $b^2(2\\pm\\sqrt3)$",
+     "points": 2
+    },
+    {
+     "text": "סתירה: אין $a,b>0$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לדרוש רק $\\langle u,u\\rangle=1$ ולשכוח את האורתוגונליות.",
+    "לשכוח את האיבר האמצעי $\\pm2\\sqrt3\\,b^2x$ בפיתוח הריבוע.",
+    "לפתור רק את אחת משתי משוואות הנורמה ולהסיק שקיים פתרון."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "אחרי הצבת $a=\\sqrt3\\,b$ מתקבל $\\|ax+b\\|^2=c\\cdot b^2$. מהו $c$ (עיגול לשלוש ספרות אחרי הנקודה)?",
+     "answer": 3.732,
+     "tol": 0.001,
+     "explain": "$\\int_0^1(3x^2+2\\sqrt3\\,x+1)\\,dx=1+\\sqrt3+1=2+\\sqrt3\\approx3.732$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "באותו אופן $\\|ax-b\\|^2=c'\\cdot b^2$. מהו $c'$?",
+     "answer": 0.268,
+     "tol": 0.001,
+     "explain": "$\\int_0^1(3x^2-2\\sqrt3\\,x+1)\\,dx=2-\\sqrt3\\approx0.268$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהי המסקנה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "אין $a,b>0$ כאלה: שתי הנורמות דורשות $b^2(2+\\sqrt3)=1$ וגם $b^2(2-\\sqrt3)=1$, וזה סותר"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$b=\\frac1{\\sqrt{2+\\sqrt3}}$ ו-$a=\\sqrt3\\,b$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a=1,\\ b=\\frac1{\\sqrt3}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $b=\\frac1{\\sqrt{2+\\sqrt3}}$ הנורמה השנייה בריבוע היא $\\frac{2-\\sqrt3}{2+\\sqrt3}\\ne1$, ועבור $a=1,\\ b=\\frac1{\\sqrt3}$ הנורמה הראשונה בריבוע היא $\\frac{2+\\sqrt3}3\\ne1$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -59,7 +192,53 @@
    "official": false,
    "confidence": "med",
    "part": "ג",
-   "points": 9
+   "points": 9,
+   "rubric": [
+    {
+     "text": "סימטריה: $\\left(Q^{-1}AQ\\right)^T=Q^{-1}AQ$",
+     "points": 3
+    },
+    {
+     "text": "הצבה $\\vec u=Q\\vec v$ והמעבר ל-$\\vec u^TA\\vec u$",
+     "points": 4
+    },
+    {
+     "text": "$\\vec u\\ne\\vec0$ כי $Q$ הפיכה, ולכן החיוביות ממש",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לבדוק חיוביות בלבד ולשכוח לבדוק סימטריה.",
+    "להסתמך על כך שהערכים העצמיים של $Q^{-1}AQ$ שווים לאלה של $A$, בלי להוכיח זאת.",
+    "לשכוח לנמק ש-$\\vec u=Q\\vec v\\ne\\vec0$."
+   ],
+   "steps": [
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$Q^{-1}=Q^T$ כי $Q$ אורתוגונלית, ולכן $\\left(Q^TAQ\\right)^T=Q^TA^TQ=Q^TAQ$ סימטרית.",
+      "לכל $\\vec v\\ne\\vec0$ נסמן $\\vec u=Q\\vec v$; $\\vec u\\ne\\vec0$ כי $Q$ הפיכה.",
+      "$\\vec v^T\\left(Q^TAQ\\right)\\vec v=(Q\\vec v)^TA(Q\\vec v)=\\vec u^TA\\vec u$",
+      "$\\vec u^TA\\vec u>0$ כי $A$ מוגדרת חיובית לחלוטין, ולכן גם $Q^{-1}AQ$ מוגדרת חיובית לחלוטין."
+     ],
+     "explain": "סימטריה, הצבה, העברת $Q$ לתוך הביטוי, שימוש בנתון על $A$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בהוכחה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "$Q^{-1}=Q^T$ כי $Q$ אורתוגונלית, ולכן $\\left(Q^TAQ\\right)^T=Q^TA^TQ=Q^TAQ$ סימטרית.",
+      "לכל $\\vec v\\ne\\vec0$ נסמן $\\vec u=Q\\vec v$; $\\vec u\\ne\\vec0$ כי $Q$ הפיכה.",
+      "$\\vec v^T\\left(Q^TAQ\\right)\\vec v=\\left(Q^T\\vec v\\right)^TA\\left(Q^T\\vec v\\right)=\\vec u^TA\\vec u$",
+      "$\\vec u^TA\\vec u>0$ כי $A$ מוגדרת חיובית לחלוטין, ולכן גם $Q^{-1}AQ$ מוגדרת חיובית לחלוטין."
+     ],
+     "bugIndex": 2,
+     "explain": "$\\vec v^TQ^T=(Q\\vec v)^T$, ולכן הביטוי הנכון הוא $(Q\\vec v)^TA(Q\\vec v)$ ולא עם $Q^T\\vec v$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -73,7 +252,58 @@
    "part": "א",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "כתיבת $(a,b)*(c,d)=\\left(a+c+1,\\frac{bd}3\\right)$ ובדיקה שהרכיבים ממשיים",
+     "points": 1
+    },
+    {
+     "text": "הרכיב השני $\\frac{bd}3\\ne0$ כי $b,d\\ne0$",
+     "points": 3
+    },
+    {
+     "text": "מסקנה: $A$ סגורה ביחס ל-$*$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לבדוק רק את הרכיב הראשון ולשכוח את התנאי $y\\ne0$ ב-$A$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "חשבו את הרכיב השני של $(1,3)*(2,6)$.",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$\\frac{3\\cdot6}3=6$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע הרכיב השני של התוצאה שונה מאפס?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $b+d\\ne0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $b\\ne0$ ו-$d\\ne0$, ולכן $bd\\ne0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $a+c+1\\ne0$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "$b+d$ יכול להיות $0$ (למשל $1+(-1)$) ו-$a+c+1$ יכול להיות $0$ (למשל $a=-1,\\,c=0$) והסגירות עדיין מתקיימת. מה שמבטיח את הטענה הוא ש-$bd\\ne0$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -87,7 +317,43 @@
    "part": "ב",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "חישוב $\\big((a,b)*(c,d)\\big)*(x,y)=\\left(a+c+x+2,\\frac{bdy}9\\right)$",
+     "points": 2
+    },
+    {
+     "text": "חישוב הצד השני והגעה לאותו ביטוי",
+     "points": 2
+    },
+    {
+     "text": "מסקנה: הפעולה אסוציאטיבית",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח שהקבוע ברכיב הראשון הוא $+2$ (שני צירופי $+1$).",
+    "להסיק אסוציאטיביות מדוגמה מספרית אחת בלבד."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "חשבו את הרכיב הראשון של $\\big((0,3)*(1,3)\\big)*(2,3)$.",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$(0,3)*(1,3)=(2,3)$ ואז $(2,3)*(2,3)=(5,3)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "ומהו הרכיב השני של אותו ביטוי?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$\\frac{3\\cdot3}3=3$, ואז $\\frac{3\\cdot3}3=3$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -101,7 +367,43 @@
    "part": "ג",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "כתיבת התנאי $(e_1,e_2)*(a,b)=(a,b)$",
+     "points": 1
+    },
+    {
+     "text": "פתרון הרכיב הראשון: $e_1=-1$",
+     "points": 2
+    },
+    {
+     "text": "פתרון הרכיב השני: $e_2=3$ (חלוקה ב-$b\\ne0$)",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לנחש $e=(0,1)$ מתוך הרגל מחבורות רגילות במקום לפתור את המשוואות.",
+    "לשכוח שחלוקה ב-$b$ מותרת רק כי $b\\ne0$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "פתרו את $e_1+a+1=a$. מהו $e_1$?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$e_1=-1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו את $\\frac{e_2b}3=b$ עבור $b\\ne0$. מהו $e_2$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "מכפילים ב-$3$ ומחלקים ב-$b$: $e_2=3$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -115,7 +417,47 @@
    "part": "ד",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "הפניה לסגירות, אסוציאטיביות ואיבר ניטרלי מהסעיפים הקודמים",
+     "points": 1
+    },
+    {
+     "text": "כתיבת $(a,b)*\\left(a^{-1},b^{-1}\\right)=(-1,3)$",
+     "points": 1
+    },
+    {
+     "text": "פתרון ההופכי $\\left(-2-a,\\frac9b\\right)$",
+     "points": 2
+    },
+    {
+     "text": "ההופכי ב-$A$ כי $\\frac9b\\ne0$, ולכן $A$ חבורה",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לחפש הופכי ביחס ל-$(1,1)$ במקום ביחס לאיבר הניטרלי $(-1,3)$.",
+    "לשכוח לוודא ש-$\\frac9b\\ne0$, כדי שההופכי יהיה ב-$A$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הראשון של ההופכי של $(4,6)$?",
+     "answer": -6,
+     "tol": 0,
+     "explain": "$-2-a=-2-4=-6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "ומהו הרכיב השני של ההופכי של $(4,6)$?",
+     "answer": 1.5,
+     "tol": 0.001,
+     "explain": "$\\frac9b=\\frac96=1.5$. בדיקה: $(4,6)*(-6,1.5)=(-1,3)$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -128,7 +470,66 @@
    "confidence": "med",
    "part": "ה",
    "points": 5,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "הצבה: $(x,y)*(x,y)=\\left(2x+1,\\frac{y^2}3\\right)$",
+     "points": 1
+    },
+    {
+     "text": "פתרון $2x+1=x$: $x=-1$",
+     "points": 2
+    },
+    {
+     "text": "פתרון $\\frac{y^2}3=y$ עם $y\\ne0$: $y=3$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לכלול את $y=0$ כפתרון, אף ש-$y\\ne0$ ב-$A$.",
+    "להחליף בין שני הרכיבים כשמשווים את $(x,y)*(x,y)$ ל-$(x,y)$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "פתרו את $2x+1=x$. מהו $x$?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$x=-1$."
+    },
+    {
+     "type": "choice",
+     "prompt": "המשוואה $\\frac{y^2}3=y$ מתקיימת גם עבור $y=0$. מדוע $y=0$ אינו פתרון של השאלה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $y\\ne0$ בהגדרת $A$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $0$ אינו מקיים את המשוואה"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $y=0$ נותן $x\\ne-1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$\\frac{0^2}3=0$, ולכן $y=0$ כן מקיים את המשוואה, ו-$x$ ו-$y$ אינם תלויים זה בזה; הוא נפסל רק כי $(x,0)\\notin A$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו את $\\frac{y^2}3=y$ עם $y\\ne0$. מהו $y$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "מחלקים ב-$y$: $\\frac y3=1$, כלומר $y=3$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -140,7 +541,119 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חישוב הערכים העצמיים $1+2w$ ו-$1-w$ (פעמיים)",
+     "points": 6
+    },
+    {
+     "text": "מוגדרת חיובית: $-\\frac12\\le w\\le1$",
+     "points": 2
+    },
+    {
+     "text": "מוגדרת חיובית לחלוטין: $-\\frac12<w<1$",
+     "points": 2
+    },
+    {
+     "text": "מוגדרת שלילית ולחלוטין: אף ערך",
+     "points": 3
+    },
+    {
+     "text": "אף אחת מהן עבור $w<-\\frac12$ או $w>1$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "להתבלבל בין $\\ge0$ (מוגדרת חיובית) ל-$>0$ (לחלוטין) בקצוות $w=-\\frac12$ ו-$w=1$.",
+    "לשכוח שהערך העצמי $1-w$ מופיע פעמיים.",
+    "להסיק שהמטריצה מוגדרת שלילית רק מכך שחלק מהערכים העצמיים שליליים."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "הווקטור $(1,1,1)^T$ הוא וקטור עצמי של המטריצה. עבור $w=2$ מהו הערך העצמי שלו?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "כל שורה מסכמת ל-$1+2w=5$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $w$ המטריצה מוגדרת חיובית (לא בהכרח לחלוטין)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$-\\frac12\\le w\\le1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$-\\frac12<w<1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$0\\le w\\le1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$w\\le1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הערכים העצמיים הם $1+2w,\\,1-w,\\,1-w$ וכולם $\\ge0$ בדיוק כאשר $-\\frac12\\le w\\le1$. עבור $w=1$ מתקבלים $3,0,0$ (חיובית), עבור $w=-\\frac14$ מתקבלים $\\frac12,\\frac54,\\frac54$, ועבור $w=-1$ יש ערך עצמי שלילי."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $w$ המטריצה מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$-\\frac12\\le w\\le1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$-\\frac12<w<1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$w>-\\frac12$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "נדרש $1+2w>0$ וגם $1-w>0$. בקצוות יש ערך עצמי $0$, ועבור $w=2$ יש ערך עצמי שלילי."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $w$ המטריצה מוגדרת שלילית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "עבור אף $w$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$w<-\\frac12$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$w>1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $1+2w\\le0$ וגם $1-w\\le0$, כלומר $w\\le-\\frac12$ וגם $w\\ge1$. עבור $w=-1$ הערכים הם $-1,2,2$ ועבור $w=2$ הערכים הם $5,-1,-1$: בשני המקרים יש ערך עצמי חיובי."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -152,7 +665,81 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "כיוון ⇐: $\\langle u,tu\\rangle=t\\|u\\|^2$ ו-$\\|tu\\|=|t|\\,\\|u\\|$, ולכן שוויון",
+     "points": 4
+    },
+    {
+     "text": "כיוון ⇒: שוויון בקושי-שוורץ גורר $\\|v-tu\\|=0$ (או $\\cos\\alpha=1$)",
+     "points": 4
+    },
+    {
+     "text": "מסקנה $\\vec v=t\\vec u$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לכתוב $\\|t\\vec u\\|=t\\|\\vec u\\|$ בלי ערך מוחלט.",
+    "בכיוון ⇒ לומר 'הזווית היא $0$' בלי לנמק, וזה בעצם הטענה עצמה.",
+    "לשכוח ש-$\\vec u,\\vec v\\ne\\vec0$ כדי שמותר לחלק בנורמות."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מהי $\\|t\\vec u\\|$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$t\\,\\|\\vec u\\|$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$|t|\\,\\|\\vec u\\|$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$t^2\\|\\vec u\\|$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\sqrt{|t|}\\,\\|\\vec u\\|$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "$\\|t\\vec u\\|=\\sqrt{t^2\\langle u,u\\rangle}=|t|\\,\\|u\\|$. הביטוי $t\\|u\\|$ שלילי כש-$t<0$, $t^2\\|u\\|$ נותן $4\\|u\\|$ במקום $2\\|u\\|$ עבור $t=2$, ו-$\\sqrt{|t|}\\|u\\|$ נותן $2\\|u\\|$ במקום $4\\|u\\|$ עבור $t=4$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את הטיעון הישיר לכיוון ⇒ (נתון שוויון בקושי-שוורץ).",
+     "lines": [
+      "נסמן $t=\\frac{\\langle\\vec u,\\vec v\\rangle}{\\|\\vec u\\|^2}$.",
+      "$\\|\\vec v-t\\vec u\\|^2=\\|\\vec v\\|^2-\\frac{\\langle\\vec u,\\vec v\\rangle^2}{\\|\\vec u\\|^2}$.",
+      "בשוויון קושי-שוורץ $\\langle\\vec u,\\vec v\\rangle^2=\\|\\vec u\\|^2\\|\\vec v\\|^2$, ולכן הביטוי שווה $0$.",
+      "$\\|\\vec v-t\\vec u\\|=0$, כלומר $\\vec v=t\\vec u$."
+     ],
+     "explain": "מגדירים את $t$, מחשבים את הנורמה, מציבים את השוויון ומסיקים."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בטיעון הבא שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "נסמן $t=\\frac{\\langle\\vec u,\\vec v\\rangle}{\\|\\vec u\\|^2}$.",
+      "$\\|\\vec v-t\\vec u\\|^2=\\|\\vec v\\|^2+\\frac{\\langle\\vec u,\\vec v\\rangle^2}{\\|\\vec u\\|^2}$.",
+      "בשוויון קושי-שוורץ $\\langle\\vec u,\\vec v\\rangle^2=\\|\\vec u\\|^2\\|\\vec v\\|^2$, ולכן הביטוי שווה $0$.",
+      "$\\|\\vec v-t\\vec u\\|=0$, כלומר $\\vec v=t\\vec u$."
+     ],
+     "bugIndex": 1,
+     "explain": "$\\|v-tu\\|^2=\\|v\\|^2-2t\\langle u,v\\rangle+t^2\\|u\\|^2=\\|v\\|^2-\\frac{\\langle u,v\\rangle^2}{\\|u\\|^2}$: הסימן מינוס, ולא פלוס."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -165,7 +752,54 @@
    "confidence": "med",
    "part": "א",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "בדיקה ש-$J\\in G$: הדטרמיננטה $1\\ne0$ מודולו 5",
+     "points": 1
+    },
+    {
+     "text": "חישוב $J^2=4I$ ו-$J^3$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $J^4=I$",
+     "points": 1
+    },
+    {
+     "text": "מסקנה $o(J)=4$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח לעבוד מודולו 5 (להשאיר $16$ במקום $1$).",
+    "לעצור ב-$J^2=4I\\ne I$ ולהסיק שהסדר $2$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "חשבו את $0\\cdot0-1\\cdot4$ מודולו 5 (שארית בין $0$ ל-$4$).",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$-4\\equiv1\\pmod5$, שונה מ-$0$, ולכן $J\\in G$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השמאלי העליון של $J^2$ (מודולו 5)?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$0\\cdot0+4\\cdot1=4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $o(J)$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$J^2=4I$, $J^3\\equiv\\begin{pmatrix}0&1\\\\4&0\\end{pmatrix}$, $J^4=16I\\equiv I$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -178,7 +812,62 @@
    "confidence": "med",
    "part": "ב",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "$\\left|\\langle J\\rangle\\right|=o(J)=4$",
+     "points": 2
+    },
+    {
+     "text": "שימוש במשפט לגרנז': סדר תת-חבורה מחלק את סדר החבורה",
+     "points": 2
+    },
+    {
+     "text": "מסקנה: $4$ מחלק את $|G|$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להפוך את לגרנז' ולטעון ש-$|G|$ מחלק את הסדר של $J$.",
+    "לשכוח להזכיר שהסדר של איבר הוא גודל תת-החבורה הציקלית שהוא יוצר."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "באיזה משפט משתמש הפתרון?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "משפט לגרנז'"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "משפט השאריות הסיני"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "אי-שוויון קושי-שוורץ"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הטענה היא על סדר תת-חבורה וסדר החבורה, וזה משפט לגרנז'. שני האחרים עוסקים במשוואות מודולריות ובמרחבי מכפלה פנימית."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$o(J)=4$, ולכן תת-החבורה הציקלית $\\langle J\\rangle$ היא בגודל $4$.",
+      "לפי משפט לגרנז', גודל תת-חבורה של חבורה סופית מחלק את $|G|$.",
+      "לכן $4\\mid|G|$."
+     ],
+     "explain": "מגדירים את תת-החבורה, מפעילים את לגרנז' ומסיקים."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -191,7 +880,51 @@
    "confidence": "med",
    "part": "ג",
    "points": 7,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "הראיה ש-$J^T=J^{-1}$ (בדיקת $JJ^T=I$ מודולו 5)",
+     "points": 2
+    },
+    {
+     "text": "$\\left(J^TAJ\\right)^n=J^TA^nJ=I$",
+     "points": 2
+    },
+    {
+     "text": "מינימליות: הנחה בשלילה $m<n$ וסתירה",
+     "points": 2
+    },
+    {
+     "text": "סיכום השוויון בין הסדרים",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להראות רק ש-$\\left(J^TAJ\\right)^n=I$ ולא שהוא המינימלי.",
+    "לשכוח לעבוד מודולו 5 בבדיקת $JJ^T=I$ (כי $16\\equiv1$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "במכפלה $JJ^T=\\begin{pmatrix}16&0\\\\0&1\\end{pmatrix}$ מהו הרכיב השמאלי העליון מודולו 5 (בין $0$ ל-$4$)?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$16\\equiv1\\pmod5$, ולכן $JJ^T=I$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה ש-$o\\left(J^TAJ\\right)=o(A)$.",
+     "lines": [
+      "$JJ^T=I$, ולכן $\\left(J^TAJ\\right)^m=J^TA^mJ$ לכל $m$; עבור $m=o(A)=n$ מתקבל $J^TIJ=I$.",
+      "נניח בשלילה $\\left(J^TAJ\\right)^m=I$ עבור $m<n$. אז $J^TA^mJ=I$.",
+      "נכפול ב-$J$ משמאל וב-$J^T$ מימין ונקבל $A^m=I$, בסתירה למינימליות של $n$.",
+      "לכן $o\\left(J^TAJ\\right)=n=o(A)$."
+     ],
+     "explain": "קודם מראים שהחזקה $n$ נותנת $I$, אחר כך שאין חזקה קטנה יותר."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -203,7 +936,61 @@
    "official": false,
    "confidence": "high",
    "part": "ד",
-   "points": 8
+   "points": 8,
+   "rubric": [
+    {
+     "text": "זרות המודולים וחישוב $M=385$",
+     "points": 1
+    },
+    {
+     "text": "$M_1,M_2,M_3=77,55,35$",
+     "points": 2
+    },
+    {
+     "text": "ההופכיים $x_1,x_2,x_3=3,6,6$",
+     "points": 3
+    },
+    {
+     "text": "הסכום והרדוקציה: $x\\equiv87\\pmod{385}$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לשכוח לרדד את $M_i$ מודולו $m_i$ לפני מציאת ההופכי.",
+    "לשכוח לרדד את הסכום $3552$ מודולו $385$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $M=5\\cdot7\\cdot11$?",
+     "answer": 385,
+     "tol": 0,
+     "explain": "$5\\cdot77=385$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_1$ (בין $0$ ל-$4$) המקיים $77x_1\\equiv1\\pmod5$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$77\\equiv2$ ו-$2\\cdot3=6\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_3$ (בין $0$ ל-$10$) המקיים $35x_3\\equiv1\\pmod{11}$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$35\\equiv2$ ו-$2\\cdot6=12\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בין $0$ ל-$384$?",
+     "answer": 87,
+     "tol": 0,
+     "explain": "$3552=9\\cdot385+87$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -215,7 +1002,93 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "המימדים: $U$ מסדר $2\\times2$, $\\Sigma$ מסדר $2\\times3$, $V$ מסדר $3\\times3$",
+     "points": 2
+    },
+    {
+     "text": "$AA^T$ והערכים העצמיים $6,3$",
+     "points": 3
+    },
+    {
+     "text": "$U$ ו-$\\Sigma$ (הערכים הסינגולריים $\\sqrt6,\\sqrt3$)",
+     "points": 3
+    },
+    {
+     "text": "$A^TA$ והערכים העצמיים $6,3,0$",
+     "points": 3
+    },
+    {
+     "text": "וקטורים עצמיים מנורמלים והרכבת $V$",
+     "points": 4
+    }
+   ],
+   "pitfalls": [
+    "לרשום את הערכים הסינגולריים $6,3$ במקום $\\sqrt6,\\sqrt3$.",
+    "לא לסדר את העמודות של $U$ ושל $V$ באותו סדר של הערכים הסינגולריים.",
+    "לשכוח לנרמל את הווקטורים העצמיים."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "$A$ מסדר $2\\times3$. מהו הסדר של $\\Sigma$ בפירוק $A=U\\Sigma V^T$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$2\\times3$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$3\\times3$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$2\\times2$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$U$ הוא $2\\times2$ ו-$V$ הוא $3\\times3$, ולכן $\\Sigma$ חייבת להיות $2\\times3$ כדי שהמכפלה תהיה $2\\times3$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מאיזו מטריצה מקבלים את העמודות של $U$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A^TA$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$AA^T$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "$AA^T$ היא $2\\times2$ כמו $U$. $A^TA$ היא $3\\times3$, ולכן וקטוריה העצמיים שייכים ל-$V$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי הגדול $\\sigma_1$ (עיגול לשלוש ספרות אחרי הנקודה)?",
+     "answer": 2.449,
+     "tol": 0.001,
+     "explain": "$\\lambda_1=6$ ולכן $\\sigma_1=\\sqrt6\\approx2.449$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי השני $\\sigma_2$?",
+     "answer": 1.732,
+     "tol": 0.001,
+     "explain": "$\\lambda_2=3$ ולכן $\\sigma_2=\\sqrt3\\approx1.732$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -227,7 +1100,75 @@
    "official": false,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בחירת הווקטורים $(\\sqrt x,\\sqrt y,\\sqrt z)$ ו-$(1,1,1)$ והפעלת קושי-שוורץ",
+     "points": 3
+    },
+    {
+     "text": "הגעה ל-$(a+b+c)^2\\le3\\left(a^2+b^2+c^2\\right)$ וחלוקה",
+     "points": 2
+    },
+    {
+     "text": "פתיחת הריבוע וחיוביות המכפלות המעורבות",
+     "points": 3
+    },
+    {
+     "text": "חלוקה והסקת אי-השוויון הימני",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "להפעיל קושי-שוורץ על $(x,y,z)$ במקום על $(\\sqrt x,\\sqrt y,\\sqrt z)$.",
+    "לכתוב $<$ בצד השמאלי: השוויון $\\frac13$ מתקבל כש-$x=y=z$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "על אילו שני וקטורים מפעילים את קושי-שוורץ בצד השמאלי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(\\sqrt x,\\sqrt y,\\sqrt z)$ ו-$(1,1,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(x,y,z)$ ו-$(1,1,1)$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "רק הבחירה הראשונה נותנת $\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2\\le3(x+y+z)$. הבחירה השנייה נותנת $(x+y+z)^2\\le3\\left(x^2+y^2+z^2\\right)$, שזו טענה אחרת."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|(1,1,1)\\|^2$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$1+1+1=3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $x=y=z=1$ מהו הערך של $\\dfrac{x+y+z}{\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2}$ (עיגול לארבע ספרות אחרי הנקודה)?",
+     "answer": 0.3333,
+     "tol": 0.0001,
+     "explain": "$\\frac39=\\frac13$: האי-שוויון השמאלי הוא שוויון כאן."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את הוכחת אי-השוויון הימני.",
+     "lines": [
+      "$(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ac)$, והמכפלות המעורבות חיוביות כי $a,b,c>0$.",
+      "לכן $(a+b+c)^2>a^2+b^2+c^2$.",
+      "מחלקים ב-$(a+b+c)^2>0$ ומקבלים $\\frac{x+y+z}{\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2}<1$."
+     ],
+     "explain": "פותחים, משווים, מחלקים."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   }
  ]
 }
