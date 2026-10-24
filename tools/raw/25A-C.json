@@ -33,7 +33,62 @@
    "solution": "נחפש ישר מהצורה $y=mx+n$ לפי שיטת הריבועים הפחותים. נרשום את המערכת $A\\begin{pmatrix}m\\\\n\\end{pmatrix}\\approx\\vec b$:\n$$A=\\begin{pmatrix}-4&1\\\\-2&1\\\\2&1\\\\4&1\\\\5&1\\end{pmatrix},\\qquad\\vec b=\\begin{pmatrix}-1\\\\0\\\\4\\\\5\\\\6\\end{pmatrix}$$\nמשוואות נורמליות $A^TA\\begin{pmatrix}m\\\\n\\end{pmatrix}=A^T\\vec b$:\n$$A^TA=\\begin{pmatrix}\\sum x_i^2&\\sum x_i\\\\\\sum x_i&5\\end{pmatrix}=\\begin{pmatrix}65&5\\\\5&5\\end{pmatrix},\\qquad A^T\\vec b=\\begin{pmatrix}\\sum x_iy_i\\\\\\sum y_i\\end{pmatrix}=\\begin{pmatrix}62\\\\14\\end{pmatrix}$$\n($\\sum x_i^2=16+4+4+16+25=65$, $\\sum x_i=5$, $\\sum x_iy_i=4+0+8+20+30=62$, $\\sum y_i=14$.)\n$$\\begin{cases}65m+5n=62\\\\5m+5n=14\\end{cases}\\ \\Rightarrow\\ 60m=48\\ \\Rightarrow\\ m=0.8,\\qquad n=\\frac{14-5\\cdot0.8}{5}=2$$\n**תשובה:** $y=0.8x+2$.",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "בניית $A$ (עם עמודת אחדות) ו-$\\vec b$",
+     "points": 3
+    },
+    {
+     "text": "המשוואות הנורמליות: $A^TA=\\begin{pmatrix}65&5\\\\5&5\\end{pmatrix}$ ו-$A^T\\vec b=\\begin{pmatrix}62\\\\14\\end{pmatrix}$",
+     "points": 4
+    },
+    {
+     "text": "פתרון המערכת: $m=0.8,\\ n=2$",
+     "points": 4
+    },
+    {
+     "text": "התשובה $y=0.8x+2$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח את עמודת האחדות ולחפש רק ישר דרך הראשית.",
+    "לחשב $AA^T$ במקום $A^TA$.",
+    "לטעות בחישוב $\\sum x_iy_i$ (שיש בו איבר שלילי ראשון $4$ ולא $-4$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_i^2$ עבור הנקודות?",
+     "answer": 65,
+     "tol": 0,
+     "explain": "$16+4+4+16+25=65$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_iy_i$?",
+     "answer": 62,
+     "tol": 0,
+     "explain": "$4+0+8+20+30=62$ (הנקודה הראשונה נותנת $(-4)(-1)=4$)."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$?",
+     "answer": 0.8,
+     "tol": 0.001,
+     "explain": "מחסרים את המשוואות $65m+5n=62$ ו-$5m+5n=14$: $60m=48$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $n$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$n=\\frac{14-5\\cdot0.8}5=2$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -45,7 +100,76 @@
    "solution": "נסתכל במרחב $C_{[1,2]}$ עם המכפלה הפנימית $\\langle f,g\\rangle=\\displaystyle\\int_1^2f(x)g(x)\\,dx$.\nנבחר $g(x)=\\dfrac1x$ (רציפה ב-$[1,2]$). לפי אי-שוויון קושי-שוורץ $\\langle f,g\\rangle^2\\le\\|f\\|^2\\cdot\\|g\\|^2$:\n$$\\langle f,g\\rangle^2=\\left(\\int_1^2\\frac{f(x)}x\\,dx\\right)^2,\\qquad\\|f\\|^2=\\int_1^2f^2(x)\\,dx,\\qquad\\|g\\|^2=\\int_1^2\\frac1{x^2}\\,dx=\\left[-\\frac1x\\right]_1^2=-\\frac12+1=\\frac12$$\nולכן\n$$\\left(\\int_1^2\\frac{f(x)}x\\,dx\\right)^2\\le\\frac12\\int_1^2f^2(x)\\,dx$$",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "בחירת $g(x)=\\frac1x$ והמכפלה $\\int_1^2fg$",
+     "points": 4
+    },
+    {
+     "text": "ניסוח קושי-שוורץ",
+     "points": 3
+    },
+    {
+     "text": "חישוב $\\|g\\|^2=\\frac12$",
+     "points": 4
+    },
+    {
+     "text": "הצבה ומסקנה",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לחשב $\\int\\frac1{x^2}$ כלוגריתם במקום $-\\frac1x$.",
+    "לשכוח שקושי-שוורץ נותן אי-שוויון על הריבוע של האינטגרל.",
+    "לבחור $g\\equiv1$, שמוביל לאי-שוויון אחר."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו פונקציה $g$ מציבים בקושי-שוורץ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$g(x)=\\frac1x$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$g(x)=1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$g(x)=x$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $g=1$ מתקבל $\\left(\\int f\\right)^2\\le\\int f^2$ ועבור $g=x$ מתקבל $\\left(\\int xf\\right)^2\\le\\frac73\\int f^2$: שניהם אי-שוויונות אחרים. רק $g=\\frac1x$ נותן את האינטגרל $\\int\\frac fx$ ואת הקבוע $\\frac12$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|g\\|^2=\\int_1^2\\frac1{x^2}\\,dx$?",
+     "answer": 0.5,
+     "tol": 0.0001,
+     "explain": "$\\left[-\\frac1x\\right]_1^2=-\\frac12+1=\\frac12$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בהוכחה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "נבחר $g(x)=\\frac1x$ ונשתמש במכפלה $\\langle f,g\\rangle=\\int_1^2f(x)g(x)\\,dx$.",
+      "לפי קושי-שוורץ $\\langle f,g\\rangle^2\\le\\|f\\|^2\\|g\\|^2$.",
+      "$\\|g\\|^2=\\int_1^2\\frac1{x^2}\\,dx=\\left[\\ln x\\right]_1^2=\\ln2$.",
+      "לכן $\\left(\\int_1^2\\frac{f(x)}x\\,dx\\right)^2\\le\\frac12\\int_1^2f^2(x)\\,dx$."
+     ],
+     "bugIndex": 2,
+     "explain": "הפונקציה הקדומה של $\\frac1{x^2}$ היא $-\\frac1x$ ולא $\\ln x$, ולכן הערך הוא $\\frac12$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -58,7 +182,58 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "הניטרלי של $\\mathbb{Z}_5^*$ ושל $\\mathbb{Z}_7^*$ הוא $1$",
+     "points": 1
+    },
+    {
+     "text": "בדיקה: $(1,1)\\cdot(a,b)=(a,b)$",
+     "points": 1
+    },
+    {
+     "text": "תשובה: $e=(1,1)$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לכתוב $(0,0)$ מתוך הרגל מחבורות חיבור; הכפל כאן ו-$0\\notin G$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מהו האיבר הניטרלי של $G$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(1,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(0,0)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(1,0)$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$(0,0)$ ו-$(1,0)$ אינם ב-$G$ (כי $0$ אינו ב-$\\mathbb{Z}_5^*$ או ב-$\\mathbb{Z}_7^*$), וגם מכפלה בהם מאפסת רכיב."
+    },
+    {
+     "type": "numeric",
+     "prompt": "חשבו את הרכיב השני של $(3,4)\\cdot(1,1)$.",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$4\\cdot1=4$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -71,7 +246,43 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "המשוואות $2c\\equiv1\\pmod5$ ו-$3d\\equiv1\\pmod7$",
+     "points": 2
+    },
+    {
+     "text": "$c=3$",
+     "points": 1
+    },
+    {
+     "text": "$d=5$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להפוך את הרכיבים כחיבור (למשל $-2$ ו-$-3$) במקום הופכי כפלי.",
+    "לא לעבוד בכל רכיב במודולו שלו (5 ו-7)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $c\\in\\mathbb{Z}_5^*$ המקיים $2c\\equiv1\\pmod5$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$2\\cdot3=6\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $d\\in\\mathbb{Z}_7^*$ המקיים $3d\\equiv1\\pmod7$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$3\\cdot5=15\\equiv1$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -84,7 +295,50 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "$|\\mathbb{Z}_5^*|=4$",
+     "points": 2
+    },
+    {
+     "text": "$|\\mathbb{Z}_7^*|=6$",
+     "points": 2
+    },
+    {
+     "text": "$|G|=4\\cdot6=24$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לספור גם את $0$ ולקבל $5\\cdot7=35$.",
+    "לחבר את הגדלים במקום להכפיל."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה איברים יש ב-$\\mathbb{Z}_5^*$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$\\{1,2,3,4\\}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה איברים יש ב-$\\mathbb{Z}_7^*$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$\\{1,\\dots,6\\}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $|G|$?",
+     "answer": 24,
+     "tol": 0,
+     "explain": "$4\\cdot6=24$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -97,7 +351,46 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "סדרי הרכיבים: $o(2)=4$ ו-$o(3)=6$",
+     "points": 3
+    },
+    {
+     "text": "הסדר הוא המכפלה המשותפת המינימלית: $\\mathrm{lcm}(4,6)=12$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לכתוב $4\\cdot6=24$ במקום $\\mathrm{lcm}$.",
+    "לשכוח שחזקות של $2$ מודולו 5 חוזרות ל-$1$ רק אחרי $4$ צעדים."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $2$ ב-$\\mathbb{Z}_5^*$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$2,4,3,1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $3$ ב-$\\mathbb{Z}_7^*$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$3,2,6,4,5,1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $(2,3)$?",
+     "answer": 12,
+     "tol": 0,
+     "explain": "$\\mathrm{lcm}(4,6)=12$. הסדר אינו $24$, כי $(2,3)^{12}=(1,1)$ כבר."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -110,7 +403,48 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c2b"
+   "contextId": "c2b",
+   "rubric": [
+    {
+     "text": "סימטריה של $-A-B^TB$",
+     "points": 1
+    },
+    {
+     "text": "הצגה $\\vec v^T(-A-B^TB)\\vec v=-\\vec v^TA\\vec v-\\|B\\vec v\\|^2$",
+     "points": 2
+    },
+    {
+     "text": "שני המחוברים אי-שליליים, ולכן הסכום קטן או שווה לאפס",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח את הסימן המינוס לפני $B^TB$.",
+    "לשכוח ש-$\\vec v^TB^TB\\vec v=\\|B\\vec v\\|^2\\ge0$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $B=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ ו-$\\vec v=\\begin{pmatrix}1\\\\-1\\end{pmatrix}$ חשבו את $\\vec v^TB^TB\\vec v$.",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$B\\vec v=\\begin{pmatrix}0\\\\-1\\end{pmatrix}$ ולכן הערך הוא $\\|B\\vec v\\|^2=1$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בהוכחה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "$\\left(-A-B^TB\\right)^T=-A^T-B^TB=-A-B^TB$, כי $A$ סימטרית.",
+      "$\\vec v^T\\left(-A-B^TB\\right)\\vec v=-\\vec v^TA\\vec v+(B\\vec v)^T(B\\vec v)$.",
+      "$\\vec v^TA\\vec v\\ge0$ כי $A$ מוגדרת חיובית, וגם $(B\\vec v)^T(B\\vec v)=\\|B\\vec v\\|^2\\ge0$.",
+      "לכן $\\vec v^T\\left(-A-B^TB\\right)\\vec v\\le0$ והמטריצה מוגדרת שלילית."
+     ],
+     "bugIndex": 1,
+     "explain": "הסימן לפני $(B\\vec v)^T(B\\vec v)$ חייב להיות מינוס, כי מפזרים את המינוס שמול $B^TB$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -123,7 +457,71 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c2b"
+   "contextId": "c2b",
+   "rubric": [
+    {
+     "text": "סימטריה: $\\left(B^TAB\\right)^T=B^TAB$",
+     "points": 1
+    },
+    {
+     "text": "הצבה $\\vec w=B\\vec v$",
+     "points": 2
+    },
+    {
+     "text": "$\\vec w^TA\\vec w\\ge0$ ולכן $B^TAB$ מוגדרת חיובית",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לכתוב $\\left(B^TAB\\right)^T=B^TA^TB^T$ (בשחלוף של מכפלה, $B$ הופך ל-$B^T$ ולהפך).",
+    "לדרוש חיוביות לחלוטין: עבור $B$ סינגולרית הטענה לא נכונה במובן החזק."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "למה שווה $\\vec v^T\\left(B^TAB\\right)\\vec v$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(B\\vec v)^TA(B\\vec v)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\vec v^TA\\vec v$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(B^T\\vec v)^TA(B^T\\vec v)$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$\\vec v^TB^T=(B\\vec v)^T$. עבור $B=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$, $A=\\mathrm{diag}(2,3)$ ו-$\\vec v=(1,0)^T$ הערך הוא $2$, כמו בביטוי עם $B\\vec v$, ובביטוי עם $B^T\\vec v=(1,1)^T$ מתקבל $5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $A=\\mathrm{diag}(2,3)$, $B=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ ו-$\\vec v=\\begin{pmatrix}1\\\\0\\end{pmatrix}$ חשבו את $\\vec w^TA\\vec w$ כש-$\\vec w=B\\vec v$.",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$\\vec w=(1,0)^T$ ולכן $\\vec w^TA\\vec w=2$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בהוכחה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "$\\left(B^TAB\\right)^T=B^TA^TB^T=B^TAB$, כי $A$ סימטרית.",
+      "לכל $\\vec v$ נסמן $\\vec w=B\\vec v$.",
+      "$\\vec v^T\\left(B^TAB\\right)\\vec v=(B\\vec v)^TA(B\\vec v)=\\vec w^TA\\vec w$.",
+      "$\\vec w^TA\\vec w\\ge0$ כי $A$ מוגדרת חיובית, ולכן $B^TAB$ מוגדרת חיובית."
+     ],
+     "bugIndex": 0,
+     "explain": "בשחלוף $(XYZ)^T=Z^TY^TX^T$, ולכן $\\left(B^TAB\\right)^T=B^TA^T\\left(B^T\\right)^T=B^TA^TB$ ולא $B^TA^TB^T$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -135,7 +533,93 @@
    "solution": "נחשב $AA^T$ (מסדר $2\\times2$):\n$$AA^T=\\begin{pmatrix}1&0&2\\\\2&0&1\\end{pmatrix}\\begin{pmatrix}1&2\\\\0&0\\\\2&1\\end{pmatrix}=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix},\\qquad|AA^T-\\lambda I|=(5-\\lambda)^2-16=0\\ \\Rightarrow\\ \\lambda_1=9,\\ \\lambda_2=1$$\nהערכים הסינגולריים: $\\sigma_1=\\sqrt9=3$, $\\sigma_2=\\sqrt1=1$.\n**וקטורים עצמיים של $AA^T$ (העמודות של $U$):**\n$$\\lambda=9:\\ \\begin{pmatrix}-4&4\\\\4&-4\\end{pmatrix}\\vec u=\\vec0\\ \\Rightarrow\\ \\vec u_1=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\1\\end{pmatrix},\\qquad\\lambda=1:\\ \\begin{pmatrix}4&4\\\\4&4\\end{pmatrix}\\vec u=\\vec0\\ \\Rightarrow\\ \\vec u_2=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\-1\\end{pmatrix}$$\n**העמודות של $V$:** $\\vec v_i=\\dfrac1{\\sigma_i}A^T\\vec u_i$:\n$$\\vec v_1=\\frac13\\begin{pmatrix}1&2\\\\0&0\\\\2&1\\end{pmatrix}\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\frac13\\cdot\\frac1{\\sqrt2}\\begin{pmatrix}3\\\\0\\\\3\\end{pmatrix}=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\0\\\\1\\end{pmatrix},\\qquad\\vec v_2=\\frac11\\begin{pmatrix}1&2\\\\0&0\\\\2&1\\end{pmatrix}\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\-1\\end{pmatrix}=\\frac1{\\sqrt2}\\begin{pmatrix}-1\\\\0\\\\1\\end{pmatrix}$$\nאת $\\vec v_3$ נשלים לבסיס אורתונורמלי של $\\mathbb{R}^3$: וקטור יחידה האורתוגונלי ל-$\\vec v_1,\\vec v_2$ (הוא וקטור עצמי של $A^TA$ עבור $\\lambda=0$): $\\vec v_3=\\begin{pmatrix}0\\\\1\\\\0\\end{pmatrix}$.\n**הפירוק:**\n$$A=U\\Sigma V^T=\\begin{pmatrix}\\frac1{\\sqrt2}&\\frac1{\\sqrt2}\\\\\\frac1{\\sqrt2}&-\\frac1{\\sqrt2}\\end{pmatrix}\\cdot\\begin{pmatrix}3&0&0\\\\0&1&0\\end{pmatrix}\\cdot\\begin{pmatrix}\\frac1{\\sqrt2}&-\\frac1{\\sqrt2}&0\\\\0&0&1\\\\\\frac1{\\sqrt2}&\\frac1{\\sqrt2}&0\\end{pmatrix}^T$$\n(כאן $V=\\begin{pmatrix}\\vec v_1&\\vec v_2&\\vec v_3\\end{pmatrix}$ כעמודות.)",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "חישוב $AA^T=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "הערכים העצמיים $9,1$ והערכים הסינגולריים $3,1$",
+     "points": 3
+    },
+    {
+     "text": "העמודות של $U$: וקטורים עצמיים מנורמלים של $AA^T$",
+     "points": 4
+    },
+    {
+     "text": "העמודות $\\vec v_1,\\vec v_2$ של $V$ לפי $\\frac1{\\sigma_i}A^T\\vec u_i$",
+     "points": 4
+    },
+    {
+     "text": "השלמה $\\vec v_3=(0,1,0)^T$",
+     "points": 2
+    },
+    {
+     "text": "כתיבת $A=U\\Sigma V^T$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לרשום את $9,1$ כערכים הסינגולריים במקום $3,1$.",
+    "לבחור את הסימנים של $\\vec u_i$ ושל $\\vec v_i$ בלי להקפיד על $A\\vec v_i=\\sigma_i\\vec u_i$.",
+    "לשכוח שהעמודה השלישית של $V$ חייבת להיות אורתוגונלית לשתיים הראשונות."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב בשורה 1, עמודה 2 של $AA^T$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$1\\cdot2+0\\cdot0+2\\cdot1=4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sigma_1$ (הגדול)?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$\\lambda=9$ ולכן $\\sigma_1=3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sigma_2$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$\\lambda=1$ ולכן $\\sigma_2=1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "אם $\\vec u_2=\\frac1{\\sqrt2}(1,-1)^T$ אז $\\vec v_2=\\frac1{\\sigma_2}A^T\\vec u_2$. מהו הרכיב הראשון שלו (עיגול לארבע ספרות אחרי הנקודה)?",
+     "answer": -0.7071,
+     "tol": 0.0001,
+     "explain": "$A^T\\vec u_2=\\frac1{\\sqrt2}(-1,0,1)^T$, והרכיב הראשון הוא $-\\frac1{\\sqrt2}\\approx-0.7071$."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזה וקטור (עד כדי סימן) משלים את $\\vec v_1=\\frac1{\\sqrt2}(1,0,1)^T$ ו-$\\vec v_2=\\frac1{\\sqrt2}(-1,0,1)^T$ לבסיס אורתונורמלי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(0,1,0)^T$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(0,0,1)^T$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\frac1{\\sqrt2}(1,0,1)^T$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$(0,0,1)^T$ אינו ניצב ל-$\\vec v_2$ (המכפלה $\\frac1{\\sqrt2}$), והווקטור $\\frac1{\\sqrt2}(1,0,1)^T$ הוא $\\vec v_1$ עצמו."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -147,7 +631,69 @@
    "solution": "נשתמש בתכונות המכפלה הפנימית הממשית: ליניאריות וסימטריות ($\\langle\\vec v,\\vec u\\rangle=\\langle\\vec u,\\vec v\\rangle$).\n$$\\|\\vec u+\\vec v\\|^2=\\langle\\vec u+\\vec v,\\vec u+\\vec v\\rangle=\\langle\\vec u,\\vec u\\rangle+\\langle\\vec u,\\vec v\\rangle+\\langle\\vec v,\\vec u\\rangle+\\langle\\vec v,\\vec v\\rangle=\\|\\vec u\\|^2+2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2$$\n$$\\|\\vec u-\\vec v\\|^2=\\langle\\vec u-\\vec v,\\vec u-\\vec v\\rangle=\\langle\\vec u,\\vec u\\rangle-\\langle\\vec u,\\vec v\\rangle-\\langle\\vec v,\\vec u\\rangle+\\langle\\vec v,\\vec v\\rangle=\\|\\vec u\\|^2-2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2$$\nנחסר את השוויון השני מהראשון:\n$$\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2=4\\langle\\vec u,\\vec v\\rangle\\ \\Rightarrow\\ \\langle\\vec u,\\vec v\\rangle=\\frac14\\left(\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2\\right)$$",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "פיתוח $\\|\\vec u\\pm\\vec v\\|^2$ בעזרת ליניאריות וסימטריה",
+     "points": 4
+    },
+    {
+     "text": "חיסור שני השוויונות",
+     "points": 2
+    },
+    {
+     "text": "חילוק ב-$4$ והמסקנה",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח את התכונה $\\langle\\vec v,\\vec u\\rangle=\\langle\\vec u,\\vec v\\rangle$ ולהישאר עם שני איברים נפרדים.",
+    "לחבר במקום לחסר: החיבור נותן $2\\|\\vec u\\|^2+2\\|\\vec v\\|^2$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $\\vec u=(1,2)$ ו-$\\vec v=(3,1)$ במכפלה הסטנדרטית חשבו את $\\frac14\\left(\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2\\right)$.",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$\\|(4,3)\\|^2=25$, $\\|(-2,1)\\|^2=5$, ו-$\\frac{25-5}4=5=\\langle\\vec u,\\vec v\\rangle$."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזו תכונה של המכפלה הפנימית הממשית מאחדת את $\\langle\\vec u,\\vec v\\rangle$ ו-$\\langle\\vec v,\\vec u\\rangle$ בפיתוח?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "סימטריה"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "אי-שוויון המשולש"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "חיוביות"
+      }
+     ],
+     "correctId": "a",
+     "explain": "רק הסימטריה $\\langle\\vec v,\\vec u\\rangle=\\langle\\vec u,\\vec v\\rangle$ מאפשרת לכתוב $2\\langle\\vec u,\\vec v\\rangle$. חיוביות ואי-שוויון המשולש אינם נותנים שוויון בין שני האיברים."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$\\|\\vec u\\pm\\vec v\\|^2=\\|\\vec u\\|^2\\pm2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2$ (ליניאריות וסימטריה).",
+      "מחסרים: $\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2=4\\langle\\vec u,\\vec v\\rangle$.",
+      "מחלקים ב-$4$: $\\langle\\vec u,\\vec v\\rangle=\\frac14\\left(\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2\\right)$."
+     ],
+     "explain": "פיתוח, חיסור, חילוק."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -159,7 +705,142 @@
    "solution": "המטריצה סימטרית. נחשב את הערכים העצמיים (פיתוח לפי השורה האמצעית):\n$$\\begin{vmatrix}a^2-\\lambda&0&1\\\\0&a-\\lambda&0\\\\1&0&a^2-\\lambda\\end{vmatrix}=(a-\\lambda)\\left[(a^2-\\lambda)^2-1\\right]=(a-\\lambda)(a^2-1-\\lambda)(a^2+1-\\lambda)$$\nהערכים העצמיים: $\\lambda_1=a$, $\\lambda_2=a^2-1$, $\\lambda_3=a^2+1$.\n**מוגדרת חיובית** (כל הערכים העצמיים $\\ge0$): $a\\ge0$ וגם $a^2\\ge1$ (ו-$a^2+1\\ge0$ תמיד), כלומר $a\\ge1$.\n**מוגדרת חיובית לחלוטין** (כולם $>0$): $a>0$ וגם $a^2>1$, כלומר $a>1$.\n**מוגדרת שלילית** (כולם $\\le0$): דורש $a^2+1\\le0$, וזה לא מתקיים לאף $a$. לכן אין ערכי $a$ עבורם המטריצה מוגדרת שלילית, ובפרט אין ערכים עבורם היא שלילית לחלוטין.\n**סיכום:**\n- $a>1$: מוגדרת חיובית לחלוטין (ובפרט מוגדרת חיובית).\n- $a=1$: מוגדרת חיובית אך לא לחלוטין (הערכים העצמיים $1,0,2$).\n- $a<1$: אף אחת מהן (יש ערך עצמי שלילי, $a<0$ או $a^2-1<0$, ותמיד יש ערך עצמי חיובי $a^2+1>0$).",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "חישוב הערכים העצמיים $a,\\ a^2-1,\\ a^2+1$",
+     "points": 6
+    },
+    {
+     "text": "מוגדרת חיובית: $a\\ge1$",
+     "points": 3
+    },
+    {
+     "text": "מוגדרת חיובית לחלוטין: $a>1$",
+     "points": 3
+    },
+    {
+     "text": "מוגדרת שלילית ושלילית לחלוטין: אף ערך",
+     "points": 3
+    },
+    {
+     "text": "סיכום: $a<1$ אף אחת מהן",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "להתבלבל בין $a\\ge1$ ל-$a>1$ בקצה $a=1$.",
+    "לשכוח את התנאי $a\\ge0$ על הערך העצמי $a$ ולפתור רק $a^2\\ge1$ (שמאפשר $a\\le-1$).",
+    "לשכוח שהערך $a^2+1$ תמיד חיובי ולכן המטריצה אף פעם לא שלילית."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "המטריצה היא $\\begin{pmatrix}a^2&0&1\\\\0&a&0\\\\1&0&a^2\\end{pmatrix}$. מהי העקבה שלה עבור $a=2$ (שווה לסכום הערכים העצמיים)?",
+     "answer": 10,
+     "tol": 0,
+     "explain": "$4+2+4=10$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהם הערכים העצמיים?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a,\\ a^2-1,\\ a^2+1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a,\\ a^2-1,\\ a^2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a,\\ a^2-1,\\ a^2+2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$2a,\\ a^2-1,\\ a^2+1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הסכום חייב להיות העקבה $2a^2+a$. הקבוצה הנכונה נותנת בדיוק זאת, ואילו הקבוצה עם $a^2$ נותנת $2a^2+a-1$, הקבוצה עם $a^2+2$ נותנת $2a^2+a+1$, והקבוצה עם $2a$ נותנת $2a^2+2a$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $a$ המטריצה מוגדרת חיובית (לא בהכרח לחלוטין)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a\\ge1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a>1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a\\ge0$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $a\\ge0$ וגם $a^2\\ge1$. עבור $a=1$ הערכים הם $1,0,2$ (חיובית), ועבור $a=\\frac12$ יש ערך עצמי $-\\frac34$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $a$ המטריצה מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a>1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a\\ge1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a>0$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $a=1$ יש ערך עצמי $0$, ועבור $a=\\frac12$ יש ערך עצמי שלילי."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $a$ המטריצה מוגדרת שלילית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "עבור אף $a$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a<0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$|a|<1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הערך העצמי $a^2+1$ חיובי תמיד. עבור $a=-2$ הערכים הם $-2,3,5$, ועבור $a=\\frac12$ הערכים הם $\\frac12,-\\frac34,\\frac54$: בשני המקרים יש ערך עצמי חיובי."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -171,7 +852,61 @@
    "solution": "נשים לב ש-$3\\equiv1\\pmod2$, כלומר המשוואה השנייה היא $x\\equiv1\\pmod2$. המודולים $5,2,7$ זרים בזוגות.\n$a_1=2,\\ a_2=1,\\ a_3=4$ ; $\\ m_1=5,\\ m_2=2,\\ m_3=7$ ; $\\ M=5\\cdot2\\cdot7=70$\n$$M_1=\\frac{70}5=14,\\qquad M_2=\\frac{70}2=35,\\qquad M_3=\\frac{70}7=10$$\n$$14x_1\\equiv1\\pmod5\\ \\Rightarrow\\ 4x_1\\equiv1\\pmod5\\ \\Rightarrow\\ x_1=4$$\n$$35x_2\\equiv1\\pmod2\\ \\Rightarrow\\ x_2\\equiv1\\pmod2\\ \\Rightarrow\\ x_2=1$$\n$$10x_3\\equiv1\\pmod7\\ \\Rightarrow\\ 3x_3\\equiv1\\pmod7\\ \\Rightarrow\\ x_3=5$$\n$$x\\equiv a_1M_1x_1+a_2M_2x_2+a_3M_3x_3=2\\cdot14\\cdot4+1\\cdot35\\cdot1+4\\cdot10\\cdot5=112+35+200=347\\equiv67\\pmod{70}$$\n**תשובה:** $x\\equiv67\\pmod{70}$. בדיקה: $67=13\\cdot5+2$, $67$ אי-זוגי ($67\\equiv3\\pmod2$), $67=9\\cdot7+4$.",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "זרות המודולים ו-$M=70$",
+     "points": 1
+    },
+    {
+     "text": "$M_1,M_2,M_3=14,35,10$",
+     "points": 2
+    },
+    {
+     "text": "ההופכיים $x_1,x_2,x_3=4,1,5$",
+     "points": 3
+    },
+    {
+     "text": "הסכום $347$ והרדוקציה $67$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לטעות בקריאת המשוואה $x\\equiv3\\pmod2$: היא שקולה ל-$x\\equiv1\\pmod2$.",
+    "לשכוח לרדד את $M_i$ מודולו $m_i$ לפני מציאת ההופכי."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $M=5\\cdot2\\cdot7$?",
+     "answer": 70,
+     "tol": 0,
+     "explain": "$5\\cdot2\\cdot7=70$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_1$ (בין $0$ ל-$4$) המקיים $14x_1\\equiv1\\pmod5$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$14\\equiv4$ ו-$4\\cdot4=16\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_3$ (בין $0$ ל-$6$) המקיים $10x_3\\equiv1\\pmod7$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$10\\equiv3$ ו-$3\\cdot5=15\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בין $0$ ל-$69$?",
+     "answer": 67,
+     "tol": 0,
+     "explain": "$347=4\\cdot70+67$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -183,7 +918,78 @@
    "solution": "נחשב ערכים עצמיים:\n$$|A-\\lambda I|=\\begin{vmatrix}5-\\lambda&0&0\\\\0&4-\\lambda&2\\\\0&2&1-\\lambda\\end{vmatrix}=(5-\\lambda)\\left[(4-\\lambda)(1-\\lambda)-4\\right]=(5-\\lambda)(\\lambda^2-5\\lambda)=-\\lambda(\\lambda-5)^2$$\nהערכים העצמיים: $\\lambda=5$ (ריבוי 2) ו-$\\lambda=0$.\n**עבור $\\lambda=5$:**\n$$A-5I=\\begin{pmatrix}0&0&0\\\\0&-1&2\\\\0&2&-4\\end{pmatrix}\\sim\\begin{pmatrix}0&1&-2\\\\0&0&0\\\\0&0&0\\end{pmatrix}\\ \\Rightarrow\\ \\begin{cases}x=s\\\\y=2t\\\\z=t\\end{cases}\\ \\Rightarrow\\ \\vec v_1=\\begin{pmatrix}1\\\\0\\\\0\\end{pmatrix},\\ \\vec v_2=\\begin{pmatrix}0\\\\2\\\\1\\end{pmatrix}$$\n$\\vec v_1\\perp\\vec v_2$, לכן אין צורך בגרם-שמידט בתוך המרחב העצמי.\n**עבור $\\lambda=0$:**\n$$A-0I=\\begin{pmatrix}5&0&0\\\\0&4&2\\\\0&2&1\\end{pmatrix}\\sim\\begin{pmatrix}1&0&0\\\\0&2&1\\\\0&0&0\\end{pmatrix}\\ \\Rightarrow\\ \\begin{cases}x=0\\\\z=-2y\\end{cases}\\ \\Rightarrow\\ \\vec v_3=\\begin{pmatrix}0\\\\1\\\\-2\\end{pmatrix}$$\n(וקטורים עצמיים של מטריצה סימטרית לערכים עצמיים שונים אורתוגונליים, ואכן $\\vec v_3\\perp\\vec v_1,\\vec v_2$.)\nננרמל: $\\|\\vec v_1\\|=1$, $\\|\\vec v_2\\|=\\|\\vec v_3\\|=\\sqrt5$. נרשום את הוקטורים המנורמלים כעמודות:\n$$Q=\\begin{pmatrix}1&0&0\\\\0&\\frac2{\\sqrt5}&\\frac1{\\sqrt5}\\\\0&\\frac1{\\sqrt5}&-\\frac2{\\sqrt5}\\end{pmatrix},\\qquad D=\\begin{pmatrix}5&0&0\\\\0&5&0\\\\0&0&0\\end{pmatrix},\\qquad A=QDQ^T$$\n($Q$ אורתוגונלית, $Q^{-1}=Q^T$, וסדר הערכים העצמיים ב-$D$ כסדר העמודות של $Q$.)",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "הערכים העצמיים $5,5,0$",
+     "points": 4
+    },
+    {
+     "text": "בסיס למרחב העצמי של $5$: $(1,0,0)^T,\\ (0,2,1)^T$ והבחנה שהם ניצבים",
+     "points": 4
+    },
+    {
+     "text": "וקטור עצמי של $0$: $(0,1,-2)^T$",
+     "points": 3
+    },
+    {
+     "text": "נרמול והרכבת $Q$ ו-$D$ (באותו סדר)",
+     "points": 4
+    }
+   ],
+   "pitfalls": [
+    "לסדר את העמודות של $Q$ בסדר שונה מהערכים על אלכסון $D$.",
+    "לשכוח לנרמל את $\\vec v_2,\\vec v_3$ (הנורמה היא $\\sqrt5$).",
+    "להפעיל גרם-שמידט שלא לצורך על וקטורים שכבר ניצבים."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הריבוי של הערך העצמי $5$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$|A-\\lambda I|=-\\lambda(\\lambda-5)^2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "חשבו את המכפלה הסקלרית $(0,1,-2)\\cdot(0,2,1)$.",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$2-2=0$, כלומר הווקטורים של ערכים עצמיים שונים ניצבים."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי הנורמה $\\|(0,2,1)\\|$ (עיגול לשלוש ספרות אחרי הנקודה)?",
+     "answer": 2.236,
+     "tol": 0.001,
+     "explain": "$\\sqrt5\\approx2.236$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע אין צורך בגרם-שמידט בין $\\vec v_1=(1,0,0)^T$ ל-$\\vec v_2=(0,2,1)^T$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי הם כבר ניצבים: המכפלה הסקלרית שלהם $0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי יש להם אותו אורך"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $A$ הפיכה"
+      }
+     ],
+     "correctId": "a",
+     "explain": "אורכיהם $1$ ו-$\\sqrt5$ (שונים), ו-$A$ אינה הפיכה (הערך $0$). מה שחשוב הוא רק שהמכפלה הסקלרית היא $0$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -196,7 +1002,63 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c5b"
+   "contextId": "c5b",
+   "rubric": [
+    {
+     "text": "$xy\\in G$ ולכן $xy=(xy)^{-1}$",
+     "points": 2
+    },
+    {
+     "text": "$(xy)^{-1}=y^{-1}x^{-1}$",
+     "points": 2
+    },
+    {
+     "text": "$y^{-1}x^{-1}=yx$ ולכן $xy=yx$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להשתמש ב-$(xy)^{-1}=x^{-1}y^{-1}$ (נכון רק בחבורה אבלית).",
+    "להניח שהחבורה אבלית כדי להוכיח שהיא אבלית."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מדוע מותר לכתוב $xy=(xy)^{-1}$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $xy\\in G$ והנתון חל על כל איבר של $G$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $G$ אבלית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $x=y$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הנימוק על אבליות הוא מעגלי (זו מה שמוכיחים), ו-$x=y$ אינו נתון."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$xy\\in G$, ולכן $xy=(xy)^{-1}$.",
+      "$(xy)^{-1}=y^{-1}x^{-1}$.",
+      "$y^{-1}=y$ ו-$x^{-1}=x$, ולכן $y^{-1}x^{-1}=yx$.",
+      "לכן $xy=yx$ ו-$G$ אבלית."
+     ],
+     "explain": "כל שורה נשענת על הקודמת."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -209,7 +1071,62 @@
    "solutionSource": "solved",
    "official": false,
    "confidence": "high",
-   "contextId": "c5b"
+   "contextId": "c5b",
+   "rubric": [
+    {
+     "text": "$g=g^{-1}$ ולכן $g^2=e$ לכל $g$",
+     "points": 2
+    },
+    {
+     "text": "$x^3=x$ ו-$y^5=y$",
+     "points": 2
+    },
+    {
+     "text": "$x=x^3=y^5=y$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לצמצם חזקות כמו בחשבון רגיל ($x^3=y^5\\Rightarrow x=y$) בלי להשתמש ב-$g^2=e$.",
+    "לטעות ב-$y^5=y^2y^2y$ ולקבל $y^2$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מה נובע מהנתון $g=g^{-1}$ לכל $g\\in G$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$g^2=e$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$g^2=g$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$g=e$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$g\\cdot g=g\\cdot g^{-1}=e$. ב-$\\mathbb{Z}_2$ למשל $g=1$ מקיים $g=g^{-1}$ אבל $g^2=0\\ne g$ ו-$g\\ne0$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$g=g^{-1}$ ולכן $g^2=e$ לכל $g\\in G$.",
+      "$x^3=x^2x=x$ ו-$y^5=y^2y^2y=y$.",
+      "אם $x^3=y^5$ אז $x=x^3=y^5=y$."
+     ],
+     "explain": "קודם $g^2=e$, אחר כך מצמצמים את החזקות, ולבסוף משווים."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   }
  ]
 }
