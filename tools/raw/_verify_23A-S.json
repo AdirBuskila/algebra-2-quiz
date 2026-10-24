@@ -1,0 +1,108 @@
+{
+ "examCode": "23A-S",
+ "refuter": "algebra-2 refute 23A-S/24A-C",
+ "counts": {
+  "agree": 9,
+  "disagree": 0,
+  "unclear": 0
+ },
+ "items": [
+  {
+   "item": "1א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "My blind derivation: M symmetric only at a=1 (eigs 1,3,-1, indefinite). Course convention (23B-B Q2 proves symmetry first; 24A-A Q3a states b=0 required and answers only for it; 26A-A uses symmetric matrices) defines definiteness only for symmetric matrices, so \"no a\" matches the course. Quadratic-form reading (my calc): PD a>3, ND a<-1 - the visible note states exactly this. All 4 steps agree (a=1, max eig 3, min eig -1, indefinite)."
+  },
+  {
+   "item": "1ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "|v|^2=17 by parallelogram law; <u,v>=-5. Steps 52,17,-5 agree."
+  },
+  {
+   "item": "2א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "y=3/4 x+3 (sympy normal equations). A^TA=[[48,4],[4,5]], A^Tb=(48,18)."
+  },
+  {
+   "item": "2ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "Q^2=Q^TQ=I, P^2=2I+2Q=2P. order and findbug (bugIndex 0) agree: only line 0 changed."
+  },
+  {
+   "item": "3א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "sympy QRdecomposition equals claimed Q,R; QR=A. R13=1/sqrt2, R23=-1/sqrt2."
+  },
+  {
+   "item": "3ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "Cauchy-Schwarz with int x^6=1/7. findbug index 2 is the only changed line."
+  },
+  {
+   "item": "4",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "Product formula A(a1+a2,b1+b2+a1c2,c1+c2), inverse A(-a,ac-b,-c) verified symbolically; A(1,2,3)A(4,5,6) entry=13; inverse entry 1; findbug index 2 is the only changed line; order is the real order. Non-abelian example A(1,0,0)A(0,0,1)=A(1,1,1) vs A(1,0,1) correct."
+  },
+  {
+   "item": "5א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "Brute force: unique x=67 mod 70."
+  },
+  {
+   "item": "5ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "proj=[[1/2,5/2],[1,1]] (sympy); <A2,B1>=4, |B2|^2=4, <C,B2>=4, top-right 5/2."
+  }
+ ]
+}

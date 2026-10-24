@@ -1,0 +1,136 @@
+{
+ "examCode": "24A-C",
+ "refuter": "algebra-2 refute 23A-S/24A-C",
+ "counts": {
+  "agree": 12,
+  "disagree": 0,
+  "unclear": 0
+ },
+ "items": [
+  {
+   "item": "1א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "y=4/5 x+2; sums 65,5,62,14 verified."
+  },
+  {
+   "item": "1ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "CS, int x^6=1/7; findbug index 2 correct."
+  },
+  {
+   "item": "2א.1",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "Operation checked exactly as printed (ay+bx, by) against the page: commutative, true. Steps 10,10 agree."
+  },
+  {
+   "item": "2א.2",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "Identity (0,1), two-sided (sympy), unique. Steps agree."
+  },
+  {
+   "item": "2א.3",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "Verdict false correct. Two independent reasons: (1,0)*(1,0)=(0,0) is outside the set so not closed (the transcriber is right); and (4,0) has no inverse (sympy: (4y,0)=(0,1) unsolvable). Associativity holds and identity (0,1) is in the set (sympy), so the steps author is right too. Verdict correct for the stated reasons. MINOR GAP (not a disagreement): the solution text and rubric only show the missing inverse; its rubric item 1 lists closure but the solution never shows the closure failure. Suggest adding (1,0)*(1,0)=(0,0). Step 1 choice key (4,0) correct; other options (1,1),(2,3),(0,1) do have inverses; explanation numbers (-1,1) and (-2/9,1/3) correct. No option cites a position."
+  },
+  {
+   "item": "2ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "A^2 sym and v^TA^2v=|Av|^2>=0, sum >0. Steps 5, 6 agree; findbug index 2 correct."
+  },
+  {
+   "item": "3א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "U S V^T = A, U,V orthogonal (sympy). sigma=sqrt3,1; v1=(1,2,-1)/sqrt6; ker dim 1."
+  },
+  {
+   "item": "3ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "Polarization identity correct; step 4 = 17-13 correct."
+  },
+  {
+   "item": "4א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "Eigs a, a^2-1, a^2+1: PSD a>=1, PD a>1, never negative, a<1 neither. Matches course style of 23B-B Q3a. Solution first line wording (\"lambda>0 for every lambda\") is loose but harmless. Steps agree (a=1 min eig 0; a=1/2 eigs 1/2,-3/4,5/4)."
+  },
+  {
+   "item": "4ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "Unique x=20 mod 42; 272=6*42+20."
+  },
+  {
+   "item": "5א",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree",
+    "4": "agree"
+   },
+   "note": "Same Heisenberg proof as 23A-S Q4, verified."
+  },
+  {
+   "item": "5ב",
+   "verdict": "agree",
+   "steps": {
+    "1": "agree",
+    "2": "agree",
+    "3": "agree"
+   },
+   "note": "x^2=e implies abelian; c=b. order and findbug (index 3) correct."
+  }
+ ]
+}
