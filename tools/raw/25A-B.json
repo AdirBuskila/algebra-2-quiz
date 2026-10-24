@@ -28,7 +28,80 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "הצבת המערכת $A\\binom mn=\\vec b$ עם עמודת איקסים ועמודת אחדות",
+     "points": 3
+    },
+    {
+     "text": "מעבר למשוואות הנורמליות $A^TA\\binom mn=A^T\\vec b$ וחישוב שני האגפים",
+     "points": 4
+    },
+    {
+     "text": "פתרון המערכת: $m=0.4$, $n=3.6$ והישר",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את $A\\vec x=\\vec b$ ישירות: חמש הנקודות אינן על ישר אחד, ולכן אין פתרון.",
+    "לבלבל בין סדר העמודות: העמודה הראשונה היא ערכי $x$ (המקדם $m$) והשנייה עמודת אחדות (המקדם $n$)."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו מערכת פותרים כדי למצוא את הישר הקרוב ביותר בשיטת הריבועים הפחותים?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A^TA\\binom mn=A^T\\vec b$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A\\binom mn=\\vec b$ (פתרון מדויק)"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$AA^T\\binom mn=\\vec b$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הפתרון כופל ב-$A^T$ משמאל. המערכת $A\\vec x=\\vec b$ אינה פתירה, ו-$AA^T$ היא מטריצה $5\\times5$ ולא מתאימה."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$A^TA$, כלומר $\\sum x_i^2$?",
+     "answer": 165,
+     "tol": 0,
+     "explain": "$1+9+25+49+81=165$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הראשון ב-$A^T\\vec b$, כלומר $\\sum x_iy_i$?",
+     "answer": 156,
+     "tol": 0,
+     "explain": "$4+15+30+35+72=156$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$?",
+     "answer": 0.4,
+     "tol": 0.001,
+     "explain": "פתרון $\\begin{pmatrix}165&25\\\\25&5\\end{pmatrix}\\binom mn=\\binom{156}{28}$ נותן $m=0.4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו חיתוך הצירים $n$?",
+     "answer": 3.6,
+     "tol": 0.001,
+     "explain": "מאותה מערכת $n=3.6$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -40,7 +113,62 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חישוב $A^TA=\\begin{pmatrix}6&2\\\\2&6\\end{pmatrix}$ וערכיה העצמיים $8,4$",
+     "points": 4
+    },
+    {
+     "text": "ערכים סינגולריים $\\sigma_1=2\\sqrt2$, $\\sigma_2=2$ ומטריצה $\\Sigma$ בגודל $3\\times2$",
+     "points": 3
+    },
+    {
+     "text": "מטריצה $V$ מווקטורים עצמיים אורתונורמליים של $A^TA$",
+     "points": 4
+    },
+    {
+     "text": "מטריצה $U$: $u_i=Av_i/\\sigma_i$ והשלמה לבסיס אורתונורמלי",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לכתוב את הערכים העצמיים $8,4$ במקום את השורשים שלהם $2\\sqrt2,2$ ב-$\\Sigma$.",
+    "לשכוח להשלים את $U$ לבסיס אורתונורמלי של $\\mathbb{R}^3$ (העמודה השלישית).",
+    "לכתוב $V$ במקום $V^T$ בפירוק $A=U\\Sigma V^T$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הגדול של $A^TA=\\begin{pmatrix}6&2\\\\2&6\\end{pmatrix}$?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$\\lambda=6\\pm2$, כלומר $8$ ו-$4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי הגדול $\\sigma_1$ (כתבו ערך מספרי)?",
+     "answer": 2.8284271,
+     "tol": 0.001,
+     "explain": "$\\sigma_1=\\sqrt8=2\\sqrt2\\approx2.828$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי $\\sigma_2$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$\\sigma_2=\\sqrt4=2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "$v_1=\\frac1{\\sqrt2}(1,1)^T$. מהו הרכיב השני של $u_1=Av_1/\\sigma_1$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$Av_1=\\frac1{\\sqrt2}(0,4,0)^T=(0,2\\sqrt2,0)^T$, ולכן $u_1=(0,1,0)^T$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -53,7 +181,73 @@
    "confidence": "med",
    "part": "א",
    "points": 5,
-   "contextId": "c2b"
+   "contextId": "c2b",
+   "rubric": [
+    {
+     "text": "שימוש בכך ש-$(xy)^2=e$ (הנתון חל על כל איבר, כולל $xy$)",
+     "points": 2
+    },
+    {
+     "text": "כפל ב-$x$ משמאל וב-$y$ מימין ושימוש ב-$x^2=y^2=e$",
+     "points": 2
+    },
+    {
+     "text": "הסקה $yx=xy$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להניח שהחבורה אבלית כדי להוכיח שהיא אבלית.",
+    "לכפול בצד אחד בלבד: צריך $x$ משמאל ו-$y$ מימין כדי לחסל את שני הריבועים."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מדוע מותר להסיק ש-$(xy)^2=e$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $G$ אבלית"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $xy\\in G$ והנתון $a^2=e$ מתקיים לכל איבר $a\\in G$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $xy=e$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "הנתון חל על כל איבר, ו-$xy$ איבר ב-$G$. אבלית היא מה שמוכיחים, ו-$xy=e$ אינו נכון בדרך כלל."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$xyxy=e$ (כי $(xy)^2=e$)",
+      "נכפול ב-$x$ משמאל וב-$y$ מימין: $x^2\\,y\\,x\\,y^2=x\\,e\\,y=xy$",
+      "נציב $x^2=y^2=e$: $yx=xy$"
+     ],
+     "explain": "קודם הנתון על $xy$, אחר כך הכפל, ואחר כך הצבת הריבועים."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$xyxy=e$ (כי $(xy)^2=e$)",
+      "נכפול ב-$x$ משמאל וב-$y$ מימין: $x^2\\,y\\,x\\,y^2=x\\,e\\,y=yx$",
+      "נציב $x^2=y^2=e$: $yx=xy$"
+     ],
+     "bugIndex": 1,
+     "explain": "$x\\,e\\,y=xy$ ולא $yx$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -66,7 +260,53 @@
    "confidence": "med",
    "part": "ב",
    "points": 5,
-   "contextId": "c2b"
+   "contextId": "c2b",
+   "rubric": [
+    {
+     "text": "$x^2=e\\Rightarrow x^4=e$ ו-$y^2=e\\Rightarrow y^8=e$",
+     "points": 2
+    },
+    {
+     "text": "$x^5=x^4x=x$ ו-$y^9=y^8y=y$",
+     "points": 2
+    },
+    {
+     "text": "הסקה $x=y$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לצמצם חזקות כמו במספרים: בחבורה אין חילוק, רק כפל בהופכי.",
+    "לשכוח שהנתון $x^2=e$ חל גם על $y$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "$x^5=x^k$ כאשר $x^2=e$. מהו $k$ הקטן ביותר ($k\\ge0$)?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$x^5=x^4x=ex=x$, ולכן $k=1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "$y^9=y^k$ כאשר $y^2=e$. מהו $k$ הקטן ביותר ($k\\ge0$)?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$y^9=y^8y=y$, ולכן $k=1$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$x^2=e$ ו-$y^2=e$ נותנים $x^4=e$ ו-$y^8=e$",
+      "$x^5=x^4\\cdot x=x$ ו-$y^9=y^8\\cdot y=y$",
+      "מ-$x^5=y^9$ נקבל $x=y$"
+     ],
+     "explain": "צריך קודם את $x^4=e$ ו-$y^8=e$, אחר כך מצמצמים את החזקות, ולבסוף משווים."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -78,7 +318,87 @@
    "official": false,
    "confidence": "med",
    "part": "ג",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "סגירות: $ac\\cdot bd=1$",
+     "points": 4
+    },
+    {
+     "text": "אסוציאטיביות כפל מטריצות",
+     "points": 3
+    },
+    {
+     "text": "איבר ניטרלי $I\\in G$",
+     "points": 3
+    },
+    {
+     "text": "הופכי $\\operatorname{diag}(1/a,1/b)\\in G$",
+     "points": 5
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח להראות שהמכפלה והמטריצה ההופכית שייכות ל-$G$ (כלומר שמכפלת איברי האלכסון שלהן היא $1$).",
+    "להניח הפיכות בלי להסביר: $ab=1$ גורר $a,b\\ne0$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו אקסיומה דורשת במפורש ש-$a,b\\ne0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "סגירות"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "אסוציאטיביות"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "איבר ניטרלי"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "קיום איבר הופכי"
+      }
+     ],
+     "correctId": "d",
+     "explain": "ההופכי $\\operatorname{diag}(1/a,1/b)$ מוגדר רק כש-$a,b\\ne0$, וזה נובע מ-$ab=1$. שאר האקסיומות לא מחלקות."
+    },
+    {
+     "type": "numeric",
+     "prompt": "$A=\\operatorname{diag}(2,\\frac12)$ ו-$B=\\operatorname{diag}(3,\\frac13)$. מהי מכפלת שני איברי האלכסון של $AB$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$AB=\\operatorname{diag}(6,\\frac16)$ והמכפלה $6\\cdot\\frac16=1$, לכן $AB\\in G$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הראשון באלכסון של $A^{-1}$ עבור $A=\\operatorname{diag}(2,\\frac12)$?",
+     "answer": 0.5,
+     "tol": 0,
+     "explain": "$A^{-1}=\\operatorname{diag}(\\frac12,2)$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה בהוכחת ההופכי יש טעות?",
+     "lines": [
+      "$ab=1$, ולכן $a,b\\ne0$",
+      "נגדיר $A^{-1}=\\operatorname{diag}\\left(\\frac1a,\\frac1b\\right)$",
+      "$\\frac1a\\cdot\\frac1b=\\frac1{a+b}=1$",
+      "לכן $A^{-1}\\in G$"
+     ],
+     "bugIndex": 2,
+     "explain": "$\\frac1a\\cdot\\frac1b=\\frac1{ab}=1$, ולא $\\frac1{a+b}$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -90,7 +410,96 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "ערכים עצמיים $a-1,\\ a+1,\\ 2a$",
+     "points": 5
+    },
+    {
+     "text": "חיובית: $a\\ge1$, וחיובית לחלוטין: $a>1$",
+     "points": 4
+    },
+    {
+     "text": "שלילית: $a\\le-1$, ושלילית לחלוטין: $a<-1$",
+     "points": 4
+    },
+    {
+     "text": "אף אחת מהן: $-1<a<1$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבלבל בין מוגדרת (אי-שוויון חלש, $\\ge$) למוגדרת לחלוטין (אי-שוויון חזק).",
+    "לפתור את אי-השוויונות בנפרד ולשכוח לחתוך אותם: צריכים כולם יחד."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=5$, מהו הערך העצמי הקטן ביותר של המטריצה?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "הערכים העצמיים $4,6,10$; הקטן הוא $a-1=4$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו ערכי $a$ המטריצה מוגדרת חיובית (לא בהכרח לחלוטין)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a\\ge1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a\\ge-1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a\\ge0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$a>1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "צריך $a-1\\ge0$, $a+1\\ge0$, $2a\\ge0$ יחד, כלומר $a\\ge1$. עבור $a=0$ הערך $a-1<0$; ועבור $a=1$ הערכים $0,2,2$ מקיימים את ההגדרה החלשה."
+    },
+    {
+     "type": "choice",
+     "prompt": "מתי המטריצה אינה מוגדרת חיובית ואינה מוגדרת שלילית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a<-1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$-1<a<1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a>1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$a=0$ בלבד"
+      }
+     ],
+     "correctId": "b",
+     "explain": "בתחום הזה $a-1<0<a+1$, ולכן יש ערך עצמי שלילי וערך עצמי חיובי."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -102,7 +511,75 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "פיתוח הצורה הריבועית $a^2+6ab+8b^2$",
+     "points": 3
+    },
+    {
+     "text": "בדיקת סימן הפולינום $t^2+6t+8$ עם $t=a/b$",
+     "points": 4
+    },
+    {
+     "text": "וקטור $\\bar y$ עם ערך חיובי",
+     "points": 1
+    },
+    {
+     "text": "וקטור $\\bar x$ עם ערך שלילי",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק וקטורים בעלי רכיבים חיוביים: הצורה שלילית רק כאשר $a$ ו-$b$ בסימנים הפוכים.",
+    "לשכוח שהרכיב הצולב מופיע פעמיים: $6ab$ ולא $3ab$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\bar v^TC\\bar v$ עבור $\\bar v=(1,1)^T$?",
+     "answer": 15,
+     "tol": 0,
+     "explain": "$1+6+8=15>0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\bar v^TC\\bar v$ עבור $\\bar v=(-3,1)^T$?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$9-18+8=-1<0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו ערכי $t=a/b$ הביטוי $t^2+6t+8$ שלילי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$t<-4$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$-2<t<2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$-4<t<-2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$t>-2$"
+      }
+     ],
+     "correctId": "c",
+     "explain": "השורשים הם $-4,-2$ והפרבולה פתוחה כלפי מעלה, ולכן היא שלילית בין השורשים בלבד."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -115,7 +592,70 @@
    "confidence": "med",
    "part": "א",
    "points": 8,
-   "contextId": "c4a"
+   "contextId": "c4a",
+   "rubric": [
+    {
+     "text": "$\\left(y^{-1}xy\\right)^n=y^{-1}x^ny=e$ ולכן $m\\le n$",
+     "points": 3
+    },
+    {
+     "text": "$y^{-1}x^my=e\\Rightarrow x^m=e$ ולכן $n\\le m$",
+     "points": 3
+    },
+    {
+     "text": "מסקנה $n=m$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להראות רק כיוון אחד של אי-השוויון (הסדר מוגדר כמינימום, ולכן צריך $m\\le n$ וגם $n\\le m$).",
+    "לכתוב $\\left(y^{-1}xy\\right)^n=y^{-1}x\\,y^n$: ה-$y$ מצטמצמים בין העותקים הסמוכים."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו זהות נכונה לכל $k\\ge1$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\left(y^{-1}xy\\right)^k=y^{-1}x^ky$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\left(y^{-1}xy\\right)^k=y^{-k}x^ky^k$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\left(y^{-1}xy\\right)^k=y^{-1}xy^k$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "בכל מכפלה $y\\,y^{-1}$ בין עותקים סמוכים מצטמצם ל-$e$, ונשארים $y^{-1}$ בקצה השמאלי ו-$y$ בקצה הימני."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה בהוכחה יש טעות?",
+     "lines": [
+      "$\\left(y^{-1}xy\\right)^n=y^{-1}x^ny$",
+      "$=y^{-1}ey=y$",
+      "לכן $\\left(y^{-1}xy\\right)^n=e$ ו-$m\\le n$"
+     ],
+     "bugIndex": 1,
+     "explain": "$y^{-1}ey=y^{-1}y=e$ ולא $y$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "ב-$S_4$ נתון $x=(1\\,2\\,3\\,4)$ ו-$y=(1\\,2)$. מהו הסדר של $y^{-1}xy$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "צמידה שומרת על הסדר, וסדר $x$ הוא $4$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -128,7 +668,46 @@
    "confidence": "med",
    "part": "ב",
    "points": 7,
-   "contextId": "c4a"
+   "contextId": "c4a",
+   "rubric": [
+    {
+     "text": "כפל שני האגפים ב-$y^{-1}$ משמאל ומימין",
+     "points": 4
+    },
+    {
+     "text": "צמצום $yy^{-1}=e$ ו-$y^{-1}y=e$ וקבלת $y^{-1}x=xy^{-1}$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לכפול ב-$y^{-1}$ רק מצד אחד: זה לא נותן את הצורה המבוקשת.",
+    "לצמצם בצד שמאל כאילו $y^{-1}$ עוברת ל-$x$ מימין: בחבורה כללית אין חילוף."
+   ],
+   "steps": [
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "נתון $xy=yx$",
+      "נכפול ב-$y^{-1}$ משמאל ומימין: $y^{-1}(xy)y^{-1}=y^{-1}(yx)y^{-1}$",
+      "נצמצם $yy^{-1}=y^{-1}y=e$: $y^{-1}x=xy^{-1}$"
+     ],
+     "explain": "הנתון, הכפל משני הצדדים, ואז צמצום."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$y^{-1}(xy)y^{-1}=y^{-1}x\\,(yy^{-1})$",
+      "$y^{-1}x\\,(yy^{-1})=y^{-1}xy$",
+      "$y^{-1}(yx)y^{-1}=(y^{-1}y)\\,x\\,y^{-1}=xy^{-1}$"
+     ],
+     "bugIndex": 1,
+     "explain": "$yy^{-1}=e$, ולכן $y^{-1}x(yy^{-1})=y^{-1}x$ ולא $y^{-1}xy$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -140,7 +719,68 @@
    "official": false,
    "confidence": "med",
    "part": "ג",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בדיקת זרות בזוגות וחישוב $m=140$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $M_i=m/m_i$: $35,28,20$",
+     "points": 2
+    },
+    {
+     "text": "פתרון $M_ix_i\\equiv1$: $x_i=3,2,6$",
+     "points": 3
+    },
+    {
+     "text": "הרכבה $x_0=\\sum a_iM_ix_i=779\\equiv79\\pmod{140}$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לדלג על בדיקת הזרות בזוגות לפני שימוש במשפט.",
+    "לשכוח להשתמש ב-$a_i$ (השאריות $3,4,2$) בסכום הסופי, או לשכוח לצמצם מודולו $140$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $m=4\\cdot5\\cdot7$?",
+     "answer": 140,
+     "tol": 0,
+     "explain": "המודולים זרים בזוגות, ו-$m=140$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו $35x_1\\equiv1\\pmod4$ ($0\\le x_1<4$). מהו $x_1$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$35\\equiv3\\pmod4$ ו-$3\\cdot3=9\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו $20x_3\\equiv1\\pmod7$ ($0\\le x_3<7$). מהו $x_3$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$20\\equiv6\\pmod7$ ו-$6\\cdot6=36\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסכום $3\\cdot35\\cdot3+4\\cdot28\\cdot2+2\\cdot20\\cdot6$ לפני הצמצום?",
+     "answer": 779,
+     "tol": 0,
+     "explain": "$315+224+240=779$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x_0$ ($0\\le x_0<140$) של המערכת?",
+     "answer": 79,
+     "tol": 0,
+     "explain": "$779=5\\cdot140+79$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -152,7 +792,75 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "ערכים עצמיים $2,2,0$",
+     "points": 4
+    },
+    {
+     "text": "וקטורים עצמיים בלתי תלויים לכל ערך עצמי",
+     "points": 4
+    },
+    {
+     "text": "אורתונורמליזציה של הווקטורים העצמיים",
+     "points": 4
+    },
+    {
+     "text": "כתיבת $A=PDP^T$ עם $P$ אורתוגונלית",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לא לנרמל את הווקטורים העצמיים: $P$ חייבת להיות אורתוגונלית ($P^{-1}=P^T$).",
+    "לסדר את הערכים העצמיים ב-$D$ בסדר שונה מסדר העמודות ב-$P$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הגדול של $A$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$\\det(A-\\lambda I)=(2-\\lambda)^2(-\\lambda)$, כלומר $2,2,0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזה וקטור עצמי מתאים לערך העצמי $0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(1,1,0)^T$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(1,-1,0)^T$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(0,0,1)^T$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(1,0,0)^T$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "$A(1,-1,0)^T=0$. הווקטורים $(1,1,0)^T$ ו-$(0,0,1)^T$ מתאימים ל-$2$, ו-$(1,0,0)^T$ אינו עצמי."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האורך של $(1,1,0)^T$ (הוא מנורמל בבניית $P$)?",
+     "answer": 1.4142136,
+     "tol": 0.001,
+     "explain": "$\\sqrt2\\approx1.414$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -164,7 +872,82 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "אי-שוויון ימני: $\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2>x+y+z$ כי המחוברים הנוספים חיוביים",
+     "points": 4
+    },
+    {
+     "text": "הגדרת $\\bar u,\\bar v$ ויישום קושי-שוורץ",
+     "points": 4
+    },
+    {
+     "text": "הסקת $\\frac13\\le\\frac{x+y+z}{(\\cdots)^2}$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להוכיח רק אחד משני האי-שוויונות.",
+    "לשכוח שהאי-שוויון הימני חזק ($<$) והשמאלי חלש ($\\le$, שוויון כש-$x=y=z$)."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "לאילו וקטורים מיישמים את קושי-שוורץ בחלק השמאלי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\bar u=(\\sqrt x,\\sqrt y,\\sqrt z)$ ו-$\\bar v=(1,1,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\bar u=(x,y,z)$ ו-$\\bar v=(1,1,1)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\bar u=(\\sqrt x,\\sqrt y,\\sqrt z)$ ו-$\\bar v=(x,y,z)$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "בבחירה הראשונה $\\langle\\bar u,\\bar v\\rangle=\\sqrt x+\\sqrt y+\\sqrt z$ ו-$\\|\\bar u\\|^2=x+y+z$. הבחירות האחרות נותנות אי-שוויונות אחרים."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי החלק השמאלי.",
+     "lines": [
+      "נגדיר $\\bar u=(\\sqrt x,\\sqrt y,\\sqrt z)$ ו-$\\bar v=(1,1,1)$",
+      "קושי-שוורץ: $\\sqrt x+\\sqrt y+\\sqrt z\\le\\sqrt{x+y+z}\\cdot\\sqrt3$",
+      "נעלה בריבוע: $\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2\\le3(x+y+z)$",
+      "נחלק: $\\frac13\\le\\frac{x+y+z}{\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2}$"
+     ],
+     "explain": "הגדרה, קושי-שוורץ, העלאה בריבוע, חלוקה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה בחלק הימני יש טעות?",
+     "lines": [
+      "$\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2=x+y+z+2\\sqrt{xy}+2\\sqrt{yz}+2\\sqrt{xz}$",
+      "המחוברים $2\\sqrt{xy},2\\sqrt{yz},2\\sqrt{xz}$ חיוביים כי $x,y,z>0$",
+      "לכן $x+y+z>\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2$",
+      "ולכן המנה קטנה מ-$1$"
+     ],
+     "bugIndex": 2,
+     "explain": "הסכום עם מחוברים חיוביים גדול מ-$x+y+z$, ולכן $x+y+z<\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי המנה $\\frac{x+y+z}{\\left(\\sqrt x+\\sqrt y+\\sqrt z\\right)^2}$ עבור $x=y=z=1$?",
+     "answer": 0.3333333,
+     "tol": 0.0005,
+     "explain": "$\\frac{3}{9}=\\frac13$ (מקרה השוויון)."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }
