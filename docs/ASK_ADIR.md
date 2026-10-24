@@ -71,6 +71,6 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Page: 2 of the sitting (compilation p.274)
 - All 15 items held as no-key. Q2b.2 asks to prove B^T A B positive definite for any B in M_n(R); false for singular B (only semidefinite).
 - Needed: decide whether the solver states "B invertible" as an assumption.
-- Status: hold
+- Status: resolved by solver, pending refuter. All 15 solved (solutionSource "solved", official false). Q2b.2 is not flawed in the course's terms ("מוגדרת חיובית" = v^T M v >= 0, "לחלוטין" = strict, see Q4a), so it holds for any B; a visible "הערה:" covers the strict reading (needs B invertible).
 
 ## Resolved
