@@ -1,0 +1,806 @@
+{
+ "courseId": "proj_gs",
+ "levels": [
+  {
+   "id": "C01",
+   "order": 1,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C01-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$M_2(\\mathbb{R})$ עם $\\langle A,B\\rangle=\\operatorname{tr}(B^TA)$ נתונות $A=\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}$ ו-$B=\\begin{pmatrix}2&1\\\\1&0\\end{pmatrix}$. חשבו $\\langle A,B\\rangle$."
+     }
+    },
+    {
+     "id": "C01-Q2",
+     "question": "ב-$M_2(\\mathbb{R})$ עם $\\langle A,B\\rangle=\\operatorname{tr}(B^TA)$ נתונה $A=\\begin{pmatrix}1&-2\\\\3&0\\end{pmatrix}$. מהי $\\|A\\|$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\sqrt{14}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$14$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\sqrt{10}$"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q3",
+     "question": "ב-$M_2(\\mathbb{R})$ עם $\\langle A,B\\rangle=\\operatorname{tr}(B^TA)$ נתונה $A=\\begin{pmatrix}1&2\\\\3&1\\end{pmatrix}$. איזו מטריצה ניצבת ל-$A$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}2&-1\\\\0&0\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q4",
+     "step": {
+      "type": "choice",
+      "prompt": "איזו נוסחה מגדירה מכפלה פנימית על $\\mathbb{R}^2$ (עבור $u=(x_1,x_2)$ ו-$v=(y_1,y_2)$) ?",
+      "options": [
+       {
+        "id": "a",
+        "type": "text",
+        "value": "$2x_1y_1+3x_2y_2$"
+       },
+       {
+        "id": "b",
+        "type": "text",
+        "value": "$x_1y_1-x_2y_2$"
+       },
+       {
+        "id": "c",
+        "type": "text",
+        "value": "$x_1y_2+x_2y_1$"
+       },
+       {
+        "id": "d",
+        "type": "text",
+        "value": "$(x_1+x_2)(y_1+y_2)$"
+       }
+      ]
+     }
+    },
+    {
+     "id": "C01-Q5",
+     "step": {
+      "type": "numeric",
+      "prompt": "נתון $\\|u\\|=2$, $\\|v\\|=3$ ו-$\\langle u,v\\rangle=-1$. חשבו $\\|u+v\\|^2$."
+     }
+    },
+    {
+     "id": "bank:23A-B-Q3b",
+     "bankId": "23A-B-Q3b"
+    }
+   ]
+  },
+  {
+   "id": "C02",
+   "order": 2,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C02-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$C[0,1]$ עם $\\langle f,g\\rangle=\\int_0^1 f(x)g(x)\\,dx$ חשבו $\\langle x,x^2\\rangle$."
+     }
+    },
+    {
+     "id": "C02-Q2",
+     "question": "ב-$C[-1,1]$ עם $\\langle f,g\\rangle=\\int_{-1}^{1}f(x)g(x)\\,dx$, איזה זוג פונקציות ניצב ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$x$ ו-$x^2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$1$ ו-$x^2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$1$ ו-$|x|$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$x^2$ ו-$|x|$"
+      }
+     ]
+    },
+    {
+     "id": "C02-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$C[0,3]$ עם $\\langle f,g\\rangle=\\int_0^3 f(x)g(x)\\,dx$ חשבו את $\\|x\\|^2$."
+     }
+    },
+    {
+     "id": "C02-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$C[0,1]$ עם $\\langle f,g\\rangle=\\int_0^1 f(x)g(x)\\,dx$ נתונות $f(x)=x$ ו-$g(x)=3x+c$. עבור איזה $c$ הפונקציות ניצבות ?"
+     }
+    },
+    {
+     "id": "C02-Q5",
+     "question": "ב-$C[0,1]$ מגדירים $\\langle f,g\\rangle=\\int_0^1e^x f(x)g(x)\\,dx$. מהו $\\|1\\|^2$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$e-1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$e$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\frac{e-1}{2}$"
+      }
+     ]
+    },
+    {
+     "id": "bank:23A-A-Q2a",
+     "bankId": "23A-A-Q2a"
+    }
+   ]
+  },
+  {
+   "id": "C03",
+   "order": 3,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C03-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$\\mathbb{R}^3$ נתונים $a=(1,1,1)$ ו-$b=(2,3,7)$. מהו הרכיב הראשון של $\\operatorname{Proj}_a(b)$ ?"
+     }
+    },
+    {
+     "id": "C03-Q2",
+     "question": "ב-$\\mathbb{R}^2$ נתונים $a=(3,4)$ ו-$b=(2,11)$. מהו $\\operatorname{Proj}_a(b)$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(6,8)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(30,40)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(150,200)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(2,11)$"
+      }
+     ]
+    },
+    {
+     "id": "C03-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותם וקטורים של הדוגמה, $a=(1,1,1)$ ו-$b=(2,3,7)$, חשבו את $\\|b-\\operatorname{Proj}_a(b)\\|^2$, כלומר את ריבוע המרחק מ-$b$ אל הישר."
+     }
+    },
+    {
+     "id": "C03-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "הוקטור $a=\\left(\\frac35,\\frac45\\right)$ הוא וקטור יחידה ב-$\\mathbb{R}^2$ ו-$P=aa^T$. חשבו את הרכיב השני של $P\\binom{5}{0}$."
+     }
+    },
+    {
+     "id": "bank:26A-A-Q3c",
+     "bankId": "26A-A-Q3c"
+    },
+    {
+     "id": "bank:26A-A-Q3d",
+     "bankId": "26A-A-Q3d"
+    }
+   ]
+  },
+  {
+   "id": "C04",
+   "order": 4,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C04-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "נתון $W=\\operatorname{Sp}\\{u_1,u_2\\}$ עם $u_1=(1,1,0)$ ו-$u_2=(1,-1,2)$, והם ניצבים. חשבו את הרכיב הראשון של $\\operatorname{Proj}_W(v)$ עבור $v=(3,1,5)$."
+     }
+    },
+    {
+     "id": "C04-Q2",
+     "question": "הוקטורים $g_1=\\frac1{\\sqrt2}(1,1,0)$, $g_2=\\frac1{\\sqrt2}(1,-1,0)$, $g_3=(0,0,1)$ הם בסיס אורתונורמלי של $\\mathbb{R}^3$. מהו המקדם של $g_1$ בהצגה של $v=(3,1,5)$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$2\\sqrt2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$4$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\sqrt2$"
+      }
+     ]
+    },
+    {
+     "id": "C04-Q3",
+     "question": "נתון $W=\\operatorname{Sp}\\{(1,0,0),(1,1,0)\\}$ ו-$v=(2,3,5)$. מהו $\\operatorname{Proj}_W(v)$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(2,3,0)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\left(\\frac92,\\frac52,0\\right)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(2,0,0)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(2,3,5)$"
+      }
+     ]
+    },
+    {
+     "id": "C04-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "עבור איזה ערך של $a$ הוקטורים $(1,2,1)$ ו-$(a,1,-1)$ ניצבים ?"
+     }
+    },
+    {
+     "id": "C04-Q5",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותו תת-מרחב $W=\\operatorname{Sp}\\{(1,1,0),(1,-1,2)\\}$ ועם $v=(3,1,5)$, חשבו את $\\|\\operatorname{Proj}_W(v)\\|^2$."
+     }
+    },
+    {
+     "id": "bank:23A-A-Q3c",
+     "bankId": "23A-A-Q3c"
+    }
+   ]
+  },
+  {
+   "id": "C05",
+   "order": 5,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C05-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$\\mathbb{R}^3$ נתונים $v_1=(1,1,1)$ ו-$v_2=(1,2,3)$. בגרהם-שמידט $u_1=v_1$. מהו הרכיב הראשון של $u_2$ ?"
+     }
+    },
+    {
+     "id": "C05-Q2",
+     "question": "ב-$M_2(\\mathbb{R})$ עם $\\langle A,B\\rangle=\\operatorname{tr}(B^TA)$ נתונות $v_1=\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$ ו-$v_2=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$. בגרהם-שמידט $u_1=v_1$. מהו $u_2$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&-1\\\\-1&1\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}-2&-4\\\\-4&-2\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}0&-2\\\\-2&0\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$\\mathbb{R}^3$ נתונים $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$. בגרהם-שמידט (בלי להכפיל בסקלרים) $u_1=(1,1,0)$ ו-$u_2=\\left(\\frac12,-\\frac12,1\\right)$. מהו הרכיב השלישי של $u_3$ ? (תשובה עשרונית, בעיגול לשתי ספרות)"
+     }
+    },
+    {
+     "id": "C05-Q4",
+     "question": "נתונים $v_1=(1,0,1)$, $v_2=(0,1,1)$, $v_3=(1,1,2)$. מה יוצא כשמבצעים גרהם-שמידט על $v_3$ אחרי שנבנו $u_1$ ו-$u_2$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "וקטור האפס, כי $v_3$ נמצא בפרישה של $v_1,v_2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "הוקטור $v_3$ עצמו, כי הוא כבר ניצב לקודמים"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "וקטור יחידה בכיוון $v_3$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "וקטור שונה מאפס שניצב ל-$u_1$ ול-$u_2$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q5",
+     "step": {
+      "type": "findbug",
+      "prompt": "נתון $v_1=(1,-1,0)$ ו-$v_2=(3,1,2)$. הפתרון הבא של $u_2$ בגרהם-שמידט מכיל שורה שגויה אחת. מצאו אותה.",
+      "lines": [
+       "$u_1=v_1=(1,-1,0)$",
+       "$\\langle v_2,u_1\\rangle=3-1+0=2$",
+       "$\\|u_1\\|^2=1+1+0=2$",
+       "$u_2=v_2-2\\,u_1=(3,1,2)-(2,-2,0)=(1,3,2)$",
+       "בדיקה: צריך לקבל $\\langle u_1,u_2\\rangle=0$"
+      ]
+     }
+    },
+    {
+     "id": "bank:24B-B-Q1b",
+     "bankId": "24B-B-Q1b"
+    }
+   ]
+  },
+  {
+   "id": "C06",
+   "order": 6,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C06-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$M_2(\\mathbb{R})$ עם $\\langle A,B\\rangle=\\operatorname{tr}(B^TA)$ נתון $W=\\operatorname{Sp}\\left\\{\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix},\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}\\right\\}$ (הפורשים ניצבים) ו-$V=\\begin{pmatrix}3&1\\\\2&5\\end{pmatrix}$. חשבו את $\\|V-\\operatorname{Proj}_W(V)\\|^2$."
+     }
+    },
+    {
+     "id": "C06-Q2",
+     "question": "ב-$M_2(\\mathbb{R})$ עם $\\langle A,B\\rangle=\\operatorname{tr}(B^TA)$ נתונים $W=\\operatorname{Sp}\\left\\{\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix},\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\right\\}$ ו-$V=\\begin{pmatrix}1&0\\\\2&2\\end{pmatrix}$. מהו $\\operatorname{Proj}_W(V)$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}\\frac12&\\frac32\\\\1&0\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}\\frac12&\\frac12\\\\0&0\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&0\\\\2&2\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$C[0,1]$ עם $\\langle f,g\\rangle=\\int_0^1f(x)g(x)\\,dx$ מבצעים גרהם-שמידט על $\\{1,x\\}$. מקבלים $u_1=1$ ו-$u_2=x-c$. מהו $c$ ?"
+     }
+    },
+    {
+     "id": "C06-Q4",
+     "question": "ב-$C[-1,1]$ עם $\\langle f,g\\rangle=\\int_{-1}^{1}f(x)g(x)\\,dx$ מהו ההיטל של $h(x)=x^3+1$ על $\\operatorname{Sp}\\{1,x\\}$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$1+\\frac35x$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$1+x$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\frac35x$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$1+\\frac53x$"
+      }
+     ]
+    },
+    {
+     "id": "bank:24B-B-Q1c",
+     "bankId": "24B-B-Q1c"
+    },
+    {
+     "id": "bank:24A-A-Q1b",
+     "bankId": "24A-A-Q1b"
+    }
+   ]
+  },
+  {
+   "id": "C07",
+   "order": 7,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C07-Q1",
+     "question": "מתאימים ישר $y=mx+n$ לארבע נקודות עם $x=1,2,3,4$. העמודות של $A$ הן ה-$x_i$ ועמודת אחדות, והנעלם הוא $\\binom mn$. מהי $A^TA$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}30&10\\\\10&4\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}30&10\\\\10&10\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}100&10\\\\10&4\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}30&10\\\\10&1\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "הנקודות הן $(1,2),(2,3),(3,5),(4,6)$ והישר הוא $y=mx+n$. חשבו את $m$ מתוך משוואות הנורמל."
+     }
+    },
+    {
+     "id": "C07-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "עבור אותן נקודות, $(1,2),(2,3),(3,5),(4,6)$, הישר הקרוב ביותר הוא $y=1.4x+0.5$. מהי התחזית עבור $x=5$ ?"
+     }
+    },
+    {
+     "id": "C07-Q4",
+     "step": {
+      "type": "choice",
+      "prompt": "עבור הישר $y=1.4x+0.5$ ו-$x=1,2,3,4$ השאריות $y_i-\\hat y_i$ הן $0.1,\\ -0.3,\\ 0.3,\\ -0.1$. איזו טענה על השארית נכונה בפתרון ריבועים פחותים ?",
+      "options": [
+       {
+        "id": "a",
+        "type": "text",
+        "value": "היא ניצבת לשתי עמודות $A$: סכום השאריות $0$ וגם $\\sum x_ir_i=0$"
+       },
+       {
+        "id": "b",
+        "type": "text",
+        "value": "היא ניצבת לוקטור $\\vec b$ של ערכי $y$"
+       },
+       {
+        "id": "c",
+        "type": "text",
+        "value": "כל השאריות שוות זו לזו"
+       },
+       {
+        "id": "d",
+        "type": "text",
+        "value": "סכום ריבועי השאריות הוא $0$"
+       }
+      ]
+     }
+    },
+    {
+     "id": "bank:24A-B-Q1a",
+     "bankId": "24A-B-Q1a"
+    },
+    {
+     "id": "bank:24B-B-Q3b",
+     "bankId": "24B-B-Q3b"
+    }
+   ]
+  },
+  {
+   "id": "C08",
+   "order": 8,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C08-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "העמודות של $A$ הן $a_1=(1,1,0)$ ו-$a_2=(1,-1,2)$ (ניצבות) ו-$\\vec b=(4,0,1)$. חשבו את $\\hat x_2$, המקדם של $a_2$ בפתרון הריבועים הפחותים."
+     }
+    },
+    {
+     "id": "C08-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותה מערכת, $a_1=(1,1,0)$, ‏$a_2=(1,-1,2)$ ו-$\\vec b=(4,0,1)$, חשבו את השגיאה $\\|\\vec b-A\\hat x\\|^2$."
+     }
+    },
+    {
+     "id": "C08-Q3",
+     "question": "העמודות של $A$ הן $(1,0,1)$ ו-$(0,1,1)$ (אינן ניצבות) ו-$\\vec b=(1,1,0)$. מהו $\\hat x$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\left(\\frac13,\\frac13\\right)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\left(\\frac12,\\frac12\\right)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(1,1)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\left(\\frac23,\\frac23\\right)$"
+      }
+     ]
+    },
+    {
+     "id": "C08-Q4",
+     "step": {
+      "type": "choice",
+      "prompt": "באותה מערכת, עם העמודות $(1,0,1)$, ‏$(0,1,1)$ והוקטור $\\vec b=(1,1,0)$, מהו הוקטור $A\\hat x$ ?",
+      "options": [
+       {
+        "id": "a",
+        "type": "text",
+        "value": "ההיטל של $\\vec b$ על $\\operatorname{Col}(A)$"
+       },
+       {
+        "id": "b",
+        "type": "text",
+        "value": "ההיטל של $\\vec b$ על $\\operatorname{Null}(A)$"
+       },
+       {
+        "id": "c",
+        "type": "text",
+        "value": "הוקטור $\\vec b$ עצמו"
+       },
+       {
+        "id": "d",
+        "type": "text",
+        "value": "השארית $\\vec b-A\\hat x$"
+       }
+      ]
+     }
+    },
+    {
+     "id": "C08-Q5",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותה מערכת (עמודות $(1,0,1)$, ‏$(0,1,1)$ ו-$\\vec b=(1,1,0)$, עם $\\hat x=\\left(\\frac13,\\frac13\\right)$) חשבו את השגיאה $\\|\\vec b-A\\hat x\\|^2$. (תשובה עשרונית)"
+     }
+    },
+    {
+     "id": "bank:23A-B-Q1a",
+     "bankId": "23A-B-Q1a"
+    }
+   ]
+  },
+  {
+   "id": "C09",
+   "order": 9,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C09-Q1",
+     "question": "נתונה $A=\\begin{pmatrix}3&5\\\\4&0\\end{pmatrix}$. עמודותיה $a_1=(3,4)$ ו-$a_2=(5,0)$. איזו מטריצה היא ה-$R$ של פירוק $A=QR$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}5&3\\\\0&4\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}5&0\\\\3&4\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}5&15\\\\0&4\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}5&3\\\\0&16\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C09-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "בפירוק $A=QR$ של $A=\\begin{pmatrix}3&5\\\\4&0\\end{pmatrix}$ מתקבל $q_1=\\left(\\frac35,\\frac45\\right)$ ו-$q_2=\\left(\\frac45,-\\frac35\\right)$. נתון $\\vec b=(5,10)$. חשבו את הרכיב השני של $Q^T\\vec b$."
+     }
+    },
+    {
+     "id": "C09-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "המשך: $R=\\begin{pmatrix}5&3\\\\0&4\\end{pmatrix}$ ו-$Q^T\\vec b=\\binom{11}{-2}$. פותרים $R\\vec x=Q^T\\vec b$ בהצבה לאחור. מהו $x_1$ ?"
+     }
+    },
+    {
+     "id": "C09-Q4",
+     "step": {
+      "type": "findbug",
+      "prompt": "נתונה $A=\\begin{pmatrix}2&1\\\\0&1\\\\1&1\\end{pmatrix}$ עם עמודות $a_1=(2,0,1)$ ו-$a_2=(1,1,1)$. בפתרון הבא של פירוק $QR$ יש שורה שגויה אחת. מצאו אותה.",
+      "lines": [
+       "$u_1=a_1=(2,0,1)$, ‏$\\|u_1\\|^2=5$",
+       "$\\langle a_2,u_1\\rangle=2+0+1=3$",
+       "$u_2=a_2-\\frac35u_1=\\left(-\\frac15,1,\\frac25\\right)$",
+       "$\\|u_2\\|^2=\\frac1{25}+1+\\frac4{25}=\\frac65$",
+       "$r_{11}=\\sqrt5,\\ \\ r_{12}=3,\\ \\ r_{22}=\\sqrt{\\frac65}$"
+      ]
+     }
+    },
+    {
+     "id": "C09-Q5",
+     "question": "נתון $A=QR$ עם $Q^TQ=I$ ו-$R$ משולשת עליונה. מהי $A^TA$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$R^TR$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$RR^T$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$R^2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$I$"
+      }
+     ]
+    },
+    {
+     "id": "bank:25B-B-Q4a",
+     "bankId": "25B-B-Q4a"
+    }
+   ]
+  },
+  {
+   "id": "C10",
+   "order": 10,
+   "boss": true,
+   "questions": [
+    {
+     "id": "bank:24B-A-Q1b",
+     "bankId": "24B-A-Q1b"
+    },
+    {
+     "id": "bank:23A-B-Q2a",
+     "bankId": "23A-B-Q2a"
+    },
+    {
+     "id": "bank:24A-B-Q1b",
+     "bankId": "24A-B-Q1b"
+    },
+    {
+     "id": "bank:23B-B-Q1a",
+     "bankId": "23B-B-Q1a"
+    },
+    {
+     "id": "bank:23A-A-Q1a",
+     "bankId": "23A-A-Q1a"
+    },
+    {
+     "id": "bank:23B-B-Q5a",
+     "bankId": "23B-B-Q5a"
+    }
+   ]
+  }
+ ]
+}
