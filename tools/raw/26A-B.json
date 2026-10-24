@@ -34,7 +34,82 @@
    "confidence": "med",
    "part": "א",
    "points": 10,
-   "contextId": "c1"
+   "contextId": "c1",
+   "rubric": [
+    {
+     "text": "אדיטיביות של $\\langle\\cdot,\\cdot\\rangle_A$ מליניאריות הכפל במטריצה",
+     "points": 2
+    },
+    {
+     "text": "הומוגניות",
+     "points": 2
+    },
+    {
+     "text": "סימטריה: שימוש ב-$A^T=A$ ובכך שמספר שווה לשחלופו",
+     "points": 3
+    },
+    {
+     "text": "חיוביות: הערכים העצמיים $1,3$ חיוביים, ולכן $\\vec u^TA\\vec u>0$ לכל $\\vec u\\ne\\vec0$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לבדוק רק חיוביות ולהשמיט את הסימטריה או את הלינאריות.",
+    "לטעון שהצורה חיובית רק כי איברי $A$ חיוביים (למשל $\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$ חיובית באיברים ואינה מוגדרת חיובית).",
+    "לשכוח שהסימטריה של הצורה נובעת מהסימטריה של המטריצה $A$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הקטן של $A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$(2-\\lambda)^2-1=0$ נותן $\\lambda=1,3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "ומהו הערך העצמי הגדול?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$\\lambda=3$. שניהם חיוביים, ולכן $A$ מוגדרת חיובית לחלוטין."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזו תכונה של $A$ מבטיחה ש-$\\langle\\vec u,\\vec v\\rangle_A=\\langle\\vec v,\\vec u\\rangle_A$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A^T=A$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A$ הפיכה"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כל איברי $A$ חיוביים"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$ (הפיכה) מתקבל $\\vec e_1^TA\\vec e_2=2$ אבל $\\vec e_2^TA\\vec e_1=0$. עבור $A=\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$ (איברים חיוביים) מתקבלים $2$ ו-$3$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את הוכחת הסימטריה.",
+     "lines": [
+      "$\\langle\\vec v,\\vec u\\rangle_A=\\vec v^TA\\vec u$",
+      "$=\\vec v^TA^T\\vec u$ כי $A^T=A$",
+      "$=(A\\vec v)^T\\vec u$",
+      "$=\\vec u^T(A\\vec v)=\\langle\\vec u,\\vec v\\rangle_A$, כי מספר שווה לשחלופו"
+     ],
+     "explain": "כל שלב נשען על הקודם."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -47,7 +122,71 @@
    "confidence": "med",
    "part": "ב",
    "points": 5,
-   "contextId": "c1"
+   "contextId": "c1",
+   "rubric": [
+    {
+     "text": "כתיבת התנאי $\\vec u^TA\\vec v=0$ עבור הווקטורים הנתונים",
+     "points": 2
+    },
+    {
+     "text": "חישוב $2t-1+t(t-2)$",
+     "points": 2
+    },
+    {
+     "text": "פתרון $t^2-1=0$ ו-$t=\\pm1$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להשתמש במכפלה הסקלרית הרגילה במקום ב-$\\vec u^TA\\vec v$.",
+    "להסתפק בשורש $t=1$ ולשכוח את $t=-1$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $t=2$ חשבו את $\\langle\\vec u,\\vec v\\rangle_A$ כאשר $\\vec u=\\begin{pmatrix}1\\\\2\\end{pmatrix}$, $\\vec v=\\begin{pmatrix}2\\\\-1\\end{pmatrix}$.",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$A\\vec v=\\begin{pmatrix}3\\\\0\\end{pmatrix}$ ולכן $\\vec u^TA\\vec v=3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "לאחר הצבה כללית מתקבלת המשוואה $2t-1+t(t-2)=0$. מהו ערך הביטוי $2t-1+t(t-2)$ עבור $t=3$?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "הביטוי שווה ל-$t^2-1=8$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהי קבוצת הפתרונות?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$t=1$ או $t=-1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$t=1$ בלבד"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$t=0$ או $t=1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$t=2$ או $t=-2$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$t^2-1=0$. עבור $t=0$ מתקבל $-1\\ne0$, עבור $t=2$ מתקבל $3\\ne0$, ו-$t=-1$ אכן נותן $(1,-1)^TA(-1,-1)^T=0$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -59,7 +198,62 @@
    "official": false,
    "confidence": "high",
    "part": "ג",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "כתיבת המשוואות הנורמליות $A^TA\\hat x=A^T\\vec b$ (העמודות בלתי תלויות)",
+     "points": 2
+    },
+    {
+     "text": "חישוב $A^TA$ ו-$A^T\\vec b$",
+     "points": 3
+    },
+    {
+     "text": "פתרון המערכת: $x_2=-\\frac13,\\ x_1=\\frac43$",
+     "points": 3
+    },
+    {
+     "text": "בדיקה שהשארית ניצבת לעמודות",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לחשב $AA^T$ במקום $A^TA$.",
+    "לטעות בסימן של $A^T\\vec b$ (שהשני בו שלילי).",
+    "לשכוח לוודא שהעמודות בלתי תלויות, כדי ש-$A^TA$ תהיה הפיכה."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השמאלי התחתון (שורה 2, עמודה 2) של $A^TA$?",
+     "answer": 42,
+     "tol": 0,
+     "explain": "$(-2)^2+2^2+3^2+5^2=4+4+9+25=42$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני של $A^T\\vec b$?",
+     "answer": -6,
+     "tol": 0,
+     "explain": "$-2\\cdot3+2\\cdot1+3\\cdot(-4)+5\\cdot2=-6+2-12+10=-6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_2$ (עיגול לשתי ספרות אחרי הנקודה)?",
+     "answer": -0.33,
+     "tol": 0.01,
+     "explain": "מהמערכת $x_1+x_2=1,\\ x_1+7x_2=-1$ מתקבל $x_2=-\\frac13$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_1$ (עיגול לשתי ספרות אחרי הנקודה)?",
+     "answer": 1.33,
+     "tol": 0.01,
+     "explain": "$x_1=1-x_2=\\frac43$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -73,7 +267,66 @@
    "part": "א",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "חישוב $(a\\odot b)\\odot c$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $a\\odot(b\\odot c)$",
+     "points": 2
+    },
+    {
+     "text": "השוואה: שני הביטויים שווים, ולכן אסוציאטיבית",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להסיק אסוציאטיביות מדוגמה מספרית בלבד.",
+    "לשכוח את הקבוע $+2$ כשמציבים תוצאה של פעולה כאחד המשתנים."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "חשבו $3\\odot3$.",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$9-3-3+2=5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "חשבו $(3\\odot3)\\odot3$.",
+     "answer": 9,
+     "tol": 0,
+     "explain": "$5\\odot3=15-5-3+2=9$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו הביטוי המשותף ל-$(a\\odot b)\\odot c$ ול-$a\\odot(b\\odot c)$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$abc-ab-ac-bc+a+b+c$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$abc-ab-ac-bc+a+b+c+1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$abc-ab-bc+a+b+c$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $a=b=c=3$ הביטוי $abc-ab-ac-bc+a+b+c$ נותן $9$ כבחישוב הישיר, הביטוי עם $+1$ נותן $10$, והביטוי ללא $-ac$ נותן $18$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -87,7 +340,63 @@
    "part": "ב",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "הצבת התנאי $e\\odot a=a$",
+     "points": 1
+    },
+    {
+     "text": "הגעה ל-$e(a-1)=2(a-1)$",
+     "points": 2
+    },
+    {
+     "text": "חילוק ב-$a-1\\ne0$: $e=2$",
+     "points": 1
+    },
+    {
+     "text": "$2\\in M$ והפעולה קומוטטיבית, ולכן ניטרלי דו-צדדי",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לחלק ב-$a-1$ בלי לציין ש-$a\\ne1$.",
+    "לשכוח לבדוק ש-$e=2$ שייך ל-$M$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "פתרו את $e(a-1)=2(a-1)$ עבור $a\\ne1$. מהו $e$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "מחלקים ב-$a-1$: $e=2$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע מותר לחלק ב-$a-1$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $a\\in M$ ולכן $a\\ne1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $e\\ne1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $a>1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$M$ כוללת גם מספרים קטנים מ-$1$ (למשל $a=0$), ולכן $a>1$ אינו נכון; ההיתר לחלק מגיע רק מכך ש-$a\\ne1$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -101,7 +410,70 @@
    "part": "ג",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "סגירות: $a\\odot b=1$ רק אם $a=1$ או $b=1$",
+     "points": 1
+    },
+    {
+     "text": "מציאת ההופכי $a^{-1}=\\frac a{a-1}$",
+     "points": 2
+    },
+    {
+     "text": "ההופכי שייך ל-$M$",
+     "points": 1
+    },
+    {
+     "text": "קומוטטיביות",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח לבדוק סגירות: שהתוצאה אינה $1$.",
+    "לשכוח להראות שההופכי $\\frac a{a-1}$ שונה מ-$1$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מתי $a\\odot b=1$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(a-1)(b-1)=0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$ab=1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(a-1)(b-1)=1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$a\\odot b-1=ab-a-b+1=(a-1)(b-1)$. לדוגמה $2\\odot\\frac12=\\frac12\\ne1$ אף ש-$ab=1$, ו-$3\\odot3=5\\ne1$ כי $(3-1)(3-1)=4\\ne0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו ההופכי של $3$ (עיגול לשתי ספרות)?",
+     "answer": 1.5,
+     "tol": 0.01,
+     "explain": "$\\frac a{a-1}=\\frac32$. בדיקה: $3\\odot1.5=2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו ההופכי של $-1$?",
+     "answer": 0.5,
+     "tol": 0.01,
+     "explain": "$\\frac{-1}{-2}=0.5$. בדיקה: $-1\\odot0.5=2$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -115,7 +487,70 @@
    "part": "ד",
    "points": 5,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "המשוואה $x^2-3x+2=0$",
+     "points": 2
+    },
+    {
+     "text": "פירוק $(x-1)(x-2)$",
+     "points": 1
+    },
+    {
+     "text": "$x=1\\notin M$ ו-$x=2\\in M$",
+     "points": 1
+    },
+    {
+     "text": "מסקנה: כן, $x=2$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לכלול את $x=1$ אף שאינו שייך ל-$M$.",
+    "להסיק שאין פתרון כי אחד השורשים נפסל."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "המשוואה $x\\odot x=x$ שקולה ל-$(x-1)(x-2)=0$. איזה שורש שייך ל-$M$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$x=1\\notin M$, ולכן הפתרון הוא $x=2$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע $x=1$ נפסל?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $1\\notin M$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $1\\odot1\\ne1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $1$ אינו שורש"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$1\\odot1=1-1-1+2=1$, כלומר $x=1$ כן שורש של המשוואה; הוא נפסל רק כי $M$ אינה כוללת את $1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "חשבו $2\\odot2$.",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$4-2-2+2=2$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -128,7 +563,59 @@
    "confidence": "med",
    "part": "ה",
    "points": 5,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "בסיס: $n=1$",
+     "points": 1
+    },
+    {
+     "text": "הנחת האינדוקציה",
+     "points": 1
+    },
+    {
+     "text": "צעד: $a^{n+1}=a^n\\odot a$ והשלמת החישוב",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לשכוח את בסיס האינדוקציה.",
+    "לכתוב $a^{n+1}=a^n+a$ (פעולה רגילה) במקום $a^n\\odot a$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "חשבו את $a^4$ עבור $a=3$ בעזרת הנוסחה $(a-1)^n+1$.",
+     "answer": 17,
+     "tol": 0,
+     "explain": "$2^4+1=17$, ובחישוב ישיר $3\\odot3=5,\\ 5\\odot3=9,\\ 9\\odot3=17$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי האינדוקציה.",
+     "lines": [
+      "בסיס: $a^1=a=(a-1)^1+1$.",
+      "הנחה: $a^n=(a-1)^n+1$ לאיזשהו $n$.",
+      "צעד: $a^{n+1}=a^n\\odot a=\\left((a-1)^n+1\\right)\\odot a$.",
+      "לפי $x\\odot y=(x-1)(y-1)+1$: $=(a-1)^n(a-1)+1=(a-1)^{n+1}+1$."
+     ],
+     "explain": "בסיס, הנחה, פתיחת הצעד, חישוב."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באינדוקציה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "בסיס: $a^1=a=(a-1)^1+1$.",
+      "הנחה: $a^n=(a-1)^n+1$ לאיזשהו $n$.",
+      "צעד: $a^{n+1}=a^n\\odot a=\\left((a-1)^n+1\\right)\\odot a$.",
+      "לפי $x\\odot y=(x-1)(y-1)+1$: $=(a-1)^n\\cdot a+1=(a-1)^{n+1}+1$."
+     ],
+     "bugIndex": 3,
+     "explain": "$x-1=(a-1)^n$ ו-$y-1=a-1$, ולכן המכפלה היא $(a-1)^n(a-1)$ ולא $(a-1)^n\\cdot a$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -140,7 +627,124 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 17
+   "points": 17,
+   "rubric": [
+    {
+     "text": "חישוב $\\det(A-\\lambda I)$ והגורם $1-x-\\lambda$",
+     "points": 4
+    },
+    {
+     "text": "שורשי הריבועית: $x$ ו-$x+3$",
+     "points": 4
+    },
+    {
+     "text": "מוגדרת חיובית: $0\\le x\\le1$",
+     "points": 3
+    },
+    {
+     "text": "מוגדרת חיובית לחלוטין: $0<x<1$",
+     "points": 3
+    },
+    {
+     "text": "מוגדרת שלילית ושלילית לחלוטין: אף ערך; אחרת אף אחת מהן",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "להתבלבל בין $\\ge0$ ל-$>0$ בקצוות $x=0$ ו-$x=1$.",
+    "להסיק שמוגדרת שלילית קיימת רק מכך שאחד הערכים העצמיים שלילי.",
+    "לטעות בסימן של הערך העצמי $1-x$ (לא $x-1$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו העקבה (סכום האיברים באלכסון) של $A$ עבור $x=2$? (היא שווה לסכום הערכים העצמיים.)",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$1+1+(x+2)=6$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהם הערכים העצמיים של $A$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$1-x,\\ x,\\ x+3$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$x-1,\\ x,\\ x+3$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$1-x,\\ x,\\ x+2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$1+x,\\ x,\\ x+3$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "סכום הערכים העצמיים חייב להיות העקבה $x+4$. הקבוצה $\\{1-x,x,x+3\\}$ נותנת $x+4$, הקבוצה עם $x-1$ נותנת $3x+2$, הקבוצה עם $x+2$ נותנת $x+3$, והקבוצה עם $1+x$ נותנת $3x+4$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $x$ המטריצה מוגדרת חיובית (לא בהכרח לחלוטין)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$0\\le x\\le1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$0<x<1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$-3\\le x\\le1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$x\\ge0$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $1-x\\ge0$, $x\\ge0$ ו-$x+3\\ge0$. עבור $x=0$ מתקבלים $1,0,3$ (חיובית), עבור $x=-1$ יש ערך עצמי $-1$, ועבור $x=2$ יש ערך עצמי $-1$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $x$ המטריצה מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$0\\le x\\le1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$0<x<1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$x>0$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "כל הערכים העצמיים חייבים להיות חיוביים ממש: $0<x<1$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -152,7 +756,79 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 8
+   "points": 8,
+   "rubric": [
+    {
+     "text": "$A^2$ סימטרית",
+     "points": 1
+    },
+    {
+     "text": "חיוביות של $A^2$: $\\vec u^TA^2\\vec u=\\|A\\vec u\\|^2>0$ כי $A\\vec u\\ne\\vec0$",
+     "points": 3
+    },
+    {
+     "text": "$A^{-1}$ סימטרית",
+     "points": 1
+    },
+    {
+     "text": "הערכים העצמיים של $A^{-1}$ הם $\\frac1\\lambda>0$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לשכוח לנמק ש-$A\\vec u\\ne\\vec0$ (כי $A$ הפיכה).",
+    "לטעון ש-$A^{-1}$ חיובית כי $A$ חיובית, בלי לטפל בערכים העצמיים.",
+    "לבדוק חיוביות בלבד ולשכוח סימטריה."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "ל-$A$ ערכים עצמיים $2$ ו-$5$. מהו הערך העצמי הקטן של $A^{-1}$?",
+     "answer": 0.2,
+     "tol": 0.001,
+     "explain": "הערכים העצמיים של $A^{-1}$ הם $\\frac12$ ו-$\\frac15$."
+    },
+    {
+     "type": "choice",
+     "prompt": "אם $A\\vec v=\\lambda\\vec v$ ו-$\\lambda\\ne0$, מהו הערך העצמי של $A^{-1}$ עבור $\\vec v$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac1\\lambda$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\lambda$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$-\\lambda$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\lambda^2$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "מכפילים ב-$A^{-1}$: $\\vec v=\\lambda A^{-1}\\vec v$, כלומר $A^{-1}\\vec v=\\frac1\\lambda\\vec v$. עבור $A=\\mathrm{diag}(2,5)$ הערכים של $A^{-1}$ הם $\\frac12,\\frac15$ ולא $2,5,-2,-5,4,25$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את הוכחת החיוביות של $A^2$.",
+     "lines": [
+      "לכל $\\vec u\\ne\\vec0$ נסמן $\\vec v=A\\vec u$; $\\vec v\\ne\\vec0$ כי $A$ הפיכה.",
+      "$\\vec u^TA^2\\vec u=\\vec u^TA^TA\\vec u=(A\\vec u)^T(A\\vec u)=\\|\\vec v\\|^2$.",
+      "$\\|\\vec v\\|^2>0$, ולכן $A^2$ מוגדרת חיובית לחלוטין."
+     ],
+     "explain": "מגדירים $\\vec v$, מפרקים את הביטוי לנורמה, ומסיקים חיוביות."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -165,7 +841,82 @@
    "confidence": "high",
    "part": "א",
    "points": 15,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "סגירות: מכפלה מאותה צורה ו-$ad\\not\\equiv0$",
+     "points": 4
+    },
+    {
+     "text": "אסוציאטיביות מכפל מטריצות",
+     "points": 2
+    },
+    {
+     "text": "איבר ניטרלי $I$",
+     "points": 2
+    },
+    {
+     "text": "הופכי: $d=a^{-1},\\ e=-ba^{-2},\\ f=\\left(b^2-ac\\right)a^{-3}$",
+     "points": 6
+    },
+    {
+     "text": "מסקנה: חבורה",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לשכוח ש-$ad\\not\\equiv0\\pmod5$ דורש ש-$5$ ראשוני.",
+    "לשכוח לעבוד מודולו 5 כשמחשבים את $a^{-1}$.",
+    "לבדוק את ההופכי רק בשתי המשוואות הראשונות ולדלג על השלישית."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מדוע $ad\\not\\equiv0\\pmod5$ כשידוע ש-$a,d\\not\\equiv0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $5$ ראשוני, ולכן מכפלה של שני איברים שונים מאפס ב-$\\mathbb{Z}_5$ שונה מאפס"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $ad$ מספר שלם חיובי, ולכן אינו מתחלק ב-$5$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי המטריצה משולשית"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הטיעון על מספר שלם חיובי שגוי: $2\\cdot5=10$ חיובי ומתחלק ב-$5$. הטיעון על משולשיות אינו קשור לשאלה."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=2$ מהו $d=a^{-1}$ ב-$\\mathbb{Z}_5$ (בין $0$ ל-$4$)?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$2\\cdot3=6\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=2,\\ b=1$ מהו $e=-ba^{-2}$ ב-$\\mathbb{Z}_5$ (בין $0$ ל-$4$)?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$a^{-2}=9\\equiv4$ ו-$-4\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=2,\\ b=1,\\ c=1$ מהו $f=\\left(b^2-ac\\right)a^{-3}$ ב-$\\mathbb{Z}_5$ (בין $0$ ל-$4$)?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$b^2-ac=-1$, $a^{-3}=27\\equiv2$ ולכן $f\\equiv-2\\equiv3$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -178,7 +929,43 @@
    "confidence": "high",
    "part": "ב",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "$4$ אפשרויות ל-$a$ (כי $a\\not\\equiv0$)",
+     "points": 2
+    },
+    {
+     "text": "$5$ אפשרויות לכל אחד מ-$b,c$",
+     "points": 2
+    },
+    {
+     "text": "$|G|=100$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לספור $5$ אפשרויות גם עבור $a$ ולקבל $125$.",
+    "לשכוח שאיבר ב-$G$ נקבע ביחידות על ידי שלושה פרמטרים בלבד."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה אפשרויות יש עבור $a$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$a\\in\\{1,2,3,4\\}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $|G|$?",
+     "answer": 100,
+     "tol": 0,
+     "explain": "$4\\cdot5\\cdot5=100$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -191,7 +978,43 @@
    "confidence": "high",
    "part": "ג",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "כתיבה $X=I+N$ עם $N^2=0$",
+     "points": 2
+    },
+    {
+     "text": "$X^n=I+nN$",
+     "points": 2
+    },
+    {
+     "text": "$o(X)=5$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "להסיק $o(X)=1$ כי $X$ 'כמעט' היחידה.",
+    "לשכוח שהרכיב $n$ מחושב מודולו 5."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב בשורה 1, עמודה 3 של $X^3$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$X^n=I+nN$ ולכן הרכיב הוא $n=3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $o(X)$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$X^n=I$ אם ורק אם $n\\equiv0\\pmod5$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -203,7 +1026,61 @@
    "official": false,
    "confidence": "high",
    "part": "א",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "זרות המודולים וחישוב $M=120$",
+     "points": 2
+    },
+    {
+     "text": "$M_1,M_2,M_3=40,24,15$",
+     "points": 2
+    },
+    {
+     "text": "ההופכיים $x_1,x_2,x_3=1,4,7$",
+     "points": 3
+    },
+    {
+     "text": "הסכום והרדוקציה: $x\\equiv116\\pmod{120}$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לשכוח לרדד את $M_i$ מודולו $m_i$ לפני חישוב ההופכי.",
+    "לשכוח לרדד את הסכום $596$ מודולו $120$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $M=3\\cdot5\\cdot8$?",
+     "answer": 120,
+     "tol": 0,
+     "explain": "$3\\cdot5\\cdot8=120$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_2$ (בין $0$ ל-$4$) המקיים $24x_2\\equiv1\\pmod5$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$24\\equiv4$ ו-$4\\cdot4=16\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_3$ (בין $0$ ל-$7$) המקיים $15x_3\\equiv1\\pmod8$?",
+     "answer": 7,
+     "tol": 0,
+     "explain": "$15\\equiv7$ ו-$7\\cdot7=49\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בין $0$ ל-$119$?",
+     "answer": 116,
+     "tol": 0,
+     "explain": "$596=4\\cdot120+116$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -215,7 +1092,70 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "בחירת הווקטורים $\\bar u_k=\\frac1{\\sqrt k}$ ו-$\\bar v_k=\\frac1{k^{3/2}}$",
+     "points": 5
+    },
+    {
+     "text": "חישוב $\\|\\bar u\\|^2$, $\\|\\bar v\\|^2$ ו-$\\langle\\bar u,\\bar v\\rangle$",
+     "points": 5
+    },
+    {
+     "text": "הפעלת קושי-שוורץ",
+     "points": 3
+    },
+    {
+     "text": "העלאה בריבוע של שני האגפים",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לבחור $\\bar u_k=\\bar v_k=\\frac1k$, שמוביל לאי-שוויון טריוויאלי.",
+    "לשכוח שהנורמות כוללות שורש ולכן יש להעלות בריבוע."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "אילו וקטורים מפעילים בהם את קושי-שוורץ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\bar u_k=\\frac1{\\sqrt k},\\ \\bar v_k=\\frac1{k^{3/2}}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\bar u_k=\\frac1k,\\ \\bar v_k=\\frac1k$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\bar u_k=\\frac1{\\sqrt k},\\ \\bar v_k=\\frac1k$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הבחירה $\\frac1{\\sqrt k},\\frac1{k^{3/2}}$ נותנת $\\langle\\bar u,\\bar v\\rangle=\\sum\\frac1{k^2}$ ו-$\\|\\bar u\\|^2\\|\\bar v\\|^2=\\sum\\frac1k\\cdot\\sum\\frac1{k^3}$. הבחירה $\\frac1k,\\frac1k$ נותנת $\\sum\\frac1{k^2}\\le\\sum\\frac1{k^2}$, והבחירה $\\frac1{\\sqrt k},\\frac1k$ נותנת מכפלה פנימית $\\sum k^{-3/2}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=2$ חשבו את $\\langle\\bar u,\\bar v\\rangle=\\sum_{k=1}^2\\frac1{k^2}$.",
+     "answer": 1.25,
+     "tol": 0,
+     "explain": "$1+\\frac14=1.25$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=2$ חשבו את $\\left(\\sum_{k=1}^2\\frac1k\\right)\\left(\\sum_{k=1}^2\\frac1{k^3}\\right)$.",
+     "answer": 1.6875,
+     "tol": 0.0001,
+     "explain": "$\\frac32\\cdot\\frac98=\\frac{27}{16}=1.6875$, וזה גדול מ-$1.25^2=1.5625$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   }
  ]
 }
