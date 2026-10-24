@@ -1,0 +1,154 @@
+{
+ "answers": {
+  "C01-Q1": {
+   "answer": "b"
+  },
+  "C01-Q2": {
+   "answer": 5
+  },
+  "C01-Q3": {
+   "answer": 3
+  },
+  "C01-Q4": {
+   "answer": "d"
+  },
+  "C01-Q5": {
+   "answer": "b"
+  },
+  "C01-Q6": {
+   "answer": 9
+  },
+  "C02-Q1": {
+   "answer": "a"
+  },
+  "C02-Q2": {
+   "answer": 1
+  },
+  "C02-Q3": {
+   "answer": 0.5
+  },
+  "C02-Q4": {
+   "answer": 6
+  },
+  "C02-Q5": {
+   "answer": "c"
+  },
+  "C03-Q1": {
+   "answer": "c"
+  },
+  "C03-Q2": {
+   "answer": "a"
+  },
+  "C03-Q3": {
+   "answer": 2
+  },
+  "C03-Q4": {
+   "answer": "b"
+  },
+  "C03-Q5": {
+   "answer": 3
+  },
+  "C03-Q6": {
+   "answer": 3
+  },
+  "C04-Q1": {
+   "answer": 5
+  },
+  "C04-Q2": {
+   "answer": 5
+  },
+  "C04-Q3": {
+   "answer": "c"
+  },
+  "C04-Q4": {
+   "answer": 2
+  },
+  "C04-Q5": {
+   "answer": "c"
+  },
+  "C04-Q6": {
+   "answer": 20
+  },
+  "C05-Q1": {
+   "answer": "d"
+  },
+  "C05-Q2": {
+   "answer": -1
+  },
+  "C05-Q3": {
+   "answer": -2
+  },
+  "C05-Q4": {
+   "answer": "b"
+  },
+  "C05-Q5": {
+   "answer": "c"
+  },
+  "C05-Q6": {
+   "answer": "b"
+  },
+  "C06-Q1": {
+   "answer": "b"
+  },
+  "C06-Q2": {
+   "answer": "c"
+  },
+  "C06-Q3": {
+   "answer": "a"
+  },
+  "C06-Q4": {
+   "answer": 2
+  },
+  "C06-Q5": {
+   "answer": 2
+  },
+  "C06-Q6": {
+   "answer": "b"
+  },
+  "C07-Q1": {
+   "answer": 5
+  },
+  "C07-Q2": {
+   "answer": "a"
+  },
+  "C07-Q3": {
+   "answer": "c"
+  },
+  "C07-Q4": {
+   "answer": "c"
+  },
+  "C07-Q5": {
+   "answer": 5
+  },
+  "C07-Q6": {
+   "answer": "b"
+  },
+  "C08-Q1": {
+   "answer": 2
+  },
+  "C08-Q2": {
+   "answer": 7
+  },
+  "C08-Q3": {
+   "answer": 0
+  },
+  "C08-Q4": {
+   "answer": "b"
+  },
+  "C08-Q5": {
+   "answer": 3
+  },
+  "C08-Q6": {
+   "answer": "c"
+  },
+  "C02-Q6": {
+   "answer": [
+    "נתון $Au=\\lambda u$ ו-$Av=\\mu v$, כאשר $\\lambda\\ne\\mu$.",
+    "מחשבים $\\lambda\\langle u,v\\rangle=\\langle Au,v\\rangle$.",
+    "מהסימטריה של $A$: $\\langle Au,v\\rangle=\\langle u,Av\\rangle$.",
+    "ומכאן $\\langle u,Av\\rangle=\\mu\\langle u,v\\rangle$.",
+    "לכן $(\\lambda-\\mu)\\langle u,v\\rangle=0$, ומכיוון ש-$\\lambda\\ne\\mu$ מתקבל $\\langle u,v\\rangle=0$."
+   ]
+  }
+ }
+}
