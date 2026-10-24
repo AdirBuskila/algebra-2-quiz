@@ -23,7 +23,82 @@
    "solution": "לפי ההגדרה בקורס, סיווג מטריצה כמוגדרת (חיובית/שלילית, למחצה או לחלוטין) נעשה עבור מטריצה **סימטרית** $A^T=A$, ואז היא נקבעת לפי סימני הערכים העצמיים.\n**סימטריות:** $M^T=M$ דורש $M_{12}=M_{21}$, כלומר $2=a+1$, ושאר הרכיבים כבר סימטריים. לכן $M$ סימטרית אם ורק אם $a=1$. לכל $a\\ne1$ המטריצה אינה סימטרית, ולכן אינה מוגדרת חיובית או שלילית (אין להסיק דבר מהערכים העצמיים של מטריצה לא סימטרית).\n**המקרה $a=1$:** $M=\\begin{pmatrix}1&2&0\\\\2&1&0\\\\0&0&1\\end{pmatrix}$, ונפתח לפי השורה השלישית:\n$$|M-\\lambda I|=(1-\\lambda)\\left((1-\\lambda)^2-4\\right)=(1-\\lambda)(3-\\lambda)(-1-\\lambda)=0\\ \\Rightarrow\\ \\lambda_1=1,\\ \\lambda_2=3,\\ \\lambda_3=-1$$\nיש ערך עצמי חיובי ($3$) וגם ערך עצמי שלילי ($-1$), לכן המטריצה אינה מוגדרת. ניתן לראות זאת גם ישירות: עבור $\\vec v=(1,1,0)^T$ מתקיים $\\vec v^TM\\vec v=6>0$, ועבור $\\vec v=(1,-1,0)^T$ מתקיים $\\vec v^TM\\vec v=-2<0$.\n**תשובה:** לא קיימים ערכים ממשיים של $a$ עבורם המטריצה מוגדרת חיובית או מוגדרת שלילית.\nהערה: אין לקרוא את הערכים העצמיים $a,\\ a\\pm\\sqrt{2a+2}$ של המטריצה הלא-סימטרית ולהסיק מהם. מי שבודק רק את התבנית הריבועית $\\vec v^TM\\vec v$ (בלי דרישת סימטריה) צריך לעבור לחלק הסימטרי $S=\\frac12(M+M^T)$, שערכיו העצמיים $a,\\ \\frac{3a+3}2,\\ \\frac{a-3}2$. אז התבנית חיובית לחלוטין רק עבור $a>3$ ושלילית לחלוטין רק עבור $a<-1$. לפי הגדרת הקורס התשובה נשארת: אין ערכים כאלה.",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "הקביעה שהגדרת 'מוגדרת חיובית/שלילית' מתייחסת למטריצה סימטרית בלבד",
+     "points": 3
+    },
+    {
+     "text": "סימטריה מתקיימת רק עבור $a=1$ (מההשוואה $2=a+1$)",
+     "points": 3
+    },
+    {
+     "text": "עבור $a=1$: הערכים העצמיים $1,3,-1$",
+     "points": 4
+    },
+    {
+     "text": "מסקנה: יש ערך חיובי ושלילי, ולכן אין $a$ כזה",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לקרוא את הערכים העצמיים $a,\\ a\\pm\\sqrt{2a+2}$ של מטריצה שאינה סימטרית ולהסיק מהם הגדרה.",
+    "לבדוק רק את סימן האלכסון הראשי ולהסיק 'מוגדרת חיובית' עבור $a>0$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור איזה ערך של $a$ המטריצה $\\begin{pmatrix}a&2&0\\\\a+1&a&0\\\\0&0&a\\end{pmatrix}$ סימטרית?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "סימטריה דורשת $M_{12}=M_{21}$, כלומר $2=a+1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=1$: מהו הערך העצמי הגדול ביותר של המטריצה?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "הערכים העצמיים הם $1,\\ 3,\\ -1$, והגדול ביותר הוא $3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=1$: מהו הערך העצמי הקטן ביותר?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "הערכים העצמיים הם $1,\\ 3,\\ -1$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו הסיווג של המטריצה עבור $a=1$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "אינה מוגדרת (יש ערכים עצמיים חיוביים ושליליים)"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "מוגדרת חיובית לחלוטין"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "מוגדרת שלילית לחלוטין"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "מוגדרת חיובית (למחצה)"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הערך $-1<0$ שולל חיוביות (גם למחצה), והערך $3>0$ שולל שליליות."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -35,7 +110,82 @@
    "solution": "נפתח את שני הריבועים בעזרת תכונות המכפלה הפנימית:\n$$\\|\\vec u+\\vec v\\|^2=\\|\\vec u\\|^2+2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2,\\qquad\\|\\vec u-\\vec v\\|^2=\\|\\vec u\\|^2-2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2$$\nנחבר ונקבל את כלל המקבילית: $\\|\\vec u+\\vec v\\|^2+\\|\\vec u-\\vec v\\|^2=2\\|\\vec u\\|^2+2\\|\\vec v\\|^2$. נציב:\n$$4^2+6^2=2\\cdot3^2+2\\|\\vec v\\|^2\\ \\Rightarrow\\ 52=18+2\\|\\vec v\\|^2\\ \\Rightarrow\\ \\|\\vec v\\|^2=17$$\n$$\\|\\vec v\\|=\\sqrt{17}$$\n(בדרך אגב, מחיסור שני השוויונות מתקבל $\\langle\\vec u,\\vec v\\rangle=\\frac{16-36}4=-5$.)",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "פתיחת $\\|\\vec u\\pm\\vec v\\|^2$ בעזרת תכונות המכפלה הפנימית",
+     "points": 4
+    },
+    {
+     "text": "כלל המקבילית $\\|\\vec u+\\vec v\\|^2+\\|\\vec u-\\vec v\\|^2=2\\|\\vec u\\|^2+2\\|\\vec v\\|^2$",
+     "points": 3
+    },
+    {
+     "text": "הצבה: $52=18+2\\|\\vec v\\|^2$ ולכן $\\|\\vec v\\|^2=17$",
+     "points": 3
+    },
+    {
+     "text": "התשובה $\\|\\vec v\\|=\\sqrt{17}$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לכתוב $\\|\\vec u+\\vec v\\|=\\|\\vec u\\|+\\|\\vec v\\|$ (זה נכון רק בשוויון המשולש הקיצוני).",
+    "לשכוח את הריבוע: להציב $4+6=2\\cdot3+2\\|\\vec v\\|$ במקום $4^2+6^2=\\dots$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזה שוויון מתקיים בכל מרחב מכפלה פנימית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\|\\vec u+\\vec v\\|^2+\\|\\vec u-\\vec v\\|^2=2\\|\\vec u\\|^2+2\\|\\vec v\\|^2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\|\\vec u+\\vec v\\|^2+\\|\\vec u-\\vec v\\|^2=2\\|\\vec u\\|^2-2\\|\\vec v\\|^2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\|\\vec u+\\vec v\\|^2+\\|\\vec u-\\vec v\\|^2=\\|\\vec u\\|^2+\\|\\vec v\\|^2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\|\\vec u+\\vec v\\|^2+\\|\\vec u-\\vec v\\|^2=4\\langle\\vec u,\\vec v\\rangle$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $\\vec u=(1,0)$, $\\vec v=(0,1)$ הצד השמאלי הוא $2+2=4$; רק האפשרות הראשונה נותנת $4$ (האחרות נותנות $0$, $2$, $0$)."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|\\vec u+\\vec v\\|^2+\\|\\vec u-\\vec v\\|^2$ עבור הנתונים?",
+     "answer": 52,
+     "tol": 0,
+     "explain": "$4^2+6^2=16+36=52$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|\\vec v\\|^2$?",
+     "answer": 17,
+     "tol": 0,
+     "explain": "$52=2\\cdot9+2\\|\\vec v\\|^2$ ולכן $\\|\\vec v\\|^2=17$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle\\vec u,\\vec v\\rangle$?",
+     "answer": -5,
+     "tol": 0,
+     "explain": "מחיסור הזהויות: $16-36=4\\langle\\vec u,\\vec v\\rangle$, כלומר $-5$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -47,7 +197,61 @@
    "solution": "נחפש ישר $y=mx+n$. הצבת הנקודות נותנת מערכת $A\\vec x=\\vec b$:\n$$\\begin{cases}5m+n=7\\\\3m+n=5\\\\m+n=4\\\\-2m+n=0\\\\-3m+n=2\\end{cases}\\Rightarrow\\begin{pmatrix}5&1\\\\3&1\\\\1&1\\\\-2&1\\\\-3&1\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}7\\\\5\\\\4\\\\0\\\\2\\end{pmatrix}$$\nאין ישר שעובר דרך כל הנקודות, לכן פותרים את המשוואות הנורמליות $A^TA\\vec x=A^T\\vec b$:\n$$A^TA=\\begin{pmatrix}48&4\\\\4&5\\end{pmatrix},\\qquad A^T\\vec b=\\begin{pmatrix}48\\\\18\\end{pmatrix}$$\n$$\\begin{cases}48m+4n=48\\\\4m+5n=18\\end{cases}\\Rightarrow n=12-12m\\Rightarrow4m+60-60m=18\\Rightarrow m=\\frac34,\\quad n=3$$\n$$y=\\frac34x+3$$",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "הצבת הנקודות במשוואה $y=mx+n$ וכתיבת המערכת $A\\vec x=\\vec b$",
+     "points": 4
+    },
+    {
+     "text": "המשוואות הנורמליות $A^TA\\vec x=A^T\\vec b$ עם $A^TA=\\begin{pmatrix}48&4\\\\4&5\\end{pmatrix}$ ו-$A^T\\vec b=\\begin{pmatrix}48\\\\18\\end{pmatrix}$",
+     "points": 4
+    },
+    {
+     "text": "פתרון המערכת: $m=\\frac34$",
+     "points": 4
+    },
+    {
+     "text": "$n=3$ ומשוואת הישר $y=\\frac34x+3$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לפתור את $A\\vec x=\\vec b$ ישירות (אין פתרון), במקום המשוואות הנורמליות.",
+    "לחשב את $A^TA$ עם עמודות בסדר אחר ולהחליף בין $m$ ל-$n$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב $(A^TA)_{11}$, כלומר $5^2+3^2+1^2+(-2)^2+(-3)^2$?",
+     "answer": 48,
+     "tol": 0,
+     "explain": "$25+9+1+4+9=48$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הראשון של $A^T\\vec b$, כלומר $\\sum x_iy_i$?",
+     "answer": 48,
+     "tol": 0,
+     "explain": "$35+15+4+0-6=48$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$ של הישר?",
+     "answer": 0.75,
+     "tol": 1e-09,
+     "explain": "מהמשוואות $48m+4n=48$ ו-$4m+5n=18$ מתקבל $m=\\frac34$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $n$ (נקודת החיתוך עם ציר $y$)?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$n=12-12m=12-9=3$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -59,7 +263,78 @@
    "solution": "$Q$ אורתוגונלית: $Q^TQ=I$. $Q$ סימטרית: $Q^T=Q$. לכן $Q^2=Q\\cdot Q=Q^TQ=I$.\n$$P^2=(I+Q)(I+Q)=I^2+IQ+QI+Q^2=I+2Q+Q^2=I+2Q+I=2I+2Q=2(I+Q)=2P$$\nולכן $P^2=2P$. $\\blacksquare$",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "הוכחה ש-$Q^2=I$ מתוך $Q^TQ=I$ ו-$Q^T=Q$",
+     "points": 4
+    },
+    {
+     "text": "פתיחת $(I+Q)^2=I+2Q+Q^2$",
+     "points": 3
+    },
+    {
+     "text": "הצבה וסיום: $P^2=2I+2Q=2P$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לכתוב $(I+Q)^2=I+Q^2$ ולשכוח את האיבר $2Q$.",
+    "להניח $Q^2=Q$ (זה נכון רק עבור הטלה; כאן $Q^2=I$)."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מהו $Q^2$ כאשר $Q$ אורתוגונלית וסימטרית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$I$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$Q$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$2I$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$Q^2=Q^TQ=I$. עבור $Q=-I$ מתקבל $Q^2=I\\ne Q$, ו-$Q^2\\ne0$, $Q^2\\ne2I$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$Q^TQ=I$ ו-$Q^T=Q$, ולכן $Q^2=I$; וגם $P^2=(I+Q)(I+Q)=I+2Q+Q^2$",
+      "$P^2=I+2Q+I=2I+2Q$",
+      "$P^2=2(I+Q)=2P$"
+     ],
+     "explain": "כל שורה נשענת על הקודמת: $Q^2=I$ נדרש לפני הצבה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "$Q^TQ=I$ ו-$Q^T=Q$, ולכן $Q^2=I$; וגם $P^2=(I+Q)(I+Q)=I+Q+Q^2$",
+      "$P^2=I+2Q+I=2I+2Q$",
+      "$P^2=2(I+Q)=2P$"
+     ],
+     "bugIndex": 0,
+     "explain": "הפיתוח הנכון הוא $I+IQ+QI+Q^2=I+2Q+Q^2$; בגרסה זו חסר אחד מהאיברים $Q$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -71,7 +346,61 @@
    "solution": "נבצע גרם-שמידט על עמודות $A$: $\\vec c_1=(1,0,1)^T$, $\\vec c_2=(1,0,-1)^T$, $\\vec c_3=(0,1,1)^T$ (העמודות בלתי תלויות, $\\det A=2\\ne0$).\n$$\\vec u_1=\\vec c_1=(1,0,1)^T,\\qquad\\|\\vec u_1\\|=\\sqrt2$$\n$$\\vec u_2=\\vec c_2-\\frac{\\langle\\vec c_2,\\vec u_1\\rangle}{\\|\\vec u_1\\|^2}\\vec u_1=\\vec c_2-0\\cdot\\vec u_1=(1,0,-1)^T,\\qquad\\|\\vec u_2\\|=\\sqrt2$$\n$$\\vec u_3=\\vec c_3-\\frac{\\langle\\vec c_3,\\vec u_1\\rangle}{\\|\\vec u_1\\|^2}\\vec u_1-\\frac{\\langle\\vec c_3,\\vec u_2\\rangle}{\\|\\vec u_2\\|^2}\\vec u_2=(0,1,1)^T-\\frac12(1,0,1)^T+\\frac12(1,0,-1)^T=(0,1,0)^T,\\qquad\\|\\vec u_3\\|=1$$\nנרמל ונקבל את עמודות $Q$, ואז $R=Q^TA$:\n$$Q=\\begin{pmatrix}\\frac1{\\sqrt2}&\\frac1{\\sqrt2}&0\\\\0&0&1\\\\\\frac1{\\sqrt2}&-\\frac1{\\sqrt2}&0\\end{pmatrix},\\qquad R=Q^TA=\\begin{pmatrix}\\sqrt2&0&\\frac1{\\sqrt2}\\\\0&\\sqrt2&-\\frac1{\\sqrt2}\\\\0&0&1\\end{pmatrix}$$\nבדיקה: $Q^TQ=I$, $R$ משולשית עליונה עם אלכסון חיובי, ו-$QR=A$.",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "גרם-שמידט: $\\vec u_1=(1,0,1)^T$ ו-$\\vec u_2=(1,0,-1)^T$ (ההיטל על $\\vec u_1$ הוא $0$)",
+     "points": 4
+    },
+    {
+     "text": "$\\vec u_3=(0,1,0)^T$",
+     "points": 3
+    },
+    {
+     "text": "נרמול: עמודות $Q$",
+     "points": 4
+    },
+    {
+     "text": "חישוב $R=Q^TA$, משולשית עליונה עם אלכסון חיובי",
+     "points": 4
+    }
+   ],
+   "pitfalls": [
+    "לשכוח לנרמל (עמודות $Q$ חייבות להיות באורך $1$).",
+    "להחליף את סדר העמודות: גרם-שמידט תלוי בסדר העמודות של $A$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle\\vec c_2,\\vec u_1\\rangle$ עבור $\\vec c_2=(1,0,-1)^T$ ו-$\\vec u_1=(1,0,1)^T$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$1+0-1=0$, ולכן $\\vec u_2=\\vec c_2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $R_{11}=\\|\\vec c_1\\|$? (תשובה עשרונית)",
+     "answer": 1.41421356,
+     "tol": 1e-06,
+     "explain": "$\\sqrt{1+0+1}=\\sqrt2\\approx1.4142$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $R_{13}=\\langle\\vec c_3,\\vec q_1\\rangle$ עבור $\\vec c_3=(0,1,1)^T$? (תשובה עשרונית)",
+     "answer": 0.70710678,
+     "tol": 1e-06,
+     "explain": "$\\vec q_1=\\frac1{\\sqrt2}(1,0,1)^T$, ולכן $R_{13}=\\frac1{\\sqrt2}\\approx0.7071$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $R_{23}=\\langle\\vec c_3,\\vec q_2\\rangle$? (תשובה עשרונית)",
+     "answer": -0.70710678,
+     "tol": 1e-06,
+     "explain": "$\\vec q_2=\\frac1{\\sqrt2}(1,0,-1)^T$, ולכן $R_{23}=-\\frac1{\\sqrt2}$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -83,7 +412,80 @@
    "solution": "נסמן $\\vec u=x^3$ ו-$\\vec v=f(x)$ במרחב $C[0,1]$ עם המכפלה הפנימית $\\langle f,g\\rangle=\\displaystyle\\int_0^1f(x)g(x)\\,dx$. לפי אי-שוויון קושי-שוורץ $|\\langle\\vec u,\\vec v\\rangle|\\le\\|\\vec u\\|\\cdot\\|\\vec v\\|$.\n$$\\|\\vec u\\|=\\sqrt{\\langle x^3,x^3\\rangle}=\\sqrt{\\int_0^1x^3\\cdot x^3\\,dx}=\\sqrt{\\left[\\frac{x^7}7\\right]_0^1}=\\sqrt{\\frac17},\\qquad\\|f(x)\\|=\\sqrt{\\int_0^1f^2(x)\\,dx}$$\n$$\\int_0^1x^3\\cdot f(x)\\,dx\\le\\sqrt{\\frac17}\\cdot\\sqrt{\\int_0^1f^2(x)\\,dx}$$\nנעלה בריבוע ונקבל: $\\left(\\displaystyle\\int_0^1x^3f(x)\\,dx\\right)^2\\le\\dfrac17\\displaystyle\\int_0^1\\left(f(x)\\right)^2dx$.",
    "solutionSource": "student-solution",
    "official": false,
-   "confidence": "med"
+   "confidence": "med",
+   "rubric": [
+    {
+     "text": "בחירת $\\vec u=x^3$ ו-$\\vec v=f$ והמכפלה הפנימית האינטגרלית",
+     "points": 3
+    },
+    {
+     "text": "הפעלת קושי-שוורץ",
+     "points": 2
+    },
+    {
+     "text": "חישוב $\\|x^3\\|^2=\\int_0^1x^6\\,dx=\\frac17$",
+     "points": 3
+    },
+    {
+     "text": "העלאה בריבוע והגעה לאי-השוויון המבוקש",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לחשב $\\int_0^1x^6\\,dx$ כ-$\\frac16$ (טעות באנטי-נגזרת).",
+    "לשכוח שקושי-שוורץ נותן אי-שוויון על ערכים מוחלטים, ולכן מעלים בריבוע בסוף."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "באיזו שיטה משתמש הפתרון?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "אי-שוויון קושי-שוורץ עם $\\vec u=x^3$ ו-$\\vec v=f$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "אינדוקציה על החזקה"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "אי-שוויון המשולש עבור נורמות"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "שימוש בנגזרת של $f$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הביטוי $\\int_0^1x^3f$ הוא מכפלה פנימית של $x^3$ ו-$f$, והחסם על המכפלה הוא קושי-שוורץ. ההוכחה אינה משתמשת באינדוקציה, בנגזרת או באי-שוויון המשולש."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\int_0^1x^6\\,dx$? (תשובה עשרונית)",
+     "answer": 0.14285714,
+     "tol": 1e-06,
+     "explain": "$\\left[\\frac{x^7}7\\right]_0^1=\\frac17\\approx0.142857$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "נסמן $\\vec u=x^3$ ו-$\\vec v=f(x)$ עם המכפלה $\\langle f,g\\rangle=\\int_0^1fg\\,dx$",
+      "קושי-שוורץ: $|\\langle\\vec u,\\vec v\\rangle|\\le\\|\\vec u\\|\\|\\vec v\\|$",
+      "$\\|\\vec u\\|^2=\\int_0^1x^6\\,dx=\\left[\\frac{x^6}6\\right]_0^1=\\frac16$",
+      "נעלה בריבוע: $\\left(\\int_0^1x^3f\\,dx\\right)^2\\le\\frac17\\int_0^1f^2\\,dx$"
+     ],
+     "bugIndex": 2,
+     "explain": "האנטי-נגזרת של $x^6$ היא $\\frac{x^7}7$, ולכן הערך הוא $\\frac17$ ולא $\\frac16$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -94,7 +496,74 @@
    "solution": "נסמן $A(a,b,c)=\\begin{pmatrix}1&a&b\\\\0&1&c\\\\0&0&1\\end{pmatrix}$ ונבדוק את אקסיומות החבורה.\n**סגירות:** לכל $a_1,b_1,c_1,a_2,b_2,c_2\\in\\mathbb{R}$:\n$$A(a_1,b_1,c_1)\\cdot A(a_2,b_2,c_2)=\\begin{pmatrix}1&a_1+a_2&b_2+a_1c_2+b_1\\\\0&1&c_1+c_2\\\\0&0&1\\end{pmatrix}=A(a_1+a_2,\\ b_1+b_2+a_1c_2,\\ c_1+c_2)\\in G$$\nכי הרכיבים ממשיים והמבנה (אלכסון $1$, אפסים מתחת לאלכסון) נשמר.\n**אסוציאטיביות:** כפל מטריצות ב-$M_3(\\mathbb{R})$ אסוציאטיבי, ובפרט על אברי $G$: $(XY)Z=X(YZ)$.\n**איבר ניטרלי:** $I=A(0,0,0)\\in G$ ומתקיים $XI=IX=X$ לכל $X\\in G$.\n**הופכי:** $\\det A(a,b,c)=1\\ne0$ (משולשית עם אלכסון $1$), ונמצא את ההופכי בתוך $G$: מהדרישה $A(a,b,c)A(x,y,z)=I$ לפי נוסחת הכפל: $a+x=0$, $c+z=0$, $b+y+az=0$, כלומר $x=-a$, $z=-c$, $y=ac-b$.\n$$A(a,b,c)^{-1}=\\begin{pmatrix}1&-a&ac-b\\\\0&1&-c\\\\0&0&1\\end{pmatrix}\\in G$$\nובדיקה גם בכיוון השני: $A(-a,ac-b,-c)A(a,b,c)=A(0,\\ ac-b+b-ac,\\ 0)=I$.\nכל האקסיומות מתקיימות, לכן $(G,\\cdot)$ חבורה. (היא אינה אבלית: למשל $A(1,0,0)A(0,0,1)=A(1,1,1)$ אבל $A(0,0,1)A(1,0,0)=A(1,0,1)$.) $\\blacksquare$",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "סגירות: $A(a_1,b_1,c_1)A(a_2,b_2,c_2)=A(a_1+a_2,\\ b_1+b_2+a_1c_2,\\ c_1+c_2)\\in G$",
+     "points": 7
+    },
+    {
+     "text": "אסוציאטיביות כפל מטריצות",
+     "points": 3
+    },
+    {
+     "text": "איבר ניטרלי $I=A(0,0,0)$",
+     "points": 4
+    },
+    {
+     "text": "הופכי: $A(-a,ac-b,-c)\\in G$",
+     "points": 8
+    },
+    {
+     "text": "בדיקה שההופכי תקף משני הצדדים ומסקנה שזו חבורה",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לשכוח את סגירות הכפל (שהמכפלה נשארת בצורת $G$) ולבדוק רק הופכי.",
+    "לכתוב את ההופכי כ-$A(-a,-b,-c)$: הרכיב העליון-ימני הוא $ac-b$ ולא $-b$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $A(1,2,3)\\cdot A(4,5,6)$: מהו הרכיב בשורה 1 ובעמודה 3? (לפי נוסחת הכפל $b_1+b_2+a_1c_2$)",
+     "answer": 13,
+     "tol": 0,
+     "explain": "$2+5+1\\cdot6=13$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב בשורה 1 ובעמודה 3 של ההופכי של $A(1,2,3)$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$ac-b=1\\cdot3-2=1$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי מציאת ההופכי.",
+     "lines": [
+      "נדרוש $A(a,b,c)A(x,y,z)=I$",
+      "לפי נוסחת הכפל: $a+x=0,\\ c+z=0,\\ b+y+az=0$",
+      "ולכן $x=-a,\\ z=-c,\\ y=ac-b$",
+      "$A(a,b,c)^{-1}=A(-a,ac-b,-c)\\in G$"
+     ],
+     "explain": "המשוואות נגזרות מנוסחת הכפל, והפתרון נגזר מהן."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "נדרוש $A(a,b,c)A(x,y,z)=I$",
+      "לפי נוסחת הכפל: $a+x=0,\\ c+z=0,\\ b+y+az=0$",
+      "ולכן $x=-a,\\ z=-c,\\ y=b+ac$",
+      "$A(a,b,c)^{-1}=A(-a,ac-b,-c)\\in G$"
+     ],
+     "bugIndex": 2,
+     "explain": "מהמשוואה $b+y+az=0$ עם $z=-c$ מתקבל $y=ac-b$, לא $b+ac$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -106,7 +575,61 @@
    "solution": "קודם מביאים לצורה עם שארית קטנה מהמודולו: $x\\equiv3\\pmod2$ שקול ל-$x\\equiv1\\pmod2$. המודולים $5,2,7$ זרים בזוגות, לכן לפי משפט השאריות הסיני יש פתרון יחיד מודולו $M=5\\cdot2\\cdot7=70$.\n$a_1=2,\\ a_2=1,\\ a_3=4$; $m_1=5,\\ m_2=2,\\ m_3=7$; $M_1=14,\\ M_2=35,\\ M_3=10$.\n$$y_iM_i\\equiv1\\pmod{m_i}:\\quad14y_1\\equiv4y_1\\equiv1\\pmod5\\Rightarrow y_1=4;\\quad35y_2\\equiv y_2\\equiv1\\pmod2\\Rightarrow y_2=1;\\quad10y_3\\equiv3y_3\\equiv1\\pmod7\\Rightarrow y_3=5$$\n$$x\\equiv a_1M_1y_1+a_2M_2y_2+a_3M_3y_3=2\\cdot14\\cdot4+1\\cdot35\\cdot1+4\\cdot10\\cdot5=112+35+200=347\\equiv67\\pmod{70}$$\n$$x\\equiv67\\pmod{70}$$\nבדיקה: $67=13\\cdot5+2$, $67=33\\cdot2+1$ ($\\equiv3\\pmod2$), $67=9\\cdot7+4$.",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "הבאת המשוואה השנייה ל-$x\\equiv1\\pmod2$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $M=70$ ו-$M_1=14,\\ M_2=35,\\ M_3=10$",
+     "points": 3
+    },
+    {
+     "text": "חישוב ההופכיים $y_1=4,\\ y_2=1,\\ y_3=5$",
+     "points": 4
+    },
+    {
+     "text": "הצבה בנוסחה ($347$) והפחתה מודולו $70$: $x\\equiv67$",
+     "points": 4
+    }
+   ],
+   "pitfalls": [
+    "להשאיר $x\\equiv3\\pmod2$ בלי להפחית ל-$1$.",
+    "לשכוח להפחית את הסכום $347$ מודולו $70$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי השארית של $3$ מודולו $2$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$3=2+1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $y_1$ המקיים $14y_1\\equiv1\\pmod5$ (ערך בין 0 ל-4)?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$14\\equiv4$, ו-$4\\cdot4=16\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $y_3$ המקיים $10y_3\\equiv1\\pmod7$ (ערך בין 0 ל-6)?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$10\\equiv3$, ו-$3\\cdot5=15\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ מודולו $70$ (ערך בין 0 ל-69)?",
+     "answer": 67,
+     "tol": 0,
+     "explain": "$347\\bmod70=67$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -119,7 +642,61 @@
    "solution": "נסמן $A_1=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$, $A_2=\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}$, $C=\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$. המכפלה $\\langle A,B\\rangle=tr\\left(B^TA\\right)$ היא סכום מכפלות הרכיבים המתאימים.\n**גרם-שמידט:** $B_1=A_1$, $\\|B_1\\|^2=1+1=2$. $\\langle A_2,B_1\\rangle=1+3=4$, לכן\n$$B_2=A_2-\\frac{\\langle A_2,B_1\\rangle}{\\|B_1\\|^2}B_1=\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}-2\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}=\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix},\\qquad\\|B_2\\|^2=4$$\n**ההיטל:** $\\langle C,B_1\\rangle=1+2=3$, $\\langle C,B_2\\rangle=-1+2+3+0=4$.\n$$P(C)=\\frac{\\langle C,B_1\\rangle}{\\|B_1\\|^2}B_1+\\frac{\\langle C,B_2\\rangle}{\\|B_2\\|^2}B_2=\\frac32\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}+1\\cdot\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}=\\begin{pmatrix}\\frac12&\\frac52\\\\1&1\\end{pmatrix}$$\nבדיקה: $C-P(C)=\\begin{pmatrix}\\frac12&-\\frac12\\\\2&-1\\end{pmatrix}$ אורתוגונלית ל-$A_1$ ($\\frac12-\\frac12=0$) ול-$A_2$ ($\\frac12-\\frac32+2-1=0$).",
    "solutionSource": "solved",
    "official": false,
-   "confidence": "high"
+   "confidence": "high",
+   "rubric": [
+    {
+     "text": "גרם-שמידט: $B_1=A_1$ ו-$B_2=A_2-2B_1=\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}$",
+     "points": 4
+    },
+    {
+     "text": "המכפלות $\\langle C,B_1\\rangle=3$ ו-$\\langle C,B_2\\rangle=4$ והנורמות $2,4$",
+     "points": 4
+    },
+    {
+     "text": "שימוש בנוסחת ההיטל על בסיס אורתוגונלי",
+     "points": 2
+    },
+    {
+     "text": "התשובה $\\begin{pmatrix}\\frac12&\\frac52\\\\1&1\\end{pmatrix}$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "להשתמש בנוסחת ההיטל על $A_1,A_2$ ישירות, אף שאינם אורתוגונליים ($\\langle A_1,A_2\\rangle=4$).",
+    "לחשב את המכפלה הפנימית כמכפלת מטריצות רגילה ולא כ-$tr(B^TA)$ (סכום מכפלות הרכיבים)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle A_2,B_1\\rangle$ עבור $A_2=\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}$ ו-$B_1=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$1+3+0+0=4$, ולכן המקדם $\\frac42=2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|B_2\\|^2$ עבור $B_2=\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$1+1+1+1=4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle C,B_2\\rangle$ עבור $C=\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$-1+2+3+0=4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הימני-עליון של ההיטל?",
+     "answer": 2.5,
+     "tol": 1e-09,
+     "explain": "$\\frac32\\cdot1+1\\cdot1=\\frac52$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   }
  ]
 }

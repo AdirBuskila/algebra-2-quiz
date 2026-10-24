@@ -163,6 +163,180 @@ for q in questions:
         q.update({"solution": SOLVED[key], "solutionSource": "solved", "official": False, "confidence": "high"})
 assert all("hold" not in q for q in questions), "an item is still held"
 
+# ---- rubric / pitfalls / steps (ai-draft). Every expected value is recomputed by tools/verify/23A-S/steps_check.py ----
+IDS = "abcdef"
+
+
+def opts(*vals):
+    return [{"id": IDS[i], "type": "text", "value": v} for i, v in enumerate(vals)]
+
+
+def rub(*items):
+    return [{"text": t, "points": p} for t, p in items]
+
+
+def num(prompt, answer, explain, tol=0):
+    return {"type": "numeric", "prompt": prompt, "answer": answer, "tol": tol, "explain": explain}
+
+
+def choice(prompt, values, correct, explain):
+    return {"type": "choice", "prompt": prompt, "options": opts(*values), "correctId": IDS[correct], "explain": explain}
+
+
+def order(prompt, lines, explain):
+    return {"type": "order", "prompt": prompt, "lines": lines, "explain": explain}
+
+
+def findbug(prompt, lines, idx, new, explain):
+    bad = list(lines)
+    bad[idx] = new
+    return {"type": "findbug", "prompt": prompt, "lines": bad, "bugIndex": idx, "explain": explain}
+
+
+def add(n, part, **kw):
+    for q in questions:
+        if q["num"] == n and q.get("part") == part:
+            q.update(kw)
+            q["rubricSource"] = "ai-draft"
+            q["stepsSource"] = "ai-draft"
+            assert sum(r["points"] for r in q["rubric"]) == q["points"], (n, part)
+            return
+    raise KeyError((n, part))
+
+
+add(1, "א",
+    rubric=rub((r"הקביעה שהגדרת 'מוגדרת חיובית/שלילית' מתייחסת למטריצה סימטרית בלבד", 3),
+               (r"סימטריה מתקיימת רק עבור $a=1$ (מההשוואה $2=a+1$)", 3),
+               (r"עבור $a=1$: הערכים העצמיים $1,3,-1$", 4),
+               (r"מסקנה: יש ערך חיובי ושלילי, ולכן אין $a$ כזה", 3)),
+    pitfalls=[r"לקרוא את הערכים העצמיים $a,\ a\pm\sqrt{2a+2}$ של מטריצה שאינה סימטרית ולהסיק מהם הגדרה.",
+              r"לבדוק רק את סימן האלכסון הראשי ולהסיק 'מוגדרת חיובית' עבור $a>0$."],
+    steps=[num(r"עבור איזה ערך של $a$ המטריצה $\begin{pmatrix}a&2&0\\a+1&a&0\\0&0&a\end{pmatrix}$ סימטרית?", 1,
+               r"סימטריה דורשת $M_{12}=M_{21}$, כלומר $2=a+1$."),
+           num(r"עבור $a=1$: מהו הערך העצמי הגדול ביותר של המטריצה?", 3, r"הערכים העצמיים הם $1,\ 3,\ -1$, והגדול ביותר הוא $3$."),
+           num(r"עבור $a=1$: מהו הערך העצמי הקטן ביותר?", -1, r"הערכים העצמיים הם $1,\ 3,\ -1$."),
+           choice(r"מהו הסיווג של המטריצה עבור $a=1$?",
+                  ["אינה מוגדרת (יש ערכים עצמיים חיוביים ושליליים)", "מוגדרת חיובית לחלוטין", "מוגדרת שלילית לחלוטין", "מוגדרת חיובית (למחצה)"], 0,
+                  r"הערך $-1<0$ שולל חיוביות (גם למחצה), והערך $3>0$ שולל שליליות.")])
+
+add(1, "ב",
+    rubric=rub((r"פתיחת $\|\vec u\pm\vec v\|^2$ בעזרת תכונות המכפלה הפנימית", 4),
+               (r"כלל המקבילית $\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=2\|\vec u\|^2+2\|\vec v\|^2$", 3),
+               (r"הצבה: $52=18+2\|\vec v\|^2$ ולכן $\|\vec v\|^2=17$", 3),
+               (r"התשובה $\|\vec v\|=\sqrt{17}$", 2)),
+    pitfalls=[r"לכתוב $\|\vec u+\vec v\|=\|\vec u\|+\|\vec v\|$ (זה נכון רק בשוויון המשולש הקיצוני).",
+              r"לשכוח את הריבוע: להציב $4+6=2\cdot3+2\|\vec v\|$ במקום $4^2+6^2=\dots$."],
+    steps=[choice(r"איזה שוויון מתקיים בכל מרחב מכפלה פנימית?",
+                  [r"$\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=2\|\vec u\|^2+2\|\vec v\|^2$",
+                   r"$\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=2\|\vec u\|^2-2\|\vec v\|^2$",
+                   r"$\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=\|\vec u\|^2+\|\vec v\|^2$",
+                   r"$\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=4\langle\vec u,\vec v\rangle$"], 0,
+                  r"עבור $\vec u=(1,0)$, $\vec v=(0,1)$ הצד השמאלי הוא $2+2=4$; רק האפשרות הראשונה נותנת $4$ (האחרות נותנות $0$, $2$, $0$)."),
+           num(r"מהו $\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2$ עבור הנתונים?", 52, r"$4^2+6^2=16+36=52$."),
+           num(r"מהו $\|\vec v\|^2$?", 17, r"$52=2\cdot9+2\|\vec v\|^2$ ולכן $\|\vec v\|^2=17$."),
+           num(r"מהו $\langle\vec u,\vec v\rangle$?", -5, r"מחיסור הזהויות: $16-36=4\langle\vec u,\vec v\rangle$, כלומר $-5$.")])
+
+add(2, "א",
+    rubric=rub((r"הצבת הנקודות במשוואה $y=mx+n$ וכתיבת המערכת $A\vec x=\vec b$", 4),
+               (r"המשוואות הנורמליות $A^TA\vec x=A^T\vec b$ עם $A^TA=\begin{pmatrix}48&4\\4&5\end{pmatrix}$ ו-$A^T\vec b=\begin{pmatrix}48\\18\end{pmatrix}$", 4),
+               (r"פתרון המערכת: $m=\frac34$", 4),
+               (r"$n=3$ ומשוואת הישר $y=\frac34x+3$", 3)),
+    pitfalls=[r"לפתור את $A\vec x=\vec b$ ישירות (אין פתרון), במקום המשוואות הנורמליות.",
+              r"לחשב את $A^TA$ עם עמודות בסדר אחר ולהחליף בין $m$ ל-$n$."],
+    steps=[num(r"מהו הרכיב $(A^TA)_{11}$, כלומר $5^2+3^2+1^2+(-2)^2+(-3)^2$?", 48, r"$25+9+1+4+9=48$."),
+           num(r"מהו הרכיב הראשון של $A^T\vec b$, כלומר $\sum x_iy_i$?", 48, r"$35+15+4+0-6=48$."),
+           num(r"מהו השיפוע $m$ של הישר?", 0.75, r"מהמשוואות $48m+4n=48$ ו-$4m+5n=18$ מתקבל $m=\frac34$.", tol=1e-9),
+           num(r"מהו $n$ (נקודת החיתוך עם ציר $y$)?", 3, r"$n=12-12m=12-9=3$.")])
+
+S2B_LINES = [r"$Q^TQ=I$ ו-$Q^T=Q$, ולכן $Q^2=I$; וגם $P^2=(I+Q)(I+Q)=I+2Q+Q^2$",
+             r"$P^2=I+2Q+I=2I+2Q$",
+             r"$P^2=2(I+Q)=2P$"]
+add(2, "ב",
+    rubric=rub((r"הוכחה ש-$Q^2=I$ מתוך $Q^TQ=I$ ו-$Q^T=Q$", 4),
+               (r"פתיחת $(I+Q)^2=I+2Q+Q^2$", 3),
+               (r"הצבה וסיום: $P^2=2I+2Q=2P$", 3)),
+    pitfalls=[r"לכתוב $(I+Q)^2=I+Q^2$ ולשכוח את האיבר $2Q$.",
+              r"להניח $Q^2=Q$ (זה נכון רק עבור הטלה; כאן $Q^2=I$)."],
+    steps=[choice(r"מהו $Q^2$ כאשר $Q$ אורתוגונלית וסימטרית?", [r"$I$", r"$Q$", r"$0$", r"$2I$"], 0,
+                  r"$Q^2=Q^TQ=I$. עבור $Q=-I$ מתקבל $Q^2=I\ne Q$, ו-$Q^2\ne0$, $Q^2\ne2I$."),
+           order("סדרו את שלבי ההוכחה.", S2B_LINES, r"כל שורה נשענת על הקודמת: $Q^2=I$ נדרש לפני הצבה."),
+           findbug("בגרסה הבאה שורה אחת שגויה. מצאו אותה.", S2B_LINES, 0,
+                   r"$Q^TQ=I$ ו-$Q^T=Q$, ולכן $Q^2=I$; וגם $P^2=(I+Q)(I+Q)=I+Q+Q^2$",
+                   r"הפיתוח הנכון הוא $I+IQ+QI+Q^2=I+2Q+Q^2$; בגרסה זו חסר אחד מהאיברים $Q$.")])
+
+add(3, "א",
+    rubric=rub((r"גרם-שמידט: $\vec u_1=(1,0,1)^T$ ו-$\vec u_2=(1,0,-1)^T$ (ההיטל על $\vec u_1$ הוא $0$)", 4),
+               (r"$\vec u_3=(0,1,0)^T$", 3),
+               (r"נרמול: עמודות $Q$", 4),
+               (r"חישוב $R=Q^TA$, משולשית עליונה עם אלכסון חיובי", 4)),
+    pitfalls=[r"לשכוח לנרמל (עמודות $Q$ חייבות להיות באורך $1$).",
+              r"להחליף את סדר העמודות: גרם-שמידט תלוי בסדר העמודות של $A$."],
+    steps=[num(r"מהו $\langle\vec c_2,\vec u_1\rangle$ עבור $\vec c_2=(1,0,-1)^T$ ו-$\vec u_1=(1,0,1)^T$?", 0, r"$1+0-1=0$, ולכן $\vec u_2=\vec c_2$."),
+           num(r"מהו $R_{11}=\|\vec c_1\|$? (תשובה עשרונית)", 1.41421356, r"$\sqrt{1+0+1}=\sqrt2\approx1.4142$.", tol=1e-6),
+           num(r"מהו $R_{13}=\langle\vec c_3,\vec q_1\rangle$ עבור $\vec c_3=(0,1,1)^T$? (תשובה עשרונית)", 0.70710678, r"$\vec q_1=\frac1{\sqrt2}(1,0,1)^T$, ולכן $R_{13}=\frac1{\sqrt2}\approx0.7071$.", tol=1e-6),
+           num(r"מהו $R_{23}=\langle\vec c_3,\vec q_2\rangle$? (תשובה עשרונית)", -0.70710678, r"$\vec q_2=\frac1{\sqrt2}(1,0,-1)^T$, ולכן $R_{23}=-\frac1{\sqrt2}$.", tol=1e-6)])
+
+S3B_LINES = [r"נסמן $\vec u=x^3$ ו-$\vec v=f(x)$ עם המכפלה $\langle f,g\rangle=\int_0^1fg\,dx$",
+             r"קושי-שוורץ: $|\langle\vec u,\vec v\rangle|\le\|\vec u\|\|\vec v\|$",
+             r"$\|\vec u\|^2=\int_0^1x^6\,dx=\left[\frac{x^7}7\right]_0^1=\frac17$",
+             r"נעלה בריבוע: $\left(\int_0^1x^3f\,dx\right)^2\le\frac17\int_0^1f^2\,dx$"]
+add(3, "ב",
+    rubric=rub((r"בחירת $\vec u=x^3$ ו-$\vec v=f$ והמכפלה הפנימית האינטגרלית", 3),
+               (r"הפעלת קושי-שוורץ", 2),
+               (r"חישוב $\|x^3\|^2=\int_0^1x^6\,dx=\frac17$", 3),
+               (r"העלאה בריבוע והגעה לאי-השוויון המבוקש", 2)),
+    pitfalls=[r"לחשב $\int_0^1x^6\,dx$ כ-$\frac16$ (טעות באנטי-נגזרת).",
+              r"לשכוח שקושי-שוורץ נותן אי-שוויון על ערכים מוחלטים, ולכן מעלים בריבוע בסוף."],
+    steps=[choice(r"באיזו שיטה משתמש הפתרון?", ["אי-שוויון קושי-שוורץ עם $\\vec u=x^3$ ו-$\\vec v=f$", "אינדוקציה על החזקה", "אי-שוויון המשולש עבור נורמות", "שימוש בנגזרת של $f$"], 0,
+                  r"הביטוי $\int_0^1x^3f$ הוא מכפלה פנימית של $x^3$ ו-$f$, והחסם על המכפלה הוא קושי-שוורץ. ההוכחה אינה משתמשת באינדוקציה, בנגזרת או באי-שוויון המשולש."),
+           num(r"מהו $\int_0^1x^6\,dx$? (תשובה עשרונית)", 0.14285714, r"$\left[\frac{x^7}7\right]_0^1=\frac17\approx0.142857$.", tol=1e-6),
+           findbug("בגרסה הבאה שורה אחת שגויה. מצאו אותה.", S3B_LINES, 2,
+                   r"$\|\vec u\|^2=\int_0^1x^6\,dx=\left[\frac{x^6}6\right]_0^1=\frac16$",
+                   r"האנטי-נגזרת של $x^6$ היא $\frac{x^7}7$, ולכן הערך הוא $\frac17$ ולא $\frac16$.")])
+
+G4_LINES = [r"נדרוש $A(a,b,c)A(x,y,z)=I$",
+            r"לפי נוסחת הכפל: $a+x=0,\ c+z=0,\ b+y+az=0$",
+            r"ולכן $x=-a,\ z=-c,\ y=ac-b$",
+            r"$A(a,b,c)^{-1}=A(-a,ac-b,-c)\in G$"]
+G4_RUB = rub((r"סגירות: $A(a_1,b_1,c_1)A(a_2,b_2,c_2)=A(a_1+a_2,\ b_1+b_2+a_1c_2,\ c_1+c_2)\in G$", 7),
+             (r"אסוציאטיביות כפל מטריצות", 3),
+             (r"איבר ניטרלי $I=A(0,0,0)$", 4),
+             (r"הופכי: $A(-a,ac-b,-c)\in G$", 8),
+             (r"בדיקה שההופכי תקף משני הצדדים ומסקנה שזו חבורה", 3))
+G4_PIT = [r"לשכוח את סגירות הכפל (שהמכפלה נשארת בצורת $G$) ולבדוק רק הופכי.",
+          r"לכתוב את ההופכי כ-$A(-a,-b,-c)$: הרכיב העליון-ימני הוא $ac-b$ ולא $-b$."]
+G4_STEPS = [num(r"עבור $A(1,2,3)\cdot A(4,5,6)$: מהו הרכיב בשורה 1 ובעמודה 3? (לפי נוסחת הכפל $b_1+b_2+a_1c_2$)", 13,
+                r"$2+5+1\cdot6=13$."),
+            num(r"מהו הרכיב בשורה 1 ובעמודה 3 של ההופכי של $A(1,2,3)$?", 1, r"$ac-b=1\cdot3-2=1$."),
+            order("סדרו את שלבי מציאת ההופכי.", G4_LINES, r"המשוואות נגזרות מנוסחת הכפל, והפתרון נגזר מהן."),
+            findbug("בגרסה הבאה שורה אחת שגויה. מצאו אותה.", G4_LINES, 2, r"ולכן $x=-a,\ z=-c,\ y=b+ac$",
+                    r"מהמשוואה $b+y+az=0$ עם $z=-c$ מתקבל $y=ac-b$, לא $b+ac$.")]
+add(4, None, rubric=G4_RUB, pitfalls=G4_PIT, steps=G4_STEPS)
+
+add(5, "א",
+    rubric=rub((r"הבאת המשוואה השנייה ל-$x\equiv1\pmod2$", 2),
+               (r"חישוב $M=70$ ו-$M_1=14,\ M_2=35,\ M_3=10$", 3),
+               (r"חישוב ההופכיים $y_1=4,\ y_2=1,\ y_3=5$", 4),
+               (r"הצבה בנוסחה ($347$) והפחתה מודולו $70$: $x\equiv67$", 4)),
+    pitfalls=[r"להשאיר $x\equiv3\pmod2$ בלי להפחית ל-$1$.",
+              r"לשכוח להפחית את הסכום $347$ מודולו $70$."],
+    steps=[num(r"מהי השארית של $3$ מודולו $2$?", 1, r"$3=2+1$."),
+           num(r"מהו $y_1$ המקיים $14y_1\equiv1\pmod5$ (ערך בין 0 ל-4)?", 4, r"$14\equiv4$, ו-$4\cdot4=16\equiv1$."),
+           num(r"מהו $y_3$ המקיים $10y_3\equiv1\pmod7$ (ערך בין 0 ל-6)?", 5, r"$10\equiv3$, ו-$3\cdot5=15\equiv1$."),
+           num(r"מהו הפתרון $x$ מודולו $70$ (ערך בין 0 ל-69)?", 67, r"$347\bmod70=67$.")])
+
+add(5, "ב",
+    rubric=rub((r"גרם-שמידט: $B_1=A_1$ ו-$B_2=A_2-2B_1=\begin{pmatrix}-1&1\\1&1\end{pmatrix}$", 4),
+               (r"המכפלות $\langle C,B_1\rangle=3$ ו-$\langle C,B_2\rangle=4$ והנורמות $2,4$", 4),
+               (r"שימוש בנוסחת ההיטל על בסיס אורתוגונלי", 2),
+               (r"התשובה $\begin{pmatrix}\frac12&\frac52\\1&1\end{pmatrix}$", 2)),
+    pitfalls=[r"להשתמש בנוסחת ההיטל על $A_1,A_2$ ישירות, אף שאינם אורתוגונליים ($\langle A_1,A_2\rangle=4$).",
+              r"לחשב את המכפלה הפנימית כמכפלת מטריצות רגילה ולא כ-$tr(B^TA)$ (סכום מכפלות הרכיבים)."],
+    steps=[num(r"מהו $\langle A_2,B_1\rangle$ עבור $A_2=\begin{pmatrix}1&3\\1&1\end{pmatrix}$ ו-$B_1=\begin{pmatrix}1&1\\0&0\end{pmatrix}$?", 4, r"$1+3+0+0=4$, ולכן המקדם $\frac42=2$."),
+           num(r"מהו $\|B_2\|^2$ עבור $B_2=\begin{pmatrix}-1&1\\1&1\end{pmatrix}$?", 4, r"$1+1+1+1=4$."),
+           num(r"מהו $\langle C,B_2\rangle$ עבור $C=\begin{pmatrix}1&2\\3&0\end{pmatrix}$?", 4, r"$-1+2+3+0=4$."),
+           num(r"מהו הרכיב הימני-עליון של ההיטל?", 2.5, r"$\frac32\cdot1+1\cdot1=\frac52$.", tol=1e-9)])
+
 exam = {
     "examCode": "23A-S",
     "examLabel": "אלגברה 2 - סמסטר א' תשפ\"ג מועד מיוחד",
