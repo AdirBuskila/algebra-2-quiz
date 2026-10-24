@@ -28,7 +28,80 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "הצבת $A$ ו-$\\vec b$ (עמודת איקסים ועמודת אחדות)",
+     "points": 3
+    },
+    {
+     "text": "משוואות נורמליות $A^TA\\binom mn=A^T\\vec b$ וחישוב שני האגפים",
+     "points": 4
+    },
+    {
+     "text": "פתרון: $m=\\frac{37}{59}$, $n=\\frac{99}{59}$ והישר",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את $A\\vec x=\\vec b$ ישירות: ארבע הנקודות אינן על ישר אחד.",
+    "לשכוח שהנקודה הראשונה היא $(0,1)$, כך שהאיבר $x=0$ תורם $0$ לסכומים."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו מערכת פותרים בשיטת הריבועים הפחותים?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A\\binom mn=\\vec b$ (פתרון מדויק)"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$AA^T\\binom mn=\\vec b$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$A^TA\\binom mn=A^T\\vec b$"
+      }
+     ],
+     "correctId": "c",
+     "explain": "הפתרון כופל ב-$A^T$ משמאל. המערכת $A\\vec x=\\vec b$ אינה פתירה, ו-$AA^T$ היא מטריצה $4\\times4$ ולא מתאימה."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$A^TA$, כלומר $\\sum x_i^2$?",
+     "answer": 140,
+     "tol": 0,
+     "explain": "$0+4+36+100=140$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הראשון ב-$A^T\\vec b$, כלומר $\\sum x_iy_i$?",
+     "answer": 118,
+     "tol": 0,
+     "explain": "$0+8+30+80=118$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$?",
+     "answer": 0.6271186,
+     "tol": 0.001,
+     "explain": "$m=\\frac{37}{59}\\approx0.627$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו חיתוך הצירים $n$?",
+     "answer": 1.6779661,
+     "tol": 0.001,
+     "explain": "$n=\\frac{99}{59}\\approx1.678$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -40,7 +113,85 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "$S^TAS$ סימטרית",
+     "points": 2
+    },
+    {
+     "text": "$\\vec v^TS^TAS\\vec v=(S\\vec v)^TA(S\\vec v)$ והשקילות לתנאי על $\\vec u=S\\vec v$",
+     "points": 7
+    },
+    {
+     "text": "כל $\\vec u$ הוא מהצורה $S\\vec v$ כי $S$ הפיכה",
+     "points": 4
+    },
+    {
+     "text": "מסקנה: אם ורק אם",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להוכיח רק כיוון אחד: צריך גם ש-$A$ חיובית גוררת ש-$S^TAS$ חיובית וגם להפך.",
+    "לשכוח שיש להשתמש בהפיכות של $S$ כדי שה-$\\vec u=S\\vec v$ יעברו על כל $\\mathbb{R}^n$."
+   ],
+   "steps": [
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$\\langle S^TAS\\vec v,\\vec v\\rangle=\\vec v^TS^TAS\\vec v$",
+      "$=(S\\vec v)^TA(S\\vec v)$",
+      "$S$ הפיכה, ולכן $\\vec u=S\\vec v$ עובר על כל $\\mathbb{R}^n$",
+      "$S^TAS$ חיובית $\\iff$ $\\vec u^TA\\vec u\\ge0$ לכל $\\vec u$ $\\iff$ $A$ חיובית"
+     ],
+     "explain": "פותחים את המכפלה הפנימית, מקבצים, מסבירים שהמשתנה החדש עובר על כל המרחב, ואז מסיקים."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$\\langle S^TAS\\vec v,\\vec v\\rangle=\\vec v^TS^TAS\\vec v$",
+      "$=\\left(S^T\\vec v\\right)^TA\\left(S^T\\vec v\\right)$",
+      "$S$ הפיכה, ולכן הווקטורים עוברים על כל $\\mathbb{R}^n$"
+     ],
+     "bugIndex": 1,
+     "explain": "$\\vec v^TS^T=(S\\vec v)^T$ ו-$S\\vec v$ ולא $S^T\\vec v$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע כל $\\vec u\\in\\mathbb{R}^n$ הוא מהצורה $S\\vec v$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $S$ אורתוגונלית ולכן הפיכה ($\\vec v=S^T\\vec u$)"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $A$ סימטרית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי $S$ סימטרית"
+      }
+     ],
+     "correctId": "a",
+     "explain": "אורתוגונלית גוררת הפיכה. סימטריה של $A$ אינה קשורה, ו-$S$ אורתוגונלית אינה חייבת להיות סימטרית (סיבוב)."
+    },
+    {
+     "type": "numeric",
+     "prompt": "$S=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ ו-$A=\\operatorname{diag}(1,2)$. מהו הערך העצמי הקטן של $S^TAS$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$S^TAS=\\operatorname{diag}(2,1)$, בעל אותם ערכים עצמיים כמו $A$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -53,7 +204,77 @@
    "confidence": "med",
    "part": "א",
    "points": 7,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "סגירות: $\\mathbb{Z}_5^*$ סגורה לכפל",
+     "points": 2
+    },
+    {
+     "text": "אסוציאטיביות רכיב-רכיב",
+     "points": 1
+    },
+    {
+     "text": "איבר ניטרלי $E$ (מטריצת האחדות)",
+     "points": 2
+    },
+    {
+     "text": "הופכי רכיב-רכיב",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לחשוב שהאיבר הניטרלי הוא $I$: $I$ אינה ב-$H$ (יש בה אפסים), והפעולה רכיב-רכיב.",
+    "לשכוח שכל הרכיבים שונים מאפס, ולכן הפיכים ב-$\\mathbb{Z}_5$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מהו האיבר הניטרלי של $(H,\\odot)$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$E=\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$X\\odot E=X$ רכיב-רכיב. $I$ ומטריצת האפס אינן ב-$H$ (יש בהן אפסים)."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $3\\cdot4$ ב-$\\mathbb{Z}_5$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$12=2\\cdot5+2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו ההופכי של $2$ ב-$\\mathbb{Z}_5$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$2\\cdot3=6\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו ההופכי של $3$ ב-$\\mathbb{Z}_5$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$3\\cdot2=6\\equiv1$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -66,7 +287,39 @@
    "confidence": "med",
    "part": "ב",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "לכל רכיב $4$ ערכים אפשריים ($1,2,3,4$)",
+     "points": 2
+    },
+    {
+     "text": "עקרון הכפל: $4^4=256$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לספור גם את הערך $0$ ולקבל $5^4$.",
+    "לספור רק $4\\cdot4$ (שני רכיבים בלבד)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה ערכים אפשריים יש לכל רכיב?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$\\mathbb{Z}_5^*=\\{1,2,3,4\\}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $|H|$?",
+     "answer": 256,
+     "tol": 0,
+     "explain": "ארבעה רכיבים בלתי תלויים: $4^4=256$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -79,7 +332,46 @@
    "confidence": "med",
    "part": "ג",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "סדרי הרכיבים: $o(1)=1$, $o(2)=o(3)=4$",
+     "points": 2
+    },
+    {
+     "text": "הסדר של המטריצה הוא המכפלה המשותפת המינימלית: $4$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לחשב סדר של המטריצה בכפל מטריצות רגיל ולא ברכיב-רכיב.",
+    "לקחת את הסדר הגדול ביותר ולא את המכפלה המשותפת המינימלית (כאן הם זהים, אך זה אינו כלל)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $2$ ב-$\\mathbb{Z}_5^*$ (בכפל)?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$2,4,3,1$: החזקה הרביעית היא הראשונה ששווה ל-$1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $3$ ב-$\\mathbb{Z}_5^*$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$3,4,2,1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $\\begin{pmatrix}1&2\\\\2&3\\end{pmatrix}$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$\\operatorname{lcm}(1,4,4,4)=4$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -91,7 +383,70 @@
    "official": false,
    "confidence": "med",
    "part": "ד",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "הגדרת $\\bar u=(a_1,\\dots,a_n)$ ו-$\\bar v=(1,\\dots,1)$",
+     "points": 3
+    },
+    {
+     "text": "חישוב $\\langle\\bar u,\\bar v\\rangle$ והנורמות",
+     "points": 3
+    },
+    {
+     "text": "קושי-שוורץ והצבה",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח ש-$\\|\\bar v\\|^2=n$ ולכתוב $1$.",
+    "לשכוח את הריבוע על הסכום: $\\left(\\sum a_i\\right)^2$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "לאילו וקטורים מיישמים את קושי-שוורץ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\bar u=(a_1,\\dots,a_n)$ ו-$\\bar v=\\bar u$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\bar u=(a_1,\\dots,a_n)$ ו-$\\bar v=(1,\\dots,1)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\bar u=\\left(a_1^2,\\dots,a_n^2\\right)$ ו-$\\bar v=(1,\\dots,1)$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "רק בבחירה הראשונה $\\langle\\bar u,\\bar v\\rangle=\\sum a_i$ ו-$\\|\\bar v\\|^2=n$. הבחירה השנייה נותנת שוויון טריוויאלי והשלישית נותנת $\\left(\\sum a_i^2\\right)^2\\le n\\sum a_i^4$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "נגדיר $\\bar u=(a_1,\\dots,a_n)^T$ ו-$\\bar v=(1,\\dots,1)^T$",
+      "$\\langle\\bar u,\\bar v\\rangle=a_1+\\dots+a_n$, $\\|\\bar u\\|^2=\\sum a_i^2$, $\\|\\bar v\\|^2=n$",
+      "קושי-שוורץ: $\\langle\\bar u,\\bar v\\rangle^2\\le\\|\\bar u\\|^2\\|\\bar v\\|^2$",
+      "$(a_1+\\dots+a_n)^2\\le n\\left(a_1^2+\\dots+a_n^2\\right)$"
+     ],
+     "explain": "הגדרה, חישוב, אי-שוויון, והצבה."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=(1,2,3)$, מהו $n\\left(a_1^2+a_2^2+a_3^2\\right)$?",
+     "answer": 42,
+     "tol": 0,
+     "explain": "$3\\cdot14=42\\ge6^2=36$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -104,7 +459,38 @@
    "confidence": "med",
    "part": "א",
    "points": 3,
-   "contextId": "c3"
+   "contextId": "c3",
+   "rubric": [
+    {
+     "text": "$a\\cdot b-a-b$ שלם לכל $a,b\\in\\mathbb{Z}$",
+     "points": 2
+    },
+    {
+     "text": "לכן הפעולה בינארית",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק שהביטוי מוגדר, ולא שהתוצאה שייכת ל-$\\mathbb{Z}$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $3\\otimes4$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$12-3-4=5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $(-2)\\otimes5$?",
+     "answer": -13,
+     "tol": 0,
+     "explain": "$-10+2-5=-13$, שלם."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -118,7 +504,46 @@
    "part": "ב",
    "points": 4,
    "contextId": "c3",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "פיתוח $(a\\otimes b)\\otimes c$ ו-$a\\otimes(b\\otimes c)$",
+     "points": 2
+    },
+    {
+     "text": "הביטויים שונים (למשל המקדם של $a$), ולכן אינה אסוציאטיבית",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להסיק אי-אסוציאטיביות מפיתוח בלי להראות במפורש שהביטויים שונים (דוגמה נגדית מספיקה).",
+    "לטעות בסימנים בפיתוח $(ab-a-b)c-(ab-a-b)-c$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $(1\\otimes2)\\otimes3$?",
+     "answer": -5,
+     "tol": 0,
+     "explain": "$1\\otimes2=-1$ ו-$(-1)\\otimes3=-3+1-3=-5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $1\\otimes(2\\otimes3)$?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$2\\otimes3=1$ ו-$1\\otimes1=1-1-1=-1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפרש שני הערכים, $(1\\otimes2)\\otimes3-1\\otimes(2\\otimes3)$?",
+     "answer": -4,
+     "tol": 0,
+     "explain": "$-5-(-1)=-4\\ne0$, ולכן אינה אסוציאטיבית."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -132,7 +557,39 @@
    "part": "ג",
    "points": 4,
    "contextId": "c3",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "$a\\otimes e=a$ נותן $e(a-1)=2a$ לכל $a$",
+     "points": 2
+    },
+    {
+     "text": "עבור $a=1$: $0=2$, סתירה",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבחור $a$ אחר מ-$1$: רק בו האגף השמאלי מתאפס ונוצרת הסתירה.",
+    "לבדוק רק ערך אחד של $e$ במקום להראות שאף $e$ אינו מתאים."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך של $e(a-1)$ עבור $a=1$ (לכל $e$)?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$e\\cdot0=0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האגף הימני $2a$ עבור $a=1$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$2\\cdot1=2$, ולכן $0=2$ ויש סתירה."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -146,7 +603,60 @@
    "part": "ד",
    "points": 4,
    "contextId": "c3",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "הפעולה אינה אסוציאטיבית (סעיף ב)",
+     "points": 2
+    },
+    {
+     "text": "אין איבר ניטרלי (סעיף ג)",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק את אקסיומת ההופכי, בלי לשים לב שכבר נכשלו אקסיומות קודמות.",
+    "להסיק שזו חבורה רק כי הפעולה בינארית."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "אילו מאקסיומות החבורה נכשלות ב-$(\\mathbb{Z},\\otimes)$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "האסוציאטיביות בלבד"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "גם האסוציאטיביות וגם קיום איבר ניטרלי"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "קיום איבר ניטרלי בלבד"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "אף אחת"
+      }
+     ],
+     "correctId": "b",
+     "explain": "בסעיף ב יש דוגמה נגדית לאסוציאטיביות, ובסעיף ג מראים שאין איבר ניטרלי."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $(1\\otimes2)\\otimes3-1\\otimes(2\\otimes3)$ (עדות לכשל האסוציאטיביות)?",
+     "answer": -4,
+     "tol": 0,
+     "explain": "$-5-(-1)=-4$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -158,7 +668,66 @@
    "official": false,
    "confidence": "med",
    "part": "ה",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "$A(\\bar u+\\bar v)=\\bar u+\\bar v$, לכן $\\lambda=1$",
+     "points": 4
+    },
+    {
+     "text": "$A(\\bar u-\\bar v)=-(\\bar u-\\bar v)$, לכן $\\lambda=-1$",
+     "points": 4
+    },
+    {
+     "text": "מטריצה $2\\times2$ ולכן אין ערכים עצמיים נוספים",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את התנאי שהבסיס אורתונורמלי: $\\bar u^T\\bar v=0$ ו-$\\bar u^T\\bar u=\\bar v^T\\bar v=1$.",
+    "להסיק שהערכים העצמיים הם $\\pm1$ רק מכך שהווקטורים יחידה, בלי החישוב."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "דוגמה: $\\bar u=(1,0)^T$ ו-$\\bar v=(0,1)^T$, ולכן $A=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$. מהו הערך העצמי של $\\bar u+\\bar v$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$A(1,1)^T=(1,1)^T$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "באותה דוגמה, מהו הערך העצמי של $\\bar u-\\bar v$?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$A(1,-1)^T=(-1,1)^T=-(1,-1)^T$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע אין ערכים עצמיים נוספים?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $A$ מסדר $2\\times2$ ויש לה כבר שני ערכים עצמיים שונים"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $A$ סימטרית ולכן כל הערכים העצמיים הם $\\pm1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי הווקטורים $\\bar u,\\bar v$ הם יחידה"
+      }
+     ],
+     "correctId": "a",
+     "explain": "למטריצה $2\\times2$ יש לכל היותר שני ערכים עצמיים. סימטריה או נרמול לבדם אינם מגבילים את הערכים (למשל $\\operatorname{diag}(5,7)$ סימטרית)."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -170,7 +739,61 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "גרם-שמידט: $\\bar q_1=\\bar a_1/\\|\\bar a_1\\|$",
+     "points": 4
+    },
+    {
+     "text": "$\\bar q_2,\\bar q_3$ מהורדת ההיטלים ונרמול",
+     "points": 4
+    },
+    {
+     "text": "$R=Q^TA$ העליונה המשולשת",
+     "points": 4
+    },
+    {
+     "text": "בדיקה $A=QR$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח לנרמל את $\\bar q_i$ ולקבל $Q$ שאינה אורתוגונלית.",
+    "לכתוב את $R$ תחתונה במקום עליונה."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $r_{11}=\\|\\bar a_1\\|$ עבור $\\bar a_1=(1,1,0)^T$ (ערך מספרי)?",
+     "answer": 1.4142136,
+     "tol": 0.001,
+     "explain": "$\\sqrt2\\approx1.414$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $r_{12}=\\bar q_1\\cdot\\bar a_2$ עבור $\\bar a_2=(1,0,1)^T$ (ערך מספרי)?",
+     "answer": 0.7071068,
+     "tol": 0.001,
+     "explain": "$\\frac1{\\sqrt2}(1,1,0)\\cdot(1,0,1)=\\frac{\\sqrt2}2\\approx0.707$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $r_{22}$ (ערך מספרי)?",
+     "answer": 1.2247449,
+     "tol": 0.001,
+     "explain": "$\\frac{\\sqrt6}2\\approx1.225$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $r_{33}$ (ערך מספרי)?",
+     "answer": 1.1547005,
+     "tol": 0.001,
+     "explain": "$\\frac{2\\sqrt3}3\\approx1.155$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -182,7 +805,57 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "צמצום לצורה $x\\equiv3\\pmod5$ ו-$x\\equiv5\\pmod7$",
+     "points": 4
+    },
+    {
+     "text": "מודולים זרים בזוגות ו-$m=1120$",
+     "points": 2
+    },
+    {
+     "text": "פתרון $x\\equiv103\\pmod{1120}$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את המערכת בלי לצמצם קודם את המקדמים ($3x$, $2x$) לצורה $x\\equiv\\cdot$.",
+    "לשכוח ש-$32=2^5$ זר ל-$5$ ול-$7$, ולכן המשפט חל."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "פתרו $3x\\equiv4\\pmod5$ ($0\\le x<5$). מהו $x$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$3\\cdot3=9\\equiv4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו $2x\\equiv3\\pmod7$ ($0\\le x<7$). מהו $x$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$2\\cdot5=10\\equiv3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $m=5\\cdot7\\cdot32$?",
+     "answer": 1120,
+     "tol": 0,
+     "explain": "המודולים זרים בזוגות."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x_0$ ($0\\le x_0<1120$) של המערכת?",
+     "answer": 103,
+     "tol": 0,
+     "explain": "$103\\equiv3\\pmod5$, $\\equiv5\\pmod7$, $\\equiv7\\pmod{32}$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -194,7 +867,118 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "ערכים עצמיים $1,\\ 1+\\sqrt2c,\\ 1-\\sqrt2c$",
+     "points": 3
+    },
+    {
+     "text": "חיובית: $|c|\\le\\frac1{\\sqrt2}$",
+     "points": 3
+    },
+    {
+     "text": "חיובית לחלוטין: $|c|<\\frac1{\\sqrt2}$",
+     "points": 3
+    },
+    {
+     "text": "אין $c$ שלילית (בגלל $\\lambda_1=1>0$)",
+     "points": 3
+    },
+    {
+     "text": "בשאר הערכים אף אחת",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שהערך העצמי $\\lambda_1=1$ קבוע ואינו תלוי ב-$c$.",
+    "לבלבל בין $\\le$ (חיובית) ל-$<$ (חיובית לחלוטין)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $c=0.5$, מהו הערך העצמי $1-\\sqrt2c$ (ערך מספרי)?",
+     "answer": 0.2928932,
+     "tol": 0.001,
+     "explain": "$1-0.7071\\approx0.293$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $c$ המטריצה מוגדרת חיובית (לא בהכרח לחלוטין)?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$|c|\\le1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$|c|\\le\\frac12$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$|c|<\\frac1{\\sqrt2}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$|c|\\le\\frac1{\\sqrt2}$"
+      }
+     ],
+     "correctId": "d",
+     "explain": "צריך $1\\pm\\sqrt2c\\ge0$, כלומר $|c|\\le\\frac1{\\sqrt2}$. עבור $c=0.9$ הערך $1-\\sqrt2c<0$; עבור $c=0.6$ התנאי מתקיים ולכן $\\frac12$ קטן מדי; ובקצה $|c|=\\frac1{\\sqrt2}$ יש ערך עצמי $0$ שמותר בהגדרה החלשה."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $c$ המטריצה מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$|c|<\\frac1{\\sqrt2}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$|c|\\le\\frac1{\\sqrt2}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$|c|<1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "צריכים כל הערכים העצמיים חיוביים ממש; ב-$|c|=\\frac1{\\sqrt2}$ יש ערך עצמי $0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "האם יש $c$ שעבורו המטריצה מוגדרת שלילית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כן, עבור $c$ גדול מספיק"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "לא, כי $\\lambda_1=1>0$ לכל $c$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כן, עבור $c=0$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "בשלילית כל הערכים העצמיים $\\le0$, אך $\\lambda_1=1$ תמיד. עבור $c$ גדול הערכים $1\\pm\\sqrt2c$ משני סימנים, ועבור $c=0$ המטריצה היא $I$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -206,7 +990,62 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "סגירות",
+     "points": 3
+    },
+    {
+     "text": "אסוציאטיביות מ-$G$",
+     "points": 1
+    },
+    {
+     "text": "איבר ניטרלי $e\\in H\\cap K$",
+     "points": 3
+    },
+    {
+     "text": "הופכי $x^{-1}\\in H\\cap K$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק סגירות ולשכוח את הניטרלי וההופכי.",
+    "לבלבל בין חיתוך לאיחוד: איחוד של תת-חבורות אינו בהכרח תת-חבורה."
+   ],
+   "steps": [
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי הוכחת הסגירות.",
+     "lines": [
+      "יהיו $x,y\\in H\\cap K$, כלומר $x,y\\in H$ וגם $x,y\\in K$",
+      "$H$ ו-$K$ תת-חבורות, ולכן $x*y\\in H$ וגם $x*y\\in K$",
+      "לכן $x*y\\in H\\cap K$"
+     ],
+     "explain": "הנחה, שימוש בסגירות כל תת-חבורה, ואז מסקנה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה בהוכחת ההופכי יש טעות?",
+     "lines": [
+      "יהי $x\\in H\\cap K$",
+      "$H$ תת-חבורה, ולכן $x^{-1}\\in H$",
+      "$K$ תת-חבורה, ולכן $x^{-1}\\in K$",
+      "לכן $x^{-1}\\in H\\cup K$"
+     ],
+     "bugIndex": 3,
+     "explain": "צריך להסיק ש-$x^{-1}$ בשתי הקבוצות, כלומר ב-$H\\cap K$ ולא ב-$H\\cup K$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "ב-$\\mathbb{Z}_{12}$ (חיבור) תהי $H=\\langle2\\rangle$ ו-$K=\\langle3\\rangle$. מהו $|H\\cap K|$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$H=\\{0,2,4,6,8,10\\}$ ו-$K=\\{0,3,6,9\\}$; החיתוך $\\{0,6\\}$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 6,
@@ -218,7 +1057,54 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "ערכים עצמיים $5,2,-1$",
+     "points": 5
+    },
+    {
+     "text": "וקטורים עצמיים בלתי תלויים (לכל ערך עצמי)",
+     "points": 5
+    },
+    {
+     "text": "נרמול ל-$Q$ אורתוגונלית",
+     "points": 3
+    },
+    {
+     "text": "$A=QDQ^T$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח לנרמל את הווקטורים העצמיים.",
+    "לסדר את עמודות $Q$ בסדר שונה מסדר הערכים העצמיים ב-$D$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי העקבה (trace) של $A$, והיא סכום הערכים העצמיים?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$3+2+1=6=5+2+(-1)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי הדטרמיננטה של $A$, והיא מכפלת הערכים העצמיים?",
+     "answer": -10,
+     "tol": 0,
+     "explain": "$5\\cdot2\\cdot(-1)=-10$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האורך של הווקטור העצמי $(2,2,1)^T$ (של $\\lambda=5$) שמנרמלים?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$\\sqrt{4+4+1}=3$, ולכן הווקטור המנורמל הוא $\\left(\\frac23,\\frac23,\\frac13\\right)^T$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 6,
@@ -230,7 +1116,70 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "פיתוח $\\|\\bar u+\\bar v\\|^2=\\|\\bar u\\|^2+2\\langle\\bar u,\\bar v\\rangle+\\|\\bar v\\|^2$",
+     "points": 3
+    },
+    {
+     "text": "פיתוח $\\|\\bar u-\\bar v\\|^2$",
+     "points": 3
+    },
+    {
+     "text": "חיבור: הגורמים המעורבים מצטמצמים",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את הגורם $2$ במכפלה הפנימית.",
+    "לכתוב $\\|\\bar u+\\bar v\\|^2=\\|\\bar u\\|^2+\\|\\bar v\\|^2$ (נכון רק כשהווקטורים אורתוגונליים)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "$\\bar u=(1,2)$ ו-$\\bar v=(3,-1)$. מהו $\\|\\bar u+\\bar v\\|^2+\\|\\bar u-\\bar v\\|^2$?",
+     "answer": 30,
+     "tol": 0,
+     "explain": "$17+13=30=2(5+10)$."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזה גורם מצטמצם בחיבור שתי הזהויות?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$2\\langle\\bar u,\\bar v\\rangle$ (מופיע עם שני סימנים)"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\|\\bar u\\|^2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\|\\bar v\\|^2$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$\\|\\bar u\\|^2$ ו-$\\|\\bar v\\|^2$ מופיעים בשתי הזהויות באותו סימן ולכן מוכפלים ב-$2$; רק הגורם המעורב מתבטל."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$\\|\\bar u+\\bar v\\|^2=\\|\\bar u\\|^2+2\\langle\\bar u,\\bar v\\rangle+\\|\\bar v\\|^2$",
+      "$\\|\\bar u-\\bar v\\|^2=\\|\\bar u\\|^2-2\\langle\\bar u,\\bar v\\rangle-\\|\\bar v\\|^2$",
+      "$\\|\\bar u+\\bar v\\|^2+\\|\\bar u-\\bar v\\|^2=2\\left(\\|\\bar u\\|^2+\\|\\bar v\\|^2\\right)$"
+     ],
+     "bugIndex": 1,
+     "explain": "$\\langle-\\bar v,-\\bar v\\rangle=+\\|\\bar v\\|^2$, ולכן הסימן של $\\|\\bar v\\|^2$ חיובי."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }
