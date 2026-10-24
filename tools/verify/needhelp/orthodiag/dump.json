@@ -1,0 +1,903 @@
+{
+ "courseId": "orthodiag",
+ "levels": [
+  {
+   "id": "C01",
+   "order": 1,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C01-Q1",
+     "question": "איזו מהמטריצות הבאות ניתנת ללכסון אורתוגונלי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}2&3\\\\1&1\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}2&3\\\\3&1\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&2\\\\-2&1\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "עבור איזה ערך של $t$ המטריצה $\\begin{pmatrix}1&t\\\\5&2\\end{pmatrix}$ סימטרית?"
+     }
+    },
+    {
+     "id": "C01-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו הערך העצמי הגדול של $\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$?"
+     }
+    },
+    {
+     "id": "C01-Q4",
+     "question": "$A$ מטריצה סימטרית $2\\times2$ עם עקבה $7$ ודטרמיננטה $10$. מהם הערכים העצמיים שלה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$3$ ו-$4$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$1$ ו-$10$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$-2$ ו-$-5$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$2$ ו-$5$"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q5",
+     "question": "איזה תנאי על מטריצה ממשית $A$ שקול לכך שהיא ניתנת ללכסון אורתוגונלי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A$ הפיכה"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A=A^T$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כל הערכים העצמיים של $A$ שונים זה מזה"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$A$ אורתוגונלית"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q6",
+     "step": {
+      "type": "numeric",
+      "prompt": "המטריצה $A=\\begin{pmatrix}3&1&1\\\\1&3&1\\\\1&1&3\\end{pmatrix}$ סימטרית. מהי העקבה שלה, כלומר סכום כל הערכים העצמיים (עם ריבוי)?"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C02",
+   "order": 2,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C02-Q1",
+     "question": "$A$ מטריצה סימטרית. $u$ וקטור עצמי של הערך העצמי $2$, ו-$v$ וקטור עצמי של הערך העצמי $5$. מה נכון תמיד?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\langle u,v\\rangle=0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\langle u,v\\rangle=10$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\langle u,v\\rangle\\ne0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "אי אפשר לדעת, צריך לחשב את הווקטורים"
+      }
+     ]
+    },
+    {
+     "id": "C02-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$A=\\begin{pmatrix}3&1&1\\\\1&3&1\\\\1&1&3\\end{pmatrix}$ שני הווקטורים $w_1=(1,-1,0)$ ו-$w_2=(1,0,-1)$ הם וקטורים עצמיים של אותו ערך עצמי. מהו $\\langle w_1,w_2\\rangle$?"
+     }
+    },
+    {
+     "id": "C02-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותו מרחב עצמי, מה המקדם $\\dfrac{\\langle w_2,w_1\\rangle}{\\langle w_1,w_1\\rangle}$ שבו מכפילים את $w_1$ בגרהם-שמידט ($w_1=(1,-1,0)$, $w_2=(1,0,-1)$)?"
+     }
+    },
+    {
+     "id": "C02-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "אחרי גרהם-שמידט וניקוי מכנים קיבלנו את הווקטור $(1,1,-2)$. מהו $\\|(1,1,-2)\\|^2$?"
+     }
+    },
+    {
+     "id": "C02-Q5",
+     "question": "מהו הווקטור המנורמל שנקבל מ-$(1,1,-2)$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\frac{1}{6}(1,1,-2)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\frac{1}{\\sqrt2}(1,1,-2)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\frac{1}{\\sqrt6}(1,1,-2)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(1,1,-2)$, הוא כבר מנורמל"
+      }
+     ]
+    },
+    {
+     "id": "C02-Q6",
+     "step": {
+      "type": "order",
+      "prompt": "סדרו את ההוכחה שוקטורים עצמיים של מטריצה סימטרית $A$ עם ערכים עצמיים שונים $\\lambda\\ne\\mu$ ניצבים.",
+      "lines": [
+       "מחשבים $\\lambda\\langle u,v\\rangle=\\langle Au,v\\rangle$.",
+       "מהסימטריה של $A$: $\\langle Au,v\\rangle=\\langle u,Av\\rangle$.",
+       "ומכאן $\\langle u,Av\\rangle=\\mu\\langle u,v\\rangle$.",
+       "לכן $(\\lambda-\\mu)\\langle u,v\\rangle=0$, ומכיוון ש-$\\lambda\\ne\\mu$ מתקבל $\\langle u,v\\rangle=0$.",
+       "נתון $Au=\\lambda u$ ו-$Av=\\mu v$, כאשר $\\lambda\\ne\\mu$."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "C03",
+   "order": 3,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C03-Q1",
+     "question": "$A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$. העמודה הראשונה של $Q$ היא $\\frac1{\\sqrt2}(1,1)^T$ (ערך עצמי $3$) והעמודה השנייה היא $\\frac1{\\sqrt2}(1,-1)^T$ (ערך עצמי $1$). מהי $D$ התואמת?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&0\\\\0&3\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}3&0\\\\0&3\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}3&0\\\\0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}3&1\\\\1&3\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C03-Q2",
+     "question": "לאותה $A$, מחליפים את סדר העמודות: העמודה הראשונה של $Q$ היא $\\frac1{\\sqrt2}(1,-1)^T$ והשנייה $\\frac1{\\sqrt2}(1,1)^T$. מהי $D$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&0\\\\0&3\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}3&0\\\\0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}-1&0\\\\0&1\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C03-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "נתון $Q=\\frac1{\\sqrt2}\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$ ו-$D=\\begin{pmatrix}5&0\\\\0&1\\end{pmatrix}$. הפירוק $A=QDQ^T$ נותן מטריצה סימטרית. מהו האיבר $a_{12}$ שלה?"
+     }
+    },
+    {
+     "id": "C03-Q4",
+     "question": "העמודות של $Q$ הן הווקטורים העצמיים המנורמלים של מטריצה סימטרית $A$, ו-$D$ אלכסונית עם הערכים העצמיים בסדר התואם. איזו נוסחה נכונה לכל מטריצה כזו?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A=Q^TDQ$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A=QDQ^T$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$A=DQQ^T$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$A=QQ^TD$"
+      }
+     ]
+    },
+    {
+     "id": "C03-Q5",
+     "step": {
+      "type": "findbug",
+      "prompt": "מצאו את השורה השגויה בלכסון האורתוגונלי של $A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$.",
+      "lines": [
+       "העקבה $2$ והדטרמיננטה $-3$, ולכן הערכים העצמיים הם $3$ ו-$-1$.",
+       "לערך $3$ הווקטור $v_1=\\frac1{\\sqrt2}(1,1)$, ולערך $-1$ הווקטור $v_2=\\frac1{\\sqrt2}(1,-1)$.",
+       "הווקטורים ניצבים כי הערכים העצמיים שונים.",
+       "נבחר $Q=[\\,v_2\\ \\ v_1\\,]$ (העמודה הראשונה $v_2$) ו-$D=\\operatorname{diag}(3,-1)$, ואז $A=QDQ^T$."
+      ]
+     }
+    },
+    {
+     "id": "C03-Q6",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ ו-$q=\\frac1{\\sqrt2}(1,1)^T$ וקטור עצמי מנורמלי. מהו $q^TAq$?"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C04",
+   "order": 4,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C04-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$A=\\begin{pmatrix}5&0&0\\\\0&4&2\\\\0&2&1\\end{pmatrix}$ הווקטור $e_1=(1,0,0)$ הוא וקטור עצמי. מהו הערך העצמי שלו?"
+     }
+    },
+    {
+     "id": "C04-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "הבלוק $\\begin{pmatrix}4&2\\\\2&1\\end{pmatrix}$ בעל דטרמיננטה $0$. מהו הערך העצמי השני שלו, השונה מ-$0$?"
+     }
+    },
+    {
+     "id": "C04-Q3",
+     "question": "איזה מהווקטורים הבאים הוא וקטור עצמי של הבלוק $\\begin{pmatrix}4&2\\\\2&1\\end{pmatrix}$ עבור הערך העצמי $0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(2,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(1,2)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(1,-2)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(-2,-1)$"
+      }
+     ]
+    },
+    {
+     "id": "C04-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "$A=\\begin{pmatrix}5&0&0\\\\0&4&2\\\\0&2&1\\end{pmatrix}$ סימטרית עם הערכים העצמיים $5,5,0$. מהו המימד של המרחב העצמי של הערך $5$?"
+     }
+    },
+    {
+     "id": "C04-Q5",
+     "question": "ב-$A$ הנ\"ל העמודות של $Q$ הן, לפי הסדר: $e_1$ (ערך $5$), אחריו $\\frac1{\\sqrt5}(0,1,-2)^T$ (ערך $0$), אחריו $\\frac1{\\sqrt5}(0,2,1)^T$ (ערך $5$). מהי $D$ התואמת?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\operatorname{diag}(5,5,0)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\operatorname{diag}(0,5,5)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\operatorname{diag}(5,0,5)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\operatorname{diag}(5,0,0)$"
+      }
+     ]
+    },
+    {
+     "id": "C04-Q6",
+     "step": {
+      "type": "numeric",
+      "prompt": "ל-$\\begin{pmatrix}3&1&1\\\\1&3&1\\\\1&1&3\\end{pmatrix}$ יש הערכים העצמיים $5,2,2$. מהי הדטרמיננטה שלה?"
+     }
+    }
+   ]
+  },
+  {
+   "id": "C05",
+   "order": 5,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C05-Q1",
+     "question": "מהי התבנית הריבועית $x^TAx$ של $A=\\begin{pmatrix}1&3\\\\3&8\\end{pmatrix}$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$x_1^2+3x_1x_2+8x_2^2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$x_1^2+9x_1x_2+8x_2^2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$x_1^2+8x_2^2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$x_1^2+6x_1x_2+8x_2^2$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "חשבו $x^TAx$ עבור $A=\\begin{pmatrix}1&3\\\\3&8\\end{pmatrix}$ ו-$x=(-3,1)^T$."
+     }
+    },
+    {
+     "id": "C05-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "התבנית הריבועית $q(x)=3x_1^2-4x_1x_2+2x_2^2$ שייכת למטריצה סימטרית $A$. מהו $a_{12}$?"
+     }
+    },
+    {
+     "id": "C05-Q4",
+     "question": "$B=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$. עבור איזה וקטור $x^TBx<0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(1,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(1,-1)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(2,1)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(1,0)$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q5",
+     "question": "ל-$A$ סימטרית יש ערכים עצמיים $5$ ו-$-2$. האם קיים $x$ עם $x^TAx<0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "לא, כי הערך העצמי $5$ גדול ומאזן את $-2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "לא, כי העקבה $3$ חיובית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כן, כל וקטור עצמי של הערך $-2$ מתאים"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כן, אבל רק אם $A$ אלכסונית"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q6",
+     "question": "ל-$A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$ כל איברי האלכסון חיוביים. האם $x^TAx>0$ לכל $x\\ne0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כן, כי איברי האלכסון חיוביים"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "לא, כי $x=(1,-1)$ נותן ערך שלילי"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כן, כי $A$ סימטרית"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "לא, כי $A$ אינה סימטרית"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C06",
+   "order": 6,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C06-Q1",
+     "question": "למטריצה $\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$ יש ערכים עצמיים $2$ ו-$0$. איזה סיווג נכון לפי הקורס?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "מוגדרת חיובית לחלוטין"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "מוגדרת חיובית אך לא לחלוטין"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "אף אחת מהן"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "מוגדרת שלילית"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q2",
+     "question": "מטריצת האפס $\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}$. איזה סיווג נכון לפי הקורס?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "מוגדרת חיובית לחלוטין"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "אף אחת מהן"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "מוגדרת חיובית וגם מוגדרת שלילית, אך לא לחלוטין"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "מוגדרת חיובית בלבד"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q3",
+     "question": "מטריצת היחידה $I$. איזה משפט נכון?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "היא מוגדרת חיובית לחלוטין, ולכן גם מוגדרת חיובית"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "היא מוגדרת חיובית לחלוטין, אך לא מוגדרת חיובית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "היא מוגדרת חיובית אך לא לחלוטין"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "היא מוגדרת שלילית לחלוטין"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$\\begin{pmatrix}2&a\\\\a&2\\end{pmatrix}$ הערכים העצמיים הם $2+a$ ו-$2-a$. עבור כמה ערכים שלמים של $a$ המטריצה חיובית אבל לא חיובית לחלוטין?"
+     }
+    },
+    {
+     "id": "C06-Q5",
+     "step": {
+      "type": "findbug",
+      "prompt": "מצאו את השורה השגויה בסיווג של $\\begin{pmatrix}a&0\\\\0&4\\end{pmatrix}$ לפי הקורס.",
+      "lines": [
+       "הערכים העצמיים הם $a$ ו-$4$.",
+       "מוגדרת חיובית לחלוטין כאשר $a>0$.",
+       "מוגדרת חיובית (לפי הקורס) כאשר $a>0$.",
+       "אף פעם לא מוגדרת שלילית, כי $4>0$."
+      ]
+     }
+    },
+    {
+     "id": "C06-Q6",
+     "question": "$A$ מוגדרת חיובית לחלוטין. איזה משפט נכון בהכרח?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A$ אינה הפיכה"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A$ גם מוגדרת חיובית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "ל-$A$ יש ערך עצמי $0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$A$ אינה מוגדרת חיובית"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C07",
+   "order": 7,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C07-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו $\\Delta_2$ של $\\begin{pmatrix}2&1\\\\1&3\\end{pmatrix}$?"
+     }
+    },
+    {
+     "id": "C07-Q2",
+     "question": "ל-$A=\\begin{pmatrix}2&1&0\\\\1&2&1\\\\0&1&2\\end{pmatrix}$ המינורים המובילים הם $\\Delta_1=2$, ‏$\\Delta_2=3$, ‏$\\Delta_3=4$. איזה סיווג נכון?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "מוגדרת חיובית לחלוטין"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "מוגדרת חיובית אך לא לחלוטין"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "מוגדרת שלילית לחלוטין"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "אף אחת מהן"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q3",
+     "question": "ל-$A=\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$ יש $\\Delta_1=1$ ו-$\\Delta_2=0$. מה אפשר להסיק?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "היא מוגדרת חיובית לחלוטין, כי $\\Delta_1>0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "היא אינה מוגדרת חיובית כלל, כי $\\Delta_2=0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "היא אינה מוגדרת חיובית לחלוטין, והקריטריון אינו מכריע אם היא מוגדרת חיובית"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "היא מוגדרת שלילית"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q4",
+     "question": "ל-$A=\\begin{pmatrix}0&0\\\\0&-1\\end{pmatrix}$ יש $\\Delta_1=0$ ו-$\\Delta_2=0$, שניהם אי-שליליים. האם $A$ מוגדרת חיובית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כן, כי כל המינורים המובילים אי-שליליים"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כן, כי היא סימטרית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "לא, כי $x=(0,1)$ נותן $x^TAx=-1<0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כן, כי שני הערכים העצמיים אי-שליליים"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q5",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו הערך השלם הקטן ביותר של $a$ שעבורו $\\begin{pmatrix}1&2\\\\2&a\\end{pmatrix}$ מוגדרת חיובית לחלוטין?"
+     }
+    },
+    {
+     "id": "C07-Q6",
+     "question": "ל-$A=\\begin{pmatrix}-2&1\\\\1&-2\\end{pmatrix}$ יש $\\Delta_1=-2$ ו-$\\Delta_2=3$. איזה סיווג נכון?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "מוגדרת חיובית לחלוטין"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "מוגדרת שלילית לחלוטין"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "אף אחת מהן"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "מוגדרת חיובית אך לא לחלוטין"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C08",
+   "order": 8,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C08-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "הערכים העצמיים של $\\begin{pmatrix}3&a\\\\a&3\\end{pmatrix}$ הם $3+a$ ו-$3-a$. מהו הערך השלם הגדול ביותר של $a$ שעבורו היא מוגדרת חיובית לחלוטין?"
+     }
+    },
+    {
+     "id": "C08-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותה מטריצה $\\begin{pmatrix}3&a\\\\a&3\\end{pmatrix}$: כמה ערכים שלמים של $a$ גורמים לה להיות מוגדרת חיובית (לפי הקורס)?"
+     }
+    },
+    {
+     "id": "C08-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "עבור איזה ערך של $b$ המטריצה $\\begin{pmatrix}1&0&a\\\\0&2&0\\\\a&b&1\\end{pmatrix}$ יכולה להיות מוגדרת (חיובית או שלילית, בכל מובן)?"
+     }
+    },
+    {
+     "id": "C08-Q4",
+     "question": "למטריצה $M(a)=\\begin{pmatrix}a&0&2\\\\0&a&0\\\\2&0&a\\end{pmatrix}$ הערכים העצמיים הם $a-2,\\ a,\\ a+2$. איזה סיווג נכון עבור $a=2$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "מוגדרת חיובית לחלוטין"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "מוגדרת חיובית אך לא לחלוטין"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "אף אחת מהן"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "מוגדרת שלילית"
+      }
+     ]
+    },
+    {
+     "id": "C08-Q5",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותה $M(a)$ (ערכים עצמיים $a-2,\\ a,\\ a+2$): כמה ערכים שלמים של $a$ גורמים לה להיות \"אף אחת מהן\", כלומר לא חיובית ולא שלילית?"
+     }
+    },
+    {
+     "id": "C08-Q6",
+     "question": "לסימטרית $N(a)$ יש הערכים העצמיים $a^2+1,\\ 2a^2,\\ 3$. מתי היא מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a>0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "לכל $a$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a\\ne0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$a\\ge0$"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C09",
+   "order": 9,
+   "boss": true,
+   "questions": [
+    {
+     "id": "bank:23A-B-Q3a",
+     "bankId": "23A-B-Q3a"
+    },
+    {
+     "id": "bank:23B-B-Q4a",
+     "bankId": "23B-B-Q4a"
+    },
+    {
+     "id": "bank:23A-A-Q3a",
+     "bankId": "23A-A-Q3a"
+    },
+    {
+     "id": "bank:24A-B-Q3a",
+     "bankId": "24A-B-Q3a"
+    },
+    {
+     "id": "bank:23A-B-Q4b",
+     "bankId": "23A-B-Q4b"
+    },
+    {
+     "id": "bank:24A-B-Q2f",
+     "bankId": "24A-B-Q2f"
+    }
+   ]
+  }
+ ]
+}
