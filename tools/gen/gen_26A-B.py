@@ -297,7 +297,7 @@ EXTRA = {
         pitfalls=[r"לחשב $AA^T$ במקום $A^TA$.",
                   r"לטעות בסימן של $A^T\vec b$ (שהשני בו שלילי).",
                   "לשכוח לוודא שהעמודות בלתי תלויות, כדי ש-$A^TA$ תהיה הפיכה."],
-        steps=[num(r"מהו הרכיב השמאלי התחתון (שורה 2, עמודה 2) של $A^TA$?", 42, r"$(-2)^2+2^2+3^2+5^2=4+4+9+25=42$."),
+        steps=[num(r"מהו הרכיב הימני התחתון (שורה 2, עמודה 2) של $A^TA$?", 42, r"$(-2)^2+2^2+3^2+5^2=4+4+9+25=42$."),
                num(r"מהו הרכיב השני של $A^T\vec b$?", -6, r"$-2\cdot3+2\cdot1+3\cdot(-4)+5\cdot2=-6+2-12+10=-6$."),
                num(r"מהו $x_2$ (עיגול לשתי ספרות אחרי הנקודה)?", -0.33, r"מהמערכת $x_1+x_2=1,\ x_1+7x_2=-1$ מתקבל $x_2=-\frac13$.", tol=0.01),
                num(r"מהו $x_1$ (עיגול לשתי ספרות אחרי הנקודה)?", 1.33, r"$x_1=1-x_2=\frac43$.", tol=0.01)],
@@ -478,8 +478,8 @@ EXTRA = {
 for _q in questions:
     _e = EXTRA.pop((_q["num"], _q.get("part")))
     _q.update(_e)
-    _q["rubricSource"] = "ai-draft"
-    _q["stepsSource"] = "ai-draft"
+    _q["rubricSource"] = "ai-verified"
+    _q["stepsSource"] = "ai-verified"
     assert sum(r["points"] for r in _q["rubric"]) == _q["points"], (_q["num"], _q.get("part"))
 assert not EXTRA, EXTRA
 

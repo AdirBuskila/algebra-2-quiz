@@ -87,8 +87,8 @@
      "explain": "$n=\\frac{14-5\\cdot0.8}5=2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -168,8 +168,8 @@
      "explain": "הפונקציה הקדומה של $\\frac1{x^2}$ היא $-\\frac1x$ ולא $\\ln x$, ולכן הערך הוא $\\frac12$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -232,8 +232,8 @@
      "explain": "$4\\cdot1=4$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -281,8 +281,8 @@
      "explain": "$3\\cdot5=15\\equiv1$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -337,8 +337,8 @@
      "explain": "$4\\cdot6=24$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -358,7 +358,7 @@
      "points": 3
     },
     {
-     "text": "הסדר הוא המכפלה המשותפת המינימלית: $\\mathrm{lcm}(4,6)=12$",
+     "text": "הסדר הוא הכפולה המשותפת המינימלית: $\\mathrm{lcm}(4,6)=12$",
      "points": 2
     }
    ],
@@ -389,8 +389,8 @@
      "explain": "$\\mathrm{lcm}(4,6)=12$. הסדר אינו $24$, כי $(2,3)^{12}=(1,1)$ כבר."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -443,8 +443,8 @@
      "explain": "הסימן לפני $(B\\vec v)^T(B\\vec v)$ חייב להיות מינוס, כי מפזרים את המינוס שמול $B^TB$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -520,8 +520,8 @@
      "explain": "בשחלוף $(XYZ)^T=Z^TY^TX^T$, ולכן $\\left(B^TAB\\right)^T=B^TA^T\\left(B^T\\right)^T=B^TA^TB$ ולא $B^TA^TB^T$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -618,8 +618,8 @@
      "explain": "$(0,0,1)^T$ אינו ניצב ל-$\\vec v_2$ (המכפלה $\\frac1{\\sqrt2}$), והווקטור $\\frac1{\\sqrt2}(1,0,1)^T$ הוא $\\vec v_1$ עצמו."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -692,8 +692,8 @@
      "explain": "פיתוח, חיסור, חילוק."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -839,8 +839,8 @@
      "explain": "הערך העצמי $a^2+1$ חיובי תמיד. עבור $a=-2$ הערכים הם $-2,3,5$, ועבור $a=\\frac12$ הערכים הם $\\frac12,-\\frac34,\\frac54$: בשני המקרים יש ערך עצמי חיובי."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -905,8 +905,8 @@
      "explain": "$347=4\\cdot70+67$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -988,8 +988,8 @@
      "explain": "אורכיהם $1$ ו-$\\sqrt5$ (שונים), ו-$A$ אינה הפיכה (הערך $0$). מה שחשוב הוא רק שהמכפלה הסקלרית היא $0$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1057,8 +1057,8 @@
      "explain": "כל שורה נשענת על הקודמת."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1125,8 +1125,8 @@
      "explain": "קודם $g^2=e$, אחר כך מצמצמים את החזקות, ולבסוף משווים."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

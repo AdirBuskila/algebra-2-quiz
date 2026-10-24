@@ -86,7 +86,8 @@ S2_1 = (
     "**אסוציאטיביות:** נובעת מאסוציאטיביות של כפל מטריצות.\n"
     "**איבר ניטרלי:** " r"$\begin{pmatrix}1&0\\0&1\end{pmatrix}$" "\n"
     "**איבר הופכי:**\n"
-    r"$$\forall\begin{pmatrix}a&b\\-b&a\end{pmatrix}\in K:\qquad\begin{pmatrix}a&b\\-b&a\end{pmatrix}^{-1}=\frac1{a^2+b^2}\begin{pmatrix}a&-b\\b&a\end{pmatrix}=\begin{pmatrix}a&-b\\b&a\end{pmatrix}\pmod 7\in K$$"
+    r"$$\forall\begin{pmatrix}a&b\\-b&a\end{pmatrix}\in K:\qquad\begin{pmatrix}a&b\\-b&a\end{pmatrix}^{-1}=\frac1{a^2+b^2}\begin{pmatrix}a&-b\\b&a\end{pmatrix}=\begin{pmatrix}a&-b\\b&a\end{pmatrix}\pmod 7\in K$$" "\n"
+    r"**הערה:** הפתרון הרשמי קובע ש-$K$ סגורה לכפל לפי הצורה בלבד. כדי שהמכפלה אכן תהיה ב-$K$ צריך לבדוק גם ש-$p^2+q^2=1$ עבור $p=ac-bd$ ו-$q=ad+bc$: $p^2+q^2=(a^2+b^2)(c^2+d^2)=1\cdot1=1\pmod 7$."
 )
 
 S2_2 = (
@@ -333,7 +334,8 @@ S26AA = {
                   "הגדרת הווקטורים, חישוב המכפלה והנורמות, קושי-שוורץ, ואז העלאה בריבוע וחלוקה."),
         ]),
     (2, "א"): dict(
-        rubric=rub((r"סגירות: המכפלה היא מהצורה $\begin{pmatrix}p&q\\-q&p\end{pmatrix}$", 3),
+        rubric=rub((r"סגירות: המכפלה היא מהצורה $\begin{pmatrix}p&q\\-q&p\end{pmatrix}$", 1),
+                   (r"סגירות: $p^2+q^2=(a^2+b^2)(c^2+d^2)=1$", 2),
                    ("אסוציאטיביות מכפל מטריצות", 1),
                    (r"איבר ניטרלי $I$", 2),
                    (r"הופכי: $\frac1{a^2+b^2}\begin{pmatrix}a&-b\\b&a\end{pmatrix}=\begin{pmatrix}a&-b\\b&a\end{pmatrix}\in K$", 3)),
@@ -510,7 +512,7 @@ S26AA = {
             bug("באיזו שורה יש טעות?",
                 [r"$P\vec u=\vec u\left(\vec u^T\vec u\right)+\vec v\left(\vec v^T\vec u\right)$",
                  r"$\vec u^T\vec u=1$ ו-$\vec v^T\vec u=1$, ולכן $P\vec u=\vec u+\vec v$",
-                 r"לכן $\vec u$ אינו וקטור עצמי של $P$"],
+                 r"לכן $\vec u$ הוא וקטור עצמי של $P$"],
                 1, r"$\vec v^T\vec u=0$ בבסיס אורתונורמלי, ולכן $P\vec u=\vec u$."),
         ]),
     (5, "ב"): dict(
@@ -559,9 +561,9 @@ for _q in questions:
     _s = S26AA.get((_q["num"], _q.get("part")))
     assert _s is not None, ("no steps for", _q["num"], _q.get("part"))
     assert sum(r["points"] for r in _s["rubric"]) == _q["points"], ("rubric sum", _q["num"], _q.get("part"))
-    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-draft"
+    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-verified"
     _q["pitfalls"] = _s["pitfalls"]
-    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-draft"
+    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-verified"
 
 exam = {
     "examCode": "26A-A",

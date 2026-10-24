@@ -102,8 +102,8 @@
      "explain": "רק עבור $a=\\sqrt3\\,b$ מתקיים $\\frac{a^2}3-b^2=0$. עבור $a=b$ מתקבל $-\\frac23b^2\\ne0$, עבור $a=3b$ מתקבל $2b^2\\ne0$, ועבור $a=\\frac b{\\sqrt3}$ מתקבל $-\\frac89b^2\\ne0$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -179,8 +179,8 @@
      "explain": "עבור $b=\\frac1{\\sqrt{2+\\sqrt3}}$ עם $a=\\sqrt3\\,b$ הנורמה בריבוע של $ax-b$ היא $\\frac{2-\\sqrt3}{2+\\sqrt3}\\ne1$, ועבור $a=1,\\ b=\\frac1{\\sqrt3}$ הנורמה בריבוע של $ax+b$ היא $\\frac{2+\\sqrt3}3\\ne1$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -237,8 +237,8 @@
      "explain": "$\\vec v^TQ^T=(Q\\vec v)^T$, ולכן הביטוי הנכון הוא $(Q\\vec v)^TA(Q\\vec v)$ ולא עם $Q^T\\vec v$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -302,8 +302,8 @@
      "explain": "$b+d$ יכול להיות $0$ (למשל $1+(-1)$) ו-$a+c+1$ יכול להיות $0$ (למשל $a=-1,\\,c=0$) והסגירות עדיין מתקיימת. מה שמבטיח את הטענה הוא ש-$bd\\ne0$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -352,8 +352,8 @@
      "explain": "$\\frac{3\\cdot3}3=3$, ואז $\\frac{3\\cdot3}3=3$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -402,8 +402,8 @@
      "explain": "מכפילים ב-$3$ ומחלקים ב-$b$: $e_2=3$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -456,8 +456,8 @@
      "explain": "$\\frac9b=\\frac96=1.5$. בדיקה: $(4,6)*(-6,1.5)=(-1,3)$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -528,8 +528,8 @@
      "explain": "מחלקים ב-$y$: $\\frac y3=1$, כלומר $y=3$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -652,15 +652,15 @@
      "explain": "נדרש $1+2w\\le0$ וגם $1-w\\le0$, כלומר $w\\le-\\frac12$ וגם $w\\ge1$. עבור $w=-1$ הערכים הם $-1,2,2$ ועבור $w=2$ הערכים הם $5,-1,-1$: בשני המקרים יש ערך עצמי חיובי."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
    "kind": "proof",
    "topic": "cauchy_schwarz",
    "question": "סעיף ב. יהיו $\\vec u,\\vec v\\in\\mathbb{R}^n$ וקטורים שונים מ-$\\vec 0$. הוכיחו כי $\\left|\\langle\\vec u,\\vec v\\rangle\\right|=\\|\\vec u\\|\\cdot\\|\\vec v\\|$ אם ורק אם קיים $t\\in\\mathbb{R}$ כך ש-$\\vec v=t\\vec u$. (10%)",
-   "solution": "נניח $\\vec v=t\\vec u$ ונוכיח $\\left|\\langle\\vec u,\\vec v\\rangle\\right|=\\|\\vec u\\|\\cdot\\|\\vec v\\|$ (כיוון ראשון).\n$$|\\langle\\vec u,t\\vec u\\rangle|=\\|\\vec u\\|\\cdot\\|t\\vec u\\|\\ \\Longleftrightarrow\\ |t|\\,\\langle\\vec u,\\vec u\\rangle=\\|\\vec u\\|\\cdot|t|\\cdot\\|\\vec u\\|\\ \\Longleftrightarrow\\ |t|\\,\\|\\vec u\\|^2=\\|\\vec u\\|^2|t|$$\nוזה נכון. (בשימוש ב-$\\|t\\vec u\\|=\\sqrt{\\langle t\\vec u,t\\vec u\\rangle}=\\sqrt{t^2\\langle\\vec u,\\vec u\\rangle}=|t|\\,\\|\\vec u\\|$.)\nכיוון שני: נניח $|\\langle\\vec u,\\vec v\\rangle|=\\|\\vec u\\|\\cdot\\|\\vec v\\|$. נחלק ב-$\\|\\vec u\\|\\|\\vec v\\|$ ונקבל $\\dfrac{|\\langle\\vec u,\\vec v\\rangle|}{\\|\\vec u\\|\\|\\vec v\\|}=1=\\cos\\alpha$, ולכן $\\alpha=0^\\circ$, כלומר הווקטורים באותו כיוון ו-$\\vec v=t\\vec u$.\n**הערה:** הצעד האחרון נשען על המשמעות הגיאומטרית של הזווית. טיעון ישיר: נסמן $t=\\dfrac{\\langle\\vec u,\\vec v\\rangle}{\\|\\vec u\\|^2}$. אז $\\|\\vec v-t\\vec u\\|^2=\\|\\vec v\\|^2-\\dfrac{\\langle\\vec u,\\vec v\\rangle^2}{\\|\\vec u\\|^2}=0$ כאשר מתקיים שוויון בקושי-שוורץ, ולכן $\\vec v=t\\vec u$.",
+   "solution": "נניח $\\vec v=t\\vec u$ ונוכיח $\\left|\\langle\\vec u,\\vec v\\rangle\\right|=\\|\\vec u\\|\\cdot\\|\\vec v\\|$ (כיוון ראשון).\n$$|\\langle\\vec u,t\\vec u\\rangle|=\\|\\vec u\\|\\cdot\\|t\\vec u\\|\\ \\Longleftrightarrow\\ |t|\\,\\langle\\vec u,\\vec u\\rangle=\\|\\vec u\\|\\cdot|t|\\cdot\\|\\vec u\\|\\ \\Longleftrightarrow\\ |t|\\,\\|\\vec u\\|^2=\\|\\vec u\\|^2|t|$$\nוזה נכון. (בשימוש ב-$\\|t\\vec u\\|=\\sqrt{\\langle t\\vec u,t\\vec u\\rangle}=\\sqrt{t^2\\langle\\vec u,\\vec u\\rangle}=|t|\\,\\|\\vec u\\|$.)\nכיוון שני: נניח $|\\langle\\vec u,\\vec v\\rangle|=\\|\\vec u\\|\\cdot\\|\\vec v\\|$. נחלק ב-$\\|\\vec u\\|\\|\\vec v\\|$ ונקבל $\\dfrac{|\\langle\\vec u,\\vec v\\rangle|}{\\|\\vec u\\|\\|\\vec v\\|}=1=|\\cos\\alpha|$, ולכן $\\alpha=0^\\circ$ או $\\alpha=180^\\circ$, כלומר הווקטורים באותו כיוון או בכיוון הפוך, ו-$\\vec v=t\\vec u$.\n**הערה:** הצעד האחרון נשען על המשמעות הגיאומטרית של הזווית. טיעון ישיר: נסמן $t=\\dfrac{\\langle\\vec u,\\vec v\\rangle}{\\|\\vec u\\|^2}$. אז $\\|\\vec v-t\\vec u\\|^2=\\|\\vec v\\|^2-\\dfrac{\\langle\\vec u,\\vec v\\rangle^2}{\\|\\vec u\\|^2}=0$ כאשר מתקיים שוויון בקושי-שוורץ, ולכן $\\vec v=t\\vec u$.",
    "solutionSource": "student-solution",
    "official": false,
    "confidence": "med",
@@ -672,7 +672,7 @@
      "points": 4
     },
     {
-     "text": "כיוון ⇒: שוויון בקושי-שוורץ גורר $\\|v-tu\\|=0$ (או $\\cos\\alpha=1$)",
+     "text": "כיוון ⇒: שוויון בקושי-שוורץ גורר $\\|v-tu\\|=0$ (או $|\\cos\\alpha|=1$)",
      "points": 4
     },
     {
@@ -738,8 +738,8 @@
      "explain": "$\\|v-tu\\|^2=\\|v\\|^2-2t\\langle u,v\\rangle+t^2\\|u\\|^2=\\|v\\|^2-\\frac{\\langle u,v\\rangle^2}{\\|u\\|^2}$: הסימן מינוס, ולא פלוס."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -798,8 +798,8 @@
      "explain": "$J^2=4I$, $J^3\\equiv\\begin{pmatrix}0&1\\\\4&0\\end{pmatrix}$, $J^4=16I\\equiv I$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -866,8 +866,8 @@
      "explain": "מגדירים את תת-החבורה, מפעילים את לגרנז' ומסיקים."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -923,8 +923,8 @@
      "explain": "קודם מראים שהחזקה $n$ נותנת $I$, אחר כך שאין חזקה קטנה יותר."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -989,8 +989,8 @@
      "explain": "$3552=9\\cdot385+87$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1087,8 +1087,8 @@
      "explain": "$\\lambda_2=3$ ולכן $\\sigma_2=\\sqrt3\\approx1.732$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1167,8 +1167,8 @@
      "explain": "פותחים, משווים, מחלקים."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

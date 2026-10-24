@@ -52,7 +52,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתור את $X\\binom mn=\\vec y$ ישירות: חמש הנקודות אינן על ישר אחד.",
     "לשכוח שיש נקודה עם $x=-2$ וש-$\\sum x_i=5$ (ולא $0$)."
@@ -87,7 +87,7 @@
      "explain": "מאותה מערכת $n=2.05$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -118,7 +118,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח ש-$\\sum_{k=1}^n\\ln k=\\ln(n!)$.",
     "לשכוח ש-$\\sum_{k=1}^n2k=n(n+1)$ (ולא $n^2$)."
@@ -167,7 +167,7 @@
      "explain": "$\\ln1+\\ln2+\\ln3+\\ln4=\\ln24\\approx3.178$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -195,7 +195,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לדרוש גם $b\\ne0$: האיבר $b$ חופשי.",
     "לספור $3$ אפשרויות ל-$a$ ול-$c$ (כולל $0$): אז $\\det=ac=0$ אפשרי."
@@ -223,7 +223,7 @@
      "explain": "$2\\cdot3\\cdot2=12$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -255,7 +255,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לעצור ב-$A^3=2I$ ולחשוב שהסדר $3$: $2I\\ne I$ מודולו $3$.",
     "לחשב את החזקות מעל $\\mathbb{Z}$ במקום מודולו $3$."
@@ -290,14 +290,14 @@
      "explain": "$A^6=(2I)^2=I$ ואין חזקה קטנה יותר שווה ל-$I$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
    "kind": "proof",
    "topic": "pos_def",
    "question": "סעיף ב. תהי $A$ מטריצה מוגדרת חיובית. הוכיחו כי $I+A$ ו-$A^2$ הן גם מוגדרות חיובית. תזכורת: $A=A^T$. (10%)",
-   "solution": "יהי $\\vec v\\in\\mathbb{R}^n$ כאשר $n$ הוא סדר המטריצה $A$. מתקיים:\n$$\\langle(I+A)\\vec v,\\vec v\\rangle=\\vec v^T(I+A)\\vec v=\\vec v^TI\\vec v+\\vec v^TA\\vec v=\\vec v^T\\vec v+\\vec v^TA\\vec v=\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle\\ge0$$\nלכן $I+A$ מוגדרת חיובית.\nבאופן דומה:\n$$\\langle A^2\\vec v,\\vec v\\rangle=\\vec v^TA^2\\vec v=\\vec v^TA^TA\\vec v=(A\\vec v)^TA\\vec v=\\|A\\vec v\\|^2\\ge0$$\nזאת אומרת ש-$A^2$ מוגדרת חיובית.",
+   "solution": "יהי $\\vec v\\in\\mathbb{R}^n$ כאשר $n$ הוא סדר המטריצה $A$. מתקיים:\n$$\\langle(I+A)\\vec v,\\vec v\\rangle=\\vec v^T(I+A)\\vec v=\\vec v^TI\\vec v+\\vec v^TA\\vec v=\\vec v^T\\vec v+\\vec v^TA\\vec v=\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle\\ge0$$\nלכן $I+A$ מוגדרת חיובית.\nבאופן דומה:\n$$\\langle A^2\\vec v,\\vec v\\rangle=\\vec v^TA^2\\vec v=\\vec v^TA^TA\\vec v=(A\\vec v)^TA\\vec v=\\|A\\vec v\\|^2\\ge0$$\nזאת אומרת ש-$A^2$ מוגדרת חיובית.\n**הערה:** בקורס מוגדרת חיובית היא מטריצה סימטרית. הפתרון הרשמי בודק רק את התנאי $\\vec v^TM\\vec v\\ge0$; הסימטריה נובעת מ-$A=A^T$: $(I+A)^T=I+A^T=I+A$ וגם $(A^2)^T=A^TA^T=A^2$.",
    "solutionSource": "official-pdf",
    "official": true,
    "confidence": "high",
@@ -314,14 +314,18 @@
     },
     {
      "text": "שימוש ב-$A=A^T$: $\\vec v^TA^2\\vec v=(A\\vec v)^T(A\\vec v)$",
-     "points": 3
+     "points": 2
     },
     {
      "text": "$\\|A\\vec v\\|^2\\ge0$ ולכן $A^2$ מוגדרת חיובית",
+     "points": 1
+    },
+    {
+     "text": "סימטריה: $(I+A)^T=I+A$ ו-$(A^2)^T=A^2$",
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את $A=A^T$ במעבר $\\vec v^TA^2\\vec v=\\vec v^TA^TA\\vec v$.",
     "לשכוח שגם $\\|\\vec v\\|^2\\ge0$ וגם $\\langle A\\vec v,\\vec v\\rangle\\ge0$ נדרשים בחיבור."
@@ -357,7 +361,7 @@
      "explain": "$\\vec v^T(I+A)\\vec v=\\vec v^T\\vec v+\\vec v^TA\\vec v$ (חיבור ולא חיסור)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -392,7 +396,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבלבל בין חיובית ($|a|\\le0.5$) לחיובית לחלוטין ($|a|<0.5$).",
     "לבדוק רק את הערך העצמי $4-a^2$, שהוא חיובי עבור $|a|<2$, ולשכוח את $1\\pm2a$."
@@ -441,7 +445,7 @@
      "explain": "הסכום קבוע ושווה $2>0$, ולכן שני הערכים העצמיים אינם יכולים להיות שניהם $\\le0$ ואין $a$ שבו המטריצה שלילית."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -468,7 +472,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להוכיח רק כיוון אחד של ה״אם ורק אם״.",
     "לצמצם בגורם $\\alpha^2-\\beta^2$ בלי לוודא שהוא שונה מאפס: יש לבחור $\\alpha,\\beta$ מתאימים."
@@ -521,7 +525,7 @@
      "explain": "פתיחה, הצבת השוויון, זיהוי הביטוי השני, ושורש."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -556,7 +560,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש בערכים העצמיים $9,1$ ב-$\\Sigma$ במקום בשורשיהם $3,1$.",
     "לשכוח שהערך העצמי $0$ של $A^TA$ נותן עמודה של $V$ אך לא ערך סינגולרי."
@@ -591,7 +595,7 @@
      "explain": "$A\\vec v_1=\\frac1{\\sqrt2}(3,3)^T$ ולכן $\\vec u_1=\\frac1{\\sqrt2}(1,1)^T$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -622,7 +626,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשאיר את התשובה $918$ בלי לצמצם מודולו $280$.",
     "לפתור $M_ix_i\\equiv a_i$ במקום $M_ix_i\\equiv1$."
@@ -657,7 +661,7 @@
      "explain": "$3\\cdot56\\cdot1+1\\cdot40\\cdot3+6\\cdot35\\cdot3=918$ ו-$918-840=78$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -689,7 +693,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לכתוב את המקדם $\\frac{5b-3a}{51}$ (טעות הדפסה בפתרון הרשמי): המכפלה הפנימית היא $5b-a$.",
     "להשתמש בנוסחת ההיטל על בסיס שאינו אורתוגונלי, בלי גרם-שמידט."
@@ -724,7 +728,7 @@
      "explain": "$\\frac{-7a+b}{17}=\\frac{-5}{17}\\approx-0.294$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -756,7 +760,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להניח קומוטטיביות כדי להחליף את הסדר: היא אינה נתונה.",
     "לשכוח שהתכונה $x^{-1}=x$ מופעלת פעמיים: על $a*b$ ועל $c$."
@@ -814,7 +818,7 @@
      "explain": "$x*x=e$ ולכן $(a*b)*(a*b)=e$ ולא $a*b$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

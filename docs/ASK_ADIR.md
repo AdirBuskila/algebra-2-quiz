@@ -94,4 +94,11 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Needed: nothing, FYI. Also 24A-A Q2.2: the question text said "abelian group (commutative)" but the printed exam says only "commutative group"; re-transcribed from the page.
 - Status: resolved in transcription (silent, no student-facing label)
 
+### 23A-A Q1a (slope 21.5), Q1b (lower-left entry 3) - slips in intermediate lines
+- Path: official solution of 23A-A
+- Page: solution Q1a (normal equations, last row reduction) and Q1b (the inner product <w1,w2>)
+- Question: Q1a: the official PDF prints the slope as 21.5; the normal equations give a = 4.3 (b = 16, so y(5) = 37.5 as printed). Q1b: the official <w1,w2> matrix product has a 3 where the correct entry is 4 (tr = 4 != 0). Both conclusions are unchanged.
+- Needed: nothing, FYI.
+- Status: resolved in transcription (silent, no student-facing label)
+
 ## Resolved

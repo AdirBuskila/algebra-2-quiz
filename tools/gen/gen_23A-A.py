@@ -72,7 +72,8 @@ S2A = (
     r"$$\langle f+h,g\rangle=\int_0^1e^x\big(f(x)+h(x)\big)g(x)\,dx=\int_0^1e^x\big(f(x)g(x)+h(x)g(x)\big)dx$$" "\n"
     r"$$=\int_0^1e^xf(x)g(x)\,dx+\int_0^1e^xh(x)g(x)\,dx=\langle f,g\rangle+\langle h,g\rangle$$" "\n"
     r"לבסוף, מתקיים לכל $\alpha\in\mathbb{R}$ ולכל $f\in C[0,1]$:" "\n"
-    r"$$\langle\alpha f,g\rangle=\int_0^1e^x\big(\alpha f(x)\big)g(x)\,dx=\alpha\int_0^1e^xf(x)g(x)\,dx=\alpha\langle f,g\rangle$$"
+    r"$$\langle\alpha f,g\rangle=\int_0^1e^x\big(\alpha f(x)\big)g(x)\,dx=\alpha\int_0^1e^xf(x)g(x)\,dx=\alpha\langle f,g\rangle$$" "\n"
+    r"**הערה:** הפתרון הרשמי מראה רק ש-$\langle f,f\rangle\ge0$. כדי שהנוסחה תהיה מכפלה פנימית יש להראות גם ש-$\langle f,f\rangle=0$ גורר $f=0$: הפונקציה $e^xf^2(x)$ רציפה ואי-שלילית ב-$[0,1]$, ולכן אם האינטגרל שלה שווה $0$ היא מתאפסת בכל נקודה. מכיוון ש-$e^x>0$ נקבל $f(x)=0$ לכל $x\in[0,1]$."
 )
 
 S2B = (
@@ -135,7 +136,8 @@ S4A3 = (
 S4B = (
     r"לפי משפט קושי-שוורץ לכל שני וקטורים $\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}b\\a\end{pmatrix}\in\mathbb{R}^2$ מתקיים:" "\n"
     r"$$\left\langle\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}b\\a\end{pmatrix}\right\rangle\le\left\|\begin{pmatrix}a\\b\end{pmatrix}\right\|\cdot\left\|\begin{pmatrix}b\\a\end{pmatrix}\right\|$$" "\n"
-    r"מכאן $ab+ba\le\sqrt{a^2+b^2}\cdot\sqrt{a^2+b^2}$, ז״א $ab+ba\le a^2+b^2$ ולכן $(ab+ba)^2\le(a^2+b^2)^2$."
+    r"מכאן $ab+ba\le\sqrt{a^2+b^2}\cdot\sqrt{a^2+b^2}$, ז״א $ab+ba\le a^2+b^2$ ולכן $(ab+ba)^2\le(a^2+b^2)^2$." "\n"
+    r"**הערה:** קושי-שוורץ נותן אי-שוויון עם ערך מוחלט, $|ab+ba|\le a^2+b^2$. רק בגלל הערך המוחלט מותר להעלות בריבוע (אם $ab+ba<0$, האי-שוויון $ab+ba\le a^2+b^2$ לבדו אינו מספיק)."
 )
 
 S5A = (
@@ -268,7 +270,7 @@ S23AA = {
             num(r"מהו האיבר הימני-העליון בהיטל?", 2.5, r"$\frac32\cdot1+1\cdot1=\frac52$."),
         ]),
     (2, "א"): dict(
-        rubric=rub((r"חיוביות: $\langle f,f\rangle=\int_0^1e^xf^2\ge0$", 4), (r"סימטריה $\langle f,g\rangle=\langle g,f\rangle$", 3),
+        rubric=rub((r"אי-שליליות: $\langle f,f\rangle=\int_0^1e^xf^2\ge0$", 2), (r"מוגדרות: $\langle f,f\rangle=0$ גורר $f=0$ (רציפות ו-$e^x>0$)", 2), (r"סימטריה $\langle f,g\rangle=\langle g,f\rangle$", 3),
                    (r"חיבוריות ברכיב הראשון", 4), (r"הומוגניות $\langle\alpha f,g\rangle=\alpha\langle f,g\rangle$", 4)),
         pitfalls=[r"לבדוק רק אי-שליליות ולשכוח את ההגדרה המלאה: $\langle f,f\rangle=0$ רק עבור $f=0$ (פונקציה רציפה).",
                   r"לשכוח שהפונקציה $e^x$ חיובית תמיד, ולכן היא אינה משנה את סימן האינטגרנד."],
@@ -374,7 +376,7 @@ S23AA = {
             order("סדרו את שלבי ההוכחה.",
                   [r"לפי קושי-שוורץ עבור $\binom ab,\binom ba$: $\left|\left\langle\binom ab,\binom ba\right\rangle\right|\le\left\|\binom ab\right\|\left\|\binom ba\right\|$",
                    r"שתי הנורמות שוות ל-$\sqrt{a^2+b^2}$",
-                   r"לכן $ab+ba\le a^2+b^2$",
+                   r"לכן $|ab+ba|\le a^2+b^2$",
                    r"נעלה בריבוע ונקבל $(ab+ba)^2\le(a^2+b^2)^2$"],
                   "קושי-שוורץ, שוויון הנורמות, צמצום, ואז העלאה בריבוע."),
         ]),
@@ -405,9 +407,9 @@ for _q in questions:
     _s = S23AA.get((_q["num"], _q.get("part")))
     assert _s is not None, ("no steps for", _q["num"], _q.get("part"))
     assert sum(r["points"] for r in _s["rubric"]) == _q["points"], ("rubric sum", _q["num"], _q.get("part"))
-    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-draft"
+    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-verified"
     _q["pitfalls"] = _s["pitfalls"]
-    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-draft"
+    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-verified"
 
 exam = {
     "examCode": "23A-A",

@@ -57,7 +57,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח לנרמל את הווקטורים העצמיים: אז $P$ אינה אורתוגונלית ו-$P^{-1}\\ne P^T$.",
     "לסדר את העמודות של $P$ בסדר שונה מסדר הערכים העצמיים על האלכסון של $D$."
@@ -113,7 +113,7 @@
      "explain": "$\\vec v_3=(0,0,1)^T$, כי $A-I$ מאפסת את הציר $z$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -144,7 +144,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור $\\bar u=\\left(\\frac{a_i}{b_i}\\right)$ ו-$\\bar v=(b_i)$: אז הנורמות הן $\\sum\\frac{a_i^2}{b_i^2}$ ו-$\\sum b_i^2$ ולא מתקבל אי-השוויון הנדרש.",
     "לשכוח שקושי-שוורץ נותן אי-שוויון על ריבוע הסכום רק אחרי העלאה בריבוע של שני האגפים."
@@ -204,14 +204,14 @@
      "explain": "הגדרת הווקטורים, חישוב המכפלה והנורמות, קושי-שוורץ, ואז העלאה בריבוע וחלוקה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
    "kind": "proof",
    "topic": "groups",
    "question": "סעיף 1. הוכיחו כי $K$ היא חבורה ביחס לכפל מטריצות: סגירות, אסוציאטיביות, איבר ניטרלי, איבר הופכי. (הכפל והחיבור של רכיבי המטריצות הם מודולו 7). (9%)",
-   "solution": "**סגירות:**\n$$\\begin{pmatrix}a&b\\\\-b&a\\end{pmatrix}\\begin{pmatrix}c&d\\\\-d&c\\end{pmatrix}=\\begin{pmatrix}ac-bd&ad+bc\\\\-ad-bc&ac-bd\\end{pmatrix}\\in K$$\n**אסוציאטיביות:** נובעת מאסוציאטיביות של כפל מטריצות.\n**איבר ניטרלי:** $\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$\n**איבר הופכי:**\n$$\\forall\\begin{pmatrix}a&b\\\\-b&a\\end{pmatrix}\\in K:\\qquad\\begin{pmatrix}a&b\\\\-b&a\\end{pmatrix}^{-1}=\\frac1{a^2+b^2}\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}=\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}\\pmod 7\\in K$$",
+   "solution": "**סגירות:**\n$$\\begin{pmatrix}a&b\\\\-b&a\\end{pmatrix}\\begin{pmatrix}c&d\\\\-d&c\\end{pmatrix}=\\begin{pmatrix}ac-bd&ad+bc\\\\-ad-bc&ac-bd\\end{pmatrix}\\in K$$\n**אסוציאטיביות:** נובעת מאסוציאטיביות של כפל מטריצות.\n**איבר ניטרלי:** $\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$\n**איבר הופכי:**\n$$\\forall\\begin{pmatrix}a&b\\\\-b&a\\end{pmatrix}\\in K:\\qquad\\begin{pmatrix}a&b\\\\-b&a\\end{pmatrix}^{-1}=\\frac1{a^2+b^2}\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}=\\begin{pmatrix}a&-b\\\\b&a\\end{pmatrix}\\pmod 7\\in K$$\n**הערה:** הפתרון הרשמי קובע ש-$K$ סגורה לכפל לפי הצורה בלבד. כדי שהמכפלה אכן תהיה ב-$K$ צריך לבדוק גם ש-$p^2+q^2=1$ עבור $p=ac-bd$ ו-$q=ad+bc$: $p^2+q^2=(a^2+b^2)(c^2+d^2)=1\\cdot1=1\\pmod 7$.",
    "solutionSource": "official-pdf",
    "official": true,
    "confidence": "high",
@@ -221,7 +221,11 @@
    "rubric": [
     {
      "text": "סגירות: המכפלה היא מהצורה $\\begin{pmatrix}p&q\\\\-q&p\\end{pmatrix}$",
-     "points": 3
+     "points": 1
+    },
+    {
+     "text": "סגירות: $p^2+q^2=(a^2+b^2)(c^2+d^2)=1$",
+     "points": 2
     },
     {
      "text": "אסוציאטיביות מכפל מטריצות",
@@ -236,7 +240,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח שהחישוב הוא מודולו $7$, ושהגורם $\\frac1{a^2+b^2}$ שווה $1$ בזכות התנאי $a^2+b^2=1$.",
     "להסתפק בסגירות, אסוציאטיביות ואיבר ניטרלי, בלי להראות שההופכי עצמו שייך ל-$K$."
@@ -301,7 +305,7 @@
      "explain": "אסוציאטיביות נובעת מאסוציאטיביות של כפל מטריצות. כפל מטריצות אינו חילופי."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -333,7 +337,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את המקרה $a^2\\equiv b^2\\equiv4$ (כלומר $a,b\\in\\{2,5\\}$), שבו שני הרכיבים שונים מאפס.",
     "לספור רק פתרון אחד לכל משוואה $x^2\\equiv1$, כאשר יש שניים: $x=1,6$."
@@ -361,7 +365,7 @@
      "explain": "$2+2+4=8$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -393,7 +397,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להסיק שהסדר הוא $4$ כי $X^4$ ״כמעט״ יחידה: מתקבל $X^4=-I\\ne I$.",
     "לשכוח לעבוד מודולו $7$: $-1\\equiv6$."
@@ -428,7 +432,7 @@
      "explain": "$X^4\\ne I$ ו-$X^8=I$, ולכן הסדר מחלק את $8$ ואינו מחלק את $4$: $8$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -460,7 +464,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתור את המערכת ממש (בלי מודולו): $2(x-y)=1$ אין פתרון שלם.",
     "לטעות בסימן ב-$2(x+y)$: האיבר הימני-העליון במכפלה הוא $2y+2x$."
@@ -488,7 +492,7 @@
      "explain": "$y\\equiv-x\\equiv5\\pmod7$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -517,7 +521,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להסיק ציקליות רק מכך שהחבורה מסדר $8$ (חזקת $2$): ישנן חבורות מסדר $8$ שאינן ציקליות.",
     "לשכוח לבדוק שהסדר של $X$ הוא בדיוק $8$ ולא מחלק שלו."
@@ -559,7 +563,7 @@
      "explain": "איבר מסדר $|K|=8$ יוצר את $K$. שאר הטענות שגויות: $\\mathbb{Z}_2\\times\\mathbb{Z}_2$ היא אבלית ומסדר זוגי וחזקת $2$ אך אינה ציקלית."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -590,7 +594,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבלבל בין ״חיובית״ (אי-שלילית, $-1\\le x\\le1$) ל״חיובית לחלוטין״ ($-1<x<1$).",
     "לשכוח שהערך העצמי $1$ תמיד חיובי, ולכן אין ערך $x$ שבו המטריצה שלילית."
@@ -660,7 +664,7 @@
      "explain": "הערך העצמי $1$ אינו תלוי ב-$x$, ולכן תמיד יש ערך עצמי חיובי. עבור $|x|>1$ יש ערך עצמי שלילי וגם חיובי (מטריצה לא מוגדרת)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -688,7 +692,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לכתוב $\\langle\\vec a,\\vec a\\rangle=\\|\\vec a\\|$ במקום $\\|\\vec a\\|^2$.",
     "להניח $\\vec c\\perp\\vec a$ בלי לחשב את המכפלה הפנימית."
@@ -732,7 +736,7 @@
      "explain": "$\\langle\\vec a,\\vec a\\rangle=\\|\\vec a\\|^2$ ולא $\\|\\vec a\\|$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -760,7 +764,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתוח $\\|\\vec c+\\vec p\\|^2=\\|\\vec c\\|^2+\\|\\vec p\\|^2$ בלי לנמק מדוע האיבר המעורב מתאפס.",
     "לשכוח את הגורם $2$ באיבר המעורב $2\\langle\\vec c,\\vec p\\rangle$."
@@ -825,7 +829,7 @@
      "explain": "אם $\\vec c\\perp\\vec p$ אז $\\langle\\vec c,\\vec p\\rangle=0$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -857,7 +861,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את החזקה $(-1)^a$ בחישוב האסוציאטיביות: $(-1)^a(-1)^x=(-1)^{a+x}$.",
     "לבדוק רק יחידה מצד אחד ולא לבדוק שההופכי הוא גם הופכי מימין ומשמאל."
@@ -896,7 +900,7 @@
      "explain": "הרכיב השני הוא $b+(-1)^a\\left(y+(-1)^x v\\right)=b+(-1)^a y+(-1)^{a+x}v$ ולא $(-1)^x v$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -925,7 +929,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק זוג שבו $a$ זוגי: אז $(-1)^a=1$ והאברים מתחלפים (למשל $(2,1)\\circ(2,3)$).",
     "להסיק אבליות מכך שהרכיב הראשון קומוטטיבי."
@@ -974,7 +978,7 @@
      "explain": "אי-אבליות פירושה קיום זוג שאינו מתחלף. האיבר הניטרלי תמיד מתחלף, אינסופיות אינה קשורה, והאסוציאטיביות כן מתקיימת."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -1006,7 +1010,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לכתוב את התשובה כ-״$a$ זוגי ו-$x$ זוגי״: $x$ הוא המשתנה החופשי, והתנאי החסר הוא $b=0$.",
     "לשכוח את התנאי $b=0$: האיבר $(2,1)$ אינו מתחלף עם $(1,1)$."
@@ -1055,7 +1059,7 @@
      "explain": "למשל $(2,1)\\circ(1,1)=(3,2)$ אך $(1,1)\\circ(2,1)=(3,0)$, ו-$(1,0)\\circ(0,1)=(1,-1)$ אך $(0,1)\\circ(1,0)=(1,1)$. האיבר $(2,0)$ מתחלף עם כולם, ולכן הקבוצה אינה רק $\\{(0,0)\\}$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1087,7 +1091,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח שהווקטור האפס אינו וקטור עצמי, אבל $\\vec w\\ne\\vec 0$ ו-$P\\vec w=0\\cdot\\vec w$ תקין.",
     "לא להשתמש באורתוגונליות: $\\vec v^T\\vec u=0$ היא שמאפסת את האיבר השני."
@@ -1141,13 +1145,13 @@
      "lines": [
       "$P\\vec u=\\vec u\\left(\\vec u^T\\vec u\\right)+\\vec v\\left(\\vec v^T\\vec u\\right)$",
       "$\\vec u^T\\vec u=1$ ו-$\\vec v^T\\vec u=1$, ולכן $P\\vec u=\\vec u+\\vec v$",
-      "לכן $\\vec u$ אינו וקטור עצמי של $P$"
+      "לכן $\\vec u$ הוא וקטור עצמי של $P$"
      ],
      "bugIndex": 1,
      "explain": "$\\vec v^T\\vec u=0$ בבסיס אורתונורמלי, ולכן $P\\vec u=\\vec u$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1175,7 +1179,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לדרוש ערכים עצמיים חיוביים ממש: ל-$P$ ערך עצמי $0$, והיא מוגדרת חיובית (אי-שלילית) בלבד.",
     "לשכוח לבדוק סימטריה, שהיא חלק מההגדרה."
@@ -1228,7 +1232,7 @@
      "explain": "סימטריה, ערכים עצמיים, ואז מסקנה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1260,7 +1264,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לכלול את $\\vec u$ או $\\vec v$ בפתרון: $P\\vec u=\\|\\vec u\\|^2\\vec u\\ne\\vec 0$.",
     "לשכוח שהפתרון הוא כל הכפולות של $\\vec w$ ולא רק $\\vec w$."
@@ -1313,7 +1317,7 @@
      "explain": "הצגה בבסיס, הפעלת $P$, אי-תלות, ואז התשובה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1344,7 +1348,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להציב את השאריות בלי לצמצם קודם: המשוואות הן $2x\\equiv1$ ו-$3x\\equiv1$ ולא $x\\equiv1$.",
     "לשכוח את הצמצום מודולו $84$ בסוף: $299\\equiv47$."
@@ -1379,7 +1383,7 @@
      "explain": "$2\\cdot28\\cdot1+3\\cdot21\\cdot1+5\\cdot12\\cdot3=299\\equiv47\\pmod{84}$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

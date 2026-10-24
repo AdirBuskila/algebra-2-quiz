@@ -47,7 +47,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתור את $X\\binom ab=\\vec y$ ישירות: ארבע הנקודות אינן על ישר אחד.",
     "לשכוח שהשיפוע הוא $a=4.3$ ולא $21.5$ (ערך זה הוא $5a$)."
@@ -82,7 +82,7 @@
      "explain": "$y(5)=4.3\\cdot5+16=37.5$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -117,7 +117,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש בנוסחת ההיטל על בסיס שאינו אורתוגונלי: קודם יש לבצע גרם-שמידט.",
     "לחשב את המכפלה הפנימית כמכפלת מטריצות רגילה ולא כ-$\\mathrm{tr}(B^TA)$ (סכום מכפלות הרכיבים המתאימים)."
@@ -152,14 +152,14 @@
      "explain": "$\\frac32\\cdot1+1\\cdot1=\\frac52$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
    "kind": "proof",
    "topic": "inner_product",
    "question": "(15%) במרחב $C[0,1]$ של כל הפונקציות הרציפות בקטע $[0,1]$ נגדיר את הנוסחה הבאה: $\\langle f,g\\rangle=\\displaystyle\\int_0^1e^x\\cdot f(x)\\cdot g(x)\\,dx$. בדקו האם הנוסחה מגדירה מכפלה פנימית על $C[0,1]$.",
-   "solution": "אנחנו נראה ש-$\\langle f,g\\rangle=\\int_0^1e^xf(x)g(x)\\,dx$ אכן מגדירה מכפלה פנימית במרחב $C[0,1]$.\nעבור $\\langle f,f\\rangle=\\int_0^1e^xf^2(x)\\,dx$, האינטגרנד $e^xf^2(x)$ תמיד אי-שלילי, מלבד במקרה שבו $f(x)=0$, ולכן מתקיים $\\langle f,f\\rangle=\\|f\\|^2\\ge0$ לכל $f\\in C[0,1]$.\nכמו-כן, מתקיים לכל $f,g,h\\in C[0,1]$: $\\langle f,g\\rangle=\\int_0^1e^xf(x)g(x)\\,dx=\\int_0^1e^xg(x)f(x)\\,dx=\\langle g,f\\rangle$, וכן\n$$\\langle f+h,g\\rangle=\\int_0^1e^x\\big(f(x)+h(x)\\big)g(x)\\,dx=\\int_0^1e^x\\big(f(x)g(x)+h(x)g(x)\\big)dx$$\n$$=\\int_0^1e^xf(x)g(x)\\,dx+\\int_0^1e^xh(x)g(x)\\,dx=\\langle f,g\\rangle+\\langle h,g\\rangle$$\nלבסוף, מתקיים לכל $\\alpha\\in\\mathbb{R}$ ולכל $f\\in C[0,1]$:\n$$\\langle\\alpha f,g\\rangle=\\int_0^1e^x\\big(\\alpha f(x)\\big)g(x)\\,dx=\\alpha\\int_0^1e^xf(x)g(x)\\,dx=\\alpha\\langle f,g\\rangle$$",
+   "solution": "אנחנו נראה ש-$\\langle f,g\\rangle=\\int_0^1e^xf(x)g(x)\\,dx$ אכן מגדירה מכפלה פנימית במרחב $C[0,1]$.\nעבור $\\langle f,f\\rangle=\\int_0^1e^xf^2(x)\\,dx$, האינטגרנד $e^xf^2(x)$ תמיד אי-שלילי, מלבד במקרה שבו $f(x)=0$, ולכן מתקיים $\\langle f,f\\rangle=\\|f\\|^2\\ge0$ לכל $f\\in C[0,1]$.\nכמו-כן, מתקיים לכל $f,g,h\\in C[0,1]$: $\\langle f,g\\rangle=\\int_0^1e^xf(x)g(x)\\,dx=\\int_0^1e^xg(x)f(x)\\,dx=\\langle g,f\\rangle$, וכן\n$$\\langle f+h,g\\rangle=\\int_0^1e^x\\big(f(x)+h(x)\\big)g(x)\\,dx=\\int_0^1e^x\\big(f(x)g(x)+h(x)g(x)\\big)dx$$\n$$=\\int_0^1e^xf(x)g(x)\\,dx+\\int_0^1e^xh(x)g(x)\\,dx=\\langle f,g\\rangle+\\langle h,g\\rangle$$\nלבסוף, מתקיים לכל $\\alpha\\in\\mathbb{R}$ ולכל $f\\in C[0,1]$:\n$$\\langle\\alpha f,g\\rangle=\\int_0^1e^x\\big(\\alpha f(x)\\big)g(x)\\,dx=\\alpha\\int_0^1e^xf(x)g(x)\\,dx=\\alpha\\langle f,g\\rangle$$\n**הערה:** הפתרון הרשמי מראה רק ש-$\\langle f,f\\rangle\\ge0$. כדי שהנוסחה תהיה מכפלה פנימית יש להראות גם ש-$\\langle f,f\\rangle=0$ גורר $f=0$: הפונקציה $e^xf^2(x)$ רציפה ואי-שלילית ב-$[0,1]$, ולכן אם האינטגרל שלה שווה $0$ היא מתאפסת בכל נקודה. מכיוון ש-$e^x>0$ נקבל $f(x)=0$ לכל $x\\in[0,1]$.",
    "solutionSource": "official-pdf",
    "official": true,
    "confidence": "high",
@@ -167,8 +167,12 @@
    "points": 15,
    "rubric": [
     {
-     "text": "חיוביות: $\\langle f,f\\rangle=\\int_0^1e^xf^2\\ge0$",
-     "points": 4
+     "text": "אי-שליליות: $\\langle f,f\\rangle=\\int_0^1e^xf^2\\ge0$",
+     "points": 2
+    },
+    {
+     "text": "מוגדרות: $\\langle f,f\\rangle=0$ גורר $f=0$ (רציפות ו-$e^x>0$)",
+     "points": 2
     },
     {
      "text": "סימטריה $\\langle f,g\\rangle=\\langle g,f\\rangle$",
@@ -183,7 +187,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק אי-שליליות ולשכוח את ההגדרה המלאה: $\\langle f,f\\rangle=0$ רק עבור $f=0$ (פונקציה רציפה).",
     "לשכוח שהפונקציה $e^x$ חיובית תמיד, ולכן היא אינה משנה את סימן האינטגרנד."
@@ -226,7 +230,7 @@
      "explain": "הקבוע $\\alpha$ יוצא מהאינטגרל פעם אחת: $\\alpha\\int_0^1e^xf(x)g(x)\\,dx$ ולא $\\alpha^2$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -257,7 +261,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח שכל הרכיבים מחושבים מודולו $5$.",
     "לספור את $I$ פעמיים, או לשכוח לכלול אותו."
@@ -285,7 +289,7 @@
      "explain": "האיבר $\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}$ חוזר ליחידה בחזקת $\\mathrm{lcm}(2,4)=4$ לראשונה, ולכן $|H|=4$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -320,7 +324,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבלבל בין חיובית ($a\\ge1$) לחיובית לחלוטין ($a>1$).",
     "לשכוח את הערך העצמי $2a$, שמשפיע רק כאשר $a>0$ (אך מתקיים אוטומטית כאשר $a\\ge1$)."
@@ -397,7 +401,7 @@
      "explain": "הערכים העצמיים הם $0,-1,1$, ולכן ערך אחד חיובי, והמטריצה אינה אף אחת מהסוגים."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -426,7 +430,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את האיבר $2\\langle\\vec v,\\vec u\\rangle$ (המקדם $2$ של $\\vec v$ ב-$\\vec\\alpha$).",
     "לחשב $\\langle\\vec u,\\vec u\\rangle=0$ במקום $1$."
@@ -451,7 +455,7 @@
      "explain": "הצבה, פתיחה, אורתונורמליות, תוצאה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -479,7 +483,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב $\\|\\vec\\alpha\\|=\\sqrt{1+2+1}$ (בלי להעלות את $2$ בריבוע).",
     "לכתוב $\\|\\vec\\beta\\|=0$ בגלל המקדם $-1$: הריבוע של $-1$ הוא $1$."
@@ -528,7 +532,7 @@
      "explain": "$1+1=2$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -553,7 +557,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק זוג מספרים אחד: זו אינה הוכחה.",
     "להשוות את הרכיב הראשון בלבד ולשכוח את השני $by=yb$."
@@ -595,7 +599,7 @@
      "explain": "מחליפים $(a,b)\\leftrightarrow(x,y)$ ומקבלים $xb+ya=ay+bx$ וגם $yb=by$. אסוציאטיביות, איבר ניטרלי והפיכות אינם גוררים קומוטטיביות."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -623,7 +627,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח שהאיבר הניטרלי חייב להשתייך ל-$\\mathbb{R}^2\\setminus\\{(0,0)\\}$.",
     "לחשב את $e_1$ לפני $e_2$: המשוואה השנייה $be_2=b$ קובעת קודם את $e_2$."
@@ -651,7 +655,7 @@
      "explain": "$ay+bx=5\\cdot1+2\\cdot0=5$, והרכיב השני $2\\cdot1=2$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -684,7 +688,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להסיק שהמבנה חבורה אחרי שמצאנו הופכי רק עבור $b\\ne0$.",
     "לחפש הופכי של $\\binom50$: המשוואה $by=1$ נותנת $0=1$."
@@ -733,14 +737,14 @@
      "explain": "האיבר הניטרלי $\\binom01$ קיים והפעולה קומוטטיבית, ולאיבר עם $b\\ne0$ יש הופכי יחיד. עבור $b=0$ המשוואה $by=1$ אינה פתירה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
    "kind": "proof",
    "topic": "cauchy_schwarz",
    "question": "סעיף ב. בעזרת אי-שוויון קושי-שוורץ הוכיחו ש: $(ab+ba)^2\\le(a^2+b^2)^2$ לכל $a,b\\in\\mathbb{R}$. (7%)",
-   "solution": "לפי משפט קושי-שוורץ לכל שני וקטורים $\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}b\\\\a\\end{pmatrix}\\in\\mathbb{R}^2$ מתקיים:\n$$\\left\\langle\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}b\\\\a\\end{pmatrix}\\right\\rangle\\le\\left\\|\\begin{pmatrix}a\\\\b\\end{pmatrix}\\right\\|\\cdot\\left\\|\\begin{pmatrix}b\\\\a\\end{pmatrix}\\right\\|$$\nמכאן $ab+ba\\le\\sqrt{a^2+b^2}\\cdot\\sqrt{a^2+b^2}$, ז״א $ab+ba\\le a^2+b^2$ ולכן $(ab+ba)^2\\le(a^2+b^2)^2$.",
+   "solution": "לפי משפט קושי-שוורץ לכל שני וקטורים $\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}b\\\\a\\end{pmatrix}\\in\\mathbb{R}^2$ מתקיים:\n$$\\left\\langle\\begin{pmatrix}a\\\\b\\end{pmatrix},\\begin{pmatrix}b\\\\a\\end{pmatrix}\\right\\rangle\\le\\left\\|\\begin{pmatrix}a\\\\b\\end{pmatrix}\\right\\|\\cdot\\left\\|\\begin{pmatrix}b\\\\a\\end{pmatrix}\\right\\|$$\nמכאן $ab+ba\\le\\sqrt{a^2+b^2}\\cdot\\sqrt{a^2+b^2}$, ז״א $ab+ba\\le a^2+b^2$ ולכן $(ab+ba)^2\\le(a^2+b^2)^2$.\n**הערה:** קושי-שוורץ נותן אי-שוויון עם ערך מוחלט, $|ab+ba|\\le a^2+b^2$. רק בגלל הערך המוחלט מותר להעלות בריבוע (אם $ab+ba<0$, האי-שוויון $ab+ba\\le a^2+b^2$ לבדו אינו מספיק).",
    "solutionSource": "official-pdf",
    "official": true,
    "confidence": "high",
@@ -764,7 +768,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור את הווקטורים $\\binom ab$ ו-$\\binom{-b}{a}$: המכפלה הפנימית שלהם $0$.",
     "להעלות בריבוע בלי לשים לב שהאגף השמאלי עלול להיות שלילי; מספיק להשתמש בערך מוחלט."
@@ -811,13 +815,13 @@
      "lines": [
       "לפי קושי-שוורץ עבור $\\binom ab,\\binom ba$: $\\left|\\left\\langle\\binom ab,\\binom ba\\right\\rangle\\right|\\le\\left\\|\\binom ab\\right\\|\\left\\|\\binom ba\\right\\|$",
       "שתי הנורמות שוות ל-$\\sqrt{a^2+b^2}$",
-      "לכן $ab+ba\\le a^2+b^2$",
+      "לכן $|ab+ba|\\le a^2+b^2$",
       "נעלה בריבוע ונקבל $(ab+ba)^2\\le(a^2+b^2)^2$"
      ],
      "explain": "קושי-שוורץ, שוויון הנורמות, צמצום, ואז העלאה בריבוע."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -856,7 +860,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש ב-$\\lambda_i$ במקום $\\sigma_i=\\sqrt{\\lambda_i}$ בעמודות $U$ וב-$\\Sigma$.",
     "לשכוח להשלים את $\\vec u_3$ כך ש-$U$ תהיה אורתוגונלית מסדר $3\\times3$."
@@ -891,7 +895,7 @@
      "explain": "$\\vec u_1=\\frac1{\\sqrt2}(-1,-1,0)^T$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -922,7 +926,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להציב את השאריות בלי לצמצם את $2x\\equiv1\\pmod3$.",
     "לשכוח את הצמצום מודולו $105$ בסוף."
@@ -957,7 +961,7 @@
      "explain": "$263-210=53$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

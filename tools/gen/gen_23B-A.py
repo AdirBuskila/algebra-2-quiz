@@ -80,7 +80,8 @@ S2B = (
     r"לכן $I+A$ מוגדרת חיובית." "\n"
     r"באופן דומה:" "\n"
     r"$$\langle A^2\vec v,\vec v\rangle=\vec v^TA^2\vec v=\vec v^TA^TA\vec v=(A\vec v)^TA\vec v=\|A\vec v\|^2\ge0$$" "\n"
-    r"זאת אומרת ש-$A^2$ מוגדרת חיובית."
+    r"זאת אומרת ש-$A^2$ מוגדרת חיובית." "\n"
+    r"**הערה:** בקורס מוגדרת חיובית היא מטריצה סימטרית. הפתרון הרשמי בודק רק את התנאי $\vec v^TM\vec v\ge0$; הסימטריה נובעת מ-$A=A^T$: $(I+A)^T=I+A^T=I+A$ וגם $(A^2)^T=A^TA^T=A^2$."
 )
 
 S3A = (
@@ -262,7 +263,8 @@ S23BA = {
         ]),
     (2, "ג"): dict(
         rubric=rub((r"חישוב $\langle(I+A)\vec v,\vec v\rangle=\|\vec v\|^2+\langle A\vec v,\vec v\rangle$", 4), (r"מסקנה: $I+A$ מוגדרת חיובית", 1),
-                   (r"שימוש ב-$A=A^T$: $\vec v^TA^2\vec v=(A\vec v)^T(A\vec v)$", 3), (r"$\|A\vec v\|^2\ge0$ ולכן $A^2$ מוגדרת חיובית", 2)),
+                   (r"שימוש ב-$A=A^T$: $\vec v^TA^2\vec v=(A\vec v)^T(A\vec v)$", 2), (r"$\|A\vec v\|^2\ge0$ ולכן $A^2$ מוגדרת חיובית", 1),
+                   (r"סימטריה: $(I+A)^T=I+A$ ו-$(A^2)^T=A^2$", 2)),
         pitfalls=[r"לשכוח את $A=A^T$ במעבר $\vec v^TA^2\vec v=\vec v^TA^TA\vec v$.",
                   r"לשכוח שגם $\|\vec v\|^2\ge0$ וגם $\langle A\vec v,\vec v\rangle\ge0$ נדרשים בחיבור."],
         steps=[
@@ -362,9 +364,9 @@ for _q in questions:
     _s = S23BA.get((_q["num"], _q.get("part")))
     assert _s is not None, ("no steps for", _q["num"], _q.get("part"))
     assert sum(r["points"] for r in _s["rubric"]) == _q["points"], ("rubric sum", _q["num"], _q.get("part"))
-    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-draft"
+    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-verified"
     _q["pitfalls"] = _s["pitfalls"]
-    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-draft"
+    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-verified"
 
 exam = {
     "examCode": "23B-A",

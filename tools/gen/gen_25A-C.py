@@ -300,7 +300,7 @@ EXTRA = {
     ),
     (2, "ד"): dict(
         rubric=rub((r"סדרי הרכיבים: $o(2)=4$ ו-$o(3)=6$", 3),
-                   (r"הסדר הוא המכפלה המשותפת המינימלית: $\mathrm{lcm}(4,6)=12$", 2)),
+                   (r"הסדר הוא הכפולה המשותפת המינימלית: $\mathrm{lcm}(4,6)=12$", 2)),
         pitfalls=[r"לכתוב $4\cdot6=24$ במקום $\mathrm{lcm}$.",
                   r"לשכוח שחזקות של $2$ מודולו 5 חוזרות ל-$1$ רק אחרי $4$ צעדים."],
         steps=[num(r"מהו הסדר של $2$ ב-$\mathbb{Z}_5^*$?", 4, r"$2,4,3,1$."),
@@ -462,8 +462,8 @@ EXTRA = {
 for _q in questions:
     _e = EXTRA.pop((_q["num"], _q.get("part")))
     _q.update(_e)
-    _q["rubricSource"] = "ai-draft"
-    _q["stepsSource"] = "ai-draft"
+    _q["rubricSource"] = "ai-verified"
+    _q["stepsSource"] = "ai-verified"
     assert sum(r["points"] for r in _q["rubric"]) == _q["points"], (_q["num"], _q.get("part"))
 assert not EXTRA, EXTRA
 

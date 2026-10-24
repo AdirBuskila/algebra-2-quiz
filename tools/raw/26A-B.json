@@ -108,8 +108,8 @@
      "explain": "כל שלב נשען על הקודם."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -185,8 +185,8 @@
      "explain": "$t^2-1=0$. עבור $t=0$ מתקבל $-1\\ne0$, עבור $t=2$ מתקבל $3\\ne0$, ו-$t=-1$ אכן נותן $(1,-1)^TA(-1,-1)^T=0$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -225,7 +225,7 @@
    "steps": [
     {
      "type": "numeric",
-     "prompt": "מהו הרכיב השמאלי התחתון (שורה 2, עמודה 2) של $A^TA$?",
+     "prompt": "מהו הרכיב הימני התחתון (שורה 2, עמודה 2) של $A^TA$?",
      "answer": 42,
      "tol": 0,
      "explain": "$(-2)^2+2^2+3^2+5^2=4+4+9+25=42$."
@@ -252,8 +252,8 @@
      "explain": "$x_1=1-x_2=\\frac43$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -325,8 +325,8 @@
      "explain": "עבור $a=b=c=3$ הביטוי $abc-ab-ac-bc+a+b+c$ נותן $9$ כבחישוב הישיר, הביטוי עם $+1$ נותן $10$, והביטוי ללא $-ac$ נותן $18$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -395,8 +395,8 @@
      "explain": "$M$ כוללת גם מספרים קטנים מ-$1$ (למשל $a=0$), ולכן $a>1$ אינו נכון; ההיתר לחלק מגיע רק מכך ש-$a\\ne1$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -472,8 +472,8 @@
      "explain": "$\\frac{-1}{-2}=0.5$. בדיקה: $-1\\odot0.5=2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -549,8 +549,8 @@
      "explain": "$4-2-2+2=2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -614,8 +614,8 @@
      "explain": "$x-1=(a-1)^n$ ו-$y-1=a-1$, ולכן המכפלה היא $(a-1)^n(a-1)$ ולא $(a-1)^n\\cdot a$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -743,8 +743,8 @@
      "explain": "כל הערכים העצמיים חייבים להיות חיוביים ממש: $0<x<1$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -827,8 +827,8 @@
      "explain": "מגדירים $\\vec v$, מפרקים את הביטוי לנורמה, ומסיקים חיוביות."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -915,8 +915,8 @@
      "explain": "$b^2-ac=-1$, $a^{-3}=27\\equiv2$ ולכן $f\\equiv-2\\equiv3$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -964,8 +964,8 @@
      "explain": "$4\\cdot5\\cdot5=100$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -1013,8 +1013,8 @@
      "explain": "$X^n=I$ אם ורק אם $n\\equiv0\\pmod5$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1079,8 +1079,8 @@
      "explain": "$596=4\\cdot120+116$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1154,8 +1154,8 @@
      "explain": "$\\frac32\\cdot\\frac98=\\frac{27}{16}=1.6875$, וזה גדול מ-$1.25^2=1.5625$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

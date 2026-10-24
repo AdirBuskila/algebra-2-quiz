@@ -108,7 +108,7 @@ S3B = (
     r"נניח $\vec v=t\vec u$ ונוכיח $\left|\langle\vec u,\vec v\rangle\right|=\|\vec u\|\cdot\|\vec v\|$ (כיוון ראשון)." "\n"
     r"$$|\langle\vec u,t\vec u\rangle|=\|\vec u\|\cdot\|t\vec u\|\ \Longleftrightarrow\ |t|\,\langle\vec u,\vec u\rangle=\|\vec u\|\cdot|t|\cdot\|\vec u\|\ \Longleftrightarrow\ |t|\,\|\vec u\|^2=\|\vec u\|^2|t|$$" "\n"
     r"וזה נכון. (בשימוש ב-$\|t\vec u\|=\sqrt{\langle t\vec u,t\vec u\rangle}=\sqrt{t^2\langle\vec u,\vec u\rangle}=|t|\,\|\vec u\|$.)" "\n"
-    r"כיוון שני: נניח $|\langle\vec u,\vec v\rangle|=\|\vec u\|\cdot\|\vec v\|$. נחלק ב-$\|\vec u\|\|\vec v\|$ ונקבל $\dfrac{|\langle\vec u,\vec v\rangle|}{\|\vec u\|\|\vec v\|}=1=\cos\alpha$, ולכן $\alpha=0^\circ$, כלומר הווקטורים באותו כיוון ו-$\vec v=t\vec u$." "\n"
+    r"כיוון שני: נניח $|\langle\vec u,\vec v\rangle|=\|\vec u\|\cdot\|\vec v\|$. נחלק ב-$\|\vec u\|\|\vec v\|$ ונקבל $\dfrac{|\langle\vec u,\vec v\rangle|}{\|\vec u\|\|\vec v\|}=1=|\cos\alpha|$, ולכן $\alpha=0^\circ$ או $\alpha=180^\circ$, כלומר הווקטורים באותו כיוון או בכיוון הפוך, ו-$\vec v=t\vec u$." "\n"
     r"**הערה:** הצעד האחרון נשען על המשמעות הגיאומטרית של הזווית. טיעון ישיר: נסמן $t=\dfrac{\langle\vec u,\vec v\rangle}{\|\vec u\|^2}$. אז $\|\vec v-t\vec u\|^2=\|\vec v\|^2-\dfrac{\langle\vec u,\vec v\rangle^2}{\|\vec u\|^2}=0$ כאשר מתקיים שוויון בקושי-שוורץ, ולכן $\vec v=t\vec u$."
 )
 
@@ -370,7 +370,7 @@ EXTRA = {
     ),
     (3, "ב"): dict(
         rubric=rub((r"כיוון ⇐: $\langle u,tu\rangle=t\|u\|^2$ ו-$\|tu\|=|t|\,\|u\|$, ולכן שוויון", 4),
-                   (r"כיוון ⇒: שוויון בקושי-שוורץ גורר $\|v-tu\|=0$ (או $\cos\alpha=1$)", 4),
+                   (r"כיוון ⇒: שוויון בקושי-שוורץ גורר $\|v-tu\|=0$ (או $|\cos\alpha|=1$)", 4),
                    (r"מסקנה $\vec v=t\vec u$", 2)),
         pitfalls=[r"לכתוב $\|t\vec u\|=t\|\vec u\|$ בלי ערך מוחלט.",
                   "בכיוון ⇒ לומר 'הזווית היא $0$' בלי לנמק, וזה בעצם הטענה עצמה.",
@@ -488,8 +488,8 @@ EXTRA = {
 for _q in questions:
     _e = EXTRA.pop((_q["num"], _q.get("part")))
     _q.update(_e)
-    _q["rubricSource"] = "ai-draft"
-    _q["stepsSource"] = "ai-draft"
+    _q["rubricSource"] = "ai-verified"
+    _q["stepsSource"] = "ai-verified"
     assert sum(r["points"] for r in _q["rubric"]) == _q["points"], (_q["num"], _q.get("part"))
 assert not EXTRA, EXTRA
 

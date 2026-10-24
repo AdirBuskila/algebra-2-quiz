@@ -1,77 +1,62 @@
 # Build report - אלגברה 2 (open engine)
 
-- Raw exam files: **1**
-- **Final questions: 16**
-- Shared context blocks: **4**
-- Math spans rendered (distinct): **125**
-- Guided steps: **0** {}
+- Raw exam files: **18**
+- **Final questions: 255**
+- Shared context blocks: **45**
+- Math spans rendered (distinct): **4994**
+- Guided steps: **821** {'numeric': 549, 'order': 63, 'findbug': 54, 'choice': 155}
 - includeDrafts: **False**
 - **ai-draft parts stripped: 0** 
-- **On hold (not in bank): 1**
+- **On hold (not in bank): 0**
 
-  - 26A-A-Q4c: official answer wrong: it says "a even and x even" (x is the free variable, b=0 missing); the correct set is (a,0), a even
 
 ## By kind
 
-- computation: 7
-- proof: 7
+- computation: 138
+- proof: 84
 - algorithm: 0
 - code: 0
 - mcq: 0
-- truefalse: 2
+- truefalse: 33
 
 ## By topic
 
 | topic | label | n |
 |---|---|---|
-| `inner_product` | מכפלה פנימית | 0 |
-| `cauchy_schwarz` | נורמה וקושי-שוורץ | 1 |
-| `orthogonality` | אורתוגונליות וגרהם-שמידט | 1 |
-| `projection` | היטל אורתוגונלי | 2 |
-| `least_squares` | ריבועים פחותים | 0 |
+| `inner_product` | מכפלה פנימית | 7 |
+| `cauchy_schwarz` | נורמה וקושי-שוורץ | 23 |
+| `orthogonality` | אורתוגונליות וגרהם-שמידט | 11 |
+| `projection` | היטל אורתוגונלי | 12 |
+| `least_squares` | ריבועים פחותים | 16 |
 | `parseval_bessel` | פרסבל ובסל | 0 |
-| `orthodiag` | לכסון אורתוגונלי | 2 |
-| `pos_def` | מטריצות מוגדרות חיובית | 2 |
-| `qr` | פירוק QR | 0 |
-| `svd` | פירוק SVD | 0 |
-| `crt` | משפט השאריות הסיני | 1 |
-| `groups` | חבורות וסדר איבר | 7 |
+| `orthodiag` | לכסון אורתוגונלי | 11 |
+| `pos_def` | מטריצות מוגדרות חיובית | 36 |
+| `qr` | פירוק QR | 3 |
+| `svd` | פירוק SVD | 11 |
+| `crt` | משפט השאריות הסיני | 18 |
+| `groups` | חבורות וסדר איבר | 107 |
 
 ## By exam
 
-- 26A-A: 16
+- 23A-A: 13
+- 23A-B: 10
+- 23B-A: 11
+- 23B-B: 16
+- 24A-A: 15
+- 24A-B: 16
+- 24A-C: 12
+- 24B-A: 14
+- 24B-B: 15
+- 25A-A: 16
+- 25A-B: 12
+- 25A-C: 15
+- 25B-A: 17
+- 25B-B: 17
+- 26A-A: 17
+- 26A-B: 15
+- 26B-A: 15
+- 23A-S: 9
 
 ## Warnings
 
-- 26A-A-Q1a: no rubric yet
-- 26A-A-Q1a: no steps yet
-- 26A-A-Q1b: no rubric yet
-- 26A-A-Q1b: no steps yet
-- 26A-A-Q2a: no rubric yet
-- 26A-A-Q2a: no steps yet
-- 26A-A-Q2b: no rubric yet
-- 26A-A-Q2b: no steps yet
-- 26A-A-Q2c: no rubric yet
-- 26A-A-Q2c: no steps yet
-- 26A-A-Q2d: no rubric yet
-- 26A-A-Q2d: no steps yet
-- 26A-A-Q2e: no rubric yet
-- 26A-A-Q2e: no steps yet
-- 26A-A-Q3a: no rubric yet
-- 26A-A-Q3a: no steps yet
-- 26A-A-Q3c: no rubric yet
-- 26A-A-Q3c: no steps yet
-- 26A-A-Q3d: no rubric yet
-- 26A-A-Q3d: no steps yet
-- 26A-A-Q4a: no rubric yet
-- 26A-A-Q4a: no steps yet
-- 26A-A-Q4b: no rubric yet
-- 26A-A-Q4b: no steps yet
-- 26A-A-Q5a: no rubric yet
-- 26A-A-Q5a: no steps yet
-- 26A-A-Q5b: no rubric yet
-- 26A-A-Q5b: no steps yet
-- 26A-A-Q5c: no rubric yet
-- 26A-A-Q5c: no steps yet
-- 26A-A-Q5d: no rubric yet
-- 26A-A-Q5d: no steps yet
+- 23A-S.json: examCode 23A-S not YY[A|B|S]-[A..H] or SAMP-N
