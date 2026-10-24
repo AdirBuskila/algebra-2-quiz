@@ -1,0 +1,446 @@
+{
+ "examCode": "25A-C",
+ "refuter": "independent blind solve; scripts tools/verify/25A-C/refute_blind.py",
+ "transcription": "matches exam pages 274-275 of 25A-C-SRC (all 15 items, points, matrices, systems). NOTE: 25A-C-SRC pages 270-273 are a student handwritten solution to a different sitting (Q4b there is mod 4,5,7; Q5a matrix [[1,1,0],[1,1,0],[0,0,2]]); they must not be used as a key for 25A-C and are not.",
+ "summary": {
+  "agree": 15,
+  "disagree": 0,
+  "unclear": 0
+ },
+ "items": [
+  {
+   "item": "Q1א",
+   "blindAnswer": "y=0.8x+2",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q1ב",
+   "blindAnswer": "CS with g=1/x, |g|^2=1/2",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q2א",
+   "blindAnswer": "(1,1)",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q2ב",
+   "blindAnswer": "(3,5)",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q2ג",
+   "blindAnswer": "24",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q2ד",
+   "blindAnswer": "12",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree",
+   "note": "agree. Minor Hebrew: rubric says \"המכפלה המשותפת המינימלית\" for lcm (should be הכפולה)"
+  },
+  {
+   "item": "Q2ה",
+   "blindAnswer": "-v^TAv-|Bv|^2<=0 (course convention >=0)",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q2ו",
+   "blindAnswer": "(Bv)^TA(Bv)>=0; strict reading false for singular B (agree with the note)",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree",
+   "note": "agree. Note re strict vs non-strict checked: under the course convention (>=0) the claim holds for every B; under the strict reading it is false for singular B (A=I, B=diag(1,0) gives eigenvalue 0) and true for invertible B with A strictly PD - the note says exactly this and the counterexample is correct"
+  },
+  {
+   "item": "Q3א",
+   "blindAnswer": "sigma 3,1; U=(1,1)/r2,(1,-1)/r2; V cols (1,0,1)/r2,(-1,0,1)/r2,(0,1,0)",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 4,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q3ב",
+   "blindAnswer": "polarization",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q4א",
+   "blindAnswer": "eig a,a^2-1,a^2+1: PD a>=1; strict a>1; neg never; a<1 none",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 3,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 4,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q4ב",
+   "blindAnswer": "67 mod 70",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q5א",
+   "blindAnswer": "eig 5,5,0; Q cols e1,(0,2,1)/r5,(0,1,-2)/r5",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 3,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q5ב",
+   "blindAnswer": "xy=(xy)^-1=yx",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  },
+  {
+   "item": "Q5ג",
+   "blindAnswer": "g^2=e so x^3=x,y^5=y",
+   "solution": "agree",
+   "rubricSum": "agree",
+   "pitfalls": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree",
+     "note": "answer/order/bugIndex/option key re-derived independently; matches"
+    }
+   ],
+   "verdict": "agree"
+  }
+ ]
+}
