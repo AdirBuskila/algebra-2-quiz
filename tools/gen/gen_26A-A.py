@@ -322,7 +322,7 @@ S26AA = {
             ch(r"איזה זוג וקטורים בוחר הפתרון הרשמי, כך שהמכפלה הפנימית היא $\sum a_i$ והנורמות בריבוע הן $\sum\frac{a_i^2}{b_i}$ ו-$\sum b_i$?",
                r"$\bar u=\left(\frac{a_i}{\sqrt{b_i}}\right)$ , $\bar v=\left(\sqrt{b_i}\right)$",
                [r"$\bar u=\left(\frac{a_i}{b_i}\right)$ , $\bar v=(b_i)$", r"$\bar u=\left(a_i\sqrt{b_i}\right)$ , $\bar v=\left(\sqrt{b_i}\right)$", r"$\bar u=(a_i)$ , $\bar v=\left(\frac1{\sqrt{b_i}}\right)$"],
-               r"רק הבחירה הראשונה נותנת $(\bar u,\bar v)=\sum a_i$, $\|\bar u\|^2=\sum\frac{a_i^2}{b_i}$ ו-$\|\bar v\|^2=\sum b_i$. השנייה נותנת נורמות $\sum\frac{a_i^2}{b_i^2}$ ו-$\sum b_i^2$, השלישית מכפלה $\sum a_ib_i$, והרביעית מכפלה $\sum\frac{a_i}{\sqrt{b_i}}$."),
+               r"רק הזוג $\left(\frac{a_i}{\sqrt{b_i}}\right),\left(\sqrt{b_i}\right)$ נותן $(\bar u,\bar v)=\sum a_i$, $\|\bar u\|^2=\sum\frac{a_i^2}{b_i}$ ו-$\|\bar v\|^2=\sum b_i$. הזוג $\left(\frac{a_i}{b_i}\right),(b_i)$ נותן נורמות $\sum\frac{a_i^2}{b_i^2}$ ו-$\sum b_i^2$, הזוג $\left(a_i\sqrt{b_i}\right),\left(\sqrt{b_i}\right)$ נותן מכפלה $\sum a_ib_i$, והזוג $(a_i),\left(\frac1{\sqrt{b_i}}\right)$ נותן מכפלה $\sum\frac{a_i}{\sqrt{b_i}}$."),
             num(r"עבור $a=(1,3)$ ו-$b=(1,1)$, מהו $\sum\frac{a_i^2}{b_i}$ ?", 10, r"$1+9=10$."),
             num(r"באותה דוגמה, מהו האגף הימני $\dfrac{\left(\sum a_i\right)^2}{\sum b_i}$ ?", 8, r"$\frac{4^2}{2}=8\le10$."),
             order("סדרו את שלבי ההוכחה.",
@@ -399,7 +399,7 @@ S26AA = {
             ch("איזו טענה מוכיחה ש-$K$ ציקלית?",
                r"אם קיים איבר שסדרו שווה לסדר החבורה, החבורה ציקלית",
                [r"כל חבורה מסדר זוגי היא ציקלית", r"כל חבורה אבלית היא ציקלית", r"כל חבורה מסדר חזקה של $2$ היא ציקלית"],
-               r"איבר מסדר $|K|=8$ יוצר את $K$. שלוש האפשרויות האחרות שגויות: $\mathbb{Z}_2\times\mathbb{Z}_2$ היא אבלית ומסדר זוגי וחזקת $2$ אך אינה ציקלית."),
+               r"איבר מסדר $|K|=8$ יוצר את $K$. שאר הטענות שגויות: $\mathbb{Z}_2\times\mathbb{Z}_2$ היא אבלית ומסדר זוגי וחזקת $2$ אך אינה ציקלית."),
         ]),
     (3, "א"): dict(
         rubric=rub((r"פולינום אופייני $(1-\lambda)\left(\lambda^2-3\lambda-2x^2+2\right)$", 5),

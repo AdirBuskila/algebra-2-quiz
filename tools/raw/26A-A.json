@@ -176,7 +176,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "רק הבחירה הראשונה נותנת $(\\bar u,\\bar v)=\\sum a_i$, $\\|\\bar u\\|^2=\\sum\\frac{a_i^2}{b_i}$ ו-$\\|\\bar v\\|^2=\\sum b_i$. השנייה נותנת נורמות $\\sum\\frac{a_i^2}{b_i^2}$ ו-$\\sum b_i^2$, השלישית מכפלה $\\sum a_ib_i$, והרביעית מכפלה $\\sum\\frac{a_i}{\\sqrt{b_i}}$."
+     "explain": "רק הזוג $\\left(\\frac{a_i}{\\sqrt{b_i}}\\right),\\left(\\sqrt{b_i}\\right)$ נותן $(\\bar u,\\bar v)=\\sum a_i$, $\\|\\bar u\\|^2=\\sum\\frac{a_i^2}{b_i}$ ו-$\\|\\bar v\\|^2=\\sum b_i$. הזוג $\\left(\\frac{a_i}{b_i}\\right),(b_i)$ נותן נורמות $\\sum\\frac{a_i^2}{b_i^2}$ ו-$\\sum b_i^2$, הזוג $\\left(a_i\\sqrt{b_i}\\right),\\left(\\sqrt{b_i}\\right)$ נותן מכפלה $\\sum a_ib_i$, והזוג $(a_i),\\left(\\frac1{\\sqrt{b_i}}\\right)$ נותן מכפלה $\\sum\\frac{a_i}{\\sqrt{b_i}}$."
     },
     {
      "type": "numeric",
@@ -556,7 +556,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "איבר מסדר $|K|=8$ יוצר את $K$. שלוש האפשרויות האחרות שגויות: $\\mathbb{Z}_2\\times\\mathbb{Z}_2$ היא אבלית ומסדר זוגי וחזקת $2$ אך אינה ציקלית."
+     "explain": "איבר מסדר $|K|=8$ יוצר את $K$. שאר הטענות שגויות: $\\mathbb{Z}_2\\times\\mathbb{Z}_2$ היא אבלית ומסדר זוגי וחזקת $2$ אך אינה ציקלית."
     }
    ],
    "stepsSource": "ai-draft"

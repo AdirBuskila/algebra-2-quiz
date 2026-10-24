@@ -33,7 +33,61 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 13
+   "points": 13,
+   "rubric": [
+    {
+     "text": "בניית המטריצה $X$ (עמודת $x$ ועמודת אחדות) ווקטור $\\vec y$",
+     "points": 3
+    },
+    {
+     "text": "המשוואות הנורמליות $X^TX\\binom mn=X^T\\vec y$ וחישוב שני האגפים",
+     "points": 4
+    },
+    {
+     "text": "פתרון: $m=0.75$ , $n=2.05$",
+     "points": 4
+    },
+    {
+     "text": "כתיבת הישר $y=0.75x+2.05$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את $X\\binom mn=\\vec y$ ישירות: חמש הנקודות אינן על ישר אחד.",
+    "לשכוח שיש נקודה עם $x=-2$ וש-$\\sum x_i=5$ (ולא $0$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_i^2$ , האיבר השמאלי-העליון ב-$X^TX$ (בנקודות $x=-2,-1,0,2,6$) ?",
+     "answer": 45,
+     "tol": 0,
+     "explain": "$4+1+0+4+36=45$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_iy_i$ , האיבר הראשון ב-$X^T\\vec y$ (עם $y=4,0,0,2,8$) ?",
+     "answer": 44,
+     "tol": 0,
+     "explain": "$-8+0+0+4+48=44$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$ ?",
+     "answer": 0.75,
+     "tol": 0.001,
+     "explain": "פתרון $\\begin{pmatrix}45&5\\\\5&5\\end{pmatrix}\\binom mn=\\binom{44}{14}$ נותן $m=0.75$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו חיתוך הצירים $n$ ?",
+     "answer": 2.05,
+     "tol": 0.001,
+     "explain": "מאותה מערכת $n=2.05$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -45,7 +99,75 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 12
+   "points": 12,
+   "rubric": [
+    {
+     "text": "בחירת הווקטורים $\\vec u=\\left(\\sqrt{2k}\\right)$ ו-$\\vec v=\\left(\\sqrt{\\ln k}\\right)$",
+     "points": 4
+    },
+    {
+     "text": "המכפלה הפנימית $\\sum\\sqrt{2k\\ln k}$",
+     "points": 2
+    },
+    {
+     "text": "הנורמות $\\|\\vec u\\|=\\sqrt{n(n+1)}$ ו-$\\|\\vec v\\|=\\sqrt{\\ln(n!)}$",
+     "points": 4
+    },
+    {
+     "text": "הפעלת קושי-שוורץ והמסקנה",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח ש-$\\sum_{k=1}^n\\ln k=\\ln(n!)$.",
+    "לשכוח ש-$\\sum_{k=1}^n2k=n(n+1)$ (ולא $n^2$)."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזה זוג וקטורים בוחר הפתרון הרשמי, כך שהמכפלה הפנימית היא $\\sum\\sqrt{2k\\ln k}$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\vec u=\\left(\\sqrt k\\right)$ , $\\vec v=\\left(\\sqrt{\\ln k}\\right)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\vec u=\\left(\\sqrt{2k}\\right)$ , $\\vec v=\\left(\\sqrt{\\ln k}\\right)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\vec u=(2k)$ , $\\vec v=(\\ln k)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\vec u=\\left(\\sqrt{2k\\ln k}\\right)$ , $\\vec v=(1,\\dots,1)$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "רק הזוג הנבחר נותן מכפלה פנימית $\\sum\\sqrt{2k}\\sqrt{\\ln k}=\\sum\\sqrt{2k\\ln k}$ ונורמות בריבוע $\\sum2k$ ו-$\\sum\\ln k$. הזוג $\\left(\\sqrt k\\right),\\left(\\sqrt{\\ln k}\\right)$ נותן מכפלה $\\sum\\sqrt{k\\ln k}$, הזוג $(2k),(\\ln k)$ נותן $\\sum2k\\ln k$, והזוג $\\left(\\sqrt{2k\\ln k}\\right),(1,\\dots,1)$ נותן נורמה $\\sum2k\\ln k$ במקום $n(n+1)\\ln(n!)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=4$, מהו $\\|\\vec u\\|^2=\\sum_{k=1}^42k$ ?",
+     "answer": 20,
+     "tol": 0,
+     "explain": "$2+4+6+8=20=n(n+1)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $n=4$, מהו $\\|\\vec v\\|^2=\\sum_{k=1}^4\\ln k$ (עיגול עד $0.001$)?",
+     "answer": 3.17805,
+     "tol": 0.001,
+     "explain": "$\\ln1+\\ln2+\\ln3+\\ln4=\\ln24\\approx3.178$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -58,7 +180,50 @@
    "confidence": "high",
    "part": "א",
    "points": 7,
-   "contextId": "c2a"
+   "contextId": "c2a",
+   "rubric": [
+    {
+     "text": "התנאי: $a\\ne0$ וגם $c\\ne0$ מודולו $3$",
+     "points": 2
+    },
+    {
+     "text": "מספר האפשרויות: $a$ ב-$2$ , $c$ ב-$2$ , $b$ ב-$3$",
+     "points": 3
+    },
+    {
+     "text": "עקרון הכפל: $|G|=12$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לדרוש גם $b\\ne0$: האיבר $b$ חופשי.",
+    "לספור $3$ אפשרויות ל-$a$ ול-$c$ (כולל $0$): אז $\\det=ac=0$ אפשרי."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה אפשרויות יש ל-$a$ (עם $a\\ne0$ ב-$\\mathbb{Z}_3$) ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$a=1,2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה אפשרויות יש ל-$b$ ב-$\\mathbb{Z}_3$ ?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$b=0,1,2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $G$ ?",
+     "answer": 12,
+     "tol": 0,
+     "explain": "$2\\cdot3\\cdot2=12$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -71,7 +236,61 @@
    "confidence": "high",
    "part": "ב",
    "points": 8,
-   "contextId": "c2a"
+   "contextId": "c2a",
+   "rubric": [
+    {
+     "text": "הסדר של $H$ שווה לסדר האיבר $\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $A^2,A^3$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $A^4,A^5$",
+     "points": 2
+    },
+    {
+     "text": "$A^6=I$ ולכן $|H|=6$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לעצור ב-$A^3=2I$ ולחשוב שהסדר $3$: $2I\\ne I$ מודולו $3$.",
+    "לחשב את החזקות מעל $\\mathbb{Z}$ במקום מודולו $3$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$A^2$ (מודולו $3$) ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$A^2=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר השמאלי-העליון ב-$A^3$ (מודולו $3$) ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$A^3=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}=2I\\ne I$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$A^4$ (מודולו $3$) ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$A^4=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $H$ ?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$A^6=(2I)^2=I$ ואין חזקה קטנה יותר שווה ל-$I$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -83,7 +302,62 @@
    "official": true,
    "confidence": "high",
    "part": "ג",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "חישוב $\\langle(I+A)\\vec v,\\vec v\\rangle=\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle$",
+     "points": 4
+    },
+    {
+     "text": "מסקנה: $I+A$ מוגדרת חיובית",
+     "points": 1
+    },
+    {
+     "text": "שימוש ב-$A=A^T$: $\\vec v^TA^2\\vec v=(A\\vec v)^T(A\\vec v)$",
+     "points": 3
+    },
+    {
+     "text": "$\\|A\\vec v\\|^2\\ge0$ ולכן $A^2$ מוגדרת חיובית",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את $A=A^T$ במעבר $\\vec v^TA^2\\vec v=\\vec v^TA^TA\\vec v$.",
+    "לשכוח שגם $\\|\\vec v\\|^2\\ge0$ וגם $\\langle A\\vec v,\\vec v\\rangle\\ge0$ נדרשים בחיבור."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ ו-$\\vec v=(1,-1)^T$, מהו $\\vec v^T(I+A)\\vec v$ ?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$I+A=\\begin{pmatrix}3&1\\\\1&3\\end{pmatrix}$ ו-$3-1-1+3=4=\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle=2+2$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה ש-$A^2$ מוגדרת חיובית.",
+     "lines": [
+      "$\\langle A^2\\vec v,\\vec v\\rangle=\\vec v^TA^2\\vec v$",
+      "$=\\vec v^TA^TA\\vec v$ (כי $A=A^T$)",
+      "$=(A\\vec v)^T(A\\vec v)=\\|A\\vec v\\|^2$",
+      "$\\|A\\vec v\\|^2\\ge0$, ולכן $A^2$ מוגדרת חיובית"
+     ],
+     "explain": "פתיחת ההגדרה, שימוש בסימטריה, זיהוי נורמה, ומסקנה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$\\langle(I+A)\\vec v,\\vec v\\rangle=\\vec v^T(I+A)\\vec v$",
+      "$=\\vec v^T\\vec v-\\vec v^TA\\vec v=\\|\\vec v\\|^2-\\langle A\\vec v,\\vec v\\rangle$",
+      "$\\|\\vec v\\|^2\\ge0$ ו-$\\langle A\\vec v,\\vec v\\rangle\\ge0$, ולכן $I+A$ מוגדרת חיובית"
+     ],
+     "bugIndex": 1,
+     "explain": "$\\vec v^T(I+A)\\vec v=\\vec v^T\\vec v+\\vec v^TA\\vec v$ (חיבור ולא חיסור)."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -95,7 +369,79 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חישוב הפולינום האופייני $\\left(4-a^2-\\lambda\\right)\\left(\\lambda^2-2\\lambda+1-4a^2\\right)$",
+     "points": 5
+    },
+    {
+     "text": "ערכים עצמיים $4-a^2$ , $1+2a$ , $1-2a$",
+     "points": 3
+    },
+    {
+     "text": "חיובית: $-0.5\\le a\\le0.5$",
+     "points": 3
+    },
+    {
+     "text": "חיובית לחלוטין: $-0.5<a<0.5$",
+     "points": 2
+    },
+    {
+     "text": "אין ערך $a$ שבו שלילית או שלילית לחלוטין",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבלבל בין חיובית ($|a|\\le0.5$) לחיובית לחלוטין ($|a|<0.5$).",
+    "לבדוק רק את הערך העצמי $4-a^2$, שהוא חיובי עבור $|a|<2$, ולשכוח את $1\\pm2a$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=1$, מהו הערך העצמי $4-a^2$ ?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$4-1=3$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $a$ המטריצה מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$-0.5<a<0.5$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$-2<a<2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$-0.5\\le a\\le0.5$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$a>0.5$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $4-a^2>0$ , $1+2a>0$ , $1-2a>0$, כלומר $|a|<0.5$. עבור $a=1$ יש ערך עצמי $1-2a=-1$, ועבור $a=0.5$ יש ערך עצמי $0$ (רק חיובית)."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסכום $(1+2a)+(1-2a)$ ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "הסכום קבוע ושווה $2>0$, ולכן שני הערכים העצמיים אינם יכולים להיות שניהם $\\le0$ ואין $a$ שבו המטריצה שלילית."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -107,7 +453,75 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "כיוון ראשון: פתיחת $\\|\\alpha\\vec u+\\beta\\vec v\\|^2$ והצבת $\\|\\vec u\\|=\\|\\vec v\\|$",
+     "points": 4
+    },
+    {
+     "text": "כיוון שני: פתיחת שני האגפים בריבוע",
+     "points": 3
+    },
+    {
+     "text": "פירוק $(\\alpha^2-\\beta^2)\\left(\\|\\vec u\\|^2-\\|\\vec v\\|^2\\right)=0$ והמסקנה $\\|\\vec u\\|=\\|\\vec v\\|$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להוכיח רק כיוון אחד של ה״אם ורק אם״.",
+    "לצמצם בגורם $\\alpha^2-\\beta^2$ בלי לוודא שהוא שונה מאפס: יש לבחור $\\alpha,\\beta$ מתאימים."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "בכיוון השני, איזו הצבה של $\\alpha,\\beta$ מסיימת את ההוכחה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\alpha=1,\\ \\beta=0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\alpha=\\beta=1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\alpha=\\beta=0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\alpha=1,\\ \\beta=-1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $\\alpha=1,\\beta=0$ השוויון הופך ל-$\\|\\vec u\\|^2=\\|\\vec v\\|^2$. בשאר ההצבות השוויון $\\alpha^2(\\cdot)=\\beta^2(\\cdot)$ מתקיים לכל $\\vec u,\\vec v$ ואינו מוסיף מידע."
+    },
+    {
+     "type": "numeric",
+     "prompt": "אם $\\|\\vec u\\|^2=5$ ו-$\\|\\vec v\\|^2=3$ , מהו $\\|2\\vec u+\\vec v\\|^2-\\|\\vec u+2\\vec v\\|^2$ ?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$(\\alpha^2-\\beta^2)\\left(\\|\\vec u\\|^2-\\|\\vec v\\|^2\\right)=(4-1)(5-3)=6$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי הכיוון הראשון.",
+     "lines": [
+      "$\\|\\alpha\\vec u+\\beta\\vec v\\|^2=\\alpha^2\\|\\vec u\\|^2+2\\alpha\\beta\\langle\\vec u,\\vec v\\rangle+\\beta^2\\|\\vec v\\|^2$",
+      "נציב $\\|\\vec u\\|=\\|\\vec v\\|$ ונקבל $\\alpha^2\\|\\vec v\\|^2+2\\alpha\\beta\\langle\\vec u,\\vec v\\rangle+\\beta^2\\|\\vec u\\|^2$",
+      "זהו $\\|\\beta\\vec u+\\alpha\\vec v\\|^2$",
+      "נוציא שורש ונקבל $\\|\\alpha\\vec u+\\beta\\vec v\\|=\\|\\beta\\vec u+\\alpha\\vec v\\|$"
+     ],
+     "explain": "פתיחה, הצבת השוויון, זיהוי הביטוי השני, ושורש."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -119,7 +533,65 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 18
+   "points": 18,
+   "rubric": [
+    {
+     "text": "חישוב $A^TA=\\begin{pmatrix}5&0&4\\\\0&0&0\\\\4&0&5\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "ערכים עצמיים $9,1,0$ ווקטורים עצמיים",
+     "points": 6
+    },
+    {
+     "text": "ערכים סינגולריים $\\sigma_1=3,\\sigma_2=1$ ו-$\\Sigma$",
+     "points": 3
+    },
+    {
+     "text": "עמודות $U$: $\\vec u_i=\\frac1{\\sigma_i}A\\vec v_i$",
+     "points": 3
+    },
+    {
+     "text": "הרכבת $A=U\\Sigma V^T$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשתמש בערכים העצמיים $9,1$ ב-$\\Sigma$ במקום בשורשיהם $3,1$.",
+    "לשכוח שהערך העצמי $0$ של $A^TA$ נותן עמודה של $V$ אך לא ערך סינגולרי."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר ב-$A^TA$ בשורה $1$ ובעמודה $3$ ?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "השורה הראשונה של $A^T$ היא $(1,2)$ והעמודה השלישית של $A$ היא $(2,1)^T$: $1\\cdot2+2\\cdot1=4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הגדול של $A^TA$ ?",
+     "answer": 9,
+     "tol": 0,
+     "explain": "$\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$ על הציר $x,z$ נותנת $5\\pm4=9,1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי הראשון $\\sigma_1$ ?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$\\sqrt9=3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "אם $\\vec v_1=\\frac1{\\sqrt2}(1,0,1)^T$ , מהו הרכיב הראשון של $\\vec u_1=\\frac1{\\sigma_1}A\\vec v_1$ (עיגול עד $0.001$)?",
+     "answer": 0.70711,
+     "tol": 0.001,
+     "explain": "$A\\vec v_1=\\frac1{\\sqrt2}(3,3)^T$ ולכן $\\vec u_1=\\frac1{\\sqrt2}(1,1)^T$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -131,7 +603,61 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 7
+   "points": 7,
+   "rubric": [
+    {
+     "text": "המודולים $5,7,8$ זרים בזוגות ו-$M=280$",
+     "points": 2
+    },
+    {
+     "text": "$M_1=56,M_2=40,M_3=35$",
+     "points": 2
+    },
+    {
+     "text": "$x_1=1,x_2=3,x_3=3$",
+     "points": 2
+    },
+    {
+     "text": "הרכבה והצמצום $918\\equiv78\\pmod{280}$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשאיר את התשובה $918$ בלי לצמצם מודולו $280$.",
+    "לפתור $M_ix_i\\equiv a_i$ במקום $M_ix_i\\equiv1$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $M_2=\\frac{280}{7}$ ?",
+     "answer": 40,
+     "tol": 0,
+     "explain": "$280/7=40$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_2$ , פתרון $40x_2\\equiv1\\pmod7$ ?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$40\\equiv5$ ו-$5\\cdot3=15\\equiv1\\pmod7$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_3$ , פתרון $35x_3\\equiv1\\pmod8$ ?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$35\\equiv3$ ו-$3\\cdot3=9\\equiv1\\pmod8$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בין $0$ ל-$279$ ?",
+     "answer": 78,
+     "tol": 0,
+     "explain": "$3\\cdot56\\cdot1+1\\cdot40\\cdot3+6\\cdot35\\cdot3=918$ ו-$918-840=78$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -144,7 +670,61 @@
    "confidence": "high",
    "part": "א",
    "points": 15,
-   "contextId": "c5a"
+   "contextId": "c5a",
+   "rubric": [
+    {
+     "text": "גרם-שמידט: $U_2=V_2-\\frac13V_1$ וכתיבת הבסיס האורתוגונלי",
+     "points": 4
+    },
+    {
+     "text": "$\\langle M,U_1\\rangle=a+b$ , $\\|U_1\\|^2=3$",
+     "points": 4
+    },
+    {
+     "text": "$\\langle M,U_2\\rangle=5b-a$ , $\\|U_2\\|^2=51$",
+     "points": 3
+    },
+    {
+     "text": "הרכבת ההיטל $\\frac1{17}\\begin{pmatrix}-7a+b&6a+4b\\\\4a+14b&-a+5b\\end{pmatrix}$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לכתוב את המקדם $\\frac{5b-3a}{51}$ (טעות הדפסה בפתרון הרשמי): המכפלה הפנימית היא $5b-a$.",
+    "להשתמש בנוסחת ההיטל על בסיס שאינו אורתוגונלי, בלי גרם-שמידט."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי $\\langle V_2,U_1\\rangle$ עבור $V_2=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$ ו-$U_1=\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}$ ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$-1+0+2+0=1$, ו-$\\|U_1\\|^2=3$, ולכן $U_2=V_2-\\frac13U_1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\left\\|\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}\\right\\|^2$ ?",
+     "answer": 51,
+     "tol": 0,
+     "explain": "$16+1+25+9=51$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=1$ ו-$b=2$, מהי $\\left\\langle\\begin{pmatrix}0&a\\\\b&0\\end{pmatrix},\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}\\right\\rangle$ ?",
+     "answer": 9,
+     "tol": 0,
+     "explain": "$-a+5b=-1+10=9$ (ולא $5b-3a=7$, כפי שמודפס בפתרון הרשמי)."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=1$ ו-$b=2$, מהו האיבר השמאלי-העליון בהיטל (עיגול עד $0.001$)?",
+     "answer": -0.29412,
+     "tol": 0.001,
+     "explain": "$\\frac{-7a+b}{17}=\\frac{-5}{17}\\approx-0.294$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -157,7 +737,84 @@
    "confidence": "high",
    "part": "ב",
    "points": 10,
-   "contextId": "c5b"
+   "contextId": "c5b",
+   "rubric": [
+    {
+     "text": "כפל השוויון $c=(a*b)*a$ ב-$b$ מימין",
+     "points": 3
+    },
+    {
+     "text": "אסוציאטיביות: $((a*b)*a)*b=(a*b)*(a*b)$",
+     "points": 3
+    },
+    {
+     "text": "$x*x=e$ ולכן $c*b=e$",
+     "points": 2
+    },
+    {
+     "text": "$b=c^{-1}=c$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להניח קומוטטיביות כדי להחליף את הסדר: היא אינה נתונה.",
+    "לשכוח שהתכונה $x^{-1}=x$ מופעלת פעמיים: על $a*b$ ועל $c$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו תכונה של חבורה מאפשרת לעבור מ-$((a*b)*a)*b$ ל-$(a*b)*(a*b)$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "אסוציאטיביות"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "סגירות בלבד"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "קיום איבר ניטרלי"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "יחידות ההופכי"
+      }
+     ],
+     "correctId": "a",
+     "explain": "המעבר הוא שינוי סוגריים בלבד, וזו אסוציאטיביות. סגירות, איבר ניטרלי ויחידות ההופכי אינם משנים סוגריים."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$c*b=\\big((a*b)*a\\big)*b$",
+      "$=(a*b)*(a*b)$ לפי אסוציאטיביות",
+      "$=e$ כי $x*x=e$ לכל $x$",
+      "לכן $b=c^{-1}$ , ומכיוון ש-$c^{-1}=c$ מתקבל $c=b$"
+     ],
+     "explain": "כפל ב-$b$, אסוציאטיביות, $x*x=e$, ואז הופכי."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$c*b=\\big((a*b)*a\\big)*b$",
+      "$=(a*b)*(a*b)$ לפי אסוציאטיביות",
+      "$=a*b$ כי $x*x=e$ לכל $x$",
+      "לכן $b=c^{-1}=c$"
+     ],
+     "bugIndex": 2,
+     "explain": "$x*x=e$ ולכן $(a*b)*(a*b)=e$ ולא $a*b$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }

@@ -28,7 +28,61 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "בניית המטריצה $X$ ווקטור הנתונים $\\vec y$ למודל $y=ax+b$",
+     "points": 3
+    },
+    {
+     "text": "המשוואות הנורמליות $X^TX\\binom ab=X^T\\vec y$ וחישוב שני האגפים",
+     "points": 4
+    },
+    {
+     "text": "פתרון המערכת: $b=16$ , $a=4.3$",
+     "points": 4
+    },
+    {
+     "text": "הצבה $x=5$ ותשובה $y=37.5$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את $X\\binom ab=\\vec y$ ישירות: ארבע הנקודות אינן על ישר אחד.",
+    "לשכוח שהשיפוע הוא $a=4.3$ ולא $21.5$ (ערך זה הוא $5a$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר השמאלי-העליון ב-$X^TX$ (כלומר $\\sum x_i^2$)?",
+     "answer": 30,
+     "tol": 0,
+     "explain": "$1+4+9+16=30$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הראשון ב-$X^T\\vec y$ (כלומר $\\sum x_iy_i$)?",
+     "answer": 289,
+     "tol": 0,
+     "explain": "$20+48+93+128=289$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $a$ (עיגול עד $0.001$)?",
+     "answer": 4.3,
+     "tol": 0.001,
+     "explain": "פתרון $\\begin{pmatrix}30&10\\\\10&4\\end{pmatrix}\\binom ab=\\binom{289}{107}$ נותן $b=16$ ו-$a=4.3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הצפי לשבוע החמישי לפי המודל?",
+     "answer": 37.5,
+     "tol": 0.001,
+     "explain": "$y(5)=4.3\\cdot5+16=37.5$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -40,7 +94,65 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בדיקה שהווקטורים הנתונים אינם אורתוגונליים: $\\langle\\vec w_1,\\vec w_2\\rangle=4$",
+     "points": 2
+    },
+    {
+     "text": "גרם-שמידט: $\\vec u_2=\\vec w_2-2\\vec u_1$",
+     "points": 3
+    },
+    {
+     "text": "המקדם $\\frac32$ של $\\vec u_1$",
+     "points": 2
+    },
+    {
+     "text": "המקדם $1$ של $\\vec u_2$",
+     "points": 1
+    },
+    {
+     "text": "הצבה: ההיטל $\\frac12\\begin{pmatrix}1&5\\\\2&2\\end{pmatrix}$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשתמש בנוסחת ההיטל על בסיס שאינו אורתוגונלי: קודם יש לבצע גרם-שמידט.",
+    "לחשב את המכפלה הפנימית כמכפלת מטריצות רגילה ולא כ-$\\mathrm{tr}(B^TA)$ (סכום מכפלות הרכיבים המתאימים)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי המכפלה הפנימית $\\langle\\vec w_1,\\vec w_2\\rangle$ של $\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$ ו-$\\begin{pmatrix}1&3\\\\1&1\\end{pmatrix}$ ?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$\\mathrm{tr}(B^TA)=1\\cdot1+1\\cdot3+0+0=4\\ne0$, ולכן הווקטורים אינם ניצבים."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו המקדם של $\\vec u_1=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$ בהיטל, כלומר $\\frac{\\langle\\vec v,\\vec u_1\\rangle}{\\|\\vec u_1\\|^2}$ עבור $\\vec v=\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$ ?",
+     "answer": 1.5,
+     "tol": 0,
+     "explain": "$\\frac{1+2}{2}=\\frac32$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו המקדם של $\\vec u_2=\\begin{pmatrix}-1&1\\\\1&1\\end{pmatrix}$ בהיטל?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$\\langle\\vec v,\\vec u_2\\rangle=-1+2+3+0=4$ ו-$\\|\\vec u_2\\|^2=4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון בהיטל?",
+     "answer": 2.5,
+     "tol": 0,
+     "explain": "$\\frac32\\cdot1+1\\cdot1=\\frac52$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -52,7 +164,69 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חיוביות: $\\langle f,f\\rangle=\\int_0^1e^xf^2\\ge0$",
+     "points": 4
+    },
+    {
+     "text": "סימטריה $\\langle f,g\\rangle=\\langle g,f\\rangle$",
+     "points": 3
+    },
+    {
+     "text": "חיבוריות ברכיב הראשון",
+     "points": 4
+    },
+    {
+     "text": "הומוגניות $\\langle\\alpha f,g\\rangle=\\alpha\\langle f,g\\rangle$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק אי-שליליות ולשכוח את ההגדרה המלאה: $\\langle f,f\\rangle=0$ רק עבור $f=0$ (פונקציה רציפה).",
+    "לשכוח שהפונקציה $e^x$ חיובית תמיד, ולכן היא אינה משנה את סימן האינטגרנד."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $f=g=1$, מהו $\\langle f,g\\rangle=\\int_0^1e^x\\,dx$ (עיגול עד $0.001$)?",
+     "answer": 1.71828,
+     "tol": 0.001,
+     "explain": "$e-1\\approx1.718$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $f(x)=x$ ו-$g=1$, מהו $\\langle f,g\\rangle=\\int_0^1xe^x\\,dx$ ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$\\left[(x-1)e^x\\right]_0^1=0-(-1)=1$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי הוכחת החיבוריות.",
+     "lines": [
+      "$\\langle f+h,g\\rangle=\\int_0^1e^x\\big(f(x)+h(x)\\big)g(x)\\,dx$",
+      "$=\\int_0^1e^x\\big(f(x)g(x)+h(x)g(x)\\big)dx$",
+      "$=\\int_0^1e^xf(x)g(x)\\,dx+\\int_0^1e^xh(x)g(x)\\,dx$",
+      "$=\\langle f,g\\rangle+\\langle h,g\\rangle$"
+     ],
+     "explain": "הצבת ההגדרה, פתיחת סוגריים, פיצול האינטגרל, וזיהוי שני המחוברים."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה בהוכחת ההומוגניות יש טעות?",
+     "lines": [
+      "$\\langle\\alpha f,g\\rangle=\\int_0^1e^x\\big(\\alpha f(x)\\big)g(x)\\,dx$",
+      "$=\\alpha^2\\int_0^1e^xf(x)g(x)\\,dx$",
+      "$=\\alpha\\langle f,g\\rangle$"
+     ],
+     "bugIndex": 1,
+     "explain": "הקבוע $\\alpha$ יוצא מהאינטגרל פעם אחת: $\\alpha\\int_0^1e^xf(x)g(x)\\,dx$ ולא $\\alpha^2$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -64,7 +238,54 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "האיבר הניטרלי $I=\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}^0$ ב-$H$",
+     "points": 2
+    },
+    {
+     "text": "חישוב החזקות $2,3$ מודולו $5$",
+     "points": 4
+    },
+    {
+     "text": "החזקה הרביעית שווה ל-$I$",
+     "points": 2
+    },
+    {
+     "text": "$|H|=4$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שכל הרכיבים מחושבים מודולו $5$.",
+    "לספור את $I$ פעמיים, או לשכוח לכלול אותו."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $4$ בחבורה $\\mathbb{Z}_5^*$ (החזקה הקטנה $k$ עם $4^k\\equiv1\\pmod5$) ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$4^2=16\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $3$ ב-$\\mathbb{Z}_5^*$ ?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$3,4,2,1$: $3^2=9\\equiv4$, $3^3=27\\equiv2$, $3^4=81\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $H$ ?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "האיבר $\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}$ חוזר ליחידה בחזקת $\\mathrm{lcm}(2,4)=4$ לראשונה, ולכן $|H|=4$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -76,7 +297,107 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 13
+   "points": 13,
+   "rubric": [
+    {
+     "text": "פולינום אופייני $(x-2a)\\left((x-a)^2-1\\right)$",
+     "points": 4
+    },
+    {
+     "text": "ערכים עצמיים $2a$ , $a-1$ , $a+1$",
+     "points": 3
+    },
+    {
+     "text": "חיובית: $a\\ge1$ וחיובית לחלוטין: $a>1$",
+     "points": 2
+    },
+    {
+     "text": "שלילית: $a\\le-1$ ושלילית לחלוטין: $a<-1$",
+     "points": 2
+    },
+    {
+     "text": "אף אחת מהן: $-1<a<1$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבלבל בין חיובית ($a\\ge1$) לחיובית לחלוטין ($a>1$).",
+    "לשכוח את הערך העצמי $2a$, שמשפיע רק כאשר $a>0$ (אך מתקיים אוטומטית כאשר $a\\ge1$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=3$, מהו הערך העצמי $a-1$ ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$3-1=2$."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $a$ המטריצה מוגדרת חיובית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a>1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a>0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a\\ge1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$a>-1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $2a>0$ , $a-1>0$ , $a+1>0$, כלומר $a>1$. עבור $a=1$ יש ערך עצמי $0$ (רק חיובית), ועבור $0<a<1$ הערך $a-1$ שלילי."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $a$ המטריצה מוגדרת שלילית לחלוטין?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a<-1$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a<0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$a\\le-1$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$a<1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $2a<0$ , $a-1<0$ , $a+1<0$, כלומר $a<-1$. עבור $-1\\le a<0$ הערך $a+1$ אינו שלילי."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=0$, כמה ערכים עצמיים חיוביים ממש יש למטריצה?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "הערכים העצמיים הם $0,-1,1$, ולכן ערך אחד חיובי, והמטריצה אינה אף אחת מהסוגים."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -90,7 +411,47 @@
    "part": "ב",
    "points": 6,
    "contextId": "c3",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "פתיחת $\\langle\\vec\\alpha,\\vec\\beta\\rangle$ לפי לינאריות",
+     "points": 2
+    },
+    {
+     "text": "שימוש באורתונורמליות",
+     "points": 2
+    },
+    {
+     "text": "התוצאה $1-1=0$ והמסקנה $\\vec\\beta\\perp\\vec\\alpha$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את האיבר $2\\langle\\vec v,\\vec u\\rangle$ (המקדם $2$ של $\\vec v$ ב-$\\vec\\alpha$).",
+    "לחשב $\\langle\\vec u,\\vec u\\rangle=0$ במקום $1$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "במערכת אורתונורמלית, מהו הסכום $\\sum\\alpha_i\\beta_i$ למקדמים $(1,2,1)$ ו-$(1,0,-1)$ ?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$1\\cdot1+2\\cdot0+1\\cdot(-1)=0$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי החישוב.",
+     "lines": [
+      "$\\langle\\vec\\alpha,\\vec\\beta\\rangle=\\langle\\vec u+2\\vec v+\\vec w,\\ \\vec u-\\vec w\\rangle$",
+      "לפי לינאריות: $\\langle\\vec u,\\vec u\\rangle-\\langle\\vec u,\\vec w\\rangle+2\\langle\\vec v,\\vec u\\rangle-2\\langle\\vec v,\\vec w\\rangle+\\langle\\vec w,\\vec u\\rangle-\\langle\\vec w,\\vec w\\rangle$",
+      "אורתונורמליות: $1-0+2\\cdot0-2\\cdot0+0-1$",
+      "התוצאה $0$, ולכן $\\vec\\beta\\perp\\vec\\alpha$"
+     ],
+     "explain": "הצבה, פתיחה, אורתונורמליות, תוצאה."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -103,7 +464,71 @@
    "confidence": "high",
    "part": "ג",
    "points": 6,
-   "contextId": "c3"
+   "contextId": "c3",
+   "rubric": [
+    {
+     "text": "הנוסחה $\\|\\vec x\\|^2=\\sum\\alpha_i^2$ במערכת אורתונורמלית",
+     "points": 2
+    },
+    {
+     "text": "$\\|\\vec\\alpha\\|=\\sqrt6$",
+     "points": 2
+    },
+    {
+     "text": "$\\|\\vec\\beta\\|=\\sqrt2$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לחשב $\\|\\vec\\alpha\\|=\\sqrt{1+2+1}$ (בלי להעלות את $2$ בריבוע).",
+    "לכתוב $\\|\\vec\\beta\\|=0$ בגלל המקדם $-1$: הריבוע של $-1$ הוא $1$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "אם $\\vec x=\\sum\\alpha_i\\vec u_i$ במערכת אורתונורמלית, כמה שווה $\\|\\vec x\\|^2$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\sum\\alpha_i^2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\left(\\sum\\alpha_i\\right)^2$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\sum\\alpha_i$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\sum|\\alpha_i|$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "בגלל האורתונורמליות המכפלות המעורבות מתאפסות. עבור $(1,2,1)$ מתקבל $6$, אך $\\left(\\sum\\alpha_i\\right)^2=16$, $\\sum\\alpha_i=4$ ו-$\\sum|\\alpha_i|=4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|\\vec\\alpha\\|^2$ ?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$1+4+1=6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|\\vec\\beta\\|^2$ ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$1+1=2$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -117,7 +542,60 @@
    "part": "א",
    "points": 5,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "חישוב שני הצדדים $\\binom xy*\\binom ab$ ו-$\\binom ab*\\binom xy$",
+     "points": 3
+    },
+    {
+     "text": "השוואה: $xb+ya=ay+bx$ ולכן הפעולה קומוטטיבית",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק זוג מספרים אחד: זו אינה הוכחה.",
+    "להשוות את הרכיב הראשון בלבד ולשכוח את השני $by=yb$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הראשון של $\\binom12*\\binom34$ ?",
+     "answer": 10,
+     "tol": 0,
+     "explain": "$ay+bx=1\\cdot4+2\\cdot3=10$. גם $\\binom34*\\binom12=\\binom{3\\cdot2+4\\cdot1}{8}$ נותן $10$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע הפעולה קומוטטיבית?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "הביטוי $ay+bx$ אינו משתנה כאשר מחליפים בין $(a,b)$ ל-$(x,y)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי הפעולה אסוציאטיבית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי יש איבר ניטרלי"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "כי כל איבר הפיך"
+      }
+     ],
+     "correctId": "a",
+     "explain": "מחליפים $(a,b)\\leftrightarrow(x,y)$ ומקבלים $xb+ya=ay+bx$ וגם $yb=by$. אסוציאטיביות, איבר ניטרלי והפיכות אינם גוררים קומוטטיביות."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -130,7 +608,50 @@
    "confidence": "high",
    "part": "ב",
    "points": 6,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "משוואת האיבר הניטרלי $\\binom ab*\\binom{e_1}{e_2}=\\binom ab$",
+     "points": 2
+    },
+    {
+     "text": "פתרון $e_2=1$ ו-$e_1=0$",
+     "points": 3
+    },
+    {
+     "text": "בדיקה ש-$(0,1)$ שייך לקבוצה (שונה מאפס)",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שהאיבר הניטרלי חייב להשתייך ל-$\\mathbb{R}^2\\setminus\\{(0,0)\\}$.",
+    "לחשב את $e_1$ לפני $e_2$: המשוואה השנייה $be_2=b$ קובעת קודם את $e_2$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהמשוואה $be_2=b$ (לכל $b\\ne0$), מהו $e_2$ ?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "מחלקים ב-$b$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "אחרי הצבת $e_2=1$, המשוואה $a\\cdot1+be_1=a$ נותנת $be_1=0$. מהו $e_1$ ?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$b\\ne0$ לכן $e_1=0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב הראשון של $\\binom52*\\binom01$ ?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$ay+bx=5\\cdot1+2\\cdot0=5$, והרכיב השני $2\\cdot1=2$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -144,7 +665,75 @@
    "part": "ג",
    "points": 7,
    "contextId": "c4",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "משוואות ההופכי $ay+bx=0$ ו-$by=1$",
+     "points": 3
+    },
+    {
+     "text": "פתרון $y=\\frac1b$ , $x=-\\frac a{b^2}$ כאשר $b\\ne0$",
+     "points": 2
+    },
+    {
+     "text": "עבור $b=0$ אין הופכי",
+     "points": 1
+    },
+    {
+     "text": "דוגמה: $\\binom50$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להסיק שהמבנה חבורה אחרי שמצאנו הופכי רק עבור $b\\ne0$.",
+    "לחפש הופכי של $\\binom50$: המשוואה $by=1$ נותנת $0=1$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $\\binom ab=\\binom12$, מהו $y$ בהופכי $\\binom xy$ (מ-$by=1$) ?",
+     "answer": 0.5,
+     "tol": 0.001,
+     "explain": "$y=\\frac1b=\\frac12$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור אותו האיבר, מהו $x=-\\frac{a}{b^2}$ ?",
+     "answer": -0.25,
+     "tol": 0.001,
+     "explain": "$-\\frac14$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מה הסיבה לכך שהמבנה אינו חבורה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "לאיברים עם $b=0$ (כמו $\\binom50$) אין הופכי"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "אין איבר ניטרלי"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "הפעולה אינה קומוטטיבית"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "לכל איבר יש שני הופכיים שונים"
+      }
+     ],
+     "correctId": "a",
+     "explain": "האיבר הניטרלי $\\binom01$ קיים והפעולה קומוטטיבית, ולאיבר עם $b\\ne0$ יש הופכי יחיד. עבור $b=0$ המשוואה $by=1$ אינה פתירה."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -156,7 +745,79 @@
    "official": true,
    "confidence": "high",
    "part": "ד",
-   "points": 7
+   "points": 7,
+   "rubric": [
+    {
+     "text": "הפעלת קושי-שוורץ על $\\binom ab$ ו-$\\binom ba$",
+     "points": 2
+    },
+    {
+     "text": "חישוב המכפלה הפנימית $ab+ba$",
+     "points": 1
+    },
+    {
+     "text": "שוויון הנורמות $\\sqrt{a^2+b^2}$",
+     "points": 2
+    },
+    {
+     "text": "העלאה בריבוע",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבחור את הווקטורים $\\binom ab$ ו-$\\binom{-b}{a}$: המכפלה הפנימית שלהם $0$.",
+    "להעלות בריבוע בלי לשים לב שהאגף השמאלי עלול להיות שלילי; מספיק להשתמש בערך מוחלט."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "אילו שני וקטורים לוקחים בקושי-שוורץ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\binom ab$ ו-$\\binom ba$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\binom ab$ ו-$\\binom{-b}{a}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\binom ab$ ו-$\\binom ab$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\binom aa$ ו-$\\binom bb$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "רק הזוג $\\binom ab,\\binom ba$ נותן מכפלה פנימית $2ab$. הזוג $\\binom ab,\\binom{-b}{a}$ נותן $0$, הזוג $\\binom ab,\\binom ab$ נותן $a^2+b^2$ (ללא אי-שוויון חדש), והזוג $\\binom aa,\\binom bb$ נותן $2ab\\le2|ab|$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=1$ ו-$b=2$, מהו $ab+ba$ ?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$2+2=4$ ואילו $a^2+b^2=5$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "לפי קושי-שוורץ עבור $\\binom ab,\\binom ba$: $\\left|\\left\\langle\\binom ab,\\binom ba\\right\\rangle\\right|\\le\\left\\|\\binom ab\\right\\|\\left\\|\\binom ba\\right\\|$",
+      "שתי הנורמות שוות ל-$\\sqrt{a^2+b^2}$",
+      "לכן $ab+ba\\le a^2+b^2$",
+      "נעלה בריבוע ונקבל $(ab+ba)^2\\le(a^2+b^2)^2$"
+     ],
+     "explain": "קושי-שוורץ, שוויון הנורמות, צמצום, ואז העלאה בריבוע."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -168,7 +829,69 @@
    "official": false,
    "confidence": "high",
    "part": "א",
-   "points": 18
+   "points": 18,
+   "rubric": [
+    {
+     "text": "חישוב $A^TA=\\begin{pmatrix}3&-1\\\\-1&3\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "ערכים עצמיים $4,2$",
+     "points": 4
+    },
+    {
+     "text": "וקטורים עצמיים מנורמלים (עמודות $V$)",
+     "points": 4
+    },
+    {
+     "text": "ערכים סינגולריים $\\sigma_1=2$ , $\\sigma_2=\\sqrt2$ ומטריצה $\\Sigma$",
+     "points": 2
+    },
+    {
+     "text": "עמודות $U$: $\\vec u_i=\\frac1{\\sigma_i}A\\vec v_i$",
+     "points": 3
+    },
+    {
+     "text": "השלמת $\\vec u_3$ ל-$U$ אורתוגונלית",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשתמש ב-$\\lambda_i$ במקום $\\sigma_i=\\sqrt{\\lambda_i}$ בעמודות $U$ וב-$\\Sigma$.",
+    "לשכוח להשלים את $\\vec u_3$ כך ש-$U$ תהיה אורתוגונלית מסדר $3\\times3$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר שמחוץ לאלכסון ב-$A^TA$ ?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$(-1)(1)+(-1)(1)+(1)(1)=-1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הגדול של $A^TA$ ?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$(3-\\lambda)^2=1$ נותן $\\lambda=4,2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי $\\sigma_2$ (עיגול עד $0.001$)?",
+     "answer": 1.41421,
+     "tol": 0.001,
+     "explain": "$\\sigma_2=\\sqrt{\\lambda_2}=\\sqrt2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "אם $\\vec v_1=\\frac1{\\sqrt2}(1,-1)^T$, מהו הרכיב הראשון של $\\vec u_1=\\frac1{\\sigma_1}A\\vec v_1$ (עיגול עד $0.001$)?",
+     "answer": -0.70711,
+     "tol": 0.001,
+     "explain": "$\\vec u_1=\\frac1{\\sqrt2}(-1,-1,0)^T$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -180,7 +903,61 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 7
+   "points": 7,
+   "rubric": [
+    {
+     "text": "צמצום המשוואה הראשונה ל-$x\\equiv2\\pmod3$",
+     "points": 1
+    },
+    {
+     "text": "$m=105$ ו-$M_1=35,M_2=21,M_3=15$",
+     "points": 2
+    },
+    {
+     "text": "$x_1=2,x_2=1,x_3=1$",
+     "points": 2
+    },
+    {
+     "text": "הרכבה: $263\\equiv53\\pmod{105}$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להציב את השאריות בלי לצמצם את $2x\\equiv1\\pmod3$.",
+    "לשכוח את הצמצום מודולו $105$ בסוף."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי $a_1$ , כלומר פתרון $2x\\equiv1\\pmod3$ ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$2\\cdot2=4\\equiv1\\pmod3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_1$ , פתרון $35x_1\\equiv1\\pmod3$ ?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$35\\equiv2$ ו-$2\\cdot2\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסכום $a_1M_1x_1+a_2M_2x_2+a_3M_3x_3$ לפני הצמצום?",
+     "answer": 263,
+     "tol": 0,
+     "explain": "$2\\cdot35\\cdot2+3\\cdot21\\cdot1+4\\cdot15\\cdot1=140+63+60=263$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בין $0$ ל-$104$ ?",
+     "answer": 53,
+     "tol": 0,
+     "explain": "$263-210=53$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }
