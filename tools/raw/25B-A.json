@@ -28,7 +28,80 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "הצבת $A$ ו-$\\vec b$ (עמודת איקסים ועמודת אחדות)",
+     "points": 3
+    },
+    {
+     "text": "משוואות נורמליות $A^TA\\binom mn=A^T\\vec b$ וחישוב שני האגפים",
+     "points": 4
+    },
+    {
+     "text": "פתרון: $m=0.35$, $n=4$ והישר",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את $A\\vec x=\\vec b$ ישירות: חמש הנקודות אינן על ישר אחד.",
+    "לשכוח שאחת הנקודות היא עם $x=-2$ ולכן הסכומים $\\sum x_i$ ו-$\\sum x_i^2$ שונים מהרגיל."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו מערכת פותרים בשיטת הריבועים הפחותים?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$A\\binom mn=\\vec b$ (פתרון מדויק)"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$A^TA\\binom mn=A^T\\vec b$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$AA^T\\binom mn=\\vec b$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "הפתרון כופל ב-$A^T$ משמאל. המערכת $A\\vec x=\\vec b$ אינה פתירה, ו-$AA^T$ היא מטריצה $5\\times5$ ולא מתאימה."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$A^TA$, כלומר $\\sum x_i^2$?",
+     "answer": 160,
+     "tol": 0,
+     "explain": "$4+1+25+49+81=160$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הראשון ב-$A^T\\vec b$, כלומר $\\sum x_iy_i$?",
+     "answer": 136,
+     "tol": 0,
+     "explain": "$-6+5+30+35+72=136$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$?",
+     "answer": 0.35,
+     "tol": 0.001,
+     "explain": "פתרון $\\begin{pmatrix}160&20\\\\20&5\\end{pmatrix}\\binom mn=\\binom{136}{27}$ נותן $m=0.35$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו חיתוך הצירים $n$?",
+     "answer": 4,
+     "tol": 0.001,
+     "explain": "מאותה מערכת $n=4$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -40,7 +113,62 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "סימון $A\\bar u=\\lambda\\bar u$ ו-$A\\bar v=\\mu\\bar v$",
+     "points": 3
+    },
+    {
+     "text": "$\\bar v^TA\\bar u=\\lambda\\langle\\bar u,\\bar v\\rangle$",
+     "points": 4
+    },
+    {
+     "text": "שימוש בסימטריה $A=A^T$: $\\bar v^TA\\bar u=(A\\bar v)^T\\bar u=\\mu\\langle\\bar u,\\bar v\\rangle$",
+     "points": 5
+    },
+    {
+     "text": "$\\lambda\\ne\\mu$ ולכן $\\langle\\bar u,\\bar v\\rangle=0$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לא להשתמש בסימטריה של $A$: ללא $A=A^T$ הטענה שגויה.",
+    "להסיק $\\lambda=\\mu$ במקום לחלק ב-$\\lambda-\\mu\\ne0$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "דוגמה: $A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$, $\\bar u=(1,1)^T$ (ערך עצמי $3$) ו-$\\bar v=(1,-1)^T$ (ערך עצמי $1$). מהו $\\langle\\bar u,\\bar v\\rangle$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$1\\cdot1+1\\cdot(-1)=0$, כפי שהטענה מבטיחה."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$A\\bar u=\\lambda\\bar u$ ו-$A\\bar v=\\mu\\bar v$ עם $\\lambda\\ne\\mu$",
+      "נחשב את $\\bar v^TA\\bar u$ בשתי דרכים: $\\lambda\\langle\\bar u,\\bar v\\rangle$, ומצד שני (כי $A=A^T$) $(A\\bar v)^T\\bar u=\\mu\\langle\\bar u,\\bar v\\rangle$",
+      "לכן $(\\lambda-\\mu)\\langle\\bar u,\\bar v\\rangle=0$",
+      "מכיוון ש-$\\lambda\\ne\\mu$ מתקיים $\\langle\\bar u,\\bar v\\rangle=0$"
+     ],
+     "explain": "הנחות, שתי דרכי חישוב, חיסור, ואז חלוקה ב-$\\lambda-\\mu$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$\\bar v^TA\\bar u=\\bar v^T\\lambda\\bar u=\\lambda\\langle\\bar u,\\bar v\\rangle$",
+      "$\\bar v^TA\\bar u=\\bar v^TA^T\\bar u=(A\\bar v)^T\\bar u=\\lambda\\,\\bar v^T\\bar u$",
+      "לכן $\\lambda\\langle\\bar u,\\bar v\\rangle=\\mu\\langle\\bar u,\\bar v\\rangle$"
+     ],
+     "bugIndex": 1,
+     "explain": "$A\\bar v=\\mu\\bar v$, ולכן $(A\\bar v)^T\\bar u=\\mu\\,\\bar v^T\\bar u$ ולא $\\lambda$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -53,7 +181,70 @@
    "confidence": "med",
    "part": "א",
    "points": 7,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "סגירות: מכפלה מהצורה הנדרשת",
+     "points": 2
+    },
+    {
+     "text": "אסוציאטיביות כפל מטריצות",
+     "points": 1
+    },
+    {
+     "text": "איבר ניטרלי $I\\in H$",
+     "points": 1
+    },
+    {
+     "text": "הופכי: $a=x^{-1}$, $b=-y$ ו-$\\begin{pmatrix}x^{-1}&-y\\\\0&x\\end{pmatrix}\\in H$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שהחישוב מודולו $7$ ושה-$x^{-1}$ הוא הופכי ב-$\\mathbb{Z}_7$.",
+    "לשכוח לבדוק שהמטריצה ההופכית עצמה שייכת ל-$H$ (האלכסון $x^{-1},x$ וההפכי של $x^{-1}$ הוא $x$)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "$x=2$ ו-$a=3$ ב-$\\mathbb{Z}_7$. מהו $(xa)^{-1}$, האיבר הימני-התחתון במכפלה?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$xa=6$ ו-$6\\cdot6=36\\equiv1\\pmod7$, ולכן $(xa)^{-1}=6$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי מציאת ההופכי.",
+     "lines": [
+      "נדרוש $\\begin{pmatrix}x&y\\\\0&x^{-1}\\end{pmatrix}\\begin{pmatrix}a&b\\\\0&a^{-1}\\end{pmatrix}=I$",
+      "מהאלכסון: $xa=1$, ולכן $a=x^{-1}$",
+      "מהפינה הימנית העליונה: $xb+ya^{-1}=0$, ולכן $b=-y$",
+      "ההופכית היא $\\begin{pmatrix}x^{-1}&-y\\\\0&x\\end{pmatrix}\\in H$"
+     ],
+     "explain": "קודם מוצאים את $a$, ורק אחר כך אפשר להציב $a^{-1}=x$ בחישוב $b$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "נדרוש $\\begin{pmatrix}x&y\\\\0&x^{-1}\\end{pmatrix}\\begin{pmatrix}a&b\\\\0&a^{-1}\\end{pmatrix}=I$",
+      "מהאלכסון: $xa=1$, ולכן $a=x^{-1}$",
+      "מהפינה הימנית העליונה: $xb+ya^{-1}=0$, ולכן $b=y$",
+      "ההופכית היא $\\begin{pmatrix}x^{-1}&y\\\\0&x\\end{pmatrix}\\in H$"
+     ],
+     "bugIndex": 2,
+     "explain": "$a^{-1}=x$, ולכן $xb+yx=0$ ו-$b=-y$ ולא $y$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "נתון $y=3$ ב-$\\mathbb{Z}_7$. מהו הערך של $b=-y$ בין $0$ ל-$6$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$-3\\equiv4\\pmod7$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -66,7 +257,50 @@
    "confidence": "med",
    "part": "ב",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "מספר האפשרויות ל-$x$: $6$ (כל $x\\ne0$)",
+     "points": 1
+    },
+    {
+     "text": "מספר האפשרויות ל-$y$: $7$",
+     "points": 1
+    },
+    {
+     "text": "הסדר $6\\cdot7=42$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לספור גם $x=0$: אז המטריצה אינה בעלת $x^{-1}$.",
+    "לספור את $x^{-1}$ כבחירה נוספת: הוא נקבע לפי $x$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה אפשרויות יש ל-$x$ ב-$\\mathbb{Z}_7$ ($x\\ne0$)?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "האיברים $1,\\dots,6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה אפשרויות יש ל-$y$ ב-$\\mathbb{Z}_7$?",
+     "answer": 7,
+     "tol": 0,
+     "explain": "$y$ חופשי: $0,\\dots,6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $|H|$?",
+     "answer": 42,
+     "tol": 0,
+     "explain": "לפי עקרון הכפל $6\\cdot7=42$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -79,7 +313,46 @@
    "confidence": "med",
    "part": "ג",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "$A^k=\\begin{pmatrix}1&k\\\\0&1\\end{pmatrix}$",
+     "points": 2
+    },
+    {
+     "text": "$k\\equiv0\\pmod7$ לראשונה ב-$k=7$, ולכן $o(A)=7$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שהחישוב מודולו $7$ ולהסיק שהסדר אינסופי.",
+    "לעצור לפני $k=7$: $A^k\\ne I$ לכל $1\\le k\\le6$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$A^5$ (מודולו $7$)?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$A^k=\\begin{pmatrix}1&k\\\\0&1\\end{pmatrix}$, ולכן $5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון ב-$A^7$ מודולו $7$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$7\\equiv0\\pmod7$, ולכן $A^7=I$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $A$?",
+     "answer": 7,
+     "tol": 0,
+     "explain": "$k=7$ הוא החזקה החיובית הקטנה ביותר עם $A^k=I$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -91,7 +364,75 @@
    "official": false,
    "confidence": "med",
    "part": "ד",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "חישוב $A\\bar u=\\bar u\\left(\\bar u^T\\bar u\\right)=\\bar u$ בעזרת אורתונורמליות",
+     "points": 4
+    },
+    {
+     "text": "אותו דבר ל-$\\bar v$ ול-$\\bar w$",
+     "points": 2
+    },
+    {
+     "text": "$A$ קבועה על בסיס, ולכן $A=I$",
+     "points": 4
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח ש-$\\bar u^T\\bar v=0$ (האורתוגונליות) מאפסת את שאר המחוברים.",
+    "להסיק $A=I$ מכך ש-$A\\bar u=\\bar u$ לווקטור אחד בלבד."
+   ],
+   "steps": [
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$A\\bar u=\\left(\\bar u\\bar u^T+\\bar v\\bar v^T+\\bar w\\bar w^T\\right)\\bar u$",
+      "$=\\bar u\\left(\\bar u^T\\bar u\\right)+\\bar v\\left(\\bar v^T\\bar u\\right)+\\bar w\\left(\\bar w^T\\bar u\\right)$",
+      "$=\\bar u\\cdot1+\\bar v\\cdot0+\\bar w\\cdot0=\\bar u$ (אורתונורמליות)",
+      "באותו אופן $A\\bar v=\\bar v$ ו-$A\\bar w=\\bar w$",
+      "$A\\bar x=\\bar x$ על בסיס, ולכן $A=I$"
+     ],
+     "explain": "הצבה, הוצאת הסקלרים, אורתונורמליות, הכללה לשאר הווקטורים, וסיכום."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$A\\bar u=\\left(\\bar u\\bar u^T+\\bar v\\bar v^T+\\bar w\\bar w^T\\right)\\bar u$",
+      "$=\\bar u\\left(\\bar u^T\\bar u\\right)+\\bar v\\left(\\bar v^T\\bar u\\right)+\\bar w\\left(\\bar w^T\\bar u\\right)$",
+      "$=\\bar u\\cdot0+\\bar v\\cdot1+\\bar w\\cdot0=\\bar u$"
+     ],
+     "bugIndex": 2,
+     "explain": "$\\bar u^T\\bar u=\\|\\bar u\\|^2=1$ ו-$\\bar v^T\\bar u=\\bar w^T\\bar u=0$, כלומר $\\bar u\\cdot1+\\bar v\\cdot0+\\bar w\\cdot0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע $A\\bar x=\\bar x$ על $\\bar u,\\bar v,\\bar w$ גוררת $A=I$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "כי $\\bar u$ הוא וקטור יחידה"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כי $A$ סימטרית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כי העתקה לינארית נקבעת לפי פעולתה על בסיס"
+      }
+     ],
+     "correctId": "c",
+     "explain": "$A$ ו-$I$ מתלכדות על בסיס של $\\mathbb{R}^3$. סימטריה או נרמול של וקטור אחד אינם מספיקים (למשל $\\bar u\\bar u^T$ סימטרית ואינה $I$)."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -103,7 +444,75 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חישוב הפולינום האופייני: $(\\lambda-k)\\left(-\\lambda^2+2k\\lambda+k^2\\right)$",
+     "points": 5
+    },
+    {
+     "text": "ערכים עצמיים $k,\\ k(1-\\sqrt2),\\ k(1+\\sqrt2)$",
+     "points": 3
+    },
+    {
+     "text": "לכל $k\\ne0$ סימנים מעורבים: לא חיובית/שלילית (לחלוטין)",
+     "points": 4
+    },
+    {
+     "text": "המקרה $k=0$: מטריצת האפס",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את המקרה $k=0$, שבו כל הערכים העצמיים אפס.",
+    "לשכוח ש-$1-\\sqrt2<0$: הסימן של $k(1-\\sqrt2)$ הפוך לסימן של $k$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $k=1$, מהו הערך העצמי $k(1-\\sqrt2)$ (ערך מספרי)?",
+     "answer": -0.4142136,
+     "tol": 0.001,
+     "explain": "$1-\\sqrt2\\approx-0.414$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $k=-3$, כמה ערכים עצמיים שליליים יש למטריצה?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "הערכים: $-3$, $-3(1-\\sqrt2)\\approx1.24$, $-3(1+\\sqrt2)\\approx-7.24$. שניים שליליים."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהי המטריצה עבור $k=0$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "מוגדרת חיובית לחלוטין"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "מטריצת האפס: מוגדרת חיובית וגם מוגדרת שלילית (לא לחלוטין)"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "מוגדרת שלילית לחלוטין"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "לא מוגדרת"
+      }
+     ],
+     "correctId": "b",
+     "explain": "כל הערכים העצמיים הם $0$: $\\bar v^TA\\bar v=0\\ge0$ וגם $\\le0$, אבל לא $>0$ ולא $<0$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -115,7 +524,74 @@
    "official": false,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "סגירות: $\\begin{pmatrix}1&n\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&m\\\\0&1\\end{pmatrix}=\\begin{pmatrix}1&m+n\\\\0&1\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "אסוציאטיביות כפל מטריצות",
+     "points": 1
+    },
+    {
+     "text": "איבר ניטרלי ($n=0$)",
+     "points": 2
+    },
+    {
+     "text": "הופכי: $n\\mapsto-n$",
+     "points": 2
+    },
+    {
+     "text": "הסדר אינסופי",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח למצוא את הסדר של $G$ (השאלה מבקשת גם אותו).",
+    "לסמן את ההופכי $1/n$: בחבורה זו החיבור בפינה, ולכן ההופכי הוא $-n$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון במכפלת $\\begin{pmatrix}1&3\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&4\\\\0&1\\end{pmatrix}$?",
+     "answer": 7,
+     "tol": 0,
+     "explain": "$n+m=3+4=7$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הימני-העליון בהופכי של $\\begin{pmatrix}1&5\\\\0&1\\end{pmatrix}$?",
+     "answer": -5,
+     "tol": 0,
+     "explain": "ההופכי הוא $\\begin{pmatrix}1&-5\\\\0&1\\end{pmatrix}$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו הסדר של $G$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$7$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "אינסופי, כי לכל $n\\in\\mathbb{Z}$ מתאימה מטריצה שונה"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$1$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "ה-$n$ בפינה מזהה את המטריצה, ו-$\\mathbb{Z}$ אינסופית; לכן אין סדר סופי."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -128,7 +604,38 @@
    "confidence": "med",
    "part": "א",
    "points": 3,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "$a\\odot b=ab+a+b$ מכפלה וסכום של שלמים",
+     "points": 2
+    },
+    {
+     "text": "התוצאה שייכת ל-$\\mathbb{Z}$, ולכן $\\odot$ פעולה בינארית",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק שהביטוי מוגדר ולא שהתוצאה נשארת ב-$\\mathbb{Z}$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $2\\odot3$?",
+     "answer": 11,
+     "tol": 0,
+     "explain": "$2\\cdot3+2+3=11$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $(-4)\\odot5$?",
+     "answer": -19,
+     "tol": 0,
+     "explain": "$-20-4+5=-19$, שלם."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -142,7 +649,61 @@
    "part": "ב",
    "points": 4,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "פיתוח $(a\\odot b)\\odot c=abc+ab+ac+bc+a+b+c$",
+     "points": 2
+    },
+    {
+     "text": "פיתוח $a\\odot(b\\odot c)$ לאותו ביטוי והמסקנה שהפעולה אסוציאטיבית",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק אסוציאטיביות על דוגמה אחת בלבד: דוגמה מראה אי-אסוציאטיביות, אך לא מוכיחה אסוציאטיביות."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $(1\\odot2)\\odot3$?",
+     "answer": 23,
+     "tol": 0,
+     "explain": "$1\\odot2=5$ ו-$5\\odot3=15+5+3=23$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $1\\odot(2\\odot3)$?",
+     "answer": 23,
+     "tol": 0,
+     "explain": "$2\\odot3=11$ ו-$1\\odot11=11+1+11=23$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו הפיתוח המשותף של $(a\\odot b)\\odot c$ ו-$a\\odot(b\\odot c)$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$abc+ab+ac+bc+a+b+c$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$abc+a+b+c$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$abc+ab+ac+bc$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "פתיחת הסוגריים נותנת את כל המכפלות הזוגיות ואת $a+b+c$. הבחירות האחרות מחסירות מחוברים."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -156,7 +717,50 @@
    "part": "ג",
    "points": 4,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "נדרוש $a\\odot e=a$ לכל $a$: $e(a+1)=0$",
+     "points": 2
+    },
+    {
+     "text": "בחירת $a=1$ נותנת $e=0$, והוא ניטרלי",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק $a\\odot e=a$ ולא את $e\\odot a=a$ (כאן הפעולה חילופית, ולכן זה מספיק).",
+    "לבחור $a=-1$, שנותן $0=0$ ואינו חושף מידע על $e$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מ-$e(a+1)=0$ לכל $a\\in\\mathbb{Z}$: איזה ערך של $a$ מוביל ישירות ל-$e$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$a=1$, ואז $2e=0$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$a=-1$, ואז $0\\cdot e=0$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "עבור $a=-1$ המשוואה אינה תלויה ב-$e$. עבור $a=1$ מקבלים $2e=0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הניטרלי $e$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$2e=0$ ולכן $e=0$; ואכן $a\\odot0=a$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -170,7 +774,59 @@
    "part": "ד",
    "points": 4,
    "contextId": "c4",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "הניטרלי הוא $0$, ולכן הופכי של $a$ הוא $b$ עם $a\\odot b=0$",
+     "points": 1
+    },
+    {
+     "text": "עבור $a=-1$: $(-1)\\odot b=-1\\ne0$ לכל $b$",
+     "points": 2
+    },
+    {
+     "text": "מסקנה: אין הופכי ולכן אינה חבורה",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לחפש הופכי ביחס ל-$1$ (הכפל הרגיל) ולא ביחס לניטרלי $0$ של $\\odot$.",
+    "להסיק שאין חבורה בלי להצביע על איבר אחד ספציפי ללא הופכי."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $(-1)\\odot7$?",
+     "answer": -1,
+     "tol": 0,
+     "explain": "$-7-1+7=-1$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מדוע $(\\mathbb{Z},\\odot)$ אינה חבורה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "ל-$-1$ אין הופכי: $(-1)\\odot b=-1\\ne0$ לכל $b$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "הפעולה אינה אסוציאטיבית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "אין איבר ניטרלי"
+      }
+     ],
+     "correctId": "a",
+     "explain": "סעיפים ב-ג הראו שהפעולה אסוציאטיבית ושהניטרלי הוא $0$, ולכן הכשל הוא בהופכי."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -182,7 +838,62 @@
    "official": false,
    "confidence": "med",
    "part": "ה",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "שוויון הנורמות שקול לשוויון ריבועי הנורמות",
+     "points": 2
+    },
+    {
+     "text": "פיתוח $\\|\\bar u\\pm\\bar v\\|^2$",
+     "points": 4
+    },
+    {
+     "text": "צמצום והסקת $\\langle\\bar u,\\bar v\\rangle=0$",
+     "points": 2
+    },
+    {
+     "text": "הכיוון ההפוך (שקילות)",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להוכיח רק כיוון אחד: צריך ״אם ורק אם״ (או שרשרת שקילויות).",
+    "לשכוח את הגורם $2$ במכפלה הפנימית: $\\|\\bar u\\pm\\bar v\\|^2=\\|\\bar u\\|^2\\pm2\\langle\\bar u,\\bar v\\rangle+\\|\\bar v\\|^2$."
+   ],
+   "steps": [
+    {
+     "type": "order",
+     "prompt": "סדרו את שרשרת השקילויות.",
+     "lines": [
+      "$\\|\\bar u-\\bar v\\|=\\|\\bar u+\\bar v\\|\\iff\\|\\bar u-\\bar v\\|^2=\\|\\bar u+\\bar v\\|^2$ (נורמות אי-שליליות)",
+      "$\\iff\\|\\bar u\\|^2-2\\langle\\bar u,\\bar v\\rangle+\\|\\bar v\\|^2=\\|\\bar u\\|^2+2\\langle\\bar u,\\bar v\\rangle+\\|\\bar v\\|^2$",
+      "$\\iff-2\\langle\\bar u,\\bar v\\rangle=2\\langle\\bar u,\\bar v\\rangle\\iff\\langle\\bar u,\\bar v\\rangle=0$",
+      "$\\iff\\bar u\\perp\\bar v$"
+     ],
+     "explain": "ריבוע, פיתוח, צמצום, ואז הגדרת האורתוגונליות."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "$\\|\\bar u-\\bar v\\|=\\|\\bar u+\\bar v\\|\\iff\\|\\bar u-\\bar v\\|^2=\\|\\bar u+\\bar v\\|^2$",
+      "$\\iff\\|\\bar u\\|^2-2\\langle\\bar u,\\bar v\\rangle+\\|\\bar v\\|^2=\\|\\bar u\\|^2-2\\langle\\bar u,\\bar v\\rangle+\\|\\bar v\\|^2$",
+      "$\\iff\\langle\\bar u,\\bar v\\rangle=0$"
+     ],
+     "bugIndex": 1,
+     "explain": "ב-$\\|\\bar u+\\bar v\\|^2$ הסימן של $2\\langle\\bar u,\\bar v\\rangle$ הוא פלוס."
+    },
+    {
+     "type": "numeric",
+     "prompt": "$\\bar u=(1,0)$ ו-$\\bar v=(1,1)$. מהו $\\|\\bar u+\\bar v\\|^2-\\|\\bar u-\\bar v\\|^2$?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$\\|\\bar u+\\bar v\\|^2=5$, $\\|\\bar u-\\bar v\\|^2=1$, והפרשם $4\\langle\\bar u,\\bar v\\rangle=4$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -194,7 +905,61 @@
    "official": false,
    "confidence": "med",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "$A^TA=\\begin{pmatrix}5&0\\\\0&9\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "ערכים סינגולריים $3,\\sqrt5$",
+     "points": 4
+    },
+    {
+     "text": "$V$ מווקטורים עצמיים של $A^TA$",
+     "points": 3
+    },
+    {
+     "text": "$U$: $u_i=Av_i/\\sigma_i$ והשלמה לבסיס אורתונורמלי",
+     "points": 5
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לסדר את הערכים הסינגולריים בסדר עולה: ב-$\\Sigma$ הם בסדר יורד ($3\\ge\\sqrt5$).",
+    "לשכוח להתאים את סדר עמודות $V$ לסדר $\\sigma_i$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר הראשון (השמאלי-עליון) ב-$A^TA$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$2^2+1^2+0^2=5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי הגדול $\\sigma_1$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$A^TA=\\operatorname{diag}(5,9)$, והגדול $\\sqrt9=3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי $\\sigma_2$ (ערך מספרי)?",
+     "answer": 2.236068,
+     "tol": 0.001,
+     "explain": "$\\sqrt5\\approx2.236$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "$v_1=(0,1)^T$. מהו הרכיב הראשון של $u_1=Av_1/\\sigma_1$ (ערך מספרי)?",
+     "answer": 0.3333333,
+     "tol": 0.001,
+     "explain": "$Av_1=(1,-2,2)^T$ ו-$u_1=\\frac13(1,-2,2)^T$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -206,7 +971,46 @@
    "official": false,
    "confidence": "med",
    "part": "ג",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "שימוש במשפט השאריות הסיני (מודולים $3,5,11$ זרים, $m=165$)",
+     "points": 4
+    },
+    {
+     "text": "התשובה $x\\equiv112\\pmod{165}$",
+     "points": 6
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח לצמצם את התשובה מודולו $165$.",
+    "להשתמש במודולים שאינם זרים בזוגות."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $m=3\\cdot5\\cdot11$?",
+     "answer": 165,
+     "tol": 0,
+     "explain": "המודולים זרים בזוגות."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי השארית של $112$ בחלוקה ב-$11$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$112=10\\cdot11+2$, כנדרש."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בין $0$ ל-$164$?",
+     "answer": 112,
+     "tol": 0,
+     "explain": "$112\\equiv1\\pmod3$, $\\equiv2\\pmod5$, $\\equiv2\\pmod{11}$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 6,
@@ -218,7 +1022,77 @@
    "official": false,
    "confidence": "med",
    "part": "ב",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "ערכים עצמיים $5,2,2$",
+     "points": 4
+    },
+    {
+     "text": "וקטורים עצמיים: $(1,1,1)$ ובסיס למרחב $x+y+z=0$",
+     "points": 4
+    },
+    {
+     "text": "אורתונורמליזציה (גרם-שמידט במרחב העצמי של $2$)",
+     "points": 4
+    },
+    {
+     "text": "$A=QDQ^T$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח שבתוך המרחב העצמי של הערך הכפול צריך בסיס אורתוגונלי (לא רק בלתי תלוי).",
+    "לשכוח לנרמל ולכן לקבל $Q$ שאינה אורתוגונלית."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הגדול של $A$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$A(1,1,1)^T=5(1,1,1)^T$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הריבוי האלגברי של הערך העצמי $2$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "הערכים העצמיים: $5,2,2$."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזה וקטור הוא וקטור עצמי של $A$ עבור $5$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(1,1,1)^T$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(1,-1,0)^T$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(1,1,-2)^T$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$A(1,-1,0)^T=2(1,-1,0)^T$ ו-$A(1,1,-2)^T=2(1,1,-2)^T$: אלה וקטורים עצמיים של $2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האורך של $(1,1,1)^T$ שמנרמלים (ערך מספרי)?",
+     "answer": 1.7320508,
+     "tol": 0.001,
+     "explain": "$\\sqrt3\\approx1.732$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 6,
@@ -230,7 +1104,81 @@
    "official": false,
    "confidence": "med",
    "part": "ג",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "הגדרת $\\bar u=\\left(\\sqrt{a_i/b_i}\\right)$ ו-$\\bar v=\\left(\\sqrt{a_ib_i}\\right)$",
+     "points": 4
+    },
+    {
+     "text": "חישוב $\\langle\\bar u,\\bar v\\rangle=\\sum a_i$ והנורמות",
+     "points": 3
+    },
+    {
+     "text": "קושי-שוורץ וחלוקה ב-$\\sum a_ib_i$",
+     "points": 3
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבחור וקטורים שהמכפלה הפנימית שלהם אינה $\\sum a_i$.",
+    "לשכוח ש-$a_i,b_i>0$ (נדרש לשורשים ולחלוקה)."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "לאילו וקטורים מיישמים את קושי-שוורץ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\bar u=\\left(a_i/b_i\\right)_i$ ו-$\\bar v=\\left(a_ib_i\\right)_i$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\bar u=\\left(\\sqrt{a_i/b_i}\\right)_i$ ו-$\\bar v=\\left(\\sqrt{a_ib_i}\\right)_i$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\bar u=\\left(\\sqrt{a_i}\\right)_i$ ו-$\\bar v=\\left(\\sqrt{b_i}\\right)_i$"
+      }
+     ],
+     "correctId": "b",
+     "explain": "רק בבחירה הראשונה $\\langle\\bar u,\\bar v\\rangle=\\sum a_i$. בשתי האחרות מקבלים $\\sum a_i^2$ או $\\sum\\sqrt{a_ib_i}$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "נגדיר $\\bar u=\\left(\\sqrt{a_i/b_i}\\right)_i$ ו-$\\bar v=\\left(\\sqrt{a_ib_i}\\right)_i$",
+      "$\\langle\\bar u,\\bar v\\rangle=\\sum a_i$, $\\|\\bar u\\|^2=\\sum\\frac{a_i}{b_i}$, $\\|\\bar v\\|^2=\\sum a_ib_i$",
+      "קושי-שוורץ: $\\langle\\bar u,\\bar v\\rangle^2\\le\\|\\bar u\\|^2\\|\\bar v\\|^2$",
+      "נחלק ב-$\\sum a_ib_i>0$: $\\dfrac{\\left(\\sum a_i\\right)^2}{\\sum a_ib_i}\\le\\sum\\dfrac{a_i}{b_i}$"
+     ],
+     "explain": "הגדרה, חישוב, אי-שוויון, חלוקה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "באיזו שורה יש טעות?",
+     "lines": [
+      "נגדיר $\\bar u=\\left(\\sqrt{a_i/b_i}\\right)_i$ ו-$\\bar v=\\left(\\sqrt{a_ib_i}\\right)_i$",
+      "$\\langle\\bar u,\\bar v\\rangle=\\sum a_i^2$, $\\|\\bar u\\|^2=\\sum\\frac{a_i}{b_i}$, $\\|\\bar v\\|^2=\\sum a_ib_i$",
+      "קושי-שוורץ: $\\langle\\bar u,\\bar v\\rangle^2\\le\\|\\bar u\\|^2\\|\\bar v\\|^2$"
+     ],
+     "bugIndex": 1,
+     "explain": "$\\sqrt{a_i/b_i}\\cdot\\sqrt{a_ib_i}=a_i$, ולכן המכפלה הפנימית היא $\\sum a_i$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=(1,1)$ ו-$b=(1,2)$, מהו הפרש האגפים $\\sum\\frac{a_i}{b_i}-\\frac{\\left(\\sum a_i\\right)^2}{\\sum a_ib_i}$ (ערך מספרי)?",
+     "answer": 0.1666667,
+     "tol": 0.001,
+     "explain": "$1.5-\\frac43=\\frac16\\ge0$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }
