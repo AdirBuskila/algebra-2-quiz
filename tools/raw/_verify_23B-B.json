@@ -1,0 +1,503 @@
+{
+ "examCode": "23B-B",
+ "refuter": "refute-algebra-2-23AB-23BB-24AA",
+ "scope": "all items, solution/rubric/pitfalls/steps; option text checked for positional citations",
+ "derivationsWrittenBeforeClaims": {
+  "1א": "y=1.5x+0.5",
+  "1ב": "CS with g=1/x, ||g||^2=1/2",
+  "2א": "(1,1)",
+  "2ב": "(3,5)",
+  "2ג": "24",
+  "2ד": "12",
+  "2ה": "x^T(-A-B^TB)x=-x^TAx-|Bx|^2<=0 (PSD convention)",
+  "2ו": "(Bv)^T A (Bv)>=0",
+  "3א": "eig a,a^2+1,a^2-1; PSD a>=1, PD a>1, NSD never",
+  "3ב": "x=59 mod 60",
+  "4א": "eig 0,5,5; Q cols (0,-1,2)/r5,(0,2,1)/r5,(1,0,0); D=diag(0,5,5)",
+  "4ב": "x=(xy)^-1=y^-1x^-1=yx",
+  "4ג": "x^3=x,y^5=y",
+  "5א": "Q=[[-r2/2,r2/2],[r2/2,r2/2]], R=[[r2,r2],[0,4r2]]",
+  "5ב": "P^T=P,P^2=P,u^TPu=(v^Tu)^2",
+  "5ג": "v^T(u-Pu)=0"
+ },
+ "scripts": "tools/verify/23B-B/refute_algebra.py",
+ "counts": {
+  "agree": 13,
+  "disagree": 3
+ },
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 13,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "kind": "proof",
+   "verdict": "disagree",
+   "solution": "disagree",
+   "solutionFirstDivergence": "official text writes <f,1/x> <= ||f||*||1/x|| <=> <f,1/x>^2 <= ||f||^2*||1/x||^2; the equivalence is false without absolute value (a negative <f,1/x> satisfies the first line trivially). Minor intermediate slip, conclusion unaffected; fix: |<f,g>| <= ||f|| ||g||",
+   "rubricSum": 12,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 3,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 2,
+   "part": "ג",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "num": 2,
+   "part": "ד",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 2,
+   "part": "ה",
+   "kind": "proof",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "num": 2,
+   "part": "ו",
+   "kind": "proof",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 3,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "disagree",
+   "solution": "agree",
+   "rubricSum": 17,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "pitfallsNote": "pitfall 1 is garbled ('forget that a^2>=1 also gives a<=-1, and rule it out with a>=0'): reads as if ruling it out were the error. Suggest: 'לשכוח שגם a<=-1 מקיים a^2>=1, ולא לפסול אותו בעזרת a>=0'",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "firstDivergence": "positional citation of options in step explanation (breaks if options are reordered): 'ורק האפשרות הראשונה'"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "choice",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "num": 3,
+   "part": "ב",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 8,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 4,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 15,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "notes": [
+    "CONFIRMED: eigenvalues of A are 0,5,5 (trace 10, det(A-9I)!=0), so the printed label lambda=9 is a typo for 5 and the relabel to 5 is right.",
+    "CONFIRMED: with Q columns (v1 for 0, v2 for 5, v3 for 5), A=QDQ^T holds for D=diag(0,5,5) and fails for diag(5,5,0); the fix is right.",
+    "Current text/rubric/steps/pitfall all use the corrected form; the solution carries no 'הפתרון הרשמי עם תיקון' prefix (silent fix, as intended)."
+   ],
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "num": 4,
+   "part": "ב",
+   "kind": "proof",
+   "verdict": "disagree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "firstDivergence": "positional citation of options in step explanation (breaks if options are reordered): 'רק הזהות הראשונה נכונה'"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "num": 4,
+   "part": "ג",
+   "kind": "proof",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 13,
+   "num": 5,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 15,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 14,
+   "num": 5,
+   "part": "ב",
+   "kind": "proof",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 15,
+   "num": 5,
+   "part": "ג",
+   "kind": "proof",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "not checked (no page images in repo)",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree"
+    }
+   ]
+  }
+ ]
+}

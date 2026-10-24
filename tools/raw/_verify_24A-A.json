@@ -1,0 +1,490 @@
+{
+ "examCode": "24A-A",
+ "refuter": "refute-algebra-2-23AB-23BB-24AA",
+ "scope": "all items, solution/rubric/pitfalls/steps; option text checked for positional citations",
+ "derivationsWrittenBeforeClaims": {
+  "1א": "equality in CS iff cos=1",
+  "1ב": "proj=[[1/3,1/3],[0,2/3]]",
+  "2א": "true (assoc: abc/(ab+ac+bc))",
+  "2ב": "false (no identity)",
+  "2ג": "false (x/2=x -> x=0)",
+  "2ד": "true (a^n=a/n, n=a)",
+  "2ה": "v^T(cI+A+A^2)v=c|v|^2+<Av,v>+|Av|^2 >0",
+  "3א": "b=0; eig 3a-1,1+a^2,1-a^2; PSD 1/3<=a<=1, PD 1/3<a<1",
+  "3ב": "y=-3/14 x+111/28",
+  "4א": "252",
+  "4ב": "6",
+  "4ג": "[[1,4],[0,5]]",
+  "4ד": "CS u=(x,1), v=(1,k)",
+  "5א": "sigma 2r2,2; V cols (1/2,r3/2),(-r3/2,1/2)",
+  "5ב": "x=53 mod 165"
+ },
+ "scripts": "tools/verify/24A-A/refute_algebra.py",
+ "counts": {
+  "agree": 11,
+  "disagree": 4
+ },
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "kind": "proof",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 10,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 15,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "kind": "truefalse",
+   "verdict": "disagree",
+   "solution": "agree",
+   "verdictKey": "agree (key True)",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "disagree",
+     "firstDivergence": "positional citation of options in step explanation (breaks if options are reordered) AND wrong: explanation says 'only the FIRST expression gives 6/11' but the correct option is c (the third); the three others (1, 11/6, 1) are a,b,d"
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "kind": "truefalse",
+   "verdict": "agree",
+   "solution": "agree",
+   "verdictKey": "agree (key False)",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "minor: question text says 'חבורה אבלית (קומוטטיבית)' (as in the solution page); exam page says 'חבורה קומוטטיבית'. Same meaning.",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 2,
+   "part": "ג",
+   "kind": "truefalse",
+   "verdict": "agree",
+   "solution": "agree",
+   "verdictKey": "agree (key False)",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "num": 2,
+   "part": "ד",
+   "kind": "truefalse",
+   "verdict": "agree",
+   "solution": "agree",
+   "verdictKey": "agree (key True)",
+   "rubricSum": 6,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 2,
+   "part": "ה",
+   "kind": "proof",
+   "verdict": "disagree",
+   "solution": "disagree",
+   "solutionFirstDivergence": "official solution text (also the printed page) writes the last term as c||Av||^2; the coefficient of A^2 is 1, so v^T(cI+A+A^2)v = c||v||^2+<Av,v>+||Av||^2 (checked: A=[[2,1],[1,2]], c=3, v=(1,0): 3+2+5=10, not 3+2+15). Intermediate slip, conclusion unaffected (c||Av||^2>=0 either way). Rubric item 2 and steps already use the correct form; fixer: silent intermediate-slip fix in the solution text.",
+   "rubricSum": 6,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "num": 3,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "disagree",
+   "solution": "agree",
+   "rubricSum": 15,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "choice",
+     "verdict": "disagree",
+     "firstDivergence": "positional citation of options in step explanation (breaks if options are reordered): 'ורק האפשרות הראשונה מתאימה'"
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 3,
+   "part": "ב",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 10,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "num": 4,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "notes": [
+    "official solution uses H=(a b;0 c) with 'a*c!=0' while the exam defines H=(a c;0 b), a*b!=0 (letters swapped); count 6*6*7=252 is right; rubric item 1 already acknowledges it"
+   ],
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 4,
+   "part": "ב",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "num": 4,
+   "part": "ג",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 7,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "num": 4,
+   "part": "ד",
+   "kind": "proof",
+   "verdict": "disagree",
+   "solution": "agree",
+   "rubricSum": 8,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "firstDivergence": "positional citation of options in step explanation (breaks if options are reordered): 'הזוג השני / השלישי / הרביעי'"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 13,
+   "num": 5,
+   "part": "א",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 18,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 14,
+   "num": 5,
+   "part": "ב",
+   "kind": "computation",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 7,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  }
+ ]
+}
