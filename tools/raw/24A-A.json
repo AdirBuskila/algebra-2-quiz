@@ -28,7 +28,76 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "כיוון (⇒): עבור $\\vec v=t\\vec u$ עם $t>0$ מראים ששני האגפים שווים ל-$(1+t)\\|\\vec u\\|$",
+     "points": 4
+    },
+    {
+     "text": "כיוון (⇐): העלאה בריבוע של $\\|\\vec u+\\vec v\\|=\\|\\vec u\\|+\\|\\vec v\\|$",
+     "points": 2
+    },
+    {
+     "text": "פתיחת שני האגפים וקבלת $\\langle\\vec u,\\vec v\\rangle=\\|\\vec u\\|\\cdot\\|\\vec v\\|$",
+     "points": 2
+    },
+    {
+     "text": "$\\cos\\alpha=1$, ולכן הוקטורים מקבילים באותו כיוון ו-$\\vec v=t\\vec u$ עם $t>0$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "בכיוון (⇒) לכתוב $\\|t\\vec u\\|=t\\|\\vec u\\|$ בלי לציין $t>0$; עבור $t<0$ מתקבל $|t|\\|\\vec u\\|$.",
+    "להסיק מ-$\\cos\\alpha=1$ ש-$\\vec v=\\vec u$ ולא $\\vec v=t\\vec u$ עם $t>0$.",
+    "להוכיח רק כיוון אחד של הטענה הדו-כיוונית."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "נבדוק את הכיוון (⇒) על $\\vec u=(3,4)$ ו-$\\vec v=2\\vec u=(6,8)$. מהו $\\|\\vec u+\\vec v\\|$?",
+     "answer": 15,
+     "tol": 0,
+     "explain": "$\\vec u+\\vec v=(9,12)$ ונורמתו $15$, כמו $\\|\\vec u\\|+\\|\\vec v\\|=5+10$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי הכיוון (⇐).",
+     "lines": [
+      "מעלים בריבוע את $\\|\\vec u+\\vec v\\|=\\|\\vec u\\|+\\|\\vec v\\|$ ומקבלים $\\|\\vec u+\\vec v\\|^2=\\left(\\|\\vec u\\|+\\|\\vec v\\|\\right)^2$.",
+      "פותחים את שני האגפים: $\\|\\vec u\\|^2+2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2=\\|\\vec u\\|^2+2\\|\\vec u\\|\\|\\vec v\\|+\\|\\vec v\\|^2$.",
+      "לכן $\\langle\\vec u,\\vec v\\rangle=\\|\\vec u\\|\\|\\vec v\\|$, כלומר $\\cos\\alpha=1$.",
+      "הזווית היא $0$, ולכן הוקטורים מקבילים בכיוון זהה: $\\vec v=t\\vec u$ עם $t>0$."
+     ],
+     "explain": "כל שלב נשען על הקודם: ריבוע, פתיחה, צמצום והסקה גאומטרית."
+    },
+    {
+     "type": "choice",
+     "prompt": "מה מסיקים מ-$\\cos\\alpha=1$ על הוקטורים השונים מאפס $\\vec u,\\vec v$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\vec v=t\\vec u$ עבור $t>0$ כלשהו"
+      },
+      {
+       "id": "b",
+       "value": "$\\vec v=t\\vec u$ עבור $t<0$ כלשהו"
+      },
+      {
+       "id": "c",
+       "value": "$\\vec u\\perp\\vec v$"
+      },
+      {
+       "id": "d",
+       "value": "$\\vec v=\\vec u$ בדיוק"
+      }
+     ],
+     "correctId": "a",
+     "explain": "זווית $0$ פירושה אותו כיוון, אך לא בהכרח אותו אורך. $t<0$ מתאים ל-$\\cos\\alpha=-1$, אורתוגונליות מתאימה ל-$\\cos\\alpha=0$, ו-$\\vec v=\\vec u$ הוא מקרה פרטי בלבד."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -40,7 +109,66 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "גרם-שמידט: $\\vec u_1=I$ ו-$\\vec u_2=\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}$ (אחרי הכפלה ב-$2$)",
+     "points": 5
+    },
+    {
+     "text": "נרמול: $\\|\\vec u_1\\|^2=2$ ו-$\\|\\vec u_2\\|^2=6$",
+     "points": 2
+    },
+    {
+     "text": "נוסחת ההיטל $\\mathbf{proj}_W(\\vec v)=\\sum\\langle\\vec v,\\vec e_i\\rangle\\vec e_i$",
+     "points": 3
+    },
+    {
+     "text": "חישוב המקדמים $\\frac12$ ו-$\\frac16$ וסכימה",
+     "points": 3
+    },
+    {
+     "text": "התוצאה $\\begin{pmatrix}\\frac13&\\frac13\\\\0&\\frac23\\end{pmatrix}$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להשתמש ב-$\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}$ כאילו הוא ניצב ל-$I$: $\\langle I,\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}\\rangle=1$.",
+    "לחשב את הנורמה כסכום האיברים ולא כ-$\\sqrt{\\mathrm{tr}(A^TA)}$.",
+    "לשכוח לנרמל ולהשתמש בנוסחת ההיטל עם וקטורים שאינם יחידה."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי $\\|\\vec u_2\\|^2=\\mathrm{tr}\\left(\\vec u_2^T\\vec u_2\\right)$ עבור $\\vec u_2=\\begin{pmatrix}-1&2\\\\0&1\\end{pmatrix}$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "במכפלה $\\mathrm{tr}(B^TA)$ זהו סכום ריבועי האיברים: $1+4+0+1=6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי $\\langle\\vec v,\\vec u_2\\rangle$ עבור $\\vec v=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$?",
+     "answer": 1,
+     "tol": 0,
+     "explain": "$1\\cdot(-1)+1\\cdot2+1\\cdot0+0\\cdot1=1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר בשורה 1 ועמודה 1 של ההיטל $\\frac12 I+\\frac16\\vec u_2$?",
+     "answer": 0.3333333333333333,
+     "tol": 0.0005,
+     "explain": "$\\frac12\\cdot1+\\frac16\\cdot(-1)=\\frac13$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האיבר בשורה 2 ועמודה 2 של ההיטל?",
+     "answer": 0.6666666666666666,
+     "tol": 0.0005,
+     "explain": "$\\frac12\\cdot1+\\frac16\\cdot1=\\frac23$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -54,7 +182,64 @@
    "part": "א",
    "points": 4,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "חישוב $(a\\odot b)\\odot c=\\frac{abc}{ab+ac+bc}$",
+     "points": 1
+    },
+    {
+     "text": "חישוב $a\\odot(b\\odot c)=\\frac{abc}{ab+ac+bc}$",
+     "points": 1
+    },
+    {
+     "text": "השוואת שני הערכים",
+     "points": 1
+    },
+    {
+     "text": "מסקנה: הפעולה אסוציאטיבית",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק אסוציאטיביות רק עבור שלשה מספרית אחת; זו דוגמה ולא הוכחה.",
+    "טעות באלגברה של שברים מורכבים: $\\frac{\\frac{ab}{a+b}c}{\\frac{ab}{a+b}+c}$ מצטמצם ל-$\\frac{abc}{ab+ac+bc}$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "חשבו $(1\\odot2)\\odot3$.",
+     "answer": 0.5454545454545454,
+     "tol": 0.0005,
+     "explain": "$1\\odot2=\\frac23$ ואז $\\frac23\\odot3=\\frac{2}{\\frac23+3}=\\frac6{11}$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו הערך המשותף של $(a\\odot b)\\odot c$ ו-$a\\odot(b\\odot c)$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\dfrac{abc}{a+b+c}$"
+      },
+      {
+       "id": "b",
+       "value": "$\\dfrac{ab+ac+bc}{abc}$"
+      },
+      {
+       "id": "c",
+       "value": "$\\dfrac{abc}{ab+ac+bc}$"
+      },
+      {
+       "id": "d",
+       "value": "$\\dfrac{a+b+c}{abc}$"
+      }
+     ],
+     "correctId": "c",
+     "explain": "ב-$(a,b,c)=(1,2,3)$ הערך הוא $\\frac6{11}$, ורק הביטוי הראשון נותן אותו (השלושה האחרים נותנים $1,\\ \\frac{11}6,\\ 1$)."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -68,7 +253,88 @@
    "part": "ב",
    "points": 5,
    "contextId": "c2",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "סגירות: $a\\odot b=\\frac{ab}{a+b}>0$",
+     "points": 1
+    },
+    {
+     "text": "אסוציאטיביות לפי הסעיף הקודם",
+     "points": 1
+    },
+    {
+     "text": "חיפוש איבר ניטרלי: $a\\odot e=a$ גורר $a^2=0$",
+     "points": 2
+    },
+    {
+     "text": "אין ניטרלי, ולכן אין חבורה",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבדוק רק קומוטטיביות ולהסיק שזו חבורה אבלית; חסר איבר ניטרלי.",
+    "להציב $e=1$ או $e=\\infty$ ללא בדיקה; $e=1$ נותן $a\\odot1=\\frac a{a+1}\\ne a$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזו תכונה של חבורה אינה מתקיימת ב-$(\\mathbb{R}^*,\\odot)$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "סגירות"
+      },
+      {
+       "id": "b",
+       "value": "קיום איבר ניטרלי"
+      },
+      {
+       "id": "c",
+       "value": "אסוציאטיביות"
+      },
+      {
+       "id": "d",
+       "value": "קומוטטיביות"
+      }
+     ],
+     "correctId": "b",
+     "explain": "הפעולה סגורה (חיוביים נשארים חיוביים), אסוציאטיבית (הסעיף הקודם) וקומוטטיבית ($a\\odot b=b\\odot a$ מהסימטריה של הנוסחה). רק הניטרלי חסר."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזו משוואה מתקבלת מהדרישה $a\\odot e=a$ לכל $a\\in\\mathbb{R}^*$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$a^2=0$"
+      },
+      {
+       "id": "b",
+       "value": "$e=0$"
+      },
+      {
+       "id": "c",
+       "value": "$a=e$"
+      },
+      {
+       "id": "d",
+       "value": "$0=0$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$\\frac{ae}{a+e}=a$ גורר $ae=a^2+ae$, כלומר $a^2=0$, בסתירה ל-$a>0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "חשבו $3\\odot6$ (הפעולה קומוטטיבית, ולכן גם שווה ל-$6\\odot3$).",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$\\frac{18}{9}=2$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -82,7 +348,64 @@
    "part": "ג",
    "points": 4,
    "contextId": "c2",
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "חישוב $x\\odot x=\\frac{x^2}{2x}=\\frac x2$",
+     "points": 1
+    },
+    {
+     "text": "המשוואה $\\frac x2=x$",
+     "points": 1
+    },
+    {
+     "text": "הפתרון היחיד הוא $x=0$",
+     "points": 1
+    },
+    {
+     "text": "$0\\notin\\mathbb{R}^*$, ולכן אין פתרון",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לצמצם $x$ משני האגפים ולהסיק $\\frac12=1$ בלי לבדוק את המקרה $x=0$; יש להסיק שאין פתרון חיובי.",
+    "לחשוב ש-$x\\odot x=x$ מתקיים עבור האיבר הניטרלי; אין ניטרלי."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מהו $x\\odot x$ עבור $x\\in\\mathbb{R}^*$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\dfrac x2$"
+      },
+      {
+       "id": "b",
+       "value": "$2x$"
+      },
+      {
+       "id": "c",
+       "value": "$x^2$"
+      },
+      {
+       "id": "d",
+       "value": "$\\dfrac x4$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$x\\odot x=\\frac{x\\cdot x}{x+x}=\\frac{x^2}{2x}=\\frac x2$. בבדיקה ב-$x=6$: $3$, ולא $12,\\ 36$ או $1.5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה פתרונות חיוביים יש למשוואה $\\frac x2=x$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "המשוואה גוררת $x=0$, שאינו ב-$\\mathbb{R}^*$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -96,7 +419,71 @@
    "part": "ד",
    "points": 6,
    "contextId": "c2",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "חישוב $x^2=\\frac x2$",
+     "points": 1
+    },
+    {
+     "text": "חישוב $x^3=\\frac x3$",
+     "points": 1
+    },
+    {
+     "text": "הכללה $x^n=\\frac xn$",
+     "points": 2
+    },
+    {
+     "text": "הצבה $a=n$ נותנת $n^n=1$, ולכן הטענה נכונה",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבלבל בין חזקה רגילה לחזקה לפי $\\odot$; כאן $x^n$ הוא $x\\odot\\cdots\\odot x$.",
+    "לא להוכיח את החוקיות באינדוקציה: $x^{n+1}=\\frac xn\\odot x=\\frac x{n+1}$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "חשבו $2\\odot2\\odot2$ (שלוש פעמים).",
+     "answer": 0.6666666666666666,
+     "tol": 0.0005,
+     "explain": "$2\\odot2=1$ ו-$1\\odot2=\\frac23$, כלומר $\\frac x3$ עבור $x=2$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהי החזקה $x^n=\\underbrace{x\\odot\\cdots\\odot x}_{n}$ לפי הפעולה?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\dfrac xn$"
+      },
+      {
+       "id": "b",
+       "value": "$\\dfrac{x}{2n}$"
+      },
+      {
+       "id": "c",
+       "value": "$x^n$ (חזקה רגילה)"
+      },
+      {
+       "id": "d",
+       "value": "$nx$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$x^1=x,\\ x^2=\\frac x2,\\ x^3=\\frac x3$, וההמשך באינדוקציה: $\\frac xn\\odot x=\\frac{x^2/n}{x(n+1)/n}=\\frac x{n+1}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $a=5$, איזה $n$ מקיים $a^n=\\dfrac an=1$?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$\\frac5n=1$ נותן $n=5$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -108,7 +495,82 @@
    "official": true,
    "confidence": "high",
    "part": "ה",
-   "points": 6
+   "points": 6,
+   "rubric": [
+    {
+     "text": "סימטריה של $cI+A+A^2$",
+     "points": 1
+    },
+    {
+     "text": "פתיחת התבנית $\\vec v^T(cI+A+A^2)\\vec v=c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+\\|A\\vec v\\|^2$",
+     "points": 2
+    },
+    {
+     "text": "$c\\|\\vec v\\|^2>0$ כי $c>0$ ו-$\\vec v\\ne\\vec0$",
+     "points": 1
+    },
+    {
+     "text": "$\\langle A\\vec v,\\vec v\\rangle\\ge0$ ו-$\\|A\\vec v\\|^2\\ge0$",
+     "points": 1
+    },
+    {
+     "text": "הסכום חיובי ממש, ולכן המטריצה מוגדרת חיובית לחלוטין",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להסתפק ב-$\\ge0$; כדי לקבל חיוביות לחלוטין צריך איבר אחד חיובי ממש, והוא $c\\|\\vec v\\|^2$.",
+    "לשכוח ש-$\\vec v^TA^2\\vec v=\\|A\\vec v\\|^2$ דורש ש-$A$ סימטרית.",
+    "לבדוק רק ערכים עצמיים של $A$ בלי להסביר איך הם קשורים ל-$A^2$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור $A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$, $c=1$ ו-$\\vec v=(1,0)^T$, מהו $\\vec v^T(cI+A+A^2)\\vec v$?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$1+2+5=8$, כי $A^2=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$."
+    },
+    {
+     "type": "choice",
+     "prompt": "כש-$A$ סימטרית, למה שווה $\\vec v^TA^2\\vec v$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\|A\\vec v\\|^2$"
+      },
+      {
+       "id": "b",
+       "value": "$\\left(\\vec v^TA\\vec v\\right)^2$"
+      },
+      {
+       "id": "c",
+       "value": "$-\\|A\\vec v\\|^2$"
+      },
+      {
+       "id": "d",
+       "value": "$\\|A^2\\vec v\\|^2$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$\\vec v^TA^TA\\vec v=(A\\vec v)^T(A\\vec v)$. ב-$A=\\mathrm{diag}(1,2)$ ו-$\\vec v=(1,1)$ הערך הוא $5$, ואילו שלוש האחרות נותנות $9,\\ -5,\\ 17$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בהוכחה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
+     "lines": [
+      "$cI+A+A^2$ סימטרית, כי $A$ סימטרית.",
+      "$\\vec v^T(cI+A+A^2)\\vec v=c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+\\|A\\vec v\\|^2$.",
+      "$c\\|\\vec v\\|^2>0$ כי $c>0$ ו-$\\vec v\\ne\\vec0$.",
+      "$A$ מוגדרת חיובית, ולכן $\\langle A\\vec v,\\vec v\\rangle<0$, וגם $\\|A\\vec v\\|^2\\ge0$.",
+      "לכן הסכום חיובי ממש, והמטריצה מוגדרת חיובית לחלוטין."
+     ],
+     "bugIndex": 3,
+     "explain": "$A$ מוגדרת חיובית ולכן $\\langle A\\vec v,\\vec v\\rangle\\ge0$; עם $<0$ אי אפשר להסיק שהסכום חיובי."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -120,7 +582,100 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "סימטריה גוררת $b=0$",
+     "points": 2
+    },
+    {
+     "text": "פולינום אופייני $(3a-1-\\lambda)\\left(\\lambda^2-2\\lambda+1-a^4\\right)$ וערכים עצמיים $3a-1,\\ 1+a^2,\\ 1-a^2$",
+     "points": 5
+    },
+    {
+     "text": "מוגדרת חיובית כאשר $\\frac13\\le a\\le1$",
+     "points": 4
+    },
+    {
+     "text": "מוגדרת חיובית לחלוטין כאשר $\\frac13<a<1$",
+     "points": 2
+    },
+    {
+     "text": "אין ערך של $a$ שבו המטריצה מוגדרת שלילית, ובשאר המקרים אינה מוגדרת",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לשכוח את התנאי $b=0$ ולבדוק רק את הערכים העצמיים של מטריצה לא סימטרית.",
+    "לרשום $a^2-1$ במקום $1-a^2$, ולקבל תחום שגוי עבור $a$.",
+    "לשכוח את התנאי $3a-1\\ge0$ ולהסתפק ב-$-1\\le a\\le1$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "המטריצה $\\begin{pmatrix}1&0&a^2\\\\0&3a-1&0\\\\a^2&b&1\\end{pmatrix}$ סימטרית. מהו $b$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "האיבר בשורה 2 ועמודה 3 הוא $0$, ולכן גם האיבר בשורה 3 ועמודה 2 חייב להיות $0$."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהם הערכים העצמיים של המטריצה כש-$b=0$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$3a-1,\\ 1+a^2,\\ 1-a^2$"
+      },
+      {
+       "id": "b",
+       "value": "$3a-1,\\ a^2+2,\\ a^2-2$"
+      },
+      {
+       "id": "c",
+       "value": "$3a-1,\\ 1+a,\\ 1-a$"
+      },
+      {
+       "id": "d",
+       "value": "$a,\\ 1+a^2,\\ 1-a^2$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "האיבר $3a-1$ נפרד, והבלוק $\\begin{pmatrix}1&a^2\\\\a^2&1\\end{pmatrix}$ נותן $1\\pm a^2$. ב-$a=2$ הערכים הם $5,\\ 5,\\ -3$, ורק האפשרות הראשונה מתאימה."
+    },
+    {
+     "type": "choice",
+     "prompt": "עבור אילו $a$ המטריצה מוגדרת חיובית (כל הערכים העצמיים $\\ge0$)?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\frac13\\le a\\le1$"
+      },
+      {
+       "id": "b",
+       "value": "$\\frac13<a<1$"
+      },
+      {
+       "id": "c",
+       "value": "$a\\ge\\frac13$"
+      },
+      {
+       "id": "d",
+       "value": "$-1\\le a\\le1$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "נדרש $3a-1\\ge0$ וגם $1-a^2\\ge0$. ב-$a=\\frac13$ הערך $0$ מותר; ב-$a=2$ מתקבל ערך שלילי; ב-$a=0$ הערך $3a-1=-1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הקטן ביותר כאשר $a=\\frac12$?",
+     "answer": 0.5,
+     "tol": 0.0005,
+     "explain": "הערכים הם $3a-1=0.5,\\ 1+a^2=1.25,\\ 1-a^2=0.75$, והקטן הוא $0.5$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -132,7 +687,62 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בניית $A=\\begin{pmatrix}1&1\\\\3&1\\\\-2&1\\\\2&1\\end{pmatrix}$ ו-$\\vec b=(3,5,5,2)^T$",
+     "points": 3
+    },
+    {
+     "text": "חישוב $A^TA=\\begin{pmatrix}18&4\\\\4&4\\end{pmatrix}$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $A^T\\vec b=\\begin{pmatrix}12\\\\15\\end{pmatrix}$ ופתרון המערכת הנורמלית",
+     "points": 3
+    },
+    {
+     "text": "$y=-\\frac3{14}x+\\frac{111}{28}$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לפתור את $A\\vec x=\\vec b$ ישירות, אף שאין פתרון מדויק.",
+    "טעות סימן ב-$\\sum xy=3+15-10+4=12$.",
+    "להפוך בין $m$ ל-$n$ בפתרון המערכת."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_i^2$ לנקודות $(1,3),(3,5),(-2,5),(2,2)$?",
+     "answer": 18,
+     "tol": 0,
+     "explain": "$1+9+4+4=18$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_iy_i$?",
+     "answer": 12,
+     "tol": 0,
+     "explain": "$3+15-10+4=12$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו את $\\begin{pmatrix}18&4\\\\4&4\\end{pmatrix}\\begin{pmatrix}m\\\\n\\end{pmatrix}=\\begin{pmatrix}12\\\\15\\end{pmatrix}$. מהו $m$?",
+     "answer": -0.21428571428571427,
+     "tol": 0.0005,
+     "explain": "חיסור המשוואות נותן $14m=-3$, כלומר $m=-\\frac3{14}\\approx-0.214$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $n$?",
+     "answer": 3.9642857142857144,
+     "tol": 0.0005,
+     "explain": "$4n=15-4m=15+\\frac67=\\frac{111}7$ ולכן $n=\\frac{111}{28}\\approx3.964$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -145,7 +755,50 @@
    "confidence": "high",
    "part": "א",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "התנאי $ac\\ne0$ בכתיבה של הסעיף נותן שני איברי אלכסון שונים מאפס",
+     "points": 2
+    },
+    {
+     "text": "$6$ אפשרויות לכל איבר אלכסון ו-$7$ לאיבר שמעל האלכסון",
+     "points": 1
+    },
+    {
+     "text": "עקרון הכפל: $6\\cdot6\\cdot7=252$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לספור $7^3=343$ ולשכוח את התנאי על האלכסון.",
+    "לדרוש גם שהאיבר מעל האלכסון שונה מאפס."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "כמה ערכים אפשריים יש לכל איבר אלכסון (שונה מאפס ב-$\\mathbb{Z}_7$)?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$\\{1,\\dots,6\\}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה ערכים אפשריים יש לאיבר שמעל האלכסון?",
+     "answer": 7,
+     "tol": 0,
+     "explain": "אין עליו תנאי: כל $\\mathbb{Z}_7$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $|H|$?",
+     "answer": 252,
+     "tol": 0,
+     "explain": "$6\\cdot6\\cdot7=252$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -158,7 +811,50 @@
    "confidence": "high",
    "part": "ב",
    "points": 5,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "$3^6\\equiv1\\pmod7$ והסדר של $3$ ב-$\\mathbb{Z}_7^*$ הוא $6$",
+     "points": 2
+    },
+    {
+     "text": "$4^3\\equiv1\\pmod7$ והסדר של $4$ הוא $3$",
+     "points": 2
+    },
+    {
+     "text": "הסדר של המטריצה האלכסונית הוא ה-$\\mathrm{lcm}$: $6$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להניח שהסדר הוא $6\\cdot3=18$ במקום ה-$\\mathrm{lcm}$.",
+    "לחשב חזקות של המטריצה כולה ולא של כל איבר אלכסון בנפרד."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $3$ ב-$\\mathbb{Z}_7^*$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$3,2,6,4,5,1$: החזקה הראשונה השווה ל-$1$ היא $3^6$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $4$ ב-$\\mathbb{Z}_7^*$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$4,2,1$: החזקה הראשונה השווה ל-$1$ היא $4^3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $\\begin{pmatrix}4&0\\\\0&3\\end{pmatrix}$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$\\mathrm{lcm}(3,6)=6$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -171,7 +867,55 @@
    "confidence": "high",
    "part": "ג",
    "points": 7,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "סימון ההופכי $\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}$ וכתיבת $\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}=I$",
+     "points": 2
+    },
+    {
+     "text": "המערכת $a\\equiv1,\\ b+2c\\equiv0,\\ 3c\\equiv1\\pmod7$",
+     "points": 2
+    },
+    {
+     "text": "$c\\equiv5$ ו-$b\\equiv4$",
+     "points": 2
+    },
+    {
+     "text": "התשובה $\\begin{pmatrix}1&4\\\\0&5\\end{pmatrix}$",
+     "points": 1
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "להפוך כל איבר בנפרד: ההופכי של $2$ אינו חלק מההופכי של המטריצה.",
+    "לחשב מודולו אחר ($\\bmod 3$ או $\\bmod 5$) במקום $\\bmod 7$.",
+    "לשכוח להקטין מספר שלילי ($b=-10$) מודולו $7$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהי הדטרמיננטה של $\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}$ מודולו $7$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$1\\cdot3-2\\cdot0=3$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $c$ שמקיים $3c\\equiv1\\pmod7$ (בטווח $0$ עד $6$)?",
+     "answer": 5,
+     "tol": 0,
+     "explain": "$3\\cdot5=15\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $b$ שמקיים $b+2c\\equiv0\\pmod7$ עבור $c=5$ (בטווח $0$ עד $6$)?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$b\\equiv-10\\equiv4\\pmod7$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -183,7 +927,78 @@
    "official": true,
    "confidence": "high",
    "part": "ד",
-   "points": 8
+   "points": 8,
+   "rubric": [
+    {
+     "text": "ניסוח מחדש: $(x+k)^2\\le(k^2+1)(x^2+1)$",
+     "points": 2
+    },
+    {
+     "text": "בחירת הוקטורים $\\vec u=(x,1)^T$ ו-$\\vec v=(1,k)^T$",
+     "points": 2
+    },
+    {
+     "text": "הפעלת קושי-שוורץ $|x+k|\\le\\sqrt{x^2+1}\\sqrt{1+k^2}$",
+     "points": 2
+    },
+    {
+     "text": "העלאה בריבוע וחלוקה ב-$x^2+1>0$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לבחור $\\vec u=(x,k)$ ו-$\\vec v=(1,1)$: מתקבל $(x+k)^2\\le2(x^2+k^2)$, שאינה הטענה.",
+    "לשכוח שחלוקה ב-$x^2+1$ חוקית כי הוא חיובי.",
+    "להעלות בריבוע בלי ערך מוחלט ולאבד את הסימן."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איזה זוג וקטורים מניב דרך קושי-שוורץ את $(x+k)^2\\le(k^2+1)(x^2+1)$?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$\\vec u=(x,1)^T$ ו-$\\vec v=(1,k)^T$"
+      },
+      {
+       "id": "b",
+       "value": "$\\vec u=(x,k)^T$ ו-$\\vec v=(1,1)^T$"
+      },
+      {
+       "id": "c",
+       "value": "$\\vec u=(x,1)^T$ ו-$\\vec v=(k,1)^T$"
+      },
+      {
+       "id": "d",
+       "value": "$\\vec u=(x,x^2)^T$ ו-$\\vec v=(1,k)^T$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "המכפלה הפנימית חייבת להיות $x+k$ והנורמות בריבוע $x^2+1$ ו-$1+k^2$. הזוג השני נותן $2(x^2+k^2)$ באגף ימין, השלישי נותן מכפלה $kx+1$, והרביעי נותן נורמה $x^2+x^4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $x=2,\\ k=3$, מהו $\\|\\vec u\\|^2\\cdot\\|\\vec v\\|^2=(x^2+1)(1+k^2)$?",
+     "answer": 50,
+     "tol": 0,
+     "explain": "$5\\cdot10=50\\ge(x+k)^2=25$, והמנה $\\frac{25}5=5\\le k^2+1=10$."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בהוכחה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
+     "lines": [
+      "צריך להוכיח $(x+k)^2\\le(k^2+1)(x^2+1)$ לכל $x$.",
+      "נבחר $\\vec u=(x,1)^T$ ו-$\\vec v=(1,k)^T$, ואז $\\langle\\vec u,\\vec v\\rangle=x+k$.",
+      "לפי קושי-שוורץ $|x+k|\\le\\sqrt{x^2+1}\\cdot\\sqrt{1+k^2}$.",
+      "מעלים בריבוע ומקבלים $(x+k)^2\\ge(k^2+1)(x^2+1)$.",
+      "מחלקים ב-$x^2+1>0$ ומקבלים $f(x)\\le k^2+1$."
+     ],
+     "bugIndex": 3,
+     "explain": "העלאה בריבוע של אי-שוויון בין מספרים אי-שליליים שומרת על כיוונו: $\\le$ ולא $\\ge$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -195,7 +1010,83 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 18
+   "points": 18,
+   "rubric": [
+    {
+     "text": "חישוב $A^TA=\\begin{pmatrix}5&\\sqrt3\\\\\\sqrt3&7\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "ערכים עצמיים $8,\\ 4$ וערכים סינגולריים $2\\sqrt2,\\ 2$",
+     "points": 3
+    },
+    {
+     "text": "וקטורים עצמיים מנורמלים של $A^TA$ ובניית $V$",
+     "points": 4
+    },
+    {
+     "text": "כתיבת $\\Sigma=\\begin{pmatrix}2\\sqrt2&0\\\\0&2\\\\0&0\\end{pmatrix}$",
+     "points": 3
+    },
+    {
+     "text": "חישוב $\\vec u_i=\\frac1{\\sigma_i}A\\vec v_i$ והשלמת $\\vec u_3$ ל-$U$ אורתוגונלית",
+     "points": 5
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לרשום את הערכים העצמיים $8,4$ במקום הערכים הסינגולריים $2\\sqrt2,2$.",
+    "לבחור סימנים שרירותיים ל-$\\vec u_i$ ולא לחשב אותם מ-$\\vec u_i=\\frac1{\\sigma_i}A\\vec v_i$.",
+    "להציג את $V^T$ במקום $V$: בתשובה הרשמית המטריצה השלישית היא $V^T$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "באיזו מטריצה משתמשים כדי למצוא את העמודות של $V$ (ה-$2\\times2$)?",
+     "options": [
+      {
+       "id": "a",
+       "value": "$A^TA$"
+      },
+      {
+       "id": "b",
+       "value": "$AA^T$"
+      },
+      {
+       "id": "c",
+       "value": "$A+A^T$"
+      },
+      {
+       "id": "d",
+       "value": "$A^{-1}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$A^TA$ היא $2\\times2$ כמו $V$. $AA^T$ היא $3\\times3$ (נותנת את $U$), ול-$A+A^T$ ול-$A^{-1}$ אין משמעות כי $A$ אינה ריבועית."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הגדול של $A^TA=\\begin{pmatrix}5&\\sqrt3\\\\\\sqrt3&7\\end{pmatrix}$?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "עקבה $12$ ודטרמיננטה $35-3=32$, ולכן $\\lambda=8,\\ 4$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך הסינגולרי השני $\\sigma_2$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$\\sigma_2=\\sqrt4=2$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "נתון $\\vec v_1=\\left(\\frac12,\\frac{\\sqrt3}2\\right)^T$. מהו הרכיב השלישי של $\\vec u_1=\\frac1{\\sigma_1}A\\vec v_1$?",
+     "answer": 0.707107,
+     "tol": 0.0005,
+     "explain": "$A\\vec v_1=(1,\\sqrt3,2)^T$ ו-$\\sigma_1=2\\sqrt2$, ולכן הרכיב הוא $\\frac2{2\\sqrt2}=\\frac{\\sqrt2}2\\approx0.707$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -207,7 +1098,62 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 7
+   "points": 7,
+   "rubric": [
+    {
+     "text": "צמצום המשוואות לצורה $x\\equiv a_i\\pmod{m_i}$: $x\\equiv3\\pmod5,\\ x\\equiv9\\pmod{11},\\ x\\equiv2\\pmod3$",
+     "points": 2
+    },
+    {
+     "text": "סימון $m=165$ וחישוב $M_1=33,\\ M_2=15,\\ M_3=55$",
+     "points": 1
+    },
+    {
+     "text": "חישוב ההופכיים $x_1=2,\\ x_2=3,\\ x_3=1$",
+     "points": 2
+    },
+    {
+     "text": "הצבה בנוסחה והקטנה מודולו $165$: $x\\equiv53$",
+     "points": 2
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "pitfalls": [
+    "לא לחלק את $2x\\equiv1$ ו-$3x\\equiv5$ בהופכי של המקדם לפני שימוש בנוסחה.",
+    "לחשב את ההופכי מודולו $165$ ולא מודולו $m_i$.",
+    "לשכוח להקטין את הסכום $713$ מודולו $165$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "פתרו $2x\\equiv1\\pmod5$ (בטווח $0$ עד $4$).",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$2\\cdot3=6\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "פתרו $3x\\equiv5\\pmod{11}$ (בטווח $0$ עד $10$).",
+     "answer": 9,
+     "tol": 0,
+     "explain": "$3\\cdot9=27\\equiv5\\pmod{11}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_2$ שמקיים $15x_2\\equiv1\\pmod{11}$ (בטווח $0$ עד $10$)?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$15\\equiv4$ ו-$4\\cdot3=12\\equiv1\\pmod{11}$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ בטווח $0$ עד $164$?",
+     "answer": 53,
+     "tol": 0,
+     "explain": "$3\\cdot33\\cdot2+9\\cdot15\\cdot3+2\\cdot55\\cdot1=198+405+110=713=4\\cdot165+53$."
+    }
+   ],
+   "stepsSource": "ai-draft"
   }
  ]
 }
