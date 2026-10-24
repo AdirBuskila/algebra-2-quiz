@@ -91,7 +91,8 @@ S4A1 = (
     r"כלומר $m\le n$." "\n"
     r"מצד שני" "\n"
     r"$$y^{-1}x^my=\left(y^{-1}xy\right)^m=e\ \Rightarrow\ x^m=yey^{-1}=e$$" "\n"
-    r"ולכן $n\le m$. הוכחנו $n=m$."
+    r"ולכן $n\le m$. הוכחנו $n=m$." "\n"
+    r"(ההוכחה מניחה שהסדרים סופיים. אם $x$ בעל סדר אינסופי, גם $y^{-1}xy$ כזה, כי $x^k=e\iff\left(y^{-1}xy\right)^k=e$ לכל $k\ge1$.)"
 )
 
 S4A2 = (
@@ -248,8 +249,8 @@ S25AB = {
         pitfalls=[r"לצמצם חזקות כמו במספרים: בחבורה אין חילוק, רק כפל בהופכי.",
                   r"לשכוח שהנתון $x^2=e$ חל גם על $y$."],
         steps=[
-            num(r"$x^5=x^k$ כאשר $x^2=e$. מהו $k$ הקטן ביותר ($k\ge0$)?", 1, r"$x^5=x^4x=ex=x$, ולכן $k=1$."),
-            num(r"$y^9=y^k$ כאשר $y^2=e$. מהו $k$ הקטן ביותר ($k\ge0$)?", 1, r"$y^9=y^8y=y$, ולכן $k=1$."),
+            num(r"$x^5=x^k$ כאשר $x^2=e$ ו-$x\ne e$. מהו $k$ הקטן ביותר ($k\ge0$)?", 1, r"$x^5=x^4x=ex=x$, ולכן $k=1$ (עבור $x=e$ גם $k=0$ מתאים, ולכן בשלב זה מניחים $x\ne e$)."),
+            num(r"$y^9=y^k$ כאשר $y^2=e$ ו-$y\ne e$. מהו $k$ הקטן ביותר ($k\ge0$)?", 1, r"$y^9=y^8y=y$, ולכן $k=1$."),
             order("סדרו את שלבי ההוכחה.",
                   [r"$x^2=e$ ו-$y^2=e$ נותנים $x^4=e$ ו-$y^8=e$",
                    r"$x^5=x^4\cdot x=x$ ו-$y^9=y^8\cdot y=y$",
@@ -365,7 +366,7 @@ S25AB = {
             ch("לאילו וקטורים מיישמים את קושי-שוורץ בחלק השמאלי?",
                r"$\bar u=(\sqrt x,\sqrt y,\sqrt z)$ ו-$\bar v=(1,1,1)$",
                [r"$\bar u=(x,y,z)$ ו-$\bar v=(1,1,1)$", r"$\bar u=(\sqrt x,\sqrt y,\sqrt z)$ ו-$\bar v=(x,y,z)$"],
-               r"בבחירה הראשונה $\langle\bar u,\bar v\rangle=\sqrt x+\sqrt y+\sqrt z$ ו-$\|\bar u\|^2=x+y+z$. הבחירות האחרות נותנות אי-שוויונות אחרים.", 0),
+               r"עם $\bar u=(\sqrt x,\sqrt y,\sqrt z)$ ו-$\bar v=(1,1,1)$ מתקבל $\langle\bar u,\bar v\rangle=\sqrt x+\sqrt y+\sqrt z$, $\|\bar u\|^2=x+y+z$ ו-$\|\bar v\|^2=3$. שתי הבחירות האחרות נותנות אי-שוויונות אחרים.", 0),
             order("סדרו את שלבי החלק השמאלי.",
                   [r"נגדיר $\bar u=(\sqrt x,\sqrt y,\sqrt z)$ ו-$\bar v=(1,1,1)$",
                    r"קושי-שוורץ: $\sqrt x+\sqrt y+\sqrt z\le\sqrt{x+y+z}\cdot\sqrt3$",
@@ -385,9 +386,9 @@ for _q in questions:
     _s = S25AB.get((_q["num"], _q.get("part")))
     assert _s is not None, ("no steps for", _q["num"], _q.get("part"))
     assert sum(r["points"] for r in _s["rubric"]) == _q["points"], ("rubric sum", _q["num"], _q.get("part"))
-    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-draft"
+    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-verified"
     _q["pitfalls"] = _s["pitfalls"]
-    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-draft"
+    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-verified"
 
 exam = {
     "examCode": "25A-B",

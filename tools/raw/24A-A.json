@@ -47,7 +47,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "בכיוון (⇒) לכתוב $\\|t\\vec u\\|=t\\|\\vec u\\|$ בלי לציין $t>0$; עבור $t<0$ מתקבל $|t|\\|\\vec u\\|$.",
     "להסיק מ-$\\cos\\alpha=1$ ש-$\\vec v=\\vec u$ ולא $\\vec v=t\\vec u$ עם $t>0$.",
@@ -97,7 +97,7 @@
      "explain": "זווית $0$ פירושה אותו כיוון, אך לא בהכרח אותו אורך. $t<0$ מתאים ל-$\\cos\\alpha=-1$, אורתוגונליות מתאימה ל-$\\cos\\alpha=0$, ו-$\\vec v=\\vec u$ הוא מקרה פרטי בלבד."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -132,7 +132,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש ב-$\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}$ כאילו הוא ניצב ל-$I$: $\\langle I,\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}\\rangle=1$.",
     "לחשב את הנורמה כסכום האיברים ולא כ-$\\sqrt{\\mathrm{tr}(A^TA)}$.",
@@ -168,7 +168,7 @@
      "explain": "$\\frac12\\cdot1+\\frac16\\cdot1=\\frac23$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -201,7 +201,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק אסוציאטיביות רק עבור שלשה מספרית אחת; זו דוגמה ולא הוכחה.",
     "טעות באלגברה של שברים מורכבים: $\\frac{\\frac{ab}{a+b}c}{\\frac{ab}{a+b}+c}$ מצטמצם ל-$\\frac{abc}{ab+ac+bc}$."
@@ -236,16 +236,16 @@
       }
      ],
      "correctId": "c",
-     "explain": "ב-$(a,b,c)=(1,2,3)$ הערך הוא $\\frac6{11}$, ורק הביטוי הראשון נותן אותו (השלושה האחרים נותנים $1,\\ \\frac{11}6,\\ 1$)."
+     "explain": "ב-$(a,b,c)=(1,2,3)$ הערך הוא $\\frac6{11}$, ורק הביטוי $\\dfrac{abc}{ab+ac+bc}$ נותן אותו (שלושת האחרים נותנים $1,\\ \\frac{11}6,\\ 1$)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
    "kind": "truefalse",
    "topic": "groups",
-   "question": "סעיף א.2. האם המבנה $(\\mathbb{R}^*,\\odot)$ הוא חבורה אבלית (קומוטטיבית)? (5%)",
+   "question": "סעיף א.2. האם המבנה $(\\mathbb{R}^*,\\odot)$ הוא חבורה קומוטטיבית? (5%)",
    "solution": "**סגירות:** עבור $a,b\\in\\mathbb{R}^*$ מתקיים $a+b,\\ ab>0$ ולכן $a\\odot b=\\dfrac{ab}{a+b}\\in\\mathbb{R}^*$.\n**אסוציאטיביות:** הוכחה בסעיף 1.\n**קיום איבר ניטרלי:** נחפש אם קיים $e\\in\\mathbb{R}^*$ כך ש-$a\\odot e=a$ וגם $e\\odot a=a$. נקבל:\n$$a\\odot e=\\frac{ae}{a+e}=a\\ \\Rightarrow\\ ae=a(a+e)\\ \\Rightarrow\\ a^2=0$$\nלא קיים איבר ניטרלי.\n**מסקנה:** המבנה $(\\mathbb{R}^*,\\odot)$ אינו חבורה, קל וחומר שאינו חבורה אבלית.",
    "solutionSource": "official-pdf",
    "official": true,
@@ -272,7 +272,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק קומוטטיביות ולהסיק שזו חבורה אבלית; חסר איבר ניטרלי.",
     "להציב $e=1$ או $e=\\infty$ ללא בדיקה; $e=1$ נותן $a\\odot1=\\frac a{a+1}\\ne a$."
@@ -334,7 +334,7 @@
      "explain": "$\\frac{18}{9}=2$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -367,7 +367,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לצמצם $x$ משני האגפים ולהסיק $\\frac12=1$ בלי לבדוק את המקרה $x=0$; יש להסיק שאין פתרון חיובי.",
     "לחשוב ש-$x\\odot x=x$ מתקיים עבור האיבר הניטרלי; אין ניטרלי."
@@ -405,7 +405,7 @@
      "explain": "המשוואה גוררת $x=0$, שאינו ב-$\\mathbb{R}^*$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -438,7 +438,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבלבל בין חזקה רגילה לחזקה לפי $\\odot$; כאן $x^n$ הוא $x\\odot\\cdots\\odot x$.",
     "לא להוכיח את החוקיות באינדוקציה: $x^{n+1}=\\frac xn\\odot x=\\frac x{n+1}$."
@@ -483,14 +483,14 @@
      "explain": "$\\frac5n=1$ נותן $n=5$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
    "kind": "proof",
    "topic": "pos_def",
    "question": "סעיף ב. תהי $A$ מטריצה מוגדרת חיובית ו-$c>0$. הוכיחו כי $cI+A+A^2$ מוגדרת חיובית לחלוטין. (6%)",
-   "solution": "יהי $\\vec0\\ne\\vec v\\in\\mathbb{R}^n$ כאשר $n$ הוא סדר המטריצה $A$. מתקיים $\\left(cI+A+A^2\\right)^T=cI+A+A^2$. בנוסף:\n$$\\left\\langle\\left(cI+A+A^2\\right)\\vec v,\\vec v\\right\\rangle=\\vec v^T\\left(cI+A+A^2\\right)\\vec v=c\\vec v^T\\vec v+\\vec v^TA\\vec v+\\vec v^TA^TA\\vec v=c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+c\\|A\\vec v\\|^2$$\nנתון כי $A$ מוגדרת חיובית, לכן $\\langle A\\vec v,\\vec v\\rangle\\ge0$. בנוסף $c>0$ ו-$\\vec v\\ne\\vec0$, לכן $c\\|\\vec v\\|^2>0$. ברור ש-$c\\|A\\vec v\\|^2\\ge0$.\nמכאן נובע כי $c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+c\\|A\\vec v\\|^2>0$, כלומר $cI+A+A^2$ מוגדרת חיובית לחלוטין.",
+   "solution": "יהי $\\vec0\\ne\\vec v\\in\\mathbb{R}^n$ כאשר $n$ הוא סדר המטריצה $A$. מתקיים $\\left(cI+A+A^2\\right)^T=cI+A+A^2$. בנוסף:\n$$\\left\\langle\\left(cI+A+A^2\\right)\\vec v,\\vec v\\right\\rangle=\\vec v^T\\left(cI+A+A^2\\right)\\vec v=c\\vec v^T\\vec v+\\vec v^TA\\vec v+\\vec v^TA^TA\\vec v=c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+\\|A\\vec v\\|^2$$\nנתון כי $A$ מוגדרת חיובית, לכן $\\langle A\\vec v,\\vec v\\rangle\\ge0$. בנוסף $c>0$ ו-$\\vec v\\ne\\vec0$, לכן $c\\|\\vec v\\|^2>0$. ברור ש-$\\|A\\vec v\\|^2\\ge0$.\nמכאן נובע כי $c\\|\\vec v\\|^2+\\langle A\\vec v,\\vec v\\rangle+\\|A\\vec v\\|^2>0$, כלומר $cI+A+A^2$ מוגדרת חיובית לחלוטין.",
    "solutionSource": "official-pdf",
    "official": true,
    "confidence": "high",
@@ -518,7 +518,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להסתפק ב-$\\ge0$; כדי לקבל חיוביות לחלוטין צריך איבר אחד חיובי ממש, והוא $c\\|\\vec v\\|^2$.",
     "לשכוח ש-$\\vec v^TA^2\\vec v=\\|A\\vec v\\|^2$ דורש ש-$A$ סימטרית.",
@@ -570,7 +570,7 @@
      "explain": "$A$ מוגדרת חיובית ולכן $\\langle A\\vec v,\\vec v\\rangle\\ge0$; עם $<0$ אי אפשר להסיק שהסכום חיובי."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -605,7 +605,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את התנאי $b=0$ ולבדוק רק את הערכים העצמיים של מטריצה לא סימטרית.",
     "לרשום $a^2-1$ במקום $1-a^2$, ולקבל תחום שגוי עבור $a$.",
@@ -641,7 +641,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "האיבר $3a-1$ נפרד, והבלוק $\\begin{pmatrix}1&a^2\\\\a^2&1\\end{pmatrix}$ נותן $1\\pm a^2$. ב-$a=2$ הערכים הם $5,\\ 5,\\ -3$, ורק האפשרות הראשונה מתאימה."
+     "explain": "האיבר $3a-1$ נפרד, והבלוק $\\begin{pmatrix}1&a^2\\\\a^2&1\\end{pmatrix}$ נותן $1\\pm a^2$. ב-$a=2$ הערכים הם $5,\\ 5,\\ -3$, ורק הרשימה $3a-1,\\ 1+a^2,\\ 1-a^2$ נותנת אותם (שלוש האחרות נותנות ערכים אחרים)."
     },
     {
      "type": "choice",
@@ -675,7 +675,7 @@
      "explain": "הערכים הם $3a-1=0.5,\\ 1+a^2=1.25,\\ 1-a^2=0.75$, והקטן הוא $0.5$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -706,7 +706,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתור את $A\\vec x=\\vec b$ ישירות, אף שאין פתרון מדויק.",
     "טעות סימן ב-$\\sum xy=3+15-10+4=12$.",
@@ -742,14 +742,14 @@
      "explain": "$4n=15-4m=15+\\frac67=\\frac{111}7$ ולכן $n=\\frac{111}{28}\\approx3.964$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
    "kind": "computation",
    "topic": "groups",
    "question": "סעיף א.1. מהו הסדר של $H$ ? (5%)",
-   "solution": "**1.** התנאי $a\\cdot c\\ne0\\pmod7$ מתקיים אם ורק אם $a\\ne0\\pmod7\\ \\wedge\\ c\\ne0\\pmod7$. לכן $\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}\\in H$ כאשר $a=1,\\dots,6\\pmod7$ (6 אפשרויות), $c=1,\\dots,6\\pmod7$ (6 אפשרויות), ו-$b\\in\\mathbb{Z}_7$ (7 אפשרויות). לפי עקרון הכפל: $|H|=6\\cdot6\\cdot7=252$.",
+   "solution": "(בפתרון הרשמי האותיות $b,c$ של $H$ מוחלפות ביחס לשאלה: כאן $\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}$ עם $a\\cdot c\\ne0$, ובשאלה $\\begin{pmatrix}a&c\\\\0&b\\end{pmatrix}$ עם $a\\cdot b\\ne0$.)\n**1.** התנאי $a\\cdot c\\ne0\\pmod7$ מתקיים אם ורק אם $a\\ne0\\pmod7\\ \\wedge\\ c\\ne0\\pmod7$. לכן $\\begin{pmatrix}a&b\\\\0&c\\end{pmatrix}\\in H$ כאשר $a=1,\\dots,6\\pmod7$ (6 אפשרויות), $c=1,\\dots,6\\pmod7$ (6 אפשרויות), ו-$b\\in\\mathbb{Z}_7$ (7 אפשרויות). לפי עקרון הכפל: $|H|=6\\cdot6\\cdot7=252$.",
    "solutionSource": "official-pdf",
    "official": true,
    "confidence": "high",
@@ -770,7 +770,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לספור $7^3=343$ ולשכוח את התנאי על האלכסון.",
     "לדרוש גם שהאיבר מעל האלכסון שונה מאפס."
@@ -798,7 +798,7 @@
      "explain": "$6\\cdot6\\cdot7=252$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -826,7 +826,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להניח שהסדר הוא $6\\cdot3=18$ במקום ה-$\\mathrm{lcm}$.",
     "לחשב חזקות של המטריצה כולה ולא של כל איבר אלכסון בנפרד."
@@ -854,7 +854,7 @@
      "explain": "$\\mathrm{lcm}(3,6)=6$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -886,7 +886,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להפוך כל איבר בנפרד: ההופכי של $2$ אינו חלק מההופכי של המטריצה.",
     "לחשב מודולו אחר ($\\bmod 3$ או $\\bmod 5$) במקום $\\bmod 7$.",
@@ -915,7 +915,7 @@
      "explain": "$b\\equiv-10\\equiv4\\pmod7$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -946,7 +946,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור $\\vec u=(x,k)$ ו-$\\vec v=(1,1)$: מתקבל $(x+k)^2\\le2(x^2+k^2)$, שאינה הטענה.",
     "לשכוח שחלוקה ב-$x^2+1$ חוקית כי הוא חיובי.",
@@ -975,7 +975,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "המכפלה הפנימית חייבת להיות $x+k$ והנורמות בריבוע $x^2+1$ ו-$1+k^2$. הזוג השני נותן $2(x^2+k^2)$ באגף ימין, השלישי נותן מכפלה $kx+1$, והרביעי נותן נורמה $x^2+x^4$."
+     "explain": "המכפלה הפנימית חייבת להיות $x+k$ והנורמות בריבוע $x^2+1$ ו-$1+k^2$. הזוג $(x,k),(1,1)$ נותן $2(x^2+k^2)$ באגף ימין, הזוג $(x,1),(k,1)$ נותן מכפלה $kx+1$, והזוג $(x,x^2),(1,k)$ נותן נורמה $x^2+x^4$."
     },
     {
      "type": "numeric",
@@ -998,7 +998,7 @@
      "explain": "העלאה בריבוע של אי-שוויון בין מספרים אי-שליליים שומרת על כיוונו: $\\le$ ולא $\\ge$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1033,7 +1033,7 @@
      "points": 5
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לרשום את הערכים העצמיים $8,4$ במקום הערכים הסינגולריים $2\\sqrt2,2$.",
     "לבחור סימנים שרירותיים ל-$\\vec u_i$ ולא לחשב אותם מ-$\\vec u_i=\\frac1{\\sigma_i}A\\vec v_i$.",
@@ -1086,7 +1086,7 @@
      "explain": "$A\\vec v_1=(1,\\sqrt3,2)^T$ ו-$\\sigma_1=2\\sqrt2$, ולכן הרכיב הוא $\\frac2{2\\sqrt2}=\\frac{\\sqrt2}2\\approx0.707$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1117,7 +1117,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לא לחלק את $2x\\equiv1$ ו-$3x\\equiv5$ בהופכי של המקדם לפני שימוש בנוסחה.",
     "לחשב את ההופכי מודולו $165$ ולא מודולו $m_i$.",
@@ -1153,7 +1153,7 @@
      "explain": "$3\\cdot33\\cdot2+9\\cdot15\\cdot3+2\\cdot55\\cdot1=198+405+110=713=4\\cdot165+53$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

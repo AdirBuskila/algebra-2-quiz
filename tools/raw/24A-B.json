@@ -86,8 +86,8 @@
      "explain": "מ-$25m+5n=28$ עם $m=0.4$ נקבל $5n=18$ ולכן $n=3.6$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -163,8 +163,8 @@
      "explain": "כל וקטור תלוי בקודמים: $v_2$ ב-$v_1$, $v_3$ ב-$v_1,v_2$, וההיטל נחשב רק על הבסיס האורתוגונלי."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -237,8 +237,8 @@
      "explain": "כל שלב נשען על הקודם."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -298,8 +298,8 @@
      "explain": "הצבת $b\\odot c=\\frac{b+c}{bc}$ נותנת במונה $abc+b+c$ ולא $abc+a+c$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -384,8 +384,8 @@
      "explain": "ההצבה $a=1$ אפשרית רק אחרי שהגענו למשוואה."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -454,8 +454,8 @@
      "explain": "$\\frac2x=x$ נותן $x^2=2$, ורק $x=\\sqrt2>0$ שייך ל-$\\mathbb{R}^*$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -527,8 +527,8 @@
      "explain": "כל שלב נובע מהקודם."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -619,8 +619,8 @@
      "explain": "מ-$\\vec v=\\lambda A\\vec v$ מקבלים $A\\vec v=\\frac1\\lambda\\vec v$ ולא $\\lambda\\vec v$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -699,8 +699,8 @@
      "explain": "הערכים העצמיים $2a^2,2a^2+1,0$ אי-שליליים, ו-$0$ תמיד מופיע, ולכן אין חיוביות לחלוטין."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -762,7 +762,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "פותחים את המכפלה הפנימית $\\langle\\vec u+t\\vec v,\\vec u+t\\vec v\\rangle$. האפשרות השנייה נכונה רק כאשר $\\langle\\vec u,\\vec v\\rangle=0$, והשלישית רק כאשר הווקטורים באותו כיוון."
+     "explain": "פותחים את המכפלה הפנימית $\\langle\\vec u+t\\vec v,\\vec u+t\\vec v\\rangle$. הביטוי $\\|\\vec u\\|^2+t^2\\|\\vec v\\|^2$ נכון רק כאשר $\\langle\\vec u,\\vec v\\rangle=0$, והביטוי עם $2t\\|\\vec u\\|\\|\\vec v\\|$ נכון רק כאשר הווקטורים באותו כיוון."
     },
     {
      "type": "order",
@@ -790,8 +790,8 @@
      "explain": "מהפיתוח בשורה הקודמת האיבר האחרון הוא $t^2\\|\\vec v\\|^2$ ולא $t\\|\\vec v\\|^2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -880,8 +880,8 @@
      "explain": "עם $+c$ המכפלה היא $\\begin{pmatrix}1&2ac\\\\0&1\\end{pmatrix}$, שאינה $I$ כאשר $c\\ne0$; ההופכי הנכון הוא עם $-c$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -929,8 +929,8 @@
      "explain": "$4\\cdot5=20$, כי $a$ ו-$c$ נבחרים בנפרד והתא התחתון נקבע."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -989,8 +989,8 @@
      "explain": "היא $a=2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -1055,8 +1055,8 @@
      "explain": "$17122\\bmod1800=922$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1118,8 +1118,8 @@
      "explain": "$\\sqrt{4+1+4}=3$, ולכן העמודה בנורמה 1 היא $\\frac13(2,1,-2)$ עד כדי סימן."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1214,8 +1214,8 @@
      "explain": "חילוק של $1\\le\\sqrt n\\sqrt{\\sum x_i^2}$ ב-$\\sqrt n$ נותן $\\frac1{\\sqrt n}$ ולא $\\frac1n$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

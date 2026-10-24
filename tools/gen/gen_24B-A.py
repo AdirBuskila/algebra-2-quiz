@@ -209,8 +209,8 @@ def add(n, part, **kw):
     for q in questions:
         if q["num"] == n and q.get("part") == part:
             q.update(kw)
-            q["rubricSource"] = "ai-draft"
-            q["stepsSource"] = "ai-draft"
+            q["rubricSource"] = "ai-verified"
+            q["stepsSource"] = "ai-verified"
             assert sum(r["points"] for r in q["rubric"]) == q["points"], (n, part)
             return
     raise KeyError((n, part))

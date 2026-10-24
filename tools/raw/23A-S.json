@@ -97,8 +97,8 @@
      "explain": "הערך $-1<0$ שולל חיוביות (גם למחצה), והערך $3>0$ שולל שליליות."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -160,7 +160,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "עבור $\\vec u=(1,0)$, $\\vec v=(0,1)$ הצד השמאלי הוא $2+2=4$; רק האפשרות הראשונה נותנת $4$ (האחרות נותנות $0$, $2$, $0$)."
+     "explain": "עבור $\\vec u=(1,0)$, $\\vec v=(0,1)$ הצד השמאלי הוא $2+2=4$; רק השוויון עם $2\\|\\vec u\\|^2+2\\|\\vec v\\|^2$ נותן $4$ (שלושת האחרים נותנים $0$, $2$, $0$)."
     },
     {
      "type": "numeric",
@@ -184,8 +184,8 @@
      "explain": "מחיסור הזהויות: $16-36=4\\langle\\vec u,\\vec v\\rangle$, כלומר $-5$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -250,8 +250,8 @@
      "explain": "$n=12-12m=12-9=3$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -333,8 +333,8 @@
      "explain": "הפיתוח הנכון הוא $I+IQ+QI+Q^2=I+2Q+Q^2$; בגרסה זו חסר אחד מהאיברים $Q$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -399,8 +399,8 @@
      "explain": "$\\vec q_2=\\frac1{\\sqrt2}(1,0,-1)^T$, ולכן $R_{23}=-\\frac1{\\sqrt2}$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -484,8 +484,8 @@
      "explain": "האנטי-נגזרת של $x^6$ היא $\\frac{x^7}7$, ולכן הערך הוא $\\frac17$ ולא $\\frac16$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -562,8 +562,8 @@
      "explain": "מהמשוואה $b+y+az=0$ עם $z=-c$ מתקבל $y=ac-b$, לא $b+ac$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -628,8 +628,8 @@
      "explain": "$347\\bmod70=67$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -695,8 +695,8 @@
      "explain": "$\\frac32\\cdot1+1\\cdot1=\\frac52$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

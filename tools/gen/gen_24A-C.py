@@ -72,6 +72,7 @@ S2A2 = (
 S2A3 = (
     "נבדוק את התנאים: הופכי, אסוציאטיביות, סגירות.\n"
     r"**הופכי:** נחפש $\begin{pmatrix}a\\b\end{pmatrix}*\begin{pmatrix}a^{-1}\\b^{-1}\end{pmatrix}=\begin{pmatrix}0\\1\end{pmatrix}$, כלומר $\begin{pmatrix}ab^{-1}+ba^{-1}\\bb^{-1}\end{pmatrix}=\begin{pmatrix}0\\1\end{pmatrix}$. נדרש $bb^{-1}=1$, כלומר $b^{-1}=\dfrac1b$ ($b\ne0$). לוקטורים מהצורה $\begin{pmatrix}a\\0\end{pmatrix}$ אין הופכי." "\n"
+    r"**סגירות:** גם הסגירות נכשלת: $\begin{pmatrix}1\\0\end{pmatrix}*\begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}$, שאינו שייך לקבוצה $\mathbb{R}^2\setminus\{(0,0)\}$." "\n"
     "לכן המבנה אינו חבורה."
 )
 
@@ -225,8 +226,8 @@ def add(n, part, **kw):
     for q in questions:
         if q["num"] == n and q.get("part") == part:
             q.update(kw)
-            q["rubricSource"] = "ai-draft"
-            q["stepsSource"] = "ai-draft"
+            q["rubricSource"] = "ai-verified"
+            q["stepsSource"] = "ai-verified"
             assert sum(r["points"] for r in q["rubric"]) == q["points"], (n, part)
             return
     raise KeyError((n, part))

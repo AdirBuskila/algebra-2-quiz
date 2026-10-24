@@ -57,7 +57,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשים את הנקודות בסדר שונה בעמודות ולהחליף בין $x$ ל-$y$ ב-$A$ ו-$\\vec b$.",
     "לשכוח את עמודת האחדות ב-$A$ ולקבל ישר דרך הראשית.",
@@ -93,14 +93,14 @@
      "explain": "$5n=10-5m=2.5$, כלומר $n=0.5$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
    "kind": "proof",
    "topic": "cauchy_schwarz",
    "question": "(12%) הוכיחו כי $\\left(\\displaystyle\\int_1^2\\frac{f(x)}{x}\\,dx\\right)^2\\le\\frac12\\displaystyle\\int_1^2 f^2(x)\\,dx$ כאשר $f(x)\\in C_{[1,2]}$.",
-   "solution": "נסתכל במרחב מכפלה פנימית $C_{[1,2]}$ עם המכפלה הפנימית האינטגרלית הרגילה: $\\langle f,g\\rangle=\\displaystyle\\int_1^2 f(x)g(x)\\,dx$.\nנגדיר $g(x)=\\dfrac1x$ וניעזר באי-שוויון קושי-שוורץ. נקבל:\n$$\\left\\langle f,\\frac1x\\right\\rangle\\le\\|f(x)\\|\\cdot\\left\\|\\frac1x\\right\\|\\ \\Longleftrightarrow\\ \\left\\langle f,\\frac1x\\right\\rangle^2\\le\\|f(x)\\|^2\\cdot\\left\\|\\frac1x\\right\\|^2$$\n$$\\left\\langle f,\\frac1x\\right\\rangle^2=\\left(\\int_1^2 f(x)\\frac1x\\,dx\\right)^2$$\n$$\\left\\|\\frac1x\\right\\|^2=\\int_1^2\\frac1{x^2}\\,dx=\\left[-\\frac1x\\right]_1^2=\\frac12$$\n$$\\left(\\int_1^2\\frac{f(x)}{x}\\,dx\\right)^2\\le\\frac12\\int_1^2 f^2(x)\\,dx$$",
+   "solution": "נסתכל במרחב מכפלה פנימית $C_{[1,2]}$ עם המכפלה הפנימית האינטגרלית הרגילה: $\\langle f,g\\rangle=\\displaystyle\\int_1^2 f(x)g(x)\\,dx$.\nנגדיר $g(x)=\\dfrac1x$ וניעזר באי-שוויון קושי-שוורץ. נקבל:\n$$\\left|\\left\\langle f,\\frac1x\\right\\rangle\\right|\\le\\|f(x)\\|\\cdot\\left\\|\\frac1x\\right\\|\\ \\Longleftrightarrow\\ \\left\\langle f,\\frac1x\\right\\rangle^2\\le\\|f(x)\\|^2\\cdot\\left\\|\\frac1x\\right\\|^2$$\n$$\\left\\langle f,\\frac1x\\right\\rangle^2=\\left(\\int_1^2 f(x)\\frac1x\\,dx\\right)^2$$\n$$\\left\\|\\frac1x\\right\\|^2=\\int_1^2\\frac1{x^2}\\,dx=\\left[-\\frac1x\\right]_1^2=\\frac12$$\n$$\\left(\\int_1^2\\frac{f(x)}{x}\\,dx\\right)^2\\le\\frac12\\int_1^2 f^2(x)\\,dx$$",
    "solutionSource": "official-pdf",
    "official": true,
    "confidence": "high",
@@ -124,7 +124,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור $g(x)=x$ או $g(x)=1$, ואז $\\langle f,g\\rangle$ אינו האינטגרל הנתון.",
     "לחשב את $\\int_1^2\\frac1{x^2}dx$ כ-$\\ln2$ (זה האינטגרל של $\\frac1x$).",
@@ -176,7 +176,7 @@
      "explain": "הפונקציה הקדומה של $\\frac1{x^2}$ היא $-\\frac1x$ ולא $\\ln x$, והערך הנכון הוא $\\frac12$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -204,7 +204,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור $(0,0)$ כמו בחיבור; הוא אינו ב-$G$ כי $0\\notin\\mathbb{Z}_5^*$."
    ],
@@ -241,7 +241,7 @@
      "explain": "$4\\cdot2=8\\equiv3\\pmod5$, ולא $2$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -273,7 +273,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב הופכי מודולו 7 עבור הרכיב הראשון, או מודולו 5 עבור השני.",
     "לרשום $\\left(\\frac12,\\frac13\\right)$ במקום מספרים שלמים מודולו 5 ו-7."
@@ -294,7 +294,7 @@
      "explain": "$3\\cdot5=15\\equiv1\\pmod7$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -322,7 +322,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לספור $5\\cdot7=35$ ולשכוח שהאפס אינו ב-$\\mathbb{Z}_n^*$.",
     "לחבר את הסדרים במקום להכפיל: $4+6=10$."
@@ -350,7 +350,7 @@
      "explain": "$4\\cdot6=24$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -378,7 +378,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לקחת את המכפלה $4\\cdot6=24$ במקום המכפלה המשותפת המינימלית.",
     "לקחת את המקסימום $6$ במקום ה-$\\mathrm{lcm}$."
@@ -406,7 +406,7 @@
      "explain": "$\\mathrm{lcm}(4,6)=12$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -438,7 +438,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק את הסימטריה ולא את סימן התבנית הריבועית.",
     "לשכוח את הסימן המינוס, כלומר להראות ש-$A+B^TB$ חיובית ולא ש-$-A-B^TB$ שלילית."
@@ -465,7 +465,7 @@
      "explain": "$A$ מוגדרת חיובית ולכן $\\vec v^TA\\vec v\\ge0$ (לא $\\le0$)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -493,7 +493,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש בכך ש-$B$ הפיכה; היא לא נתונה, וההוכחה אינה זקוקה לכך.",
     "לשכוח את $(B\\vec v)^T=\\vec v^TB^T$ ולחשב $B\\vec v\\,A\\,B\\vec v$."
@@ -541,7 +541,7 @@
      "explain": "קודם מקבצים את המכפלה, אחר כך מזהים את הוקטור $B\\vec v$, ורק אז מפעילים את החיוביות של $A$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -572,9 +572,9 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
-    "לשכוח שהאי-שוויון $a^2\\ge1$ נותן גם $a\\le-1$, ולהוציא את זה בעזרת התנאי $a\\ge0$.",
+    "לשכוח שהאי-שוויון $a^2\\ge1$ נותן גם $a\\le-1$, ולא לפסול אותו בעזרת התנאי $a\\ge0$.",
     "לבלבל בין מוגדרת חיובית (ערכים עצמיים $\\ge0$) למוגדרת חיובית לחלוטין (ערכים עצמיים $>0$).",
     "לקבוע אי-הגדרה בלי לבדוק את כל הערכים העצמיים."
    ],
@@ -601,7 +601,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "המטריצה פוצלה לבלוק $\\begin{pmatrix}a^2&1\\\\1&a^2\\end{pmatrix}$ עם ערכים עצמיים $a^2\\pm1$, ועוד הערך $a$. בבדיקה ב-$a=2$ מתקבלים $2,5,3$, ורק האפשרות הראשונה נותנת אותם."
+     "explain": "המטריצה פוצלה לבלוק $\\begin{pmatrix}a^2&1\\\\1&a^2\\end{pmatrix}$ עם ערכים עצמיים $a^2\\pm1$, ועוד הערך $a$. בבדיקה ב-$a=2$ מתקבלים $2,5,3$, ורק הרשימה $a,\\ a^2+1,\\ a^2-1$ נותנת אותם (שלוש האחרות נותנות ערכים אחרים)."
     },
     {
      "type": "choice",
@@ -659,7 +659,7 @@
      "explain": "הערך $a^2+1$ תמיד חיובי, ולכן אי אפשר שכולם $\\le0$. למשל ב-$a=0$ הערכים הם $0,1,-1$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -690,7 +690,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב את ההופכי מודולו $m$ במקום מודולו $m_i$.",
     "לשכוח להקטין את $359$ מודולו $60$.",
@@ -726,7 +726,7 @@
      "explain": "$359=5\\cdot60+59$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -761,7 +761,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לרשום את $D$ בסדר $5,5,0$ כשהעמודה הראשונה של $Q$ שייכת ל-$\\lambda=0$.",
     "לשכוח לנרמל את העמודות של $Q$.",
@@ -797,7 +797,7 @@
      "explain": "$\\|\\vec v_1\\|=\\sqrt5$ ולכן $\\frac2{\\sqrt5}\\approx0.894$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -829,7 +829,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לכתוב $(xy)^{-1}=x^{-1}y^{-1}$; זה נכון רק בחבורה אבלית, שהיא מה שרוצים להוכיח.",
     "להניח קומוטטיביות ישירות במקום להסיק אותה."
@@ -857,7 +857,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "רק הזהות הראשונה נכונה בכל חבורה. בחבורת התמורות $S_3$ שלוש האחרות נכשלות על זוג איברים מתאים."
+     "explain": "רק הזהות $(xy)^{-1}=y^{-1}x^{-1}$ נכונה בכל חבורה. בחבורת התמורות $S_3$ שלוש האחרות נכשלות על זוג איברים מתאים."
     },
     {
      "type": "order",
@@ -870,7 +870,7 @@
      "explain": "השוויון הראשון מחליף את המכפלה בהופכי שלה, השני פותח את ההופכי, והשלישי משתמש שוב בנתון."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -902,7 +902,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש ב-$x^3=x^{-1}$ ולהיתקע; יש לצמצם את החזקה בעזרת $x^2=1$.",
     "לצמצם את $y^5$ ל-$y^3$ במקום ל-$y$, כלומר לצמצם רק חזקה אחת של $y^2$."
@@ -956,7 +956,7 @@
      "explain": "$5$ הוא אי-זוגי, ולכן $y^5=y^4\\cdot y=y$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -991,7 +991,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפרק לפי השורות של $A$ במקום לפי העמודות.",
     "לשכוח שהאלכסון של $R$ חיובי: $r_{11}=\\|\\vec a_1\\|=\\sqrt2$.",
@@ -1027,7 +1027,7 @@
      "explain": "$\\frac4{4\\sqrt2}=\\frac{\\sqrt2}2$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1055,7 +1055,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את $\\vec v^T\\vec v=\\|\\vec v\\|^2=1$, התנאי שגורר $P^2=P$.",
     "לבלבל בין $\\vec v\\vec v^T$ (מטריצה $n\\times n$) ל-$\\vec v^T\\vec v$ (מספר)."
@@ -1089,7 +1089,7 @@
      "explain": "$\\vec v$ וקטור יחידה, ולכן $\\vec v^T\\vec v=1$; עם $0$ היה מתקבל $P^2=0$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1121,7 +1121,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח ש-$\\vec v^T\\vec v=1$ ולהישאר עם $\\vec v^T\\vec v\\,\\vec v^T\\vec u$.",
     "להחליף את סדר המכפלה ולחשב $P\\vec v$ במקום $\\vec v^TP$."
@@ -1146,7 +1146,7 @@
      "explain": "כל שורה נובעת מהקודמת: כתיבת המכפלה הפנימית, פתיחה, הצבת $P=\\vec v\\vec v^T$ עם $\\|\\vec v\\|=1$, ותוצאה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

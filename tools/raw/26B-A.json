@@ -44,7 +44,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב את המכפלה הפנימית כמכפלת מטריצות רגילה ולא כסכום מכפלות הרכיבים המתאימים, $tr\\left(B^TA\\right)$.",
     "לשכוח לחלק ב-$\\|\\vec u_1\\|^2$ בהיטל, או לשכוח את שלב הנרמול ולהשאיר בסיס אורתוגונלי בלבד."
@@ -93,7 +93,7 @@
      "explain": "$\\|A\\|=\\sqrt2\\approx1.4142$, ואילו $\\|\\vec u_2\\|=1$ ולכן הוא כבר מנורמל."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -121,7 +121,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש ב-$A$ וב-$B$ המקוריים בנוסחת ההיטל הפשוטה, אף שאינם אורתוגונליים זה לזה; חובה להשתמש בבסיס מגרם-שמידט.",
     "לשכוח לחלק ב-$\\|\\vec u_i\\|^2$ (כאן $2$ עבור הראשון)."
@@ -170,7 +170,7 @@
      "explain": "$\\frac22\\vec u_1+\\frac31\\vec u_2=\\begin{pmatrix}1&3\\\\0&-1\\end{pmatrix}$. שלוש האפשרויות האחרות אינן שייכות ל-$U$ (איברי $U$ הם מהצורה $\\begin{pmatrix}p&q\\\\0&-p\\end{pmatrix}$), ולכן אינן יכולות להיות היטל (נבדק ב-sympy)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -197,7 +197,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק את הדטרמיננטה או רק את סימני האיברים, שאינם מספיקים להגדרת חיוביות לחלוטין.",
     "לכתוב $\\left(A^2\\right)^T=A^2$ בלי לנמק, או לשכוח לבדוק סימטריה של $A+A^{-1}$.",
@@ -256,7 +256,7 @@
      "explain": "$A^T=A$ ולכן $A^TA^{-1}A=A$, והשורה הנכונה היא $=y^TAy$. השורה שנכתבה ($y^Ty$) שגויה כי $A^TA^{-1}A$ אינה $I$ (נבדק ב-sympy)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -284,7 +284,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לספור $5\\cdot5\\cdot5=125$ או לשכוח שהתנאי $a\\cdot c\\neq0$ מוציא את הערך $0$ מכל אחד מהם.",
     "להגביל גם את $b$ לערכים שונים מאפס."
@@ -312,7 +312,7 @@
      "explain": "$4\\cdot5\\cdot4=80$ (נבדק במניית כל המטריצות מעל $\\mathbb{Z}_5$)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -340,7 +340,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח לצמצם מודולו 5, ולכתוב $J^3=\\begin{pmatrix}1&7\\\\0&8\\end{pmatrix}$.",
     "להמשיך לחשב חזקות אחרי $J^4=I$ ולא להבחין שהן חוזרות."
@@ -368,7 +368,7 @@
      "explain": "$I,J,J^2,J^3$ שונים זה מזה, ו-$J^4=I$ סוגר את המחזור."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -392,7 +392,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להפוך את המטריצה מעל $\\mathbb{R}$ ולקבל $\\begin{pmatrix}1&-1/2\\\\0&1/2\\end{pmatrix}$ במקום לעבוד מודולו 5."
    ],
@@ -412,7 +412,7 @@
      "explain": "$J^{-1}=J^3=\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}$, ו-$J\\cdot J^{-1}\\equiv I$ (נבדק ב-sympy)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -436,7 +436,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לענות $80$ (הסדר של $G$) או $5$ (המודולו)."
    ],
@@ -477,7 +477,7 @@
      "explain": "$J^4=I$ ו-$J,J^2,J^3\\neq I$, ולכן $o(J)=4$ (נבדק ב-sympy)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -505,7 +505,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור $A$ ששייכת ל-$H$ (למשל $J^2$) או כזו שמתחלפת עם $J$, ואז $AJA^{-1}=J\\in H$.",
     "לבחור מטריצה שאינה משולשת עליונה, שאינה שייכת ל-$G$.",
@@ -566,7 +566,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "עבור $I$ ו-$J^2$ מתקבל $AJA^{-1}=J\\in H$ (הן מתחלפות עם $J$); המטריצה האחרונה אינה משולשת עליונה ולכן אינה ב-$G$. (יש עוד תשובות שונות לשאלה המקורית, אך כאן רק האפשרות הראשונה מתאימה.)"
+     "explain": "עבור $I$ ו-$J^2$ מתקבל $AJA^{-1}=J\\in H$ (הן מתחלפות עם $J$); המטריצה $\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$ אינה משולשת עליונה ולכן אינה ב-$G$. (יש עוד תשובות שונות לשאלה המקורית, אך כאן רק $\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ מתאימה.)"
     },
     {
      "type": "numeric",
@@ -576,7 +576,7 @@
      "explain": "$AJA^{-1}=\\begin{pmatrix}1&2\\\\0&2\\end{pmatrix}$, שאינה $J$ ולכן אינה ב-$H$ (נבדק ב-sympy)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -611,7 +611,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק את הערך העצמי $4-a^2$ ולהסיק $|a|<2$ ולשכוח את $1\\pm2a$.",
     "לא להבדיל בין מוגדרת חיובית (אי-שוויון חלש, ערך עצמי $0$ מותר) לבין מוגדרת חיובית לחלוטין.",
@@ -672,7 +672,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "נדרש $4-a^2>0$, $1+2a>0$ ו-$1-2a>0$. התנאי $|a|<2$ מתעלם מ-$1\\pm2a$; האפשרות השלישית מכילה את $a=\\frac12$ שבו ערך עצמי הוא $0$; והרביעית כוללת $a=1$ שבו $1-2a<0$."
+     "explain": "נדרש $4-a^2>0$, $1+2a>0$ ו-$1-2a>0$. התנאי $|a|<2$ מתעלם מ-$1\\pm2a$; התחום $-\\frac12\\le a\\le\\frac12$ מכיל את $a=\\frac12$ שבו ערך עצמי הוא $0$; והתחום $a>-\\frac12$ כולל $a=1$ שבו $1-2a<0$."
     },
     {
      "type": "choice",
@@ -731,7 +731,7 @@
      "explain": "הערכים העצמיים הם $3,\\ 3,\\ -1$: יש גם חיובי וגם שלילי, ולכן אינה אף אחת מהן (נבדק ב-sympy)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -758,7 +758,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשים את עמודת האחדות לפני עמודת ה-$x$ ולהחליף בין השיפוע לחותך.",
     "לפתור את המערכת $A\\vec v=\\vec y$ ישירות (אין לה פתרון) במקום את המשוואות הנורמליות."
@@ -793,7 +793,7 @@
      "explain": "$n=1$ ולכן $y=2x+1$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -820,7 +820,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לצמצם את האיברים האמצעיים ישירות כאילו החבורה אבלית; צמצום חוקי רק מהקצוות, ע״י כפל בהופכי.",
     "להוכיח את השוויון רק עבור איברים מסוימים ולא לכל $x,y\\in G$."
@@ -849,7 +849,7 @@
      "explain": "$xyy\\cdot y^{-1}=xy$ ולא $xy^2$. השורה הנכונה היא $yx=xy$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -876,7 +876,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להניח $xy=yx$ ולצמצם, בלי שהחבורה אבלית.",
     "לטעות ב-$y^2\\cdot y^2$ ולכתוב $y^3$ או $y^2$."
@@ -911,7 +911,7 @@
      "explain": "$y^2\\cdot y^2=y^4$ ולא $y^3$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -938,7 +938,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור וקטורים שהמכפלה הפנימית שלהם אינה הסכום הנתון (למשל לשכוח את השורשים).",
     "לשכוח ש-$\\sum_{k=1}^n\\ln k=\\ln(n!)$, או לטעות בסכום $\\sum(2k-1)=n^2$.",
@@ -999,7 +999,7 @@
      "explain": "מגדירים את הווקטורים, מחשבים את שלוש הכמויות, ואז מפעילים את האי-שוויון ומציבים."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1034,7 +1034,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב את $AA^T$ ולהתאים את הווקטורים העצמיים ל-$V$ בצורה שגויה; לכן עדיף $\\vec u_i=\\frac1{\\sigma_i}A\\vec v_i$.",
     "לשכוח לנרמל את הווקטורים העצמיים, או לשכוח שה-$\\sigma_i$ הם שורשי הערכים העצמיים ($5$ ו-$3$, לא $25$ ו-$9$).",
@@ -1098,7 +1098,7 @@
      "explain": "$1\\cdot(-1)-1\\cdot1=-2$; הווקטור הוא $\\begin{pmatrix}4\\\\-4\\\\-2\\end{pmatrix}$, ולאחר נרמול $\\vec u_3=\\frac13\\begin{pmatrix}2\\\\-2\\\\-1\\end{pmatrix}$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1129,7 +1129,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב את $M_i$ אבל לשכוח להפוך אותו מודולו $m_i$.",
     "לשכוח לצמצם בסוף מודולו $360$, או לכתוב את התוצאה $2218$ בלי להוסיף את כל $58+360k$."
@@ -1171,7 +1171,7 @@
      "explain": "$3\\cdot72\\cdot3+2\\cdot45\\cdot5+4\\cdot40\\cdot7=2218\\equiv58\\pmod{360}$ (נבדק עם crt של sympy)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

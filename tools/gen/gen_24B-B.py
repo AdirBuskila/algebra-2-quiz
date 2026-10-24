@@ -202,8 +202,8 @@ def add(n, part, **kw):
     for q in questions:
         if q["num"] == n and q.get("part") == part:
             q.update(kw)
-            q["rubricSource"] = "ai-draft"
-            q["stepsSource"] = "ai-draft"
+            q["rubricSource"] = "ai-verified"
+            q["stepsSource"] = "ai-verified"
             assert sum(r["points"] for r in q["rubric"]) == q["points"], (n, part)
             return
     raise KeyError((n, part))
@@ -249,7 +249,7 @@ add(2, "א",
            choice("מהו ההופכי של $\\begin{pmatrix}1&a&b\\\\0&1&a\\\\0&0&1\\end{pmatrix}$?",
                   [r"$\begin{pmatrix}1&-a&a^2-b\\0&1&-a\\0&0&1\end{pmatrix}$", r"$\begin{pmatrix}1&-a&-b\\0&1&-a\\0&0&1\end{pmatrix}$",
                    r"$\begin{pmatrix}1&-a&a^2+b\\0&1&-a\\0&0&1\end{pmatrix}$", r"$\begin{pmatrix}1&a&-b\\0&1&a\\0&0&1\end{pmatrix}$"], 0,
-                  "בדיקה בכפל: רק הראשונה נותנת $I$. בשאר האפשרויות המכפלה אינה $I$ (למשל, בשנייה הכניסה הימנית העליונה היא $-a^2$)."),
+                  "בדיקה בכפל: רק המטריצה עם $a^2-b$ בכניסה הימנית העליונה נותנת $I$. בשאר האפשרויות המכפלה אינה $I$ (למשל, במטריצה עם $-b$ במקום זה הכניסה הימנית העליונה במכפלה היא $-a^2$)."),
            findbug("בגרסה הבאה של ההוכחה שורה אחת שגויה. מצאו אותה.", G2A, 3,
                    r"הופכי: $A^{-1}=\begin{pmatrix}1&-a&a^2+b\\0&1&-a\\0&0&1\end{pmatrix}\in G$",
                    "בדירוג מתקבל $a^2-b$ בכניסה הימנית העליונה. עם $a^2+b$ המכפלה $AA^{-1}$ נותנת $2b$ במקום 0.")])

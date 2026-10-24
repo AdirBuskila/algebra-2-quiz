@@ -219,8 +219,8 @@ def add(n, part, **kw):
     for q in questions:
         if q["num"] == n and q.get("part") == part:
             q.update(kw)
-            q["rubricSource"] = "ai-draft"
-            q["stepsSource"] = "ai-draft"
+            q["rubricSource"] = "ai-verified"
+            q["stepsSource"] = "ai-verified"
             assert sum(r["points"] for r in q["rubric"]) == q["points"], (n, part)
             return
     raise KeyError((n, part))
@@ -365,7 +365,7 @@ add(3, "ב",
     steps=[choice("מהו הפיתוח של $\\|\\vec u+t\\vec v\\|^2$?",
                   ["$\\|\\vec u\\|^2+2t\\langle\\vec u,\\vec v\\rangle+t^2\\|\\vec v\\|^2$", "$\\|\\vec u\\|^2+t^2\\|\\vec v\\|^2$",
                    "$\\|\\vec u\\|^2+2t\\|\\vec u\\|\\|\\vec v\\|+t^2\\|\\vec v\\|^2$", "$\\|\\vec u\\|^2+t\\langle\\vec u,\\vec v\\rangle+t\\|\\vec v\\|^2$"], 0,
-                  "פותחים את המכפלה הפנימית $\\langle\\vec u+t\\vec v,\\vec u+t\\vec v\\rangle$. האפשרות השנייה נכונה רק כאשר $\\langle\\vec u,\\vec v\\rangle=0$, והשלישית רק כאשר הווקטורים באותו כיוון."),
+                  "פותחים את המכפלה הפנימית $\\langle\\vec u+t\\vec v,\\vec u+t\\vec v\\rangle$. הביטוי $\\|\\vec u\\|^2+t^2\\|\\vec v\\|^2$ נכון רק כאשר $\\langle\\vec u,\\vec v\\rangle=0$, והביטוי עם $2t\\|\\vec u\\|\\|\\vec v\\|$ נכון רק כאשר הווקטורים באותו כיוון."),
            order("סדרו את הכיוון השני של ההוכחה.", G3B, "כל שורה נובעת מהקודמת; ההשאפה $t\\to0$ באה אחרונה."),
            findbug("בגרסה הבאה שורה אחת שגויה. מצאו אותה.", G3B, 1,
                    r"$2t\langle\vec u,\vec v\rangle+t\|\vec v\|^2\ge0$ לכל $t$",

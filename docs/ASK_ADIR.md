@@ -87,4 +87,11 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - The student solution does not cover Q3 or Q5; these 4 items were held no-key. The other 8 ship as student solutions.
 - Status: resolved by solver, pending refuter. All 4 solved (solutionSource "solved", official false), sympy checks in tools/verify/24A-C/solve_24AC.py.
 
+### 24A-A Q2.5 (printed b), 23B-B Q1b - slips in intermediate lines
+- Path: official solutions of 24A-A and 23B-B
+- Page: 24A-A solution Q2b (last line); 23B-B solution Q1b (first display line)
+- Question: 24A-A Q2b: the official last term is c*||Av||^2; the coefficient of A^2 in cI+A+A^2 is 1, so it is ||Av||^2 (checked: A=[[2,1],[1,2]], c=3, v=(1,0): 3+2+5=10). The conclusion is unchanged. 23B-B Q1b: the official equivalence <f,1/x> <= ||f|| ||1/x|| <=> <f,1/x>^2 <= ... needs the absolute value on the left (|<f,1/x>|); the conclusion is unchanged.
+- Needed: nothing, FYI. Also 24A-A Q2.2: the question text said "abelian group (commutative)" but the printed exam says only "commutative group"; re-transcribed from the page.
+- Status: resolved in transcription (silent, no student-facing label)
+
 ## Resolved

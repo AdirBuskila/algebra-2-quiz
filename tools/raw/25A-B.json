@@ -43,7 +43,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתור את $A\\vec x=\\vec b$ ישירות: חמש הנקודות אינן על ישר אחד, ולכן אין פתרון.",
     "לבלבל בין סדר העמודות: העמודה הראשונה היא ערכי $x$ (המקדם $m$) והשנייה עמודת אחדות (המקדם $n$)."
@@ -101,7 +101,7 @@
      "explain": "מאותה מערכת $n=3.6$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -132,7 +132,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לכתוב את הערכים העצמיים $8,4$ במקום את השורשים שלהם $2\\sqrt2,2$ ב-$\\Sigma$.",
     "לשכוח להשלים את $U$ לבסיס אורתונורמלי של $\\mathbb{R}^3$ (העמודה השלישית).",
@@ -168,7 +168,7 @@
      "explain": "$Av_1=\\frac1{\\sqrt2}(0,4,0)^T=(0,2\\sqrt2,0)^T$, ולכן $u_1=(0,1,0)^T$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -196,7 +196,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להניח שהחבורה אבלית כדי להוכיח שהיא אבלית.",
     "לכפול בצד אחד בלבד: צריך $x$ משמאל ו-$y$ מימין כדי לחסל את שני הריבועים."
@@ -247,7 +247,7 @@
      "explain": "$x\\,e\\,y=xy$ ולא $yx$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -275,7 +275,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לצמצם חזקות כמו במספרים: בחבורה אין חילוק, רק כפל בהופכי.",
     "לשכוח שהנתון $x^2=e$ חל גם על $y$."
@@ -283,14 +283,14 @@
    "steps": [
     {
      "type": "numeric",
-     "prompt": "$x^5=x^k$ כאשר $x^2=e$. מהו $k$ הקטן ביותר ($k\\ge0$)?",
+     "prompt": "$x^5=x^k$ כאשר $x^2=e$ ו-$x\\ne e$. מהו $k$ הקטן ביותר ($k\\ge0$)?",
      "answer": 1,
      "tol": 0,
-     "explain": "$x^5=x^4x=ex=x$, ולכן $k=1$."
+     "explain": "$x^5=x^4x=ex=x$, ולכן $k=1$ (עבור $x=e$ גם $k=0$ מתאים, ולכן בשלב זה מניחים $x\\ne e$)."
     },
     {
      "type": "numeric",
-     "prompt": "$y^9=y^k$ כאשר $y^2=e$. מהו $k$ הקטן ביותר ($k\\ge0$)?",
+     "prompt": "$y^9=y^k$ כאשר $y^2=e$ ו-$y\\ne e$. מהו $k$ הקטן ביותר ($k\\ge0$)?",
      "answer": 1,
      "tol": 0,
      "explain": "$y^9=y^8y=y$, ולכן $k=1$."
@@ -306,7 +306,7 @@
      "explain": "צריך קודם את $x^4=e$ ו-$y^8=e$, אחר כך מצמצמים את החזקות, ולבסוף משווים."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -337,7 +337,7 @@
      "points": 5
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח להראות שהמכפלה והמטריצה ההופכית שייכות ל-$G$ (כלומר שמכפלת איברי האלכסון שלהן היא $1$).",
     "להניח הפיכות בלי להסביר: $ab=1$ גורר $a,b\\ne0$."
@@ -398,7 +398,7 @@
      "explain": "$\\frac1a\\cdot\\frac1b=\\frac1{ab}=1$, ולא $\\frac1{a+b}$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -429,7 +429,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבלבל בין מוגדרת (אי-שוויון חלש, $\\ge$) למוגדרת לחלוטין (אי-שוויון חזק).",
     "לפתור את אי-השוויונות בנפרד ולשכוח לחתוך אותם: צריכים כולם יחד."
@@ -499,7 +499,7 @@
      "explain": "בתחום הזה $a-1<0<a+1$, ולכן יש ערך עצמי שלילי וערך עצמי חיובי."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -530,7 +530,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק וקטורים בעלי רכיבים חיוביים: הצורה שלילית רק כאשר $a$ ו-$b$ בסימנים הפוכים.",
     "לשכוח שהרכיב הצולב מופיע פעמיים: $6ab$ ולא $3ab$."
@@ -579,14 +579,14 @@
      "explain": "השורשים הם $-4,-2$ והפרבולה פתוחה כלפי מעלה, ולכן היא שלילית בין השורשים בלבד."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
    "kind": "proof",
    "topic": "groups",
    "question": "סעיף א.1. $o(x)=o\\left(y^{-1}xy\\right)$, כלומר ל-$x$ ול-$y^{-1}xy$ אותו סדר. (8%)",
-   "solution": "נסמן $o(x)=n$ ו-$o\\left(y^{-1}xy\\right)=m$. נוכיח כי $n=m$.\nלפי הגדרת הסדר, $n$ ו-$m$ הם המספרים הטבעיים המינימליים המקיימים $x^n=e$ ו-$\\left(y^{-1}xy\\right)^m=e$ בהתאמה.\nמתקיים\n$$\\left(y^{-1}xy\\right)^n=\\left(y^{-1}xy\\right)\\cdots\\left(y^{-1}xy\\right)=y^{-1}x^ny=y^{-1}ey=e$$\nכלומר $m\\le n$.\nמצד שני\n$$y^{-1}x^my=\\left(y^{-1}xy\\right)^m=e\\ \\Rightarrow\\ x^m=yey^{-1}=e$$\nולכן $n\\le m$. הוכחנו $n=m$.",
+   "solution": "נסמן $o(x)=n$ ו-$o\\left(y^{-1}xy\\right)=m$. נוכיח כי $n=m$.\nלפי הגדרת הסדר, $n$ ו-$m$ הם המספרים הטבעיים המינימליים המקיימים $x^n=e$ ו-$\\left(y^{-1}xy\\right)^m=e$ בהתאמה.\nמתקיים\n$$\\left(y^{-1}xy\\right)^n=\\left(y^{-1}xy\\right)\\cdots\\left(y^{-1}xy\\right)=y^{-1}x^ny=y^{-1}ey=e$$\nכלומר $m\\le n$.\nמצד שני\n$$y^{-1}x^my=\\left(y^{-1}xy\\right)^m=e\\ \\Rightarrow\\ x^m=yey^{-1}=e$$\nולכן $n\\le m$. הוכחנו $n=m$.\n(ההוכחה מניחה שהסדרים סופיים. אם $x$ בעל סדר אינסופי, גם $y^{-1}xy$ כזה, כי $x^k=e\\iff\\left(y^{-1}xy\\right)^k=e$ לכל $k\\ge1$.)",
    "solutionSource": "student-solution",
    "official": false,
    "confidence": "med",
@@ -607,7 +607,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להראות רק כיוון אחד של אי-השוויון (הסדר מוגדר כמינימום, ולכן צריך $m\\le n$ וגם $n\\le m$).",
     "לכתוב $\\left(y^{-1}xy\\right)^n=y^{-1}x\\,y^n$: ה-$y$ מצטמצמים בין העותקים הסמוכים."
@@ -655,7 +655,7 @@
      "explain": "צמידה שומרת על הסדר, וסדר $x$ הוא $4$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -679,7 +679,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לכפול ב-$y^{-1}$ רק מצד אחד: זה לא נותן את הצורה המבוקשת.",
     "לצמצם בצד שמאל כאילו $y^{-1}$ עוברת ל-$x$ מימין: בחבורה כללית אין חילוף."
@@ -707,7 +707,7 @@
      "explain": "$yy^{-1}=e$, ולכן $y^{-1}x(yy^{-1})=y^{-1}x$ ולא $y^{-1}xy$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -738,7 +738,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לדלג על בדיקת הזרות בזוגות לפני שימוש במשפט.",
     "לשכוח להשתמש ב-$a_i$ (השאריות $3,4,2$) בסכום הסופי, או לשכוח לצמצם מודולו $140$."
@@ -780,7 +780,7 @@
      "explain": "$779=5\\cdot140+79$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -811,7 +811,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לא לנרמל את הווקטורים העצמיים: $P$ חייבת להיות אורתוגונלית ($P^{-1}=P^T$).",
     "לסדר את הערכים העצמיים ב-$D$ בסדר שונה מסדר העמודות ב-$P$."
@@ -860,7 +860,7 @@
      "explain": "$\\sqrt2\\approx1.414$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -887,7 +887,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להוכיח רק אחד משני האי-שוויונות.",
     "לשכוח שהאי-שוויון הימני חזק ($<$) והשמאלי חלש ($\\le$, שוויון כש-$x=y=z$)."
@@ -914,7 +914,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "בבחירה הראשונה $\\langle\\bar u,\\bar v\\rangle=\\sqrt x+\\sqrt y+\\sqrt z$ ו-$\\|\\bar u\\|^2=x+y+z$. הבחירות האחרות נותנות אי-שוויונות אחרים."
+     "explain": "עם $\\bar u=(\\sqrt x,\\sqrt y,\\sqrt z)$ ו-$\\bar v=(1,1,1)$ מתקבל $\\langle\\bar u,\\bar v\\rangle=\\sqrt x+\\sqrt y+\\sqrt z$, $\\|\\bar u\\|^2=x+y+z$ ו-$\\|\\bar v\\|^2=3$. שתי הבחירות האחרות נותנות אי-שוויונות אחרים."
     },
     {
      "type": "order",
@@ -947,7 +947,7 @@
      "explain": "$\\frac{3}{9}=\\frac13$ (מקרה השוויון)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

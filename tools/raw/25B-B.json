@@ -43,7 +43,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתור את $A\\vec x=\\vec b$ ישירות: ארבע הנקודות אינן על ישר אחד.",
     "לשכוח שהנקודה הראשונה היא $(0,1)$, כך שהאיבר $x=0$ תורם $0$ לסכומים."
@@ -101,7 +101,7 @@
      "explain": "$n=\\frac{99}{59}\\approx1.678$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -132,7 +132,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להוכיח רק כיוון אחד: צריך גם ש-$A$ חיובית גוררת ש-$S^TAS$ חיובית וגם להפך.",
     "לשכוח שיש להשתמש בהפיכות של $S$ כדי שה-$\\vec u=S\\vec v$ יעברו על כל $\\mathbb{R}^n$."
@@ -191,7 +191,7 @@
      "explain": "$S^TAS=\\operatorname{diag}(2,1)$, בעל אותם ערכים עצמיים כמו $A$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -223,7 +223,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשוב שהאיבר הניטרלי הוא $I$: $I$ אינה ב-$H$ (יש בה אפסים), והפעולה רכיב-רכיב.",
     "לשכוח שכל הרכיבים שונים מאפס, ולכן הפיכים ב-$\\mathbb{Z}_5$."
@@ -274,7 +274,7 @@
      "explain": "$3\\cdot2=6\\equiv1$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -298,7 +298,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לספור גם את הערך $0$ ולקבל $5^4$.",
     "לספור רק $4\\cdot4$ (שני רכיבים בלבד)."
@@ -319,7 +319,7 @@
      "explain": "ארבעה רכיבים בלתי תלויים: $4^4=256$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -339,14 +339,14 @@
      "points": 2
     },
     {
-     "text": "הסדר של המטריצה הוא המכפלה המשותפת המינימלית: $4$",
+     "text": "הסדר של המטריצה הוא הכפולה המשותפת המינימלית: $4$",
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב סדר של המטריצה בכפל מטריצות רגיל ולא ברכיב-רכיב.",
-    "לקחת את הסדר הגדול ביותר ולא את המכפלה המשותפת המינימלית (כאן הם זהים, אך זה אינו כלל)."
+    "לקחת את הסדר הגדול ביותר ולא את הכפולה המשותפת המינימלית (כאן הם זהים, אך זה אינו כלל)."
    ],
    "steps": [
     {
@@ -371,7 +371,7 @@
      "explain": "$\\operatorname{lcm}(1,4,4,4)=4$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -398,7 +398,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח ש-$\\|\\bar v\\|^2=n$ ולכתוב $1$.",
     "לשכוח את הריבוע על הסכום: $\\left(\\sum a_i\\right)^2$."
@@ -425,7 +425,7 @@
       }
      ],
      "correctId": "b",
-     "explain": "רק בבחירה הראשונה $\\langle\\bar u,\\bar v\\rangle=\\sum a_i$ ו-$\\|\\bar v\\|^2=n$. הבחירה השנייה נותנת שוויון טריוויאלי והשלישית נותנת $\\left(\\sum a_i^2\\right)^2\\le n\\sum a_i^4$."
+     "explain": "רק עם $\\bar u=(a_1,\\dots,a_n)$ ו-$\\bar v=(1,\\dots,1)$ מתקבל $\\langle\\bar u,\\bar v\\rangle=\\sum a_i$ ו-$\\|\\bar v\\|^2=n$. הבחירה $\\bar v=\\bar u$ נותנת שוויון טריוויאלי והבחירה עם $a_i^2$ נותנת $\\left(\\sum a_i^2\\right)^2\\le n\\sum a_i^4$."
     },
     {
      "type": "order",
@@ -446,7 +446,7 @@
      "explain": "$3\\cdot14=42\\ge6^2=36$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -470,7 +470,7 @@
      "points": 1
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק שהביטוי מוגדר, ולא שהתוצאה שייכת ל-$\\mathbb{Z}$."
    ],
@@ -490,7 +490,7 @@
      "explain": "$-10+2-5=-13$, שלם."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -515,7 +515,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להסיק אי-אסוציאטיביות מפיתוח בלי להראות במפורש שהביטויים שונים (דוגמה נגדית מספיקה).",
     "לטעות בסימנים בפיתוח $(ab-a-b)c-(ab-a-b)-c$."
@@ -543,7 +543,7 @@
      "explain": "$-5-(-1)=-4\\ne0$, ולכן אינה אסוציאטיבית."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -568,7 +568,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור $a$ אחר מ-$1$: רק בו האגף השמאלי מתאפס ונוצרת הסתירה.",
     "לבדוק רק ערך אחד של $e$ במקום להראות שאף $e$ אינו מתאים."
@@ -589,7 +589,7 @@
      "explain": "$2\\cdot1=2$, ולכן $0=2$ ויש סתירה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -606,15 +606,15 @@
    "verdict": false,
    "rubric": [
     {
-     "text": "הפעולה אינה אסוציאטיבית (סעיף ב)",
+     "text": "הפעולה אינה אסוציאטיבית (סעיף א.2)",
      "points": 2
     },
     {
-     "text": "אין איבר ניטרלי (סעיף ג)",
+     "text": "אין איבר ניטרלי (סעיף א.3)",
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק את אקסיומת ההופכי, בלי לשים לב שכבר נכשלו אקסיומות קודמות.",
     "להסיק שזו חבורה רק כי הפעולה בינארית."
@@ -646,7 +646,7 @@
       }
      ],
      "correctId": "b",
-     "explain": "בסעיף ב יש דוגמה נגדית לאסוציאטיביות, ובסעיף ג מראים שאין איבר ניטרלי."
+     "explain": "בסעיף א.2 יש דוגמה נגדית לאסוציאטיביות, ובסעיף א.3 מראים שאין איבר ניטרלי."
     },
     {
      "type": "numeric",
@@ -656,7 +656,7 @@
      "explain": "$-5-(-1)=-4$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -683,7 +683,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את התנאי שהבסיס אורתונורמלי: $\\bar u^T\\bar v=0$ ו-$\\bar u^T\\bar u=\\bar v^T\\bar v=1$.",
     "להסיק שהערכים העצמיים הם $\\pm1$ רק מכך שהווקטורים יחידה, בלי החישוב."
@@ -727,7 +727,7 @@
      "explain": "למטריצה $2\\times2$ יש לכל היותר שני ערכים עצמיים. סימטריה או נרמול לבדם אינם מגבילים את הערכים (למשל $\\operatorname{diag}(5,7)$ סימטרית)."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -758,7 +758,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח לנרמל את $\\bar q_i$ ולקבל $Q$ שאינה אורתוגונלית.",
     "לכתוב את $R$ תחתונה במקום עליונה."
@@ -793,7 +793,7 @@
      "explain": "$\\frac{2\\sqrt3}3\\approx1.155$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -820,7 +820,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לפתור את המערכת בלי לצמצם קודם את המקדמים ($3x$, $2x$) לצורה $x\\equiv\\cdot$.",
     "לשכוח ש-$32=2^5$ זר ל-$5$ ול-$7$, ולכן המשפט חל."
@@ -855,7 +855,7 @@
      "explain": "$103\\equiv3\\pmod5$, $\\equiv5\\pmod7$, $\\equiv7\\pmod{32}$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -890,7 +890,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח שהערך העצמי $\\lambda_1=1$ קבוע ואינו תלוי ב-$c$.",
     "לבלבל בין $\\le$ (חיובית) ל-$<$ (חיובית לחלוטין)."
@@ -978,7 +978,7 @@
      "explain": "בשלילית כל הערכים העצמיים $\\le0$, אך $\\lambda_1=1$ תמיד. עבור $c$ גדול הערכים $1\\pm\\sqrt2c$ משני סימנים, ועבור $c=0$ המטריצה היא $I$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1009,7 +1009,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבדוק רק סגירות ולשכוח את הניטרלי וההופכי.",
     "לבלבל בין חיתוך לאיחוד: איחוד של תת-חבורות אינו בהכרח תת-חבורה."
@@ -1045,7 +1045,7 @@
      "explain": "$H=\\{0,2,4,6,8,10\\}$ ו-$K=\\{0,3,6,9\\}$; החיתוך $\\{0,6\\}$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 6,
@@ -1076,7 +1076,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח לנרמל את הווקטורים העצמיים.",
     "לסדר את עמודות $Q$ בסדר שונה מסדר הערכים העצמיים ב-$D$."
@@ -1104,7 +1104,7 @@
      "explain": "$\\sqrt{4+4+1}=3$, ולכן הווקטור המנורמל הוא $\\left(\\frac23,\\frac23,\\frac13\\right)^T$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 6,
@@ -1131,7 +1131,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לשכוח את הגורם $2$ במכפלה הפנימית.",
     "לכתוב $\\|\\bar u+\\bar v\\|^2=\\|\\bar u\\|^2+\\|\\bar v\\|^2$ (נכון רק כשהווקטורים אורתוגונליים)."
@@ -1179,7 +1179,7 @@
      "explain": "$\\langle-\\bar v,-\\bar v\\rangle=+\\|\\bar v\\|^2$, ולכן הסימן של $\\|\\bar v\\|^2$ חיובי."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }

@@ -75,8 +75,8 @@
      "explain": "$5\\cdot\\frac45+5n=14$ ולכן $n=2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -160,8 +160,8 @@
      "explain": "האנטי-נגזרת של $x^6$ היא $\\frac{x^7}7$, ולכן הערך הוא $\\frac17$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -234,8 +234,8 @@
      "explain": "בדיקה על זוג אחד אינה מוכיחה כלל, וקיום ניטרלי או הופכי אינם קשורים לסדר הפעולה."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -290,15 +290,15 @@
      "explain": "$ay+bx=0\\cdot5+1\\cdot3=3$, כלומר $(0,1)*(3,5)=(3,5)$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
    "kind": "truefalse",
    "topic": "groups",
    "question": "סעיף א.3. האם המבנה $\\left(\\mathbb{R}^2\\setminus\\{(0,0)\\},*\\right)$ הוא חבורה? (7%)",
-   "solution": "נבדוק את התנאים: הופכי, אסוציאטיביות, סגירות.\n**הופכי:** נחפש $\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}a^{-1}\\\\b^{-1}\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$, כלומר $\\begin{pmatrix}ab^{-1}+ba^{-1}\\\\bb^{-1}\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$. נדרש $bb^{-1}=1$, כלומר $b^{-1}=\\dfrac1b$ ($b\\ne0$). לוקטורים מהצורה $\\begin{pmatrix}a\\\\0\\end{pmatrix}$ אין הופכי.\nלכן המבנה אינו חבורה.",
+   "solution": "נבדוק את התנאים: הופכי, אסוציאטיביות, סגירות.\n**הופכי:** נחפש $\\begin{pmatrix}a\\\\b\\end{pmatrix}*\\begin{pmatrix}a^{-1}\\\\b^{-1}\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$, כלומר $\\begin{pmatrix}ab^{-1}+ba^{-1}\\\\bb^{-1}\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$. נדרש $bb^{-1}=1$, כלומר $b^{-1}=\\dfrac1b$ ($b\\ne0$). לוקטורים מהצורה $\\begin{pmatrix}a\\\\0\\end{pmatrix}$ אין הופכי.\n**סגירות:** גם הסגירות נכשלת: $\\begin{pmatrix}1\\\\0\\end{pmatrix}*\\begin{pmatrix}1\\\\0\\end{pmatrix}=\\begin{pmatrix}0\\\\0\\end{pmatrix}$, שאינו שייך לקבוצה $\\mathbb{R}^2\\setminus\\{(0,0)\\}$.\nלכן המבנה אינו חבורה.",
    "solutionSource": "student-solution",
    "official": false,
    "confidence": "med",
@@ -368,8 +368,8 @@
      "explain": "$y=1$ ו-$x+y=0$, ולכן $x=-1$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -432,8 +432,8 @@
      "explain": "השוויון אינו נכון בדרך כלל: בדוגמה $A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$, $\\vec v=(1,0)^T$ מתקבל $5$ בצד אחד ו-$4$ בצד השני."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -506,8 +506,8 @@
      "explain": "דרגת $A$ היא $2$ ו-$3-2=1$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -589,8 +589,8 @@
      "explain": "הפיתוח קודם לחיסור, והחלוקה ב-4 אחרונה."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -718,8 +718,8 @@
      "explain": "הערך העצמי $a^2+1$ חיובי תמיד."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -784,8 +784,8 @@
      "explain": "$272=6\\cdot42+20$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -859,8 +859,8 @@
      "explain": "מהמשוואה $b+y+az=0$ עם $z=-c$ מתקבל $y=ac-b$, לא $b+ac$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -940,8 +940,8 @@
      "explain": "לפי הנתון $a*a=e$ ולכן $b*(a*a)=b*e=b$; הגרסה השגויה מדלגת על $a*a=e$ ואינה נותנת $b$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

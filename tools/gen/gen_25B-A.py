@@ -287,7 +287,7 @@ S25BA = {
                 [r"נדרוש $\begin{pmatrix}x&y\\0&x^{-1}\end{pmatrix}\begin{pmatrix}a&b\\0&a^{-1}\end{pmatrix}=I$",
                  r"מהאלכסון: $xa=1$, ולכן $a=x^{-1}$",
                  r"מהפינה הימנית העליונה: $xb+ya^{-1}=0$, ולכן $b=y$",
-                 r"ההופכית היא $\begin{pmatrix}x^{-1}&y\\0&x\end{pmatrix}\in H$"],
+                 r"ההופכית היא $\begin{pmatrix}x^{-1}&-y\\0&x\end{pmatrix}\in H$"],
                 2, r"$a^{-1}=x$, ולכן $xb+yx=0$ ו-$b=-y$ ולא $y$."),
             num(r"נתון $y=3$ ב-$\mathbb{Z}_7$. מהו הערך של $b=-y$ בין $0$ ל-$6$?", 4, r"$-3\equiv4\pmod7$."),
         ]),
@@ -395,7 +395,7 @@ S25BA = {
             num(r"מהו $(-1)\odot7$?", -1, r"$-7-1+7=-1$."),
             ch(r"מדוע $(\mathbb{Z},\odot)$ אינה חבורה?", r"ל-$-1$ אין הופכי: $(-1)\odot b=-1\ne0$ לכל $b$",
                [r"הפעולה אינה אסוציאטיבית", r"אין איבר ניטרלי"],
-               r"סעיפים ב-ג הראו שהפעולה אסוציאטיבית ושהניטרלי הוא $0$, ולכן הכשל הוא בהופכי.", 0),
+               r"סעיפים א.2 ו-א.3 הראו שהפעולה אסוציאטיבית ושהניטרלי הוא $0$, ולכן הכשל הוא בהופכי.", 0),
         ]),
     (4, "ה"): dict(
         rubric=rub((r"שוויון הנורמות שקול לשוויון ריבועי הנורמות", 2), (r"פיתוח $\|\bar u\pm\bar v\|^2$", 4),
@@ -458,7 +458,7 @@ S25BA = {
         steps=[
             ch(r"לאילו וקטורים מיישמים את קושי-שוורץ?", r"$\bar u=\left(\sqrt{a_i/b_i}\right)_i$ ו-$\bar v=\left(\sqrt{a_ib_i}\right)_i$",
                [r"$\bar u=\left(a_i/b_i\right)_i$ ו-$\bar v=\left(a_ib_i\right)_i$", r"$\bar u=\left(\sqrt{a_i}\right)_i$ ו-$\bar v=\left(\sqrt{b_i}\right)_i$"],
-               r"רק בבחירה הראשונה $\langle\bar u,\bar v\rangle=\sum a_i$. בשתי האחרות מקבלים $\sum a_i^2$ או $\sum\sqrt{a_ib_i}$.", 1),
+               r"רק עם $\bar u=\left(\sqrt{a_i/b_i}\right)_i$ ו-$\bar v=\left(\sqrt{a_ib_i}\right)_i$ מתקבל $\langle\bar u,\bar v\rangle=\sum a_i$. הזוג $\left(a_i/b_i\right),\left(a_ib_i\right)$ נותן $\sum a_i^2$, והזוג $\left(\sqrt{a_i}\right),\left(\sqrt{b_i}\right)$ נותן $\sum\sqrt{a_ib_i}$.", 1),
             order("סדרו את שלבי ההוכחה.",
                   [r"נגדיר $\bar u=\left(\sqrt{a_i/b_i}\right)_i$ ו-$\bar v=\left(\sqrt{a_ib_i}\right)_i$",
                    r"$\langle\bar u,\bar v\rangle=\sum a_i$, $\|\bar u\|^2=\sum\frac{a_i}{b_i}$, $\|\bar v\|^2=\sum a_ib_i$",
@@ -478,9 +478,9 @@ for _q in questions:
     _s = S25BA.get((_q["num"], _q.get("part")))
     assert _s is not None, ("no steps for", _q["num"], _q.get("part"))
     assert sum(r["points"] for r in _s["rubric"]) == _q["points"], ("rubric sum", _q["num"], _q.get("part"))
-    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-draft"
+    _q["rubric"], _q["rubricSource"] = _s["rubric"], "ai-verified"
     _q["pitfalls"] = _s["pitfalls"]
-    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-draft"
+    _q["steps"], _q["stepsSource"] = _s["steps"], "ai-verified"
 
 exam = {
     "examCode": "25B-A",

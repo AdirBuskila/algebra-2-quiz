@@ -84,8 +84,8 @@
      "explain": "הווקטורים נבחרים לפני ההפעלה, והחסם $14\\le16$ נשאר אחרון."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -161,8 +161,8 @@
      "explain": "כל וקטור $u_i$ תלוי בקודמים, וההיטל נחשב על הבסיס האורתוגונלי הסופי."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -227,8 +227,8 @@
      "explain": "$1\\cdot2=2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -276,8 +276,8 @@
      "explain": "$4\\cdot2=8\\equiv1\\pmod7$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -342,8 +342,8 @@
      "explain": "$\\{1,2,3,4,5,6\\}$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -402,8 +402,8 @@
      "explain": "$\\mathrm{lcm}(6,3)=6$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -471,8 +471,8 @@
      "explain": "$(cI-A)\\vec v=c\\vec v-A\\vec v$, ולכן מחסרים: $(c-\\lambda)\\vec v$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -545,8 +545,8 @@
      "explain": "צריך $c>5$, ולכן $c=6$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -629,8 +629,8 @@
      "explain": "בקצוות יש ערך עצמי $0$, ולכן חיובית אך לא חיובית לחלוטין. מחוץ לקטע יש ערך עצמי שלילי וגם $1$ חיובי, ולכן אינה מוגדרת."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -695,8 +695,8 @@
      "explain": "$5m+5n=12$ עם $m=0.9$ נותן $5n=7.5$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -798,8 +798,8 @@
      "explain": "האיבר הניטרלי הוא $0$, ו-$x*(-x)=\\frac{0}{1-x^2}=0$. עבור $\\frac1x$ מתקבל $\\frac{x+1/x}{2}\\ne0$ (וגם $\\frac1x\\notin G$)."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -877,8 +877,8 @@
      "explain": "$\\frac{5/6}{1+1/6}=\\frac57\\approx0.7143$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -947,8 +947,8 @@
      "explain": "$\\sqrt2$, ולכן העמודה המנורמלת היא $\\frac1{\\sqrt2}(-1,1,0)$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -1013,8 +1013,8 @@
      "explain": "$3132\\bmod385=52$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

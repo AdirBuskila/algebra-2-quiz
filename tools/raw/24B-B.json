@@ -90,8 +90,8 @@
      "explain": "$\\|\\vec v\\|^2=n\\cdot\\frac1n=1$, ולא $n^2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -149,8 +149,8 @@
      "explain": "$0-\\frac12\\cdot1=-0.5$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -204,8 +204,8 @@
      "explain": "$1.5\\cdot1+0.5\\cdot1=2$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -279,7 +279,7 @@
       }
      ],
      "correctId": "a",
-     "explain": "בדיקה בכפל: רק הראשונה נותנת $I$. בשאר האפשרויות המכפלה אינה $I$ (למשל, בשנייה הכניסה הימנית העליונה היא $-a^2$)."
+     "explain": "בדיקה בכפל: רק המטריצה עם $a^2-b$ בכניסה הימנית העליונה נותנת $I$. בשאר האפשרויות המכפלה אינה $I$ (למשל, במטריצה עם $-b$ במקום זה הכניסה הימנית העליונה במכפלה היא $-a^2$)."
     },
     {
      "type": "findbug",
@@ -294,8 +294,8 @@
      "explain": "בדירוג מתקבל $a^2-b$ בכניסה הימנית העליונה. עם $a^2+b$ המכפלה $AA^{-1}$ נותנת $2b$ במקום 0."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -339,8 +339,8 @@
      "explain": "$3\\cdot3=9$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -395,8 +395,8 @@
      "explain": "$A^3=I$, ו-$A,A^2\\ne I$ (ל-$A^2$ יש כניסות 1 מעל האלכסון)."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -479,8 +479,8 @@
      "explain": "עבור $k=0$ המטריצה $\\mathrm{diag}(0,1,0)$ אי-שלילית; עבור $k=1$ יש ערך עצמי $-1$; עבור $k=2$ הערכים $3,8,0$ אי-שליליים."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -545,8 +545,8 @@
      "explain": "$5n=20-15\\cdot1.6=-4$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -616,8 +616,8 @@
      "explain": "$2\\cdot1\\cdot3=6$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -666,8 +666,8 @@
      "explain": "$1+2=3$. גם בצד השני: $(2,1)*(3,2)=(12,3)$ ואז $(1,0)*(12,3)=(24,3)$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -737,8 +737,8 @@
      "explain": "צריך $e_2+y=y$ לכל $y$, ולכן $e_2=0$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -787,8 +787,8 @@
      "explain": "$y+(-y)=0$, ולכן $-3$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -864,8 +864,8 @@
      "explain": "$\\left(\\frac12,0\\right)$ ו-$\\left(-\\frac12,0\\right)$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -931,8 +931,8 @@
      "explain": "$\\sqrt{4+16+25}=\\sqrt{45}=3\\sqrt5$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -986,8 +986,8 @@
      "explain": "$134=14\\cdot9+8$."
     }
    ],
-   "rubricSource": "ai-draft",
-   "stepsSource": "ai-draft"
+   "rubricSource": "ai-verified",
+   "stepsSource": "ai-verified"
   }
  ]
 }

@@ -95,9 +95,9 @@ S2D = (
 
 S2E = (
     r"יהי $\vec0\ne\vec v\in\mathbb{R}^n$ כאשר $n$ הוא סדר המטריצה $A$. מתקיים $\left(cI+A+A^2\right)^T=cI+A+A^2$. בנוסף:" "\n"
-    r"$$\left\langle\left(cI+A+A^2\right)\vec v,\vec v\right\rangle=\vec v^T\left(cI+A+A^2\right)\vec v=c\vec v^T\vec v+\vec v^TA\vec v+\vec v^TA^TA\vec v=c\|\vec v\|^2+\langle A\vec v,\vec v\rangle+c\|A\vec v\|^2$$" "\n"
-    r"נתון כי $A$ מוגדרת חיובית, לכן $\langle A\vec v,\vec v\rangle\ge0$. בנוסף $c>0$ ו-$\vec v\ne\vec0$, לכן $c\|\vec v\|^2>0$. ברור ש-$c\|A\vec v\|^2\ge0$." "\n"
-    r"מכאן נובע כי $c\|\vec v\|^2+\langle A\vec v,\vec v\rangle+c\|A\vec v\|^2>0$, כלומר $cI+A+A^2$ מוגדרת חיובית לחלוטין."
+    r"$$\left\langle\left(cI+A+A^2\right)\vec v,\vec v\right\rangle=\vec v^T\left(cI+A+A^2\right)\vec v=c\vec v^T\vec v+\vec v^TA\vec v+\vec v^TA^TA\vec v=c\|\vec v\|^2+\langle A\vec v,\vec v\rangle+\|A\vec v\|^2$$" "\n"
+    r"נתון כי $A$ מוגדרת חיובית, לכן $\langle A\vec v,\vec v\rangle\ge0$. בנוסף $c>0$ ו-$\vec v\ne\vec0$, לכן $c\|\vec v\|^2>0$. ברור ש-$\|A\vec v\|^2\ge0$." "\n"
+    r"מכאן נובע כי $c\|\vec v\|^2+\langle A\vec v,\vec v\rangle+\|A\vec v\|^2>0$, כלומר $cI+A+A^2$ מוגדרת חיובית לחלוטין."
 )
 
 S3A = (
@@ -121,6 +121,7 @@ S3B = (
 )
 
 S4A = (
+    r"(בפתרון הרשמי האותיות $b,c$ של $H$ מוחלפות ביחס לשאלה: כאן $\begin{pmatrix}a&b\\0&c\end{pmatrix}$ עם $a\cdot c\ne0$, ובשאלה $\begin{pmatrix}a&c\\0&b\end{pmatrix}$ עם $a\cdot b\ne0$.)" "\n"
     r"**1.** התנאי $a\cdot c\ne0\pmod7$ מתקיים אם ורק אם $a\ne0\pmod7\ \wedge\ c\ne0\pmod7$. לכן $\begin{pmatrix}a&b\\0&c\end{pmatrix}\in H$ כאשר $a=1,\dots,6\pmod7$ (6 אפשרויות), $c=1,\dots,6\pmod7$ (6 אפשרויות), ו-$b\in\mathbb{Z}_7$ (7 אפשרויות). לפי עקרון הכפל: $|H|=6\cdot6\cdot7=252$."
 )
 
@@ -168,7 +169,7 @@ questions = [
       S1B, part="ב", points=15),
 
     Q(2, "truefalse", "groups", r"סעיף א.1. האם הפעולה אסוציאטיבית? (4%)", S2A, part="א", points=4, contextId="c2", verdict=True),
-    Q(2, "truefalse", "groups", r"סעיף א.2. האם המבנה $(\mathbb{R}^*,\odot)$ הוא חבורה אבלית (קומוטטיבית)? (5%)", S2B, part="ב", points=5,
+    Q(2, "truefalse", "groups", r"סעיף א.2. האם המבנה $(\mathbb{R}^*,\odot)$ הוא חבורה קומוטטיבית? (5%)", S2B, part="ב", points=5,
       contextId="c2", verdict=False),
     Q(2, "truefalse", "groups", r"סעיף א.3. האם קיים $x\in\mathbb{R}^*$ כך ש: $x\odot x=x$ ? (4%)", S2C, part="ג", points=4,
       contextId="c2", verdict=False),
@@ -234,7 +235,7 @@ add(1, "א",
                (r"כיוון (⇐): העלאה בריבוע של $\|\vec u+\vec v\|=\|\vec u\|+\|\vec v\|$", 2),
                (r"פתיחת שני האגפים וקבלת $\langle\vec u,\vec v\rangle=\|\vec u\|\cdot\|\vec v\|$", 2),
                (r"$\cos\alpha=1$, ולכן הוקטורים מקבילים באותו כיוון ו-$\vec v=t\vec u$ עם $t>0$", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"בכיוון (⇒) לכתוב $\|t\vec u\|=t\|\vec u\|$ בלי לציין $t>0$; עבור $t<0$ מתקבל $|t|\|\vec u\|$.",
               r"להסיק מ-$\cos\alpha=1$ ש-$\vec v=\vec u$ ולא $\vec v=t\vec u$ עם $t>0$.",
               r"להוכיח רק כיוון אחד של הטענה הדו-כיוונית."],
@@ -252,7 +253,7 @@ add(1, "א",
            [r"$\vec v=t\vec u$ עבור $t<0$ כלשהו", r"$\vec u\perp\vec v$", r"$\vec v=\vec u$ בדיוק"],
            r"זווית $0$ פירושה אותו כיוון, אך לא בהכרח אותו אורך. $t<0$ מתאים ל-$\cos\alpha=-1$, אורתוגונליות מתאימה ל-$\cos\alpha=0$, ו-$\vec v=\vec u$ הוא מקרה פרטי בלבד.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(1, "ב",
     rubric=rub((r"גרם-שמידט: $\vec u_1=I$ ו-$\vec u_2=\begin{pmatrix}-1&2\\0&1\end{pmatrix}$ (אחרי הכפלה ב-$2$)", 5),
@@ -260,7 +261,7 @@ add(1, "ב",
                (r"נוסחת ההיטל $\mathbf{proj}_W(\vec v)=\sum\langle\vec v,\vec e_i\rangle\vec e_i$", 3),
                (r"חישוב המקדמים $\frac12$ ו-$\frac16$ וסכימה", 3),
                (r"התוצאה $\begin{pmatrix}\frac13&\frac13\\0&\frac23\end{pmatrix}$", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"להשתמש ב-$\begin{pmatrix}0&1\\0&1\end{pmatrix}$ כאילו הוא ניצב ל-$I$: $\langle I,\begin{pmatrix}0&1\\0&1\end{pmatrix}\rangle=1$.",
               r"לחשב את הנורמה כסכום האיברים ולא כ-$\sqrt{\mathrm{tr}(A^TA)}$.",
               "לשכוח לנרמל ולהשתמש בנוסחת ההיטל עם וקטורים שאינם יחידה."],
@@ -274,30 +275,30 @@ add(1, "ב",
         nm(r"מהו האיבר בשורה 2 ועמודה 2 של ההיטל?", 2 / 3,
            r"$\frac12\cdot1+\frac16\cdot1=\frac23$.", 0.0005),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(2, "א",
     rubric=rub((r"חישוב $(a\odot b)\odot c=\frac{abc}{ab+ac+bc}$", 1),
                (r"חישוב $a\odot(b\odot c)=\frac{abc}{ab+ac+bc}$", 1),
                (r"השוואת שני הערכים", 1),
                (r"מסקנה: הפעולה אסוציאטיבית", 1)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לבדוק אסוציאטיביות רק עבור שלשה מספרית אחת; זו דוגמה ולא הוכחה.",
               r"טעות באלגברה של שברים מורכבים: $\frac{\frac{ab}{a+b}c}{\frac{ab}{a+b}+c}$ מצטמצם ל-$\frac{abc}{ab+ac+bc}$."],
     steps=[
         nm(r"חשבו $(1\odot2)\odot3$.", 6 / 11, r"$1\odot2=\frac23$ ואז $\frac23\odot3=\frac{2}{\frac23+3}=\frac6{11}$.", 0.0005),
         ch(r"מהו הערך המשותף של $(a\odot b)\odot c$ ו-$a\odot(b\odot c)$?",
            r"$\dfrac{abc}{ab+ac+bc}$", [r"$\dfrac{abc}{a+b+c}$", r"$\dfrac{ab+ac+bc}{abc}$", r"$\dfrac{a+b+c}{abc}$"],
-           r"ב-$(a,b,c)=(1,2,3)$ הערך הוא $\frac6{11}$, ורק הביטוי הראשון נותן אותו (השלושה האחרים נותנים $1,\ \frac{11}6,\ 1$).", 2),
+           r"ב-$(a,b,c)=(1,2,3)$ הערך הוא $\frac6{11}$, ורק הביטוי $\dfrac{abc}{ab+ac+bc}$ נותן אותו (שלושת האחרים נותנים $1,\ \frac{11}6,\ 1$).", 2),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(2, "ב",
     rubric=rub((r"סגירות: $a\odot b=\frac{ab}{a+b}>0$", 1),
                (r"אסוציאטיביות לפי הסעיף הקודם", 1),
                (r"חיפוש איבר ניטרלי: $a\odot e=a$ גורר $a^2=0$", 2),
                (r"אין ניטרלי, ולכן אין חבורה", 1)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לבדוק רק קומוטטיביות ולהסיק שזו חבורה אבלית; חסר איבר ניטרלי.",
               r"להציב $e=1$ או $e=\infty$ ללא בדיקה; $e=1$ נותן $a\odot1=\frac a{a+1}\ne a$."],
     steps=[
@@ -309,14 +310,14 @@ add(2, "ב",
            r"$\frac{ae}{a+e}=a$ גורר $ae=a^2+ae$, כלומר $a^2=0$, בסתירה ל-$a>0$.", 0),
         nm(r"חשבו $3\odot6$ (הפעולה קומוטטיבית, ולכן גם שווה ל-$6\odot3$).", 2, r"$\frac{18}{9}=2$.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(2, "ג",
     rubric=rub((r"חישוב $x\odot x=\frac{x^2}{2x}=\frac x2$", 1),
                (r"המשוואה $\frac x2=x$", 1),
                (r"הפתרון היחיד הוא $x=0$", 1),
                (r"$0\notin\mathbb{R}^*$, ולכן אין פתרון", 1)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לצמצם $x$ משני האגפים ולהסיק $\frac12=1$ בלי לבדוק את המקרה $x=0$; יש להסיק שאין פתרון חיובי.",
               r"לחשוב ש-$x\odot x=x$ מתקיים עבור האיבר הניטרלי; אין ניטרלי."],
     steps=[
@@ -324,14 +325,14 @@ add(2, "ג",
            r"$x\odot x=\frac{x\cdot x}{x+x}=\frac{x^2}{2x}=\frac x2$. בבדיקה ב-$x=6$: $3$, ולא $12,\ 36$ או $1.5$.", 0),
         nm(r"כמה פתרונות חיוביים יש למשוואה $\frac x2=x$?", 0, r"המשוואה גוררת $x=0$, שאינו ב-$\mathbb{R}^*$.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(2, "ד",
     rubric=rub((r"חישוב $x^2=\frac x2$", 1),
                (r"חישוב $x^3=\frac x3$", 1),
                (r"הכללה $x^n=\frac xn$", 2),
                (r"הצבה $a=n$ נותנת $n^n=1$, ולכן הטענה נכונה", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לבלבל בין חזקה רגילה לחזקה לפי $\odot$; כאן $x^n$ הוא $x\odot\cdots\odot x$.",
               r"לא להוכיח את החוקיות באינדוקציה: $x^{n+1}=\frac xn\odot x=\frac x{n+1}$."],
     steps=[
@@ -341,7 +342,7 @@ add(2, "ד",
            r"$x^1=x,\ x^2=\frac x2,\ x^3=\frac x3$, וההמשך באינדוקציה: $\frac xn\odot x=\frac{x^2/n}{x(n+1)/n}=\frac x{n+1}$.", 0),
         nm(r"עבור $a=5$, איזה $n$ מקיים $a^n=\dfrac an=1$?", 5, r"$\frac5n=1$ נותן $n=5$.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(2, "ה",
     rubric=rub((r"סימטריה של $cI+A+A^2$", 1),
@@ -349,7 +350,7 @@ add(2, "ה",
                (r"$c\|\vec v\|^2>0$ כי $c>0$ ו-$\vec v\ne\vec0$", 1),
                (r"$\langle A\vec v,\vec v\rangle\ge0$ ו-$\|A\vec v\|^2\ge0$", 1),
                (r"הסכום חיובי ממש, ולכן המטריצה מוגדרת חיובית לחלוטין", 1)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"להסתפק ב-$\ge0$; כדי לקבל חיוביות לחלוטין צריך איבר אחד חיובי ממש, והוא $c\|\vec v\|^2$.",
               r"לשכוח ש-$\vec v^TA^2\vec v=\|A\vec v\|^2$ דורש ש-$A$ סימטרית.",
               r"לבדוק רק ערכים עצמיים של $A$ בלי להסביר איך הם קשורים ל-$A^2$."],
@@ -368,7 +369,7 @@ add(2, "ה",
          "bugIndex": 3,
          "explain": r"$A$ מוגדרת חיובית ולכן $\langle A\vec v,\vec v\rangle\ge0$; עם $<0$ אי אפשר להסיק שהסכום חיובי."},
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(3, "א",
     rubric=rub((r"סימטריה גוררת $b=0$", 2),
@@ -376,7 +377,7 @@ add(3, "א",
                (r"מוגדרת חיובית כאשר $\frac13\le a\le1$", 4),
                (r"מוגדרת חיובית לחלוטין כאשר $\frac13<a<1$", 2),
                (r"אין ערך של $a$ שבו המטריצה מוגדרת שלילית, ובשאר המקרים אינה מוגדרת", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לשכוח את התנאי $b=0$ ולבדוק רק את הערכים העצמיים של מטריצה לא סימטרית.",
               r"לרשום $a^2-1$ במקום $1-a^2$, ולקבל תחום שגוי עבור $a$.",
               r"לשכוח את התנאי $3a-1\ge0$ ולהסתפק ב-$-1\le a\le1$."],
@@ -385,21 +386,21 @@ add(3, "א",
            r"האיבר בשורה 2 ועמודה 3 הוא $0$, ולכן גם האיבר בשורה 3 ועמודה 2 חייב להיות $0$.", 0),
         ch(r"מהם הערכים העצמיים של המטריצה כש-$b=0$?", r"$3a-1,\ 1+a^2,\ 1-a^2$",
            [r"$3a-1,\ a^2+2,\ a^2-2$", r"$3a-1,\ 1+a,\ 1-a$", r"$a,\ 1+a^2,\ 1-a^2$"],
-           r"האיבר $3a-1$ נפרד, והבלוק $\begin{pmatrix}1&a^2\\a^2&1\end{pmatrix}$ נותן $1\pm a^2$. ב-$a=2$ הערכים הם $5,\ 5,\ -3$, ורק האפשרות הראשונה מתאימה.", 0),
+           r"האיבר $3a-1$ נפרד, והבלוק $\begin{pmatrix}1&a^2\\a^2&1\end{pmatrix}$ נותן $1\pm a^2$. ב-$a=2$ הערכים הם $5,\ 5,\ -3$, ורק הרשימה $3a-1,\ 1+a^2,\ 1-a^2$ נותנת אותם (שלוש האחרות נותנות ערכים אחרים).", 0),
         ch(r"עבור אילו $a$ המטריצה מוגדרת חיובית (כל הערכים העצמיים $\ge0$)?", r"$\frac13\le a\le1$",
            [r"$\frac13<a<1$", r"$a\ge\frac13$", r"$-1\le a\le1$"],
            r"נדרש $3a-1\ge0$ וגם $1-a^2\ge0$. ב-$a=\frac13$ הערך $0$ מותר; ב-$a=2$ מתקבל ערך שלילי; ב-$a=0$ הערך $3a-1=-1$.", 0),
         nm(r"מהו הערך העצמי הקטן ביותר כאשר $a=\frac12$?", 0.5,
            r"הערכים הם $3a-1=0.5,\ 1+a^2=1.25,\ 1-a^2=0.75$, והקטן הוא $0.5$.", 0.0005),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(3, "ב",
     rubric=rub((r"בניית $A=\begin{pmatrix}1&1\\3&1\\-2&1\\2&1\end{pmatrix}$ ו-$\vec b=(3,5,5,2)^T$", 3),
                (r"חישוב $A^TA=\begin{pmatrix}18&4\\4&4\end{pmatrix}$", 2),
                (r"חישוב $A^T\vec b=\begin{pmatrix}12\\15\end{pmatrix}$ ופתרון המערכת הנורמלית", 3),
                (r"$y=-\frac3{14}x+\frac{111}{28}$", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לפתור את $A\vec x=\vec b$ ישירות, אף שאין פתרון מדויק.",
               r"טעות סימן ב-$\sum xy=3+15-10+4=12$.",
               "להפוך בין $m$ ל-$n$ בפתרון המערכת."],
@@ -410,13 +411,13 @@ add(3, "ב",
            r"חיסור המשוואות נותן $14m=-3$, כלומר $m=-\frac3{14}\approx-0.214$.", 0.0005),
         nm(r"מהו $n$?", 111 / 28, r"$4n=15-4m=15+\frac67=\frac{111}7$ ולכן $n=\frac{111}{28}\approx3.964$.", 0.0005),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(4, "א",
     rubric=rub((r"התנאי $ac\ne0$ בכתיבה של הסעיף נותן שני איברי אלכסון שונים מאפס", 2),
                (r"$6$ אפשרויות לכל איבר אלכסון ו-$7$ לאיבר שמעל האלכסון", 1),
                (r"עקרון הכפל: $6\cdot6\cdot7=252$", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לספור $7^3=343$ ולשכוח את התנאי על האלכסון.",
               r"לדרוש גם שהאיבר מעל האלכסון שונה מאפס."],
     steps=[
@@ -424,13 +425,13 @@ add(4, "א",
         nm(r"כמה ערכים אפשריים יש לאיבר שמעל האלכסון?", 7, r"אין עליו תנאי: כל $\mathbb{Z}_7$.", 0),
         nm(r"מהו $|H|$?", 252, r"$6\cdot6\cdot7=252$.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(4, "ב",
     rubric=rub((r"$3^6\equiv1\pmod7$ והסדר של $3$ ב-$\mathbb{Z}_7^*$ הוא $6$", 2),
                (r"$4^3\equiv1\pmod7$ והסדר של $4$ הוא $3$", 2),
                (r"הסדר של המטריצה האלכסונית הוא ה-$\mathrm{lcm}$: $6$", 1)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"להניח שהסדר הוא $6\cdot3=18$ במקום ה-$\mathrm{lcm}$.",
               r"לחשב חזקות של המטריצה כולה ולא של כל איבר אלכסון בנפרד."],
     steps=[
@@ -438,14 +439,14 @@ add(4, "ב",
         nm(r"מהו הסדר של $4$ ב-$\mathbb{Z}_7^*$?", 3, r"$4,2,1$: החזקה הראשונה השווה ל-$1$ היא $4^3$.", 0),
         nm(r"מהו הסדר של $\begin{pmatrix}4&0\\0&3\end{pmatrix}$?", 6, r"$\mathrm{lcm}(3,6)=6$.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(4, "ג",
     rubric=rub((r"סימון ההופכי $\begin{pmatrix}a&b\\0&c\end{pmatrix}$ וכתיבת $\begin{pmatrix}1&2\\0&3\end{pmatrix}\begin{pmatrix}a&b\\0&c\end{pmatrix}=I$", 2),
                (r"המערכת $a\equiv1,\ b+2c\equiv0,\ 3c\equiv1\pmod7$", 2),
                (r"$c\equiv5$ ו-$b\equiv4$", 2),
                (r"התשובה $\begin{pmatrix}1&4\\0&5\end{pmatrix}$", 1)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"להפוך כל איבר בנפרד: ההופכי של $2$ אינו חלק מההופכי של המטריצה.",
               r"לחשב מודולו אחר ($\bmod 3$ או $\bmod 5$) במקום $\bmod 7$.",
               "לשכוח להקטין מספר שלילי ($b=-10$) מודולו $7$."],
@@ -454,14 +455,14 @@ add(4, "ג",
         nm(r"מהו $c$ שמקיים $3c\equiv1\pmod7$ (בטווח $0$ עד $6$)?", 5, r"$3\cdot5=15\equiv1$.", 0),
         nm(r"מהו $b$ שמקיים $b+2c\equiv0\pmod7$ עבור $c=5$ (בטווח $0$ עד $6$)?", 4, r"$b\equiv-10\equiv4\pmod7$.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(4, "ד",
     rubric=rub((r"ניסוח מחדש: $(x+k)^2\le(k^2+1)(x^2+1)$", 2),
                (r"בחירת הוקטורים $\vec u=(x,1)^T$ ו-$\vec v=(1,k)^T$", 2),
                (r"הפעלת קושי-שוורץ $|x+k|\le\sqrt{x^2+1}\sqrt{1+k^2}$", 2),
                (r"העלאה בריבוע וחלוקה ב-$x^2+1>0$", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לבחור $\vec u=(x,k)$ ו-$\vec v=(1,1)$: מתקבל $(x+k)^2\le2(x^2+k^2)$, שאינה הטענה.",
               r"לשכוח שחלוקה ב-$x^2+1$ חוקית כי הוא חיובי.",
               "להעלות בריבוע בלי ערך מוחלט ולאבד את הסימן."],
@@ -469,7 +470,7 @@ add(4, "ד",
         ch(r"איזה זוג וקטורים מניב דרך קושי-שוורץ את $(x+k)^2\le(k^2+1)(x^2+1)$?",
            r"$\vec u=(x,1)^T$ ו-$\vec v=(1,k)^T$",
            [r"$\vec u=(x,k)^T$ ו-$\vec v=(1,1)^T$", r"$\vec u=(x,1)^T$ ו-$\vec v=(k,1)^T$", r"$\vec u=(x,x^2)^T$ ו-$\vec v=(1,k)^T$"],
-           r"המכפלה הפנימית חייבת להיות $x+k$ והנורמות בריבוע $x^2+1$ ו-$1+k^2$. הזוג השני נותן $2(x^2+k^2)$ באגף ימין, השלישי נותן מכפלה $kx+1$, והרביעי נותן נורמה $x^2+x^4$.", 0),
+           r"המכפלה הפנימית חייבת להיות $x+k$ והנורמות בריבוע $x^2+1$ ו-$1+k^2$. הזוג $(x,k),(1,1)$ נותן $2(x^2+k^2)$ באגף ימין, הזוג $(x,1),(k,1)$ נותן מכפלה $kx+1$, והזוג $(x,x^2),(1,k)$ נותן נורמה $x^2+x^4$.", 0),
         nm(r"עבור $x=2,\ k=3$, מהו $\|\vec u\|^2\cdot\|\vec v\|^2=(x^2+1)(1+k^2)$?", 50,
            r"$5\cdot10=50\ge(x+k)^2=25$, והמנה $\frac{25}5=5\le k^2+1=10$.", 0),
         {"type": "findbug", "prompt": "בהוכחה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
@@ -481,7 +482,7 @@ add(4, "ד",
          "bugIndex": 3,
          "explain": r"העלאה בריבוע של אי-שוויון בין מספרים אי-שליליים שומרת על כיוונו: $\le$ ולא $\ge$."},
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(5, "א",
     rubric=rub((r"חישוב $A^TA=\begin{pmatrix}5&\sqrt3\\\sqrt3&7\end{pmatrix}$", 3),
@@ -489,7 +490,7 @@ add(5, "א",
                (r"וקטורים עצמיים מנורמלים של $A^TA$ ובניית $V$", 4),
                (r"כתיבת $\Sigma=\begin{pmatrix}2\sqrt2&0\\0&2\\0&0\end{pmatrix}$", 3),
                (r"חישוב $\vec u_i=\frac1{\sigma_i}A\vec v_i$ והשלמת $\vec u_3$ ל-$U$ אורתוגונלית", 5)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לרשום את הערכים העצמיים $8,4$ במקום הערכים הסינגולריים $2\sqrt2,2$.",
               r"לבחור סימנים שרירותיים ל-$\vec u_i$ ולא לחשב אותם מ-$\vec u_i=\frac1{\sigma_i}A\vec v_i$.",
               r"להציג את $V^T$ במקום $V$: בתשובה הרשמית המטריצה השלישית היא $V^T$."],
@@ -503,14 +504,14 @@ add(5, "א",
         nm(r"נתון $\vec v_1=\left(\frac12,\frac{\sqrt3}2\right)^T$. מהו הרכיב השלישי של $\vec u_1=\frac1{\sigma_1}A\vec v_1$?", 0.707107,
            r"$A\vec v_1=(1,\sqrt3,2)^T$ ו-$\sigma_1=2\sqrt2$, ולכן הרכיב הוא $\frac2{2\sqrt2}=\frac{\sqrt2}2\approx0.707$.", 0.0005),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 add(5, "ב",
     rubric=rub((r"צמצום המשוואות לצורה $x\equiv a_i\pmod{m_i}$: $x\equiv3\pmod5,\ x\equiv9\pmod{11},\ x\equiv2\pmod3$", 2),
                (r"סימון $m=165$ וחישוב $M_1=33,\ M_2=15,\ M_3=55$", 1),
                (r"חישוב ההופכיים $x_1=2,\ x_2=3,\ x_3=1$", 2),
                (r"הצבה בנוסחה והקטנה מודולו $165$: $x\equiv53$", 2)),
-    rubricSource="ai-draft",
+    rubricSource="ai-verified",
     pitfalls=[r"לא לחלק את $2x\equiv1$ ו-$3x\equiv5$ בהופכי של המקדם לפני שימוש בנוסחה.",
               r"לחשב את ההופכי מודולו $165$ ולא מודולו $m_i$.",
               "לשכוח להקטין את הסכום $713$ מודולו $165$."],
@@ -521,7 +522,7 @@ add(5, "ב",
         nm(r"מהו הפתרון $x$ בטווח $0$ עד $164$?", 53,
            r"$3\cdot33\cdot2+9\cdot15\cdot3+2\cdot55\cdot1=198+405+110=713=4\cdot165+53$.", 0),
     ],
-    stepsSource="ai-draft")
+    stepsSource="ai-verified")
 
 exam = {
     "examCode": "24A-A",

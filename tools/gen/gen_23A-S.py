@@ -197,8 +197,8 @@ def add(n, part, **kw):
     for q in questions:
         if q["num"] == n and q.get("part") == part:
             q.update(kw)
-            q["rubricSource"] = "ai-draft"
-            q["stepsSource"] = "ai-draft"
+            q["rubricSource"] = "ai-verified"
+            q["stepsSource"] = "ai-verified"
             assert sum(r["points"] for r in q["rubric"]) == q["points"], (n, part)
             return
     raise KeyError((n, part))
@@ -231,7 +231,7 @@ add(1, "ב",
                    r"$\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=2\|\vec u\|^2-2\|\vec v\|^2$",
                    r"$\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=\|\vec u\|^2+\|\vec v\|^2$",
                    r"$\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2=4\langle\vec u,\vec v\rangle$"], 0,
-                  r"עבור $\vec u=(1,0)$, $\vec v=(0,1)$ הצד השמאלי הוא $2+2=4$; רק האפשרות הראשונה נותנת $4$ (האחרות נותנות $0$, $2$, $0$)."),
+                  r"עבור $\vec u=(1,0)$, $\vec v=(0,1)$ הצד השמאלי הוא $2+2=4$; רק השוויון עם $2\|\vec u\|^2+2\|\vec v\|^2$ נותן $4$ (שלושת האחרים נותנים $0$, $2$, $0$)."),
            num(r"מהו $\|\vec u+\vec v\|^2+\|\vec u-\vec v\|^2$ עבור הנתונים?", 52, r"$4^2+6^2=16+36=52$."),
            num(r"מהו $\|\vec v\|^2$?", 17, r"$52=2\cdot9+2\|\vec v\|^2$ ולכן $\|\vec v\|^2=17$."),
            num(r"מהו $\langle\vec u,\vec v\rangle$?", -5, r"מחיסור הזהויות: $16-36=4\langle\vec u,\vec v\rangle$, כלומר $-5$.")])

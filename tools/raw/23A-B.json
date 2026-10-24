@@ -52,7 +52,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב $AA^T$ במקום $A^TA$ (מטריצה $4\\times4$ במקום $2\\times2$).",
     "טעות סימן בחישוב המכפלה $A^T\\vec b$, בעיקר ברכיבים של $-4$ ושל $-1$.",
@@ -88,7 +88,7 @@
      "explain": "$m=1-n=\\frac43$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 1,
@@ -119,7 +119,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור את $\\vec v$ באותו סדר כמו $\\vec u$: אז המכפלה הפנימית היא $\\sum\\ln k$ ולא הסכום הנתון.",
     "לשכוח שהנורמה בריבוע של $\\vec u$ היא סכום של $\\ln k$, ולהסיק $\\ln(n!)$ רק מ-$\\ln1+\\dots+\\ln n$.",
@@ -148,7 +148,7 @@
       }
      ],
      "correctId": "b",
-     "explain": "רק הבחירה הראשונה נותנת בכל מקום $k$ את $\\sqrt{\\ln k}\\cdot\\sqrt{\\ln(n-k+1)}$. השנייה נותנת $\\sum\\ln k$, השלישית נותנת $\\sum\\ln k\\cdot\\ln(n-k+1)$ בלי שורש והרביעית נותנת $\\sum\\sqrt{\\ln k}$."
+     "explain": "רק הזוג שבו $\\vec v$ הוא אותו וקטור בסדר הפוך נותן בכל מקום $k$ את $\\sqrt{\\ln k}\\cdot\\sqrt{\\ln(n-k+1)}$. הזוג עם $\\vec v=\\vec u$ נותן $\\sum\\ln k$, הזוג של $\\ln k$ ו-$\\ln(n-k+1)$ בלי שורשים נותן $\\sum\\ln k\\cdot\\ln(n-k+1)$ בלי שורש, והזוג עם וקטור האחדות נותן $\\sum\\sqrt{\\ln k}$."
     },
     {
      "type": "numeric",
@@ -178,7 +178,7 @@
      "explain": "קושי-שוורץ הוא $|\\vec u\\cdot\\vec v|\\le\\|\\vec u\\|\\cdot\\|\\vec v\\|$ ולא $\\ge$; עם $\\ge$ אי אפשר להגיע לטענה."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -210,7 +210,7 @@
      "points": 4
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש ב-$1$ וב-$|x|$ כאילו הם אורתוגונליים: $\\langle1,|x|\\rangle=1\\ne0$.",
     "לחשב את האינטגרל של $|x|$ בלי לפצל ל-$[-1,0]$ ול-$[0,1]$ ולקבל $0$ במקום $1$.",
@@ -246,7 +246,7 @@
      "explain": "ההיטל הוא $\\frac13+6\\cdot\\frac16\\left(|x|-\\frac12\\right)=|x|-\\frac16$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 2,
@@ -274,7 +274,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לדרוש גם $c\\ne0$, אף שהתנאי הוא רק $ab\\ne0$.",
     "לספור $5\\cdot5\\cdot5=125$ ולשכוח את התנאי $ab\\ne0$.",
@@ -303,7 +303,7 @@
      "explain": "$5\\cdot16=80$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -338,7 +338,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לבחור שני וקטורים עצמיים של $\\lambda=2$ שאינם ניצבים זה לזה, ואז $P$ אינה אורתוגונלית.",
     "לשכוח לנרמל את העמודות של $P$.",
@@ -374,7 +374,7 @@
      "explain": "$1+1+z=0$ נותן $z=-2$, והמכפלה הפנימית $-1+1+0=0$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 3,
@@ -401,7 +401,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש בסימטריה $\\langle u,v\\rangle=\\langle v,u\\rangle$ בלי לציין שהמרחב ממשי.",
     "טעות סימן בפתיחת $\\|u-v\\|^2$ (המכפלה המעורבת היא $-2\\langle u,v\\rangle$).",
@@ -463,7 +463,7 @@
      "explain": "ההפרש הוא $\\left(2\\langle u,v\\rangle\\right)-\\left(-2\\langle u,v\\rangle\\right)=4\\langle u,v\\rangle$, ולא $2\\langle u,v\\rangle$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -495,7 +495,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להניח שהפעולה קומוטטיבית; היא לא נתונה, ולכן אסור להחליף את הסדר של $a$ ו-$b$.",
     "להפעיל את $x*x=e$ על איברים שאינם זהים, ולא לזהות שב-$(a*b)*(a*b)$ מתקיים $x=a*b$.",
@@ -550,7 +550,7 @@
      "explain": "התכונה היא $x*x=e$ ולא $x*x=x$; המשוואה $x*x=x$ מתקיימת רק עבור $x=e$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 4,
@@ -581,7 +581,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להסיק ש-$B$ חיובית מכך שהאלכסון חיובי: ל-$B$ דטרמיננטה $-1$, ולכן יש לה ערך עצמי שלילי.",
     "לבחור $a,b$ חיוביים, שנותנים תמיד ערך חיובי.",
@@ -634,7 +634,7 @@
      "explain": "$100-200+96=-4$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -669,7 +669,7 @@
      "points": 3
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "להשתמש ב-$A^TA$ כדי למצוא את $U$; המימדים של $U$ ($3\\times3$) מתאימים רק ל-$AA^T$.",
     "לרשום את הערכים העצמיים במקום הערכים הסינגולריים, כלומר לשכוח את השורש.",
@@ -722,7 +722,7 @@
      "explain": "$A\\vec v_1=(0,3,4)^T$ ולכן $\\vec u_1=\\frac15(0,3,4)^T=(0,0.6,0.8)^T$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   },
   {
    "num": 5,
@@ -749,7 +749,7 @@
      "points": 2
     }
    ],
-   "rubricSource": "ai-draft",
+   "rubricSource": "ai-verified",
    "pitfalls": [
     "לחשב את ההופכי $x_i$ מודולו $m$ ולא מודולו $m_i$.",
     "טעות בחישוב $M_i$, כך ש-$M_ix_i$ אינו $1$ מודולו $m_i$.",
@@ -785,7 +785,7 @@
      "explain": "$4\\cdot28\\cdot2+3\\cdot20\\cdot6+2\\cdot35\\cdot3=224+360+210=794\\equiv94\\pmod{140}$."
     }
    ],
-   "stepsSource": "ai-draft"
+   "stepsSource": "ai-verified"
   }
  ]
 }
