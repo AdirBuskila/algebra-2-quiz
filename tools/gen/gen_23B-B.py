@@ -192,6 +192,340 @@ questions = [
       part="ג", points=5, contextId="c5b"),
 ]
 
+# ---- rubric / pitfalls / steps (ai-draft). Every numeric value is recomputed in tools/verify/23B-B/steps_check.py ----
+IDS = "abcdefgh"
+
+
+def ch(prompt, right, wrong, explain, pos=0):
+    vals = list(wrong)
+    vals.insert(pos, right)
+    return {"type": "choice", "prompt": prompt, "options": [{"id": IDS[i], "value": v} for i, v in enumerate(vals)],
+            "correctId": IDS[pos], "explain": explain}
+
+
+def nm(prompt, ans, explain, tol=0.001):
+    return {"type": "numeric", "prompt": prompt, "answer": ans, "tol": tol, "explain": explain}
+
+
+def rub(*items):
+    return [{"text": t, "points": p} for t, p in items]
+
+
+def add(num, part, **kw):
+    for q in questions:
+        if q["num"] == num and q.get("part") == part:
+            assert "steps" not in q
+            q.update(kw)
+            return
+    raise KeyError((num, part))
+
+
+add(1, "א",
+    rubric=rub((r"בחירת המודל $y=mx+n$ וכתיבת המערכת $A\vec x\approx\vec b$", 2),
+               (r"חישוב $A^TA=\begin{pmatrix}45&5\\5&5\end{pmatrix}$", 4),
+               (r"חישוב $A^T\vec b=\begin{pmatrix}70\\10\end{pmatrix}$", 4),
+               (r"פתרון המערכת הנורמלית וקבלת $y=1.5x+0.5$", 3)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לשים את הנקודות בסדר שונה בעמודות ולהחליף בין $x$ ל-$y$ ב-$A$ ו-$\vec b$.",
+              r"לשכוח את עמודת האחדות ב-$A$ ולקבל ישר דרך הראשית.",
+              r"טעות חישוב ב-$\sum xy=60+4+0+0+6=70$."],
+    steps=[
+        nm(r"מהו $\sum x_i^2$, כלומר האיבר בשורה 1 ועמודה 1 של $A^TA$?", 45,
+           r"$36+4+0+1+4=45$.", 0),
+        nm(r"מהו $\sum x_iy_i$, כלומר הרכיב הראשון של $A^T\vec b$?", 70,
+           r"$6\cdot10+2\cdot2+0\cdot1+(-1)\cdot0+(-2)\cdot(-3)=60+4+0+0+6=70$.", 0),
+        nm(r"פתרו את $\begin{pmatrix}45&5\\5&5\end{pmatrix}\begin{pmatrix}m\\n\end{pmatrix}=\begin{pmatrix}70\\10\end{pmatrix}$. מהו $m$?", 1.5,
+           r"חיסור המשוואה $5m+5n=10$ מ-$45m+5n=70$ נותן $40m=60$, כלומר $m=1.5$.", 0.0005),
+        nm(r"מהו $n$?", 0.5, r"$5n=10-5m=2.5$, כלומר $n=0.5$.", 0.0005),
+    ],
+    stepsSource="ai-draft")
+
+add(1, "ב",
+    rubric=rub((r"בחירת המכפלה הפנימית האינטגרלית $\langle f,g\rangle=\int_1^2fg\,dx$ ו-$g(x)=\frac1x$", 3),
+               (r"קושי-שוורץ בריבוע: $\langle f,g\rangle^2\le\|f\|^2\|g\|^2$", 3),
+               (r"חישוב $\|g\|^2=\int_1^2\frac1{x^2}dx=\frac12$", 4),
+               (r"הצבה וקבלת הטענה", 2)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לבחור $g(x)=x$ או $g(x)=1$, ואז $\langle f,g\rangle$ אינו האינטגרל הנתון.",
+              r"לחשב את $\int_1^2\frac1{x^2}dx$ כ-$\ln2$ (זה האינטגרל של $\frac1x$).",
+              "לשכוח להעלות את שני האגפים בריבוע, כך שמתקבל אי-שוויון על האינטגרל בלי ריבוע."],
+    steps=[
+        ch(r"איזו פונקציה $g$ מקיימת $\langle f,g\rangle=\displaystyle\int_1^2\frac{f(x)}{x}\,dx$ במכפלה $\langle f,g\rangle=\int_1^2f(x)g(x)\,dx$?",
+           r"$g(x)=\dfrac1x$", [r"$g(x)=x$", r"$g(x)=1$", r"$g(x)=\ln x$"],
+           r"רק עבור $g(x)=\frac1x$ מתקבל הביטוי $f(x)\cdot\frac1x$. שאר האפשרויות נותנות $xf(x)$, $f(x)$ או $f(x)\ln x$.", 0),
+        nm(r"מהו $\|g\|^2=\displaystyle\int_1^2\frac1{x^2}\,dx$?", 0.5, r"$\left[-\frac1x\right]_1^2=-\frac12+1=\frac12$.", 0.0005),
+        {"type": "findbug", "prompt": "בהוכחה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
+         "lines": [r"מגדירים $\langle f,g\rangle=\int_1^2f(x)g(x)\,dx$ ו-$g(x)=\frac1x$.",
+                   r"לפי קושי-שוורץ $\langle f,g\rangle^2\le\|f\|^2\cdot\|g\|^2$.",
+                   r"$\langle f,g\rangle^2=\left(\int_1^2\frac{f(x)}x\,dx\right)^2$.",
+                   r"$\|g\|^2=\int_1^2\frac1{x^2}\,dx=\left[\ln x\right]_1^2=\ln2$.",
+                   r"לכן $\left(\int_1^2\frac{f(x)}x\,dx\right)^2\le\frac12\int_1^2f^2(x)\,dx$."],
+         "bugIndex": 3,
+         "explain": r"הפונקציה הקדומה של $\frac1{x^2}$ היא $-\frac1x$ ולא $\ln x$, והערך הנכון הוא $\frac12$."},
+    ],
+    stepsSource="ai-draft")
+
+add(2, "א",
+    rubric=rub((r"בדיקה ש-$(1,1)$ אינו מתאפס ושייך ל-$G$", 1),
+               (r"$(1,1)\cdot(a,b)=(a,b)$", 1),
+               (r"מסקנה: $(1,1)$ הוא האיבר הניטרלי", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לבחור $(0,0)$ כמו בחיבור; הוא אינו ב-$G$ כי $0\notin\mathbb{Z}_5^*$."],
+    steps=[
+        ch(r"מהו האיבר הניטרלי של $G$ (הכפל מוגדר ברכיבים)?", r"$(1,1)$", [r"$(0,0)$", r"$(4,6)$", r"$(2,3)$"],
+           r"ברכיבים הניטרלי הוא $1$ בכל קואורדינטה. $(0,0)$ אינו ב-$G$, ו-$(4,6)$ ו-$(2,3)$ משנים את הערכים.", 1),
+        nm(r"מהו הרכיב הראשון (מודולו 5) של $(4,6)\cdot(2,3)$? הוא מראה ש-$(4,6)$ אינו ניטרלי.", 3,
+           r"$4\cdot2=8\equiv3\pmod5$, ולא $2$.", 0),
+    ],
+    stepsSource="ai-draft")
+
+add(2, "ב",
+    rubric=rub((r"מציאת ההופכי של $2$ מודולו $5$: $3$", 1),
+               (r"מציאת ההופכי של $3$ מודולו $7$: $5$", 1),
+               (r"הרכבת הזוג $(3,5)$", 1),
+               (r"בדיקה: $(2,3)\cdot(3,5)=(1,1)$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לחשב הופכי מודולו 7 עבור הרכיב הראשון, או מודולו 5 עבור השני.",
+              r"לרשום $\left(\frac12,\frac13\right)$ במקום מספרים שלמים מודולו 5 ו-7."],
+    steps=[
+        nm(r"מהו ההופכי של $2$ ב-$\mathbb{Z}_5^*$ (בטווח $1$ עד $4$)?", 3, r"$2\cdot3=6\equiv1\pmod5$.", 0),
+        nm(r"מהו ההופכי של $3$ ב-$\mathbb{Z}_7^*$ (בטווח $1$ עד $6$)?", 5, r"$3\cdot5=15\equiv1\pmod7$.", 0),
+    ],
+    stepsSource="ai-draft")
+
+add(2, "ג",
+    rubric=rub((r"$|\mathbb{Z}_5^*|=4$", 2), (r"$|\mathbb{Z}_7^*|=6$", 2), (r"עקרון הכפל: $|G|=4\cdot6=24$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לספור $5\cdot7=35$ ולשכוח שהאפס אינו ב-$\mathbb{Z}_n^*$.",
+              r"לחבר את הסדרים במקום להכפיל: $4+6=10$."],
+    steps=[
+        nm(r"כמה איברים יש ב-$\mathbb{Z}_5^*$?", 4, r"$\{1,2,3,4\}$.", 0),
+        nm(r"כמה איברים יש ב-$\mathbb{Z}_7^*$?", 6, r"$\{1,2,3,4,5,6\}$.", 0),
+        nm(r"מהו $|G|$?", 24, r"$4\cdot6=24$.", 0),
+    ],
+    stepsSource="ai-draft")
+
+add(2, "ד",
+    rubric=rub((r"הסדר של $2$ ב-$\mathbb{Z}_5^*$ הוא $4$", 2),
+               (r"הסדר של $3$ ב-$\mathbb{Z}_7^*$ הוא $6$", 2),
+               (r"הסדר של הזוג הוא ה-$\mathrm{lcm}$ שלהם: $12$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לקחת את המכפלה $4\cdot6=24$ במקום המכפלה המשותפת המינימלית.",
+              r"לקחת את המקסימום $6$ במקום ה-$\mathrm{lcm}$."],
+    steps=[
+        nm(r"מהו הסדר של $2$ ב-$\mathbb{Z}_5^*$?", 4, r"$2,4,3,1$: החזקה הראשונה ששווה ל-$1$ היא $2^4$.", 0),
+        nm(r"מהו הסדר של $3$ ב-$\mathbb{Z}_7^*$?", 6, r"$3,2,6,4,5,1$: החזקה הראשונה ששווה ל-$1$ היא $3^6$.", 0),
+        nm(r"מהו הסדר של $(2,3)$ ב-$G$?", 12, r"$\mathrm{lcm}(4,6)=12$.", 0),
+    ],
+    stepsSource="ai-draft")
+
+add(2, "ה",
+    rubric=rub((r"הסימטריה: $(-A-B^TB)^T=-A-B^TB$", 1),
+               (r"פתיחת התבנית הריבועית: $-\vec v^TA\vec v-\vec v^TB^TB\vec v$", 1),
+               (r"$\vec v^TB^TB\vec v=\|B\vec v\|^2\ge0$", 1),
+               (r"$\vec v^TA\vec v\ge0$ ולכן הסכום $\le0$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לבדוק רק את הסימטריה ולא את סימן התבנית הריבועית.",
+              r"לשכוח את הסימן המינוס, כלומר להראות ש-$A+B^TB$ חיובית ולא ש-$-A-B^TB$ שלילית."],
+    steps=[
+        nm(r"נבדוק על $A=I_2$, $B=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ ו-$\vec v=(1,2)^T$. מהו $\vec v^T(-A-B^TB)\vec v$?", -18,
+           r"$-\vec v^TA\vec v=-5$ ו-$-\|B\vec v\|^2=-\|(3,2)\|^2=-13$, בסך הכול $-18\le0$.", 0),
+        {"type": "findbug", "prompt": "בהוכחה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
+         "lines": [r"$(-A-B^TB)^T=-A^T-(B^TB)^T=-A-B^TB$.",
+                   r"$\vec v^T(-A-B^TB)\vec v=-(\vec v^TA\vec v)-(\vec v^TB^TB\vec v)$.",
+                   r"$\vec v^TB^TB\vec v=\|B\vec v\|^2$.",
+                   r"$A$ מוגדרת חיובית, ולכן $\vec v^TA\vec v\le0$.",
+                   r"לכן $\vec v^T(-A-B^TB)\vec v\le0$."],
+         "bugIndex": 3,
+         "explain": r"$A$ מוגדרת חיובית ולכן $\vec v^TA\vec v\ge0$ (לא $\le0$)."},
+    ],
+    stepsSource="ai-draft")
+
+add(2, "ו",
+    rubric=rub((r"פירוק $\vec v^T\left(B^TAB\right)\vec v=\left(\vec v^TB^T\right)A(B\vec v)$", 1),
+               (r"זיהוי $\left(\vec v^TB^T\right)=(B\vec v)^T$", 1),
+               (r"$A$ מוגדרת חיובית ולכן $(B\vec v)^TA(B\vec v)\ge0$", 2)),
+    rubricSource="ai-draft",
+    pitfalls=[r"להשתמש בכך ש-$B$ הפיכה; היא לא נתונה, וההוכחה אינה זקוקה לכך.",
+              r"לשכוח את $(B\vec v)^T=\vec v^TB^T$ ולחשב $B\vec v\,A\,B\vec v$."],
+    steps=[
+        ch(r"באיזו עובדה משתמשים כדי להסיק ש-$(B\vec v)^TA(B\vec v)\ge0$?",
+           r"$A$ מוגדרת חיובית, והעובדה חלה על הוקטור $B\vec v$",
+           [r"$B$ הפיכה", r"$A$ סימטרית בלבד", r"$B^TB=I$"],
+           r"הטענה $\vec w^TA\vec w\ge0$ נכונה לכל $\vec w$, ובפרט $\vec w=B\vec v$. סימטריה לבדה אינה מבטיחה סימן, ו-$B$ אינה נתונה כהפיכה או כאורתוגונלית.", 0),
+        nm(r"נבדוק על $A=\begin{pmatrix}2&0\\0&1\end{pmatrix}$, $B=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ ו-$\vec v=(1,-1)^T$. מהו $\vec v^TB^TAB\vec v$?", 1,
+           r"$B\vec v=(0,-1)^T$ ו-$(0,-1)A(0,-1)^T=1\ge0$.", 0),
+        {"type": "order", "prompt": "סדרו את שלבי ההוכחה.",
+         "lines": [r"$\vec v^T\left(B^TAB\right)\vec v=\left(\vec v^TB^T\right)A\left(B\vec v\right)$.",
+                   r"$\left(\vec v^TB^T\right)=(B\vec v)^T$, ולכן הביטוי שווה ל-$(B\vec v)^TA(B\vec v)$.",
+                   r"$A$ מוגדרת חיובית, ולכן $(B\vec v)^TA(B\vec v)\ge0$."],
+         "explain": "קודם מקבצים את המכפלה, אחר כך מזהים את הוקטור $B\\vec v$, ורק אז מפעילים את החיוביות של $A$."},
+    ],
+    stepsSource="ai-draft")
+
+add(3, "א",
+    rubric=rub((r"חישוב הדטרמיננטה ופירוקה: $(a-\lambda)\left(\lambda^2-2\lambda a^2+a^4-1\right)$", 6),
+               (r"הערכים העצמיים $a,\ a^2+1,\ a^2-1$", 3),
+               (r"מוגדרת חיובית כאשר $a\ge1$, ומוגדרת חיובית לחלוטין כאשר $a>1$", 4),
+               (r"אין ערך $a$ למטריצה מוגדרת שלילית, ובשאר המקרים אינה מוגדרת", 4)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לשכוח שהאי-שוויון $a^2\ge1$ נותן גם $a\le-1$, ולהוציא את זה בעזרת התנאי $a\ge0$.",
+              r"לבלבל בין מוגדרת חיובית (ערכים עצמיים $\ge0$) למוגדרת חיובית לחלוטין (ערכים עצמיים $>0$).",
+              "לקבוע אי-הגדרה בלי לבדוק את כל הערכים העצמיים."],
+    steps=[
+        ch(r"מהם הערכים העצמיים של המטריצה $\begin{pmatrix}a^2&0&1\\0&a&0\\1&0&a^2\end{pmatrix}$?",
+           r"$a,\ a^2+1,\ a^2-1$",
+           [r"$a,\ a^2+2,\ a^2-2$", r"$a^2,\ a+1,\ a-1$", r"$a,\ 2a^2,\ 0$"],
+           r"המטריצה פוצלה לבלוק $\begin{pmatrix}a^2&1\\1&a^2\end{pmatrix}$ עם ערכים עצמיים $a^2\pm1$, ועוד הערך $a$. בבדיקה ב-$a=2$ מתקבלים $2,5,3$, ורק האפשרות הראשונה נותנת אותם.", 0),
+        ch(r"לפי מינוח הקורס (מוגדרת חיובית אם כל הערכים העצמיים $\ge0$), עבור אילו $a$ המטריצה מוגדרת חיובית?",
+           r"$a\ge1$", [r"$a>1$", r"$a\ge0$", r"$a\le-1$ או $a\ge1$"],
+           r"נדרש $a\ge0$ וגם $a^2\ge1$, כלומר $a\ge1$. ב-$a=1$ הערכים הם $1,2,0$ ולכן עדיין חיובית; ב-$a=-1$ אחד הערכים הוא $-1$.", 0),
+        nm(r"כמה ערכים עצמיים שווים ל-$0$ כאשר $a=1$?", 1, r"הערכים הם $1,\ 2,\ 0$, ולכן בדיוק אחד, ומכאן שהמטריצה אינה חיובית לחלוטין ב-$a=1$.", 0),
+        ch(r"עבור אילו $a$ המטריצה מוגדרת שלילית (כל הערכים העצמיים $\le0$)?",
+           r"אף ערך של $a$", [r"$a\le0$", r"$a\le-1$", r"$-1\le a\le0$"],
+           r"הערך $a^2+1$ תמיד חיובי, ולכן אי אפשר שכולם $\le0$. למשל ב-$a=0$ הערכים הם $0,1,-1$.", 1),
+    ],
+    stepsSource="ai-draft")
+
+add(3, "ב",
+    rubric=rub((r"סימון $m=60$ וחישוב $M_1=15,\ M_2=20,\ M_3=12$", 2),
+               (r"חישוב ההופכיים $x_1=3,\ x_2=2,\ x_3=3$", 3),
+               (r"הצבה בנוסחה וקבלת הסכום $359$", 2),
+               (r"הקטנה מודולו $60$: $x\equiv59$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לחשב את ההופכי מודולו $m$ במקום מודולו $m_i$.",
+              "לשכוח להקטין את $359$ מודולו $60$.",
+              r"לבלבל בין שאריות ל-$q_i$ והמודולים $m_i$ בנוסחה."],
+    steps=[
+        nm(r"מהו $x_1$ שמקיים $15x_1\equiv1\pmod4$ (בטווח $0$ עד $3$)?", 3, r"$15\equiv3\pmod4$ ו-$3\cdot3=9\equiv1$.", 0),
+        nm(r"מהו $x_2$ שמקיים $20x_2\equiv1\pmod3$ (בטווח $0$ עד $2$)?", 2, r"$20\equiv2\pmod3$ ו-$2\cdot2=4\equiv1$.", 0),
+        nm(r"מהו הסכום $3\cdot15\cdot x_1+2\cdot20\cdot x_2+4\cdot12\cdot x_3$ עם $x_3=3$?", 359,
+           r"$135+80+144=359$.", 0),
+        nm(r"מהו הפתרון $x$ בטווח $0$ עד $59$?", 59, r"$359=5\cdot60+59$.", 0),
+    ],
+    stepsSource="ai-draft")
+
+add(4, "א",
+    rubric=rub((r"פולינום אופייני $-\lambda(\lambda-5)^2$ והערכים העצמיים $0,5,5$", 4),
+               (r"וקטור עצמי $(0,-1,2)$ עבור $\lambda=0$", 3),
+               (r"וקטורים עצמיים $(0,2,1),\ (1,0,0)$ עבור $\lambda=5$", 3),
+               (r"בדיקת אורתוגונליות ונרמול", 3),
+               (r"כתיבת $Q$ אורתוגונלית ו-$D$ אלכסונית עם $A=QDQ^T$", 2)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לרשום את $D$ בסדר $5,5,0$ כשהעמודה הראשונה של $Q$ שייכת ל-$\lambda=0$.",
+              "לשכוח לנרמל את העמודות של $Q$.",
+              r"בניית $\vec v_2$ בלי לבדוק שהוא ניצב ל-$\vec v_1$ (המכפלה $(0,-1,2)\cdot(0,2,1)=0$)."],
+    steps=[
+        nm(r"מהו $\det A$ עבור $A=\begin{pmatrix}5&0&0\\0&4&2\\0&2&1\end{pmatrix}$ (המכפלה של הערכים העצמיים)?", 0,
+           r"$5\cdot(4\cdot1-2\cdot2)=0$, ולכן $0$ הוא ערך עצמי.", 0),
+        nm(r"מהו המימד של המרחב העצמי של $\lambda=5$?", 2,
+           r"$A-5I$ היא ברמה $1$ (שורות $(0,-1,2)$ ו-$(0,2,-4)$ תלויות), ולכן הגרעין ממימד $2$.", 0),
+        nm(r"מהי המכפלה הפנימית $\langle(0,-1,2),(0,2,1)\rangle$?", 0,
+           r"$0-2+2=0$, ולכן הוקטורים העצמיים של $0$ ושל $5$ ניצבים זה לזה.", 0),
+        nm(r"מהו הרכיב השלישי של $\vec v_1=(0,-1,2)$ אחרי נרמול?", 0.894427,
+           r"$\|\vec v_1\|=\sqrt5$ ולכן $\frac2{\sqrt5}\approx0.894$.", 0.0005),
+    ],
+    stepsSource="ai-draft")
+
+add(4, "ב",
+    rubric=rub((r"הנתון $x^2=1$ לכל $x$, כלומר $x=x^{-1}$", 1),
+               (r"$xy=(xy)^{-1}$", 1),
+               (r"$(xy)^{-1}=y^{-1}x^{-1}$", 2),
+               (r"$y^{-1}x^{-1}=yx$ ולכן $xy=yx$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לכתוב $(xy)^{-1}=x^{-1}y^{-1}$; זה נכון רק בחבורה אבלית, שהיא מה שרוצים להוכיח.",
+              "להניח קומוטטיביות ישירות במקום להסיק אותה."],
+    steps=[
+        ch(r"איזו זהות נכונה בכל חבורה ומשמשת בהוכחה?", r"$(xy)^{-1}=y^{-1}x^{-1}$",
+           [r"$(xy)^{-1}=x^{-1}y^{-1}$", r"$(xy)^2=x^2y^2$", r"$xy=yx$"],
+           r"רק הזהות הראשונה נכונה בכל חבורה. בחבורת התמורות $S_3$ שלוש האחרות נכשלות על זוג איברים מתאים.", 0),
+        {"type": "order", "prompt": "סדרו את שלבי ההוכחה ש-$xy=yx$.",
+         "lines": [r"$xy=(xy)^{-1}$, כי כל איבר הפוך לעצמו.",
+                   r"$(xy)^{-1}=y^{-1}x^{-1}$, כי זו זהות בכל חבורה.",
+                   r"$y^{-1}x^{-1}=yx$, כי $y^{-1}=y$ ו-$x^{-1}=x$."],
+         "explain": "השוויון הראשון מחליף את המכפלה בהופכי שלה, השני פותח את ההופכי, והשלישי משתמש שוב בנתון."},
+    ],
+    stepsSource="ai-draft")
+
+add(4, "ג",
+    rubric=rub((r"מהנתון $x^2=1$ ו-$y^2=1$", 1),
+               (r"$x^3=x\cdot x^2=x$", 2),
+               (r"$y^5=y\cdot y^2\cdot y^2=y$", 1),
+               (r"מ-$x^3=y^5$ מקבלים $x=y$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"להשתמש ב-$x^3=x^{-1}$ ולהיתקע; יש לצמצם את החזקה בעזרת $x^2=1$.",
+              r"לצמצם את $y^5$ ל-$y^3$ במקום ל-$y$, כלומר לצמצם רק חזקה אחת של $y^2$."],
+    steps=[
+        ch(r"מה שווה $x^3$ בחבורה שבה $x^2=1$ לכל איבר?", r"$x$", [r"$1$", r"$x^2$"],
+           r"$x^3=x\cdot x^2=x\cdot1=x$. האפשרויות האחרות שוות ל-$1$ (כי $x^2=1$), ואין זה נכון ש-$x=1$ בכל איבר.", 0),
+        ch(r"מה שווה $y^5$ באותה חבורה?", r"$y$", [r"$1$", r"$y^2$"],
+           r"$y^5=y\cdot y^2\cdot y^2=y$. הערכים $1$ ו-$y^2$ שווים זה לזה (כי $y^2=1$), אך $y$ אינו בהכרח $1$.", 1),
+        nm(r"נכתוב $y^5=y^k$ עם $k\in\{0,1\}$ בעזרת $y^2=1$. מהו $k$?", 1,
+           r"$5$ הוא אי-זוגי, ולכן $y^5=y^4\cdot y=y$.", 0),
+    ],
+    stepsSource="ai-draft")
+
+add(5, "א",
+    rubric=rub((r"אורתונורמליזציה של $\vec a_1=(-1,1)^T$: $\vec q_1=\frac1{\sqrt2}(-1,1)^T$", 4),
+               (r"הוקטור $\vec a_2-\langle\vec a_2,\vec q_1\rangle\vec q_1=(4,4)^T$ ונרמולו $\vec q_2=\frac1{\sqrt2}(1,1)^T$", 4),
+               (r"כתיבת $Q$ מהעמודות $\vec q_1,\vec q_2$", 2),
+               (r"חישוב $R=Q^TA=\begin{pmatrix}\sqrt2&\sqrt2\\0&4\sqrt2\end{pmatrix}$", 3),
+               (r"בדיקה $QR=A$", 2)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לפרק לפי השורות של $A$ במקום לפי העמודות.",
+              r"לשכוח שהאלכסון של $R$ חיובי: $r_{11}=\|\vec a_1\|=\sqrt2$.",
+              r"לחשב $R=QA$ במקום $R=Q^TA$."],
+    steps=[
+        nm(r"מהו $r_{11}=\|\vec a_1\|$ עבור העמודה הראשונה $(-1,1)^T$?", 1.414214, r"$\sqrt{1+1}=\sqrt2$.", 0.0005),
+        nm(r"מהו $r_{12}=\langle\vec q_1,\vec a_2\rangle$ עבור $\vec q_1=\frac1{\sqrt2}(-1,1)^T$ ו-$\vec a_2=(3,5)^T$?", 1.414214,
+           r"$\frac{-3+5}{\sqrt2}=\sqrt2$.", 0.0005),
+        nm(r"מהו $r_{22}=\|\vec a_2-r_{12}\vec q_1\|$?", 5.656854,
+           r"$\vec a_2-r_{12}\vec q_1=(3,5)-(-1,1)=(4,4)$, ונורמתו $4\sqrt2\approx5.657$.", 0.0005),
+        nm(r"מהו הרכיב הראשון של $\vec q_2=\frac{(4,4)^T}{r_{22}}$?", 0.707107, r"$\frac4{4\sqrt2}=\frac{\sqrt2}2$.", 0.0005),
+    ],
+    stepsSource="ai-draft")
+
+add(5, "ב",
+    rubric=rub((r"סימטריה: $P^T=(\vec v\vec v^T)^T=P$", 1),
+               (r"$P^2=\vec v\left(\vec v^T\vec v\right)\vec v^T=P$ כי $\vec v^T\vec v=1$", 2),
+               (r"$\vec u^TP\vec u=\left(\vec v^T\vec u\right)^T\left(\vec v^T\vec u\right)\ge0$", 2)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לשכוח את $\vec v^T\vec v=\|\vec v\|^2=1$, התנאי שגורר $P^2=P$.",
+              r"לבלבל בין $\vec v\vec v^T$ (מטריצה $n\times n$) ל-$\vec v^T\vec v$ (מספר)."],
+    steps=[
+        nm(r"עבור $\vec v=(0.6,0.8)^T$, מהו האיבר בשורה 1 ועמודה 2 של $P=\vec v\vec v^T$?", 0.48, r"$0.6\cdot0.8=0.48$.", 0.0005),
+        nm(r"עבור אותו $\vec v$, מהו העקבה (סכום האלכסון) של $P$?", 1, r"$0.36+0.64=1=\|\vec v\|^2$.", 0.0005),
+        {"type": "findbug", "prompt": "בהוכחה הבאה שורה אחת שונתה והיא שגויה. מצאו אותה.",
+         "lines": [r"$P^T=\left(\vec v\vec v^T\right)^T=\vec v\vec v^T=P$.",
+                   r"$P^2=\vec v\left(\vec v^T\vec v\right)\vec v^T$.",
+                   r"$\vec v^T\vec v=\|\vec v\|^2=0$.",
+                   r"לכן $P^2=P$.",
+                   r"$\vec u^TP\vec u=\left(\vec v^T\vec u\right)^T\left(\vec v^T\vec u\right)\ge0$."],
+         "bugIndex": 2,
+         "explain": r"$\vec v$ וקטור יחידה, ולכן $\vec v^T\vec v=1$; עם $0$ היה מתקבל $P^2=0$."},
+    ],
+    stepsSource="ai-draft")
+
+add(5, "ג",
+    rubric=rub((r"$\langle\vec u-P\vec u,\vec v\rangle=\vec v^T(\vec u-P\vec u)$", 1),
+               (r"פתיחה: $\vec v^T\vec u-\vec v^TP\vec u$", 1),
+               (r"$\vec v^TP=\vec v^T\vec v\,\vec v^T=\vec v^T$ כי $\|\vec v\|=1$", 2),
+               (r"התוצאה $0$", 1)),
+    rubricSource="ai-draft",
+    pitfalls=[r"לשכוח ש-$\vec v^T\vec v=1$ ולהישאר עם $\vec v^T\vec v\,\vec v^T\vec u$.",
+              r"להחליף את סדר המכפלה ולחשב $P\vec v$ במקום $\vec v^TP$."],
+    steps=[
+        nm(r"נבדוק על $\vec v=(0.6,0.8)^T$ ו-$\vec u=(1,2)^T$. מהו הרכיב הראשון של $\vec u-P\vec u$?", -0.32,
+           r"$\vec v^T\vec u=2.2$, ולכן $P\vec u=2.2\vec v=(1.32,1.76)$ ו-$\vec u-P\vec u=(-0.32,0.24)$. המכפלה עם $\vec v$: $-0.192+0.192=0$.", 0.0005),
+        {"type": "order", "prompt": "סדרו את שלבי החישוב.",
+         "lines": [r"$\langle\vec u-P\vec u,\vec v\rangle=\vec v^T\left(\vec u-P\vec u\right)$.",
+                   r"$=\vec v^T\vec u-\vec v^TP\vec u$.",
+                   r"$=\vec v^T\vec u-\vec v^T\vec v\,\vec v^T\vec u=\vec v^T\vec u-\vec v^T\vec u$, כי $\vec v^T\vec v=1$.",
+                   r"$=0$."],
+         "explain": "כל שורה נובעת מהקודמת: כתיבת המכפלה הפנימית, פתיחה, הצבת $P=\\vec v\\vec v^T$ עם $\\|\\vec v\\|=1$, ותוצאה."},
+    ],
+    stepsSource="ai-draft")
+
 exam = {
     "examCode": "23B-B",
     "examLabel": "אלגברה 2 - סמסטר ב' תשפ\"ג מועד ב'",
