@@ -34,7 +34,58 @@
    "confidence": "high",
    "part": "א",
    "points": 10,
-   "verdict": false
+   "verdict": false,
+   "rubric": [
+    {
+     "text": "בחירת הווקטורים $\\vec u=(\\alpha,\\beta,\\gamma)$ ו-$\\vec v=(2,1,3)$",
+     "points": 3
+    },
+    {
+     "text": "הפעלת אי-שוויון קושי-שוורץ",
+     "points": 3
+    },
+    {
+     "text": "חישוב $\\|\\vec v\\|^2=14$",
+     "points": 2
+    },
+    {
+     "text": "מסקנה: $\\le14(\\dots)\\le16(\\dots)$, ולכן אין פתרון",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לענות 'כן' אחרי בדיקת ערכים ספציפיים בלבד, בלי להוכיח את החסם לכל שלישייה.",
+    "לחשב $\\|\\vec v\\|^2$ בטעות כ-$2+1+3=6$ במקום $4+1+9=14$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\|\\vec v\\|^2$ עבור $\\vec v=(2,1,3)$?",
+     "answer": 14,
+     "tol": 0,
+     "explain": "$4+1+9=14$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $(\\alpha,\\beta,\\gamma)=(2,1,3)$ מהו $(2\\alpha+\\beta+3\\gamma)^2$?",
+     "answer": 196,
+     "tol": 0,
+     "explain": "$(4+1+9)^2=196=14\\cdot14$, כלומר $14\\left(\\alpha^2+\\beta^2+\\gamma^2\\right)$: זה מקרה השוויון בקושי-שוורץ."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "נגדיר $\\vec u=(\\alpha,\\beta,\\gamma)$ ו-$\\vec v=(2,1,3)$",
+      "קושי-שוורץ: $|\\vec u\\cdot\\vec v|\\le\\|\\vec u\\|\\|\\vec v\\|$",
+      "$\\|\\vec v\\|^2=14$, ולכן $(2\\alpha+\\beta+3\\gamma)^2\\le14\\left(\\alpha^2+\\beta^2+\\gamma^2\\right)$",
+      "$14\\left(\\alpha^2+\\beta^2+\\gamma^2\\right)\\le16\\left(\\alpha^2+\\beta^2+\\gamma^2\\right)$, ולכן אין $\\alpha,\\beta,\\gamma$ המקיימים את אי-השוויון המבוקש"
+     ],
+     "explain": "הווקטורים נבחרים לפני ההפעלה, והחסם $14\\le16$ נשאר אחרון."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 1,
@@ -46,7 +97,72 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חישוב $u_2=\\begin{pmatrix}-0.5&0.5\\\\0.5&0.5\\end{pmatrix}$ בגרם-שמידט",
+     "points": 4
+    },
+    {
+     "text": "חישוב $u_3=\\begin{pmatrix}0.5&0.5\\\\0.5&-0.5\\end{pmatrix}$ (כאשר $\\langle e_3,u_2\\rangle=0$)",
+     "points": 4
+    },
+    {
+     "text": "שימוש בנוסחת ההיטל על הבסיס האורתוגונלי עם המקדמים $1.5,\\ 1,\\ 1$",
+     "points": 4
+    },
+    {
+     "text": "התשובה $\\begin{pmatrix}1.5&2.5\\\\-0.5&1.5\\end{pmatrix}$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "להשתמש בנוסחת ההיטל על $e_1,e_2,e_3$ ישירות, אף שאינם אורתוגונליים.",
+    "לשכוח לחלק ב-$\\|u_i\\|^2$ (למשל $\\|u_1\\|^2=4$) ולקבל מקדמים גדולים מדי."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle e_2,u_1\\rangle$ עבור $e_2=\\begin{pmatrix}0&1\\\\0&1\\end{pmatrix}$ ו-$u_1=\\begin{pmatrix}1&1\\\\-1&1\\end{pmatrix}$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$0+1+0+1=2$, ו-$\\|u_1\\|^2=4$, ולכן המקדם $\\frac24$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\langle e_3,u_2\\rangle$ עבור $e_3=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$ ו-$u_2=\\begin{pmatrix}-0.5&0.5\\\\0.5&0.5\\end{pmatrix}$?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$-0.5+0.5+0+0=0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו המקדם $\\frac{\\langle\\vec v,u_1\\rangle}{\\|u_1\\|^2}$ בהיטל, עבור $\\vec v=\\begin{pmatrix}2&2\\\\0&2\\end{pmatrix}$?",
+     "answer": 1.5,
+     "tol": 1e-09,
+     "explain": "$\\langle\\vec v,u_1\\rangle=2+2+0+2=6$, ולכן $\\frac64=1.5$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהי הכניסה הימנית העליונה של ההיטל?",
+     "answer": 2.5,
+     "tol": 1e-09,
+     "explain": "$1.5\\cdot1+1\\cdot0.5+1\\cdot0.5=2.5$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי החישוב.",
+     "lines": [
+      "$u_1=e_1$",
+      "$u_2=e_2-\\frac{\\langle e_2,u_1\\rangle}{\\|u_1\\|^2}u_1$",
+      "$u_3=e_3-\\frac{\\langle e_3,u_1\\rangle}{\\|u_1\\|^2}u_1-\\frac{\\langle e_3,u_2\\rangle}{\\|u_2\\|^2}u_2$",
+      "$\\mathbf{proj}_W(\\vec v)=\\sum_{i=1}^3\\frac{\\langle\\vec v,u_i\\rangle}{\\|u_i\\|^2}u_i$"
+     ],
+     "explain": "כל וקטור $u_i$ תלוי בקודמים, וההיטל נחשב על הבסיס האורתוגונלי הסופי."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -59,7 +175,60 @@
    "confidence": "high",
    "part": "א",
    "points": 3,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "זיהוי האיבר הניטרלי $(1,1)$",
+     "points": 1
+    },
+    {
+     "text": "בדיקה ש-$(1,1)\\cdot(a,a^2)=(a,a^2)$ לכל $a$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לבחור $(0,0)$ כאיבר ניטרלי: $0\\notin\\mathbb{Z}_7^*$, ולכן הוא אינו ב-$G$.",
+    "לבדוק רק מצד אחד; בחבורה אבלית זה מספיק, אך כדאי לציין שהכפל חילופי."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מהו האיבר הניטרלי של $G$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(1,1)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(0,0)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(1,0)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(0,1)$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "$(0,0),(1,0),(0,1)$ אינם ב-$G$, כי $G$ מכילה זוגות $(a,a^2)$ עם $a\\ne0$; ו-$(1,1)\\cdot(a,a^2)=(a,a^2)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הרכיב השני במכפלה $(1,1)\\cdot(3,2)$ (מודולו 7)?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$1\\cdot2=2$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -72,7 +241,43 @@
    "confidence": "high",
    "part": "ב",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "ההופכי נלקח ברכיבים: ההופכי של 2 והופכי של 4 מודולו 7",
+     "points": 2
+    },
+    {
+     "text": "$2\\cdot4=8\\equiv1$",
+     "points": 1
+    },
+    {
+     "text": "$4\\cdot2\\equiv1$, ולכן ההופכי הוא $(4,2)$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לכתוב את ההופכי כ-$(-2,-4)$ בלי להפחית מודולו 7: $(5,3)$ אינו הופכי של $(2,4)$.",
+    "להשאיר שברים כמו $\\frac12$ במקום הערכים הנכונים ב-$\\mathbb{Z}_7$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו ההופכי של 2 ב-$\\mathbb{Z}_7^*$ (ערך בין 1 ל-6)?",
+     "answer": 4,
+     "tol": 0,
+     "explain": "$2\\cdot4=8\\equiv1\\pmod7$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו ההופכי של 4 ב-$\\mathbb{Z}_7^*$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$4\\cdot2=8\\equiv1\\pmod7$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -85,7 +290,60 @@
    "confidence": "high",
    "part": "ג",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "הסדר של $\\mathbb{Z}_7^*$ הוא 6",
+     "points": 2
+    },
+    {
+     "text": "כל $a\\in\\mathbb{Z}_7^*$ קובע איבר יחיד $(a,a^2)$ ב-$G$, ולכן $|G|=6$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "לענות 49 או 36, כלומר לספור כל זוג $(a,b)$ ולא רק זוגות מהצורה $(a,a^2)$.",
+    "לענות 7 ולשכוח שהאפס אינו ב-$\\mathbb{Z}_7^*$."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מה קובע את מספר האיברים של $G$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "הערך $a\\in\\mathbb{Z}_7^*$ קובע את הזוג $(a,a^2)$ באופן יחיד, ולכן $|G|=6$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "יש 7 אפשרויות ל-$a$, ולכן $|G|=7$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "יש 6 אפשרויות לכל רכיב, ולכן $|G|=36$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$|G|=49$ כי זהו מכפלת $\\mathbb{Z}_7\\times\\mathbb{Z}_7$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "הרכיב השני נקבע מהראשון, ו-$a$ אינו 0. בשאר האפשרויות סופרים גם זוגות שאינם מהצורה $(a,a^2)$ או את 0."
+    },
+    {
+     "type": "numeric",
+     "prompt": "כמה איברים יש ל-$\\mathbb{Z}_7^*$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$\\{1,2,3,4,5,6\\}$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -98,7 +356,54 @@
    "confidence": "high",
    "part": "ד",
    "points": 4,
-   "contextId": "c2"
+   "contextId": "c2",
+   "rubric": [
+    {
+     "text": "הסדר של $\\langle(3,2)\\rangle$ שווה לסדר של $(3,2)$",
+     "points": 1
+    },
+    {
+     "text": "הסדר של 3 ב-$\\mathbb{Z}_7^*$ הוא 6",
+     "points": 1
+    },
+    {
+     "text": "הסדר של 2 ב-$\\mathbb{Z}_7^*$ הוא 3",
+     "points": 1
+    },
+    {
+     "text": "הסדר של $(3,2)$ הוא $\\mathrm{lcm}(6,3)=6$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לכפול את הסדרים ולקבל $18$ במקום להשתמש בכפולה המשותפת המינימלית.",
+    "לחשוב שסדר הזוג הוא המקסימום או הסכום של הסדרים."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של 3 ב-$\\mathbb{Z}_7^*$ (החזקה הקטנה $k\\ge1$ עם $3^k\\equiv1\\pmod7$)?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "החזקות של 3 מודולו 7: 3, 2, 6, 4, 5, 1."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של 2 ב-$\\mathbb{Z}_7^*$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "החזקות של 2 מודולו 7: 2, 4, 1."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הסדר של $(3,2)$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$\\mathrm{lcm}(6,3)=6$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -111,7 +416,63 @@
    "confidence": "high",
    "part": "ה",
    "points": 5,
-   "contextId": "c2b"
+   "contextId": "c2b",
+   "rubric": [
+    {
+     "text": "כתיבת הגדרת ערך עצמי עם וקטור עצמי $\\vec v\\ne\\vec0$",
+     "points": 1
+    },
+    {
+     "text": "חישוב $(cI-A)\\vec v=c\\vec v-A\\vec v$",
+     "points": 2
+    },
+    {
+     "text": "הצבת $A\\vec v=\\lambda\\vec v$ וקבלת $(c-\\lambda)\\vec v$",
+     "points": 1
+    },
+    {
+     "text": "מסקנה: $c-\\lambda$ ערך עצמי, ובשני הכיוונים",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לחשב $(cI-A)\\vec v$ כ-$c\\vec v+A\\vec v$ (טעות סימן).",
+    "להוכיח כיוון אחד בלבד של ה'אם ורק אם'."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "אם 3 ערך עצמי של $A$ ו-$c=5$, איזה ערך עצמי של $cI-A$ מתקבל?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "$c-\\lambda=5-3=2$."
+    },
+    {
+     "type": "order",
+     "prompt": "סדרו את שלבי ההוכחה.",
+     "lines": [
+      "$\\lambda$ ערך עצמי של $A$ אם ורק אם קיים $\\vec v\\ne\\vec0$ עם $A\\vec v=\\lambda\\vec v$",
+      "$(cI-A)\\vec v=c\\vec v-A\\vec v$",
+      "$=c\\vec v-\\lambda\\vec v=(c-\\lambda)\\vec v$",
+      "לכן $c-\\lambda$ ערך עצמי של $cI-A$"
+     ],
+     "explain": "כל שלב נשען על הקודם."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "$\\lambda$ ערך עצמי של $A$ אם ורק אם קיים $\\vec v\\ne\\vec0$ עם $A\\vec v=\\lambda\\vec v$",
+      "$(cI-A)\\vec v=c\\vec v-A\\vec v$",
+      "$=c\\vec v+\\lambda\\vec v=(c+\\lambda)\\vec v$",
+      "לכן $c-\\lambda$ ערך עצמי של $cI-A$"
+     ],
+     "bugIndex": 2,
+     "explain": "$(cI-A)\\vec v=c\\vec v-A\\vec v$, ולכן מחסרים: $(c-\\lambda)\\vec v$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 2,
@@ -124,7 +485,68 @@
    "confidence": "high",
    "part": "ו",
    "points": 5,
-   "contextId": "c2b"
+   "contextId": "c2b",
+   "rubric": [
+    {
+     "text": "$cI-A$ סימטרית כי $A$ סימטרית",
+     "points": 1
+    },
+    {
+     "text": "הערכים העצמיים של $cI-A$ הם $c-\\lambda$",
+     "points": 1
+    },
+    {
+     "text": "בחירת $c$ גדול מכל הערכים העצמיים של $A$",
+     "points": 2
+    },
+    {
+     "text": "מסקנה: סימטרית עם ערכים עצמיים חיוביים, כלומר מוגדרת חיובית לחלוטין",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לבחור $c=0$ או $c$ קטן: אז $c-\\lambda$ אינו חיובי עבור הערכים העצמיים הגדולים.",
+    "לבחור $c$ שווה לערך העצמי הגדול ביותר: מתקבל ערך עצמי $0$ ולא חיובי."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "איך בוחרים את $c$ לפי הפתרון הרשמי?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$c$ גדול ממש מכל הערכים העצמיים של $A$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$c$ שווה לערך העצמי הגדול ביותר של $A$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$c=0$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$c$ קטן מכל הערכים העצמיים של $A$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "צריך $c-\\lambda>0$ לכל $\\lambda$. שוויון נותן ערך עצמי $0$; $c=0$ נותן ערכים אי-חיוביים; $c$ קטן נותן ערכים שליליים."
+    },
+    {
+     "type": "numeric",
+     "prompt": "אם הערכים העצמיים של $A$ הם $0,2,5$, מהו ה-$c$ השלם הקטן ביותר שעבורו $cI-A$ מוגדרת חיובית לחלוטין?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "צריך $c>5$, ולכן $c=6$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -136,7 +558,79 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 15
+   "points": 15,
+   "rubric": [
+    {
+     "text": "חישוב הדטרמיננטה $(1-\\lambda)\\left((1-\\lambda)^2-2c^2\\right)$",
+     "points": 5
+    },
+    {
+     "text": "הערכים העצמיים $1,\\ 1+\\sqrt2c,\\ 1-\\sqrt2c$",
+     "points": 2
+    },
+    {
+     "text": "מוגדרת חיובית: $c\\in\\left[-\\frac1{\\sqrt2},\\frac1{\\sqrt2}\\right]$",
+     "points": 3
+    },
+    {
+     "text": "מוגדרת חיובית לחלוטין: הקטע הפתוח",
+     "points": 2
+    },
+    {
+     "text": "לא מוגדרת שלילית (בגלל $\\lambda=1$) ואינה מוגדרת מחוץ לקטע",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לכלול את הקצוות $\\pm\\frac1{\\sqrt2}$ במוגדרת חיובית לחלוטין: שם יש ערך עצמי $0$.",
+    "להסיק שהמטריצה שלילית עבור $|c|$ גדול, אף שהערך העצמי $1$ תמיד חיובי (היא אינה מוגדרת)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "עבור איזה $c>0$ מתאפס הערך העצמי $1-\\sqrt2c$? (תשובה עשרונית)",
+     "answer": 0.70710678,
+     "tol": 1e-06,
+     "explain": "$1-\\sqrt2c=0$ נותן $c=\\frac1{\\sqrt2}\\approx0.7071$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי הקטן ביותר עבור $c=1$? (תשובה עשרונית)",
+     "answer": -0.41421356,
+     "tol": 1e-06,
+     "explain": "$1-\\sqrt2\\approx-0.4142$, ולכן המטריצה אינה מוגדרת."
+    },
+    {
+     "type": "choice",
+     "prompt": "איזה סיווג נכון?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "חיובית לחלוטין בדיוק עבור $|c|<\\frac1{\\sqrt2}$, וחיובית בדיוק עבור $|c|\\le\\frac1{\\sqrt2}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "חיובית לחלוטין בדיוק עבור $|c|\\le\\frac1{\\sqrt2}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "חיובית לחלוטין לכל $c$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "שלילית לחלוטין עבור $|c|>\\frac1{\\sqrt2}$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "בקצוות יש ערך עצמי $0$, ולכן חיובית אך לא חיובית לחלוטין. מחוץ לקטע יש ערך עצמי שלילי וגם $1$ חיובי, ולכן אינה מוגדרת."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 3,
@@ -148,7 +642,61 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 10
+   "points": 10,
+   "rubric": [
+    {
+     "text": "בניית המערכת $A\\vec x=\\vec b$ מהנקודות",
+     "points": 2
+    },
+    {
+     "text": "המשוואות הנורמליות $\\begin{pmatrix}35&5\\\\5&5\\end{pmatrix}\\vec x=\\begin{pmatrix}39\\\\12\\end{pmatrix}$",
+     "points": 4
+    },
+    {
+     "text": "פתרון: $m=0.9,\\ n=1.5$",
+     "points": 3
+    },
+    {
+     "text": "הישר $y=0.9x+1.5$",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לפתור ישירות את מערכת חמש המשוואות בשני נעלמים.",
+    "טעות בסכום $\\sum x_iy_i$ עקב הסימנים השליליים של הנקודה $(-3,-1)$."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_i^2$ עבור $x=-3,0,1,3,4$?",
+     "answer": 35,
+     "tol": 0,
+     "explain": "$9+0+1+9+16=35$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\sum x_iy_i$ עבור הנקודות $(-3,-1),(0,1),(1,3),(3,3),(4,6)$?",
+     "answer": 39,
+     "tol": 0,
+     "explain": "$3+0+3+9+24=39$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו השיפוע $m$?",
+     "answer": 0.9,
+     "tol": 1e-09,
+     "explain": "$35m+5n=39$ פחות $5m+5n=12$ נותן $30m=27$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $n$?",
+     "answer": 1.5,
+     "tol": 1e-09,
+     "explain": "$5m+5n=12$ עם $m=0.9$ נותן $5n=7.5$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -161,7 +709,97 @@
    "confidence": "high",
    "part": "א",
    "points": 18,
-   "contextId": "c4"
+   "contextId": "c4",
+   "rubric": [
+    {
+     "text": "סגירות: פירוק $1\\pm x*y=\\frac{(1\\pm x)(1\\pm y)}{1+xy}$ והסקת $-1<x*y<1$",
+     "points": 6
+    },
+    {
+     "text": "אסוציאטיביות: שני האגפים שווים ל-$\\frac{x+y+z+xyz}{1+xy+xz+yz}$",
+     "points": 4
+    },
+    {
+     "text": "איבר ניטרלי $e=0$",
+     "points": 2
+    },
+    {
+     "text": "הופכי $x^{-1}=-x$, ושייך ל-$G$",
+     "points": 3
+    },
+    {
+     "text": "חילופיות ומסקנה שהחבורה אבלית",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לשכוח להראות סגירות (ש-$x*y$ נשאר בקטע $(-1,1)$) ולהתחיל ישר באסוציאטיביות.",
+    "לחשב את ההופכי כ-$\\frac1x$ (הופכי כפלי): הפעולה היא לא כפל, והאיבר הניטרלי הוא $0$."
+   ],
+   "steps": [
+    {
+     "type": "order",
+     "prompt": "סדרו את הוכחת הסגירות.",
+     "lines": [
+      "$1\\pm x*y=1\\pm\\frac{x+y}{1+xy}$",
+      "$=\\frac{1+xy\\pm x\\pm y}{1+xy}$",
+      "$=\\frac{(1\\pm x)(1\\pm y)}{1+xy}$",
+      "$1\\pm x>0,\\ 1\\pm y>0,\\ 1+xy>0$, ולכן $1\\pm x*y>0$",
+      "מכאן $-1<x*y<1$, כלומר $x*y\\in G$"
+     ],
+     "explain": "כל שורה נובעת מהקודמת, וההסקה על $G$ אחרונה."
+    },
+    {
+     "type": "findbug",
+     "prompt": "בגרסה הבאה שורה אחת שגויה. מצאו אותה.",
+     "lines": [
+      "$1\\pm x*y=1\\pm\\frac{x+y}{1+xy}$",
+      "$=\\frac{1+xy\\pm x\\pm y}{1+xy}$",
+      "$=\\frac{(1\\pm x)(1\\mp y)}{1+xy}$",
+      "$1\\pm x>0,\\ 1\\pm y>0,\\ 1+xy>0$, ולכן $1\\pm x*y>0$",
+      "מכאן $-1<x*y<1$, כלומר $x*y\\in G$"
+     ],
+     "bugIndex": 2,
+     "explain": "הפירוק הנכון הוא $(1\\pm x)(1\\pm y)=1\\pm x\\pm y+xy$; עם $\\mp$ מתקבל $1\\pm x\\mp y-xy$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "עבור $x=0.5,\\ y=0.2,\\ z=0.1$ מהו $(x*y)*z$? (תשובה עשרונית)",
+     "answer": 0.6923077,
+     "tol": 1e-06,
+     "explain": "$x*y=\\frac7{11}$, ואז $\\frac{7/11+0.1}{1+0.7/11}=\\frac9{13}\\approx0.6923$ (זהה ל-$x*(y*z)$)."
+    },
+    {
+     "type": "choice",
+     "prompt": "מהו ההופכי של $x$ בחבורה $(G,*)$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$-x$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\frac1x$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$-\\frac1x$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$1-x$"
+      }
+     ],
+     "correctId": "a",
+     "explain": "האיבר הניטרלי הוא $0$, ו-$x*(-x)=\\frac{0}{1-x^2}=0$. עבור $\\frac1x$ מתקבל $\\frac{x+1/x}{2}\\ne0$ (וגם $\\frac1x\\notin G$)."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 4,
@@ -175,7 +813,72 @@
    "part": "ב",
    "points": 7,
    "contextId": "c4",
-   "verdict": true
+   "verdict": true,
+   "rubric": [
+    {
+     "text": "סגירות: סכום ומכפלה של רציונליים רציונליים, ולכן $\\frac{x+y}{1+xy}\\in\\mathbb{Q}$",
+     "points": 2
+    },
+    {
+     "text": "$x*y\\in G$ כבר ידוע",
+     "points": 1
+    },
+    {
+     "text": "ההופכי $-x\\in G\\cap\\mathbb{Q}$",
+     "points": 2
+    },
+    {
+     "text": "$0\\in G\\cap\\mathbb{Q}$",
+     "points": 1
+    },
+    {
+     "text": "מסקנה: תת-חבורה",
+     "points": 1
+    }
+   ],
+   "pitfalls": [
+    "לבדוק רק שהקבוצה מכילה את $0$ בלי סגירות והופכי.",
+    "לשכוח שהתוצאה צריכה להיות גם בקטע $(-1,1)$, לא רק רציונלית."
+   ],
+   "steps": [
+    {
+     "type": "choice",
+     "prompt": "מה מספיק להראות כדי ש-$H$ תהיה תת-חבורה של $G$?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "ש-$H$ מכילה את $e$, סגורה לפעולה וסגורה להופכי"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "ש-$H$ סגורה לפעולה בלבד"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "ש-$H$ מכילה את $e$ בלבד"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "ש-$H$ סופית"
+      }
+     ],
+     "correctId": "a",
+     "explain": "סגירות לבדה אינה מספיקה (למשל $\\mathbb{N}$ ביחס לחיבור), ואיבר ניטרלי לבדו אינו מספיק; סופיות אינה נדרשת."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $\\frac12*\\frac13$ (תשובה עשרונית)? הוא רציונלי, כנדרש לסגירות.",
+     "answer": 0.7142857,
+     "tol": 1e-06,
+     "explain": "$\\frac{5/6}{1+1/6}=\\frac57\\approx0.7143$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -187,7 +890,65 @@
    "official": true,
    "confidence": "high",
    "part": "א",
-   "points": 17
+   "points": 17,
+   "rubric": [
+    {
+     "text": "חישוב הערכים העצמיים $2,2,0$",
+     "points": 4
+    },
+    {
+     "text": "הוקטורים העצמיים של $\\lambda=2$: $(1,1,0)$ ו-$(0,0,1)$",
+     "points": 3
+    },
+    {
+     "text": "הוקטור העצמי של $\\lambda=0$: $(-1,1,0)$",
+     "points": 3
+    },
+    {
+     "text": "בדיקת אורתוגונליות ונרמול העמודות",
+     "points": 4
+    },
+    {
+     "text": "כתיבת $A=QPQ^T$ עם $P=\\mathrm{diag}(2,2,0)$",
+     "points": 3
+    }
+   ],
+   "pitfalls": [
+    "לשכוח לנרמל: עמודות כמו $(1,1,0)$ צריכות להיות מחולקות ב-$\\sqrt2$.",
+    "לא לוודא שהוקטורים העצמיים של $\\lambda=2$ אורתוגונליים זה לזה (כאן הם כן)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו הערך העצמי שאינו 2? (עקבת המטריצה היא 4)",
+     "answer": 0,
+     "tol": 0,
+     "explain": "העקבה $1+1+2=4$ שווה לסכום הערכים העצמיים $2+2+\\lambda$, ולכן $\\lambda=0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו המימד של המרחב העצמי של $\\lambda=2$?",
+     "answer": 2,
+     "tol": 0,
+     "explain": "הוא נפרש על ידי $(1,1,0)$ ו-$(0,0,1)$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו המכפלה הפנימית $(1,1,0)\\cdot(-1,1,0)$ (אורתוגונליות בין הערך העצמי 2 ל-0)?",
+     "answer": 0,
+     "tol": 0,
+     "explain": "$-1+1+0=0$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו האורך $\\|(-1,1,0)\\|$? (תשובה עשרונית)",
+     "answer": 1.41421356,
+     "tol": 1e-06,
+     "explain": "$\\sqrt2$, ולכן העמודה המנורמלת היא $\\frac1{\\sqrt2}(-1,1,0)$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   },
   {
    "num": 5,
@@ -199,7 +960,61 @@
    "official": true,
    "confidence": "high",
    "part": "ב",
-   "points": 8
+   "points": 8,
+   "rubric": [
+    {
+     "text": "העברת המשוואה השלישית ל-$x\\equiv8\\pmod{11}$",
+     "points": 1
+    },
+    {
+     "text": "חישוב $m=385$ ו-$M_1=77,\\ M_2=55,\\ M_3=35$",
+     "points": 2
+    },
+    {
+     "text": "חישוב $x_1=3,\\ x_2=6,\\ x_3=6$",
+     "points": 3
+    },
+    {
+     "text": "הצבה בנוסחה והפחתה מודולו 385: $x\\equiv52$",
+     "points": 2
+    }
+   ],
+   "pitfalls": [
+    "להשאיר $x\\equiv19\\pmod{11}$ בלי להפחית ל-8.",
+    "לחשב הופכי שגוי (למשל $2x\\equiv1\\pmod5$ נותן 3, לא 2)."
+   ],
+   "steps": [
+    {
+     "type": "numeric",
+     "prompt": "מהו 19 מודולו 11 (ערך בין 0 ל-10)?",
+     "answer": 8,
+     "tol": 0,
+     "explain": "$19=11+8$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_1$ המקיים $77x_1\\equiv1\\pmod5$?",
+     "answer": 3,
+     "tol": 0,
+     "explain": "$77\\equiv2$, ו-$2\\cdot3=6\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו $x_3$ המקיים $35x_3\\equiv1\\pmod{11}$?",
+     "answer": 6,
+     "tol": 0,
+     "explain": "$35\\equiv2$, ו-$2\\cdot6=12\\equiv1$."
+    },
+    {
+     "type": "numeric",
+     "prompt": "מהו הפתרון $x$ מודולו 385 (ערך בין 0 ל-384)?",
+     "answer": 52,
+     "tol": 0,
+     "explain": "$3132\\bmod385=52$."
+    }
+   ],
+   "rubricSource": "ai-draft",
+   "stepsSource": "ai-draft"
   }
  ]
 }
