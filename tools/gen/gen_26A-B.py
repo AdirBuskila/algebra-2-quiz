@@ -6,7 +6,9 @@ Source: exam 2 pp. (text PDF, exam-only copy). There is NO official solution. Th
 handwritten STUDENT solution (anonymised, labelled "student-solution-1"); it covers Q1a.1, Q1a.2, Q2.1, Q2.2, Q2.3, Q2.5,
 Q3a, Q3b, Q5b. Those 9 items are shipped as solutionSource "student-solution", official false, confidence med, written out
 cleanly in the student's method and every result recomputed (tools/verify/26A-B/check.py, sympy, all OK).
-Held ("no-key", routed to the solver): Q1b, Q2.4, Q4a, Q4b, Q4c, Q5a (no answer source). 15 items, 9 shipped + 6 held.
+Q1b (item Q1c), Q2.4, Q4a, Q4b, Q4c, Q5a have no answer source: written by the solver (SV: solutionSource "solved",
+official false; checked in tools/verify/26A-B/solve_held.py; the student scan was not consulted for them). Pending the
+refuter. 15 items, all shipped.
 The sheet says "4 of 5", 25% each; all 5 questions are transcribed.
 The scan also contains a student grade-report page (in another file); it is NOT used, quoted or shipped.
 
@@ -123,22 +125,79 @@ S5B = (
     r"$$\left(\sum_{k=1}^n\frac1{k^2}\right)^2\le\left(\sum_{k=1}^n\frac1k\right)\cdot\left(\sum_{k=1}^n\frac1{k^3}\right)$$"
 )
 
+S1B = (
+    r"העמודות של $A$ בלתי תלויות (אינן פרופורציונליות), לכן $A^TA$ הפיכה ולמשוואות הנורמליות $A^TA\hat x=A^T\vec b$ יש פתרון יחיד." "\n"
+    r"$$A^TA=\begin{pmatrix}1&-1&0&2\\-2&2&3&5\end{pmatrix}\begin{pmatrix}1&-2\\-1&2\\0&3\\2&5\end{pmatrix}=\begin{pmatrix}6&6\\6&42\end{pmatrix},\qquad A^T\vec b=\begin{pmatrix}1&-1&0&2\\-2&2&3&5\end{pmatrix}\begin{pmatrix}3\\1\\-4\\2\end{pmatrix}=\begin{pmatrix}6\\-6\end{pmatrix}$$" "\n"
+    r"$$\begin{pmatrix}6&6\\6&42\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}=\begin{pmatrix}6\\-6\end{pmatrix}\ \Rightarrow\ \begin{cases}x_1+x_2=1\\x_1+7x_2=-1\end{cases}\ \Rightarrow\ 6x_2=-2\ \Rightarrow\ x_2=-\frac13,\ x_1=\frac43$$" "\n"
+    r"$$\hat x=\begin{pmatrix}\frac43\\-\frac13\end{pmatrix}$$" "\n"
+    r"בדיקה: $A\hat x=\begin{pmatrix}2\\-2\\-1\\1\end{pmatrix}$ ו-$\vec b-A\hat x=\begin{pmatrix}1\\3\\-3\\1\end{pmatrix}$ ניצב לשתי העמודות של $A$ ($1-3+0+2=0$ , $\ -2+6-9+5=0$)."
+)
+
+S2_4 = (
+    "כן.\n"
+    r"$$x\odot x=x\ \Longleftrightarrow\ x^2-x-x+2=x\ \Longleftrightarrow\ x^2-3x+2=0\ \Longleftrightarrow\ (x-1)(x-2)=0$$" "\n"
+    r"$x=1\notin M$ , אבל $x=2\in M$ ומתקיים $2\odot2=4-2-2+2=2$. לכן קיים $x\in M$ כזה, והוא יחיד: $x=2$ (האיבר הניטרלי)."
+)
+
+S4A = (
+    r"**סגירות:** לכל $\begin{pmatrix}a&b&c\\0&a&b\\0&0&a\end{pmatrix},\begin{pmatrix}d&e&f\\0&d&e\\0&0&d\end{pmatrix}\in G$:" "\n"
+    r"$$\begin{pmatrix}a&b&c\\0&a&b\\0&0&a\end{pmatrix}\begin{pmatrix}d&e&f\\0&d&e\\0&0&d\end{pmatrix}=\begin{pmatrix}ad&ae+bd&af+be+cd\\0&ad&ae+bd\\0&0&ad\end{pmatrix}$$" "\n"
+    r"המכפלה מאותה צורה (רכיבים מ-$\mathbb{Z}_5$), ו-$ad\not\equiv0\pmod 5$ כי $5$ ראשוני ו-$a,d\not\equiv0$. לכן המכפלה ב-$G$." "\n"
+    "**אסוציאטיביות:** נובעת מאסוציאטיביות של כפל מטריצות (גם מודולו 5).\n"
+    r"**איבר ניטרלי:** $I=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}\in G$ ($a=1,\ b=c=0$)." "\n"
+    r"**איבר הופכי:** נחפש $\begin{pmatrix}d&e&f\\0&d&e\\0&0&d\end{pmatrix}$ עם מכפלה $I$, כלומר" "\n"
+    r"$$\begin{cases}ad\equiv1\\ae+bd\equiv0\\af+be+cd\equiv0\end{cases}\pmod 5\ \Rightarrow\ d=a^{-1},\quad e=-ba^{-2},\quad f=\left(b^2-ac\right)a^{-3}$$" "\n"
+    r"($a^{-1}$ קיים מודולו $5$ כי $a\not\equiv0$ ו-$5$ ראשוני.) בדיקה של השוויון השלישי: $af+be+cd=\left(b^2-ac\right)a^{-2}-b^2a^{-2}+ca^{-1}=0$." "\n"
+    r"ההופכי מאותה צורה ו-$d=a^{-1}\not\equiv0$ , לכן הוא ב-$G$ (ובמטריצות משולשיות מאותה צורה הכפל קומוטטיבי, כך שזה הופכי משני הצדדים)." "\n"
+    r"לכן $G$ חבורה ביחס לכפל מטריצות."
+)
+
+S4B_ORD = (
+    r"איבר של $G$ נקבע ביחידות על ידי $(a,b,c)$: יש $4$ אפשרויות ל-$a\in\{1,2,3,4\}$ (כי $a\not\equiv0$), ו-$5$ אפשרויות לכל אחד מ-$b,c\in\mathbb{Z}_5$." "\n"
+    r"$$|G|=4\cdot5\cdot5=100$$"
+)
+
+S4C = (
+    r"נכתוב $X=I+N$ כאשר $N=\begin{pmatrix}0&0&1\\0&0&0\\0&0&0\end{pmatrix}$. מתקיים $N^2=0$ ו-$IN=NI$, ולכן באינדוקציה $X^n=I+nN=\begin{pmatrix}1&0&n\\0&1&0\\0&0&1\end{pmatrix}$." "\n"
+    r"$$X^2=\begin{pmatrix}1&0&2\\0&1&0\\0&0&1\end{pmatrix},\ X^3=\begin{pmatrix}1&0&3\\0&1&0\\0&0&1\end{pmatrix},\ X^4=\begin{pmatrix}1&0&4\\0&1&0\\0&0&1\end{pmatrix},\ X^5=\begin{pmatrix}1&0&5\\0&1&0\\0&0&1\end{pmatrix}=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}\pmod 5$$" "\n"
+    r"$X^n=I$ אם ורק אם $n\equiv0\pmod 5$, לכן $o(X)=5$."
+)
+
+S5A = (
+    r"$\gcd(3,5)=\gcd(3,8)=\gcd(5,8)=1$ , לכן יש פתרון יחיד מודולו $M=3\cdot5\cdot8=120$." "\n"
+    r"$a_1=2,\ a_2=1,\ a_3=4$ ; $\ m_1=3,\ m_2=5,\ m_3=8$" "\n"
+    r"$$M_1=\frac{120}{3}=40,\qquad M_2=\frac{120}{5}=24,\qquad M_3=\frac{120}{8}=15$$" "\n"
+    r"$$40x_1\equiv1\pmod 3:\quad x_1\equiv1\pmod 3$$" "\n"
+    r"$$24x_2\equiv1\pmod 5:\quad4x_2\equiv1\pmod 5\ \Rightarrow\ x_2\equiv4\pmod 5$$" "\n"
+    r"$$15x_3\equiv1\pmod 8:\quad7x_3\equiv1\pmod 8\ \Rightarrow\ x_3\equiv7\pmod 8$$" "\n"
+    r"$$x\equiv a_1M_1x_1+a_2M_2x_2+a_3M_3x_3=2\cdot40\cdot1+1\cdot24\cdot4+4\cdot15\cdot7=80+96+420=596\pmod{120}$$" "\n"
+    r"$$596=4\cdot120+116\ \Rightarrow\ x\equiv116\pmod{120}$$" "\n"
+    r"בדיקה: $116=38\cdot3+2$ , $\ 116=23\cdot5+1$ , $\ 116=14\cdot8+4$."
+)
+
+
+def SV(num, kind, topic, question, solution, **kw):
+    """Solver-written item (no answer source): solved, official false, pending the refuter."""
+    return Q(num, kind, topic, question, solution, solutionSource="solved", official=False, confidence="high", **kw)
+
+
 questions = [
     Q(1, "proof", "inner_product", r"סעיף א.1. הוכיחו כי $\langle\cdot,\cdot\rangle_A$ היא מכפלה פנימית. (10%)", S1A1, part="א", points=10,
       contextId="c1"),
     Q(1, "computation", "orthogonality",
       r"סעיף א.2. מצאו את כל הערכים של $t\in\mathbb{R}$ עבורם $\vec u=\begin{pmatrix}1\\t\end{pmatrix}$ ו-$\vec v=\begin{pmatrix}t\\-1\end{pmatrix}$ הם וקטורים אורתוגונליים ביחס למכפלה $\langle\cdot,\cdot\rangle_A$. (5%)",
       S1A2, part="ב", points=5, contextId="c1"),
-    H(1, "computation", "least_squares",
+    SV(1, "computation", "least_squares",
       r"סעיף ב. פתרו את בעיית הריבועים הפחותים עבור $A\vec x=\vec b$ כאשר $A=\begin{pmatrix}1&-2\\-1&2\\0&3\\2&5\end{pmatrix}$ , $\vec b=\begin{pmatrix}3\\1\\-4\\2\end{pmatrix}$. (10%)",
-      part="ג", points=10),
+      S1B, part="ג", points=10),
 
     Q(2, "truefalse", "groups", r"סעיף 1. האם הפעולה אסוציאטיבית? (5%)", S2_1, part="א", points=5, contextId="c2", verdict=True),
     Q(2, "truefalse", "groups", r"סעיף 2. האם ב-$(M,\odot)$ קיים איבר נייטרלי? (5%)", S2_2, part="ב", points=5, contextId="c2",
       verdict=True),
     Q(2, "truefalse", "groups", r"סעיף 3. האם המבנה $(M,\odot)$ הוא חבורה קומוטטיבית? (5%)", S2_3, part="ג", points=5, contextId="c2",
       verdict=True),
-    H(2, "truefalse", "groups", r"סעיף 4. האם קיים $x\in M$ כך ש: $x\odot x=x$ ? (5%)", part="ד", points=5, contextId="c2"),
+    SV(2, "truefalse", "groups", r"סעיף 4. האם קיים $x\in M$ כך ש: $x\odot x=x$ ? (5%)", S2_4, part="ד", points=5, contextId="c2",
+       verdict=True),
     Q(2, "proof", "groups",
       r"סעיף 5. נגדיר $a^n=\underbrace{a\odot\cdots\odot a}_{n\ \text{times}}$. הוכיחו באינדוקציה כי $a^n=(a-1)^n+1$ לכל $n\in\mathbb{N}$. (5%)",
       S2_5, part="ה", points=5, contextId="c2"),
@@ -150,16 +209,16 @@ questions = [
       r"סעיף ב. תהי $A$ מטריצה מוגדרת חיובית לחלוטין. הוכיחו כי $A^2$ ו-$A^{-1}$ הן גם מוגדרות חיובית לחלוטין. (8%)",
       S3B, part="ב", points=8),
 
-    H(4, "proof", "groups",
+    SV(4, "proof", "groups",
       r"סעיף א. הוכיחו כי $G$ היא חבורה ביחס לכפל מטריצות. (הכפל והחיבור של רכיבי המטריצות הם מודולו 5). (15%)",
-      part="א", points=15, contextId="c4"),
-    H(4, "computation", "groups", r"סעיף ב. מצאו את הסדר של $G$. (5%)", part="ב", points=5, contextId="c4"),
-    H(4, "computation", "groups", r"סעיף ג. מצאו את הסדר של $X=\begin{pmatrix}1&0&1\\0&1&0\\0&0&1\end{pmatrix}$. (5%)", part="ג", points=5,
-      contextId="c4"),
+      S4A, part="א", points=15, contextId="c4"),
+    SV(4, "computation", "groups", r"סעיף ב. מצאו את הסדר של $G$. (5%)", S4B_ORD, part="ב", points=5, contextId="c4"),
+    SV(4, "computation", "groups", r"סעיף ג. מצאו את הסדר של $X=\begin{pmatrix}1&0&1\\0&1&0\\0&0&1\end{pmatrix}$. (5%)", S4C, part="ג",
+      points=5, contextId="c4"),
 
-    H(5, "computation", "crt",
+    SV(5, "computation", "crt",
       r"סעיף א. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\begin{cases}x\equiv2\pmod3\\x\equiv1\pmod5\\x\equiv4\pmod8\end{cases}$. (10%)",
-      part="א", points=10),
+      S5A, part="א", points=10),
     Q(5, "proof", "cauchy_schwarz",
       r"סעיף ב. הוכיחו כי לכל $n\in\mathbb{N}$ מתקיים אי-השוויון הבא: $\left(\displaystyle\sum_{k=1}^n\frac1{k^2}\right)^2\le\left(\displaystyle\sum_{k=1}^n\frac1k\right)\cdot\left(\displaystyle\sum_{k=1}^n\frac1{k^3}\right)$. (15%)",
       S5B, part="ב", points=15),

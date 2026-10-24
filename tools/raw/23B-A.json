@@ -135,13 +135,16 @@
   },
   {
    "num": 5,
-   "part": "א",
    "kind": "computation",
    "topic": "projection",
-   "points": 15,
-   "contextId": "c5a",
    "question": "(15%) חשבו את ההיטל של $\\begin{pmatrix}0&a\\\\b&0\\end{pmatrix}$ על $Sp\\left\\{\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix},\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}\\right\\}$, לכל $a,b\\in\\mathbb{R}$.",
-   "hold": "official final answer wrong: it prints (a+b)/3 (-1 1; 1 0) + (5b-3a)/51 (4 -1; 5 3), but <(0 a; b 0),(4 -1; 5 3)> = 5b-a; the correct projection is [[-7a+b, 6a+4b],[4a+14b, -a+5b]]/17"
+   "solution": "**הפתרון הרשמי עם תיקון:** בפתרון הרשמי המקדם של $\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}$ בתשובה הסופית מודפס כ-$\\frac{5b-3a}{51}$, אבל $\\left\\langle\\begin{pmatrix}0&a\\\\b&0\\end{pmatrix},\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}\\right\\rangle=-a+5b$, ולכן המקדם הנכון הוא $\\frac{5b-a}{51}$. שאר הפתרון כפי שהודפס.\nקודם כל נמצא בסיס אורתוגונלי עבור $W=Sp\\left\\{V_1=\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix},V_2=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}\\right\\}$ (גרם-שמידט):\n$$U_1=V_1=\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}$$\n$$U_2=V_2-Proj_{U_1}(V_2)=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}-\\frac{\\left\\langle\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix},\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}\\right\\rangle}{\\left\\|\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}\\right\\|^2}\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}-\\frac13\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}=\\begin{pmatrix}\\frac43&-\\frac13\\\\\\frac53&1\\end{pmatrix}$$\nהבסיס $\\left\\{\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix},\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}\\right\\}$ הוא בסיס אורתוגונלי ב-$W$. כעת ניתן לחשב את ההיטל המבוקש:\n$$\\left\\langle\\begin{pmatrix}0&a\\\\b&0\\end{pmatrix},\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}\\right\\rangle=a+b,\\qquad\\left\\|\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}\\right\\|^2=3$$\n$$\\left\\langle\\begin{pmatrix}0&a\\\\b&0\\end{pmatrix},\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}\\right\\rangle=-a+5b,\\qquad\\left\\|\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}\\right\\|^2=16+1+25+9=51$$\n$$Proj_W\\begin{pmatrix}0&a\\\\b&0\\end{pmatrix}=\\frac{a+b}{3}\\begin{pmatrix}-1&1\\\\1&0\\end{pmatrix}+\\frac{5b-a}{51}\\begin{pmatrix}4&-1\\\\5&3\\end{pmatrix}=\\frac1{17}\\begin{pmatrix}-7a+b&6a+4b\\\\4a+14b&-a+5b\\end{pmatrix}$$",
+   "solutionSource": "solved",
+   "official": false,
+   "confidence": "high",
+   "part": "א",
+   "points": 15,
+   "contextId": "c5a"
   },
   {
    "num": 5,

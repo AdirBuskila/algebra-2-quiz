@@ -3,7 +3,7 @@
 Run: PYTHONUTF8=1 py -W error::SyntaxWarning tools/gen/gen_26A-A.py
 
 Source: exam 2 pp. + typed official solution 13 pp. (both read from the rendered pages). The header says
-"4 of 6" but the sheet has 5 questions (25% each); all 5 are transcribed, 17 items (16 shipped + 1 held).
+"4 of 6" but the sheet has 5 questions (25% each); all 5 are transcribed, 17 items, all shipped (Q4c with a typo correction).
 
 Part letters: the bank allows single-letter parts only, so numbered sub-parts get letters in order.
   Q2: items 1..5 -> parts a..e.   Q3: a, g.1 -> g, g.2 -> d (the printed "b" is the shared setup, a context).
@@ -21,9 +21,10 @@ Typos in the official solution (checked with tools/verify/26A-A/check.py; nothin
   is x in (-1,1). Kept as printed.
 - Q3g.2: "lcn p perp a" -- p is a multiple of a, so it is c perp p that is meant (written so).
 - Q4 statement says "for all (a,b),(x,y) in A": A is never defined, it is Z^2 (kept as printed).
-HOLD: Q4c. The official answer "a even and x even" is wrong: x is the free variable, and b = 0 is missing. The
-  elements commuting with everything are exactly (a, 0) with a even (brute force + algebra in check.py).
-  Official answers are never fixed, so the item is held and listed in docs/ASK_ADIR.md.
+Q4c (FINAL ANSWER typo): the official answer "a even and x even" is wrong: x is the free variable, and b = 0 is
+  missing. The elements commuting with everything are exactly (a, 0) with a even (check.py and the solver's
+  tools/verify/26A-A/solve_Q4c.py). Per the typo ruling: solutionSource "solved", official false, prefix
+  "הפתרון הרשמי עם תיקון". Logged in docs/ASK_ADIR.md.
 Checks: tools/verify/26A-A/check.py (sympy + brute force), all OK apart from the Q4c official-answer finding.
 """
 import json, pathlib
@@ -175,6 +176,17 @@ S4B = (
     r"$$(1,1)\circ(1,0)\ne(1,0)\circ(1,1)$$"
 )
 
+S4C = (
+    r"**הפתרון הרשמי עם תיקון:** בפתרון הרשמי התשובה מודפסת כ-'$a$ זוגי ו-$x$ זוגי'. אבל $(x,y)$ הוא איבר כלשהו (המשתנה החופשי), ונוסף על כך חסר התנאי $b=0$. התשובה הנכונה: $(a,0)$ עם $a$ זוגי." "\n"
+    r"$$\forall(a,b),(x,y)\in A\ ,\quad(a,b)\circ(x,y)=\left(a+x,\ b+(-1)^a y\right)$$" "\n"
+    r"$$(x,y)\circ(a,b)=\left(x+a,\ y+(-1)^x b\right)$$" "\n"
+    r"הרכיב הראשון שווה תמיד, לכן התנאי הוא $y+(-1)^x b=b+(-1)^a y$ לכל $x,y\in\mathbb{Z}$." "\n"
+    r"נציב $x=0,\ y=1$: $\ 1+b=b+(-1)^a$, כלומר $(-1)^a=1$, ולכן $a$ זוגי." "\n"
+    r"כעת ($a$ זוגי) התנאי הוא $y+(-1)^x b=b+y$, כלומר $(-1)^x b=b$ לכל $x$. נציב $x=1$: $\ -b=b$, ולכן $b=0$." "\n"
+    r"להפך: אם $a$ זוגי ו-$b=0$ אז $(a,0)\circ(x,y)=(a+x,\ y)=(x+a,\ y+(-1)^x\cdot0)=(x,y)\circ(a,0)$ לכל $(x,y)$." "\n"
+    r"**תשובה:** $\left\{(a,0)\ \middle|\ a\in2\mathbb{Z}\right\}$, כלומר $(a,b)$ עם $a$ זוגי ו-$b=0$."
+)
+
 S5A1 = (
     r"$$P=\vec u\cdot\vec u^T+\vec v\cdot\vec v^T\in M_3(\mathbb{R})$$" "\n"
     r"$$P\cdot\vec u=\left(\vec u\cdot\vec u^T+\vec v\cdot\vec v^T\right)\cdot\vec u=\left(\vec u\cdot\vec u^T\right)\cdot\vec u+\left(\vec v\cdot\vec v^T\right)\cdot\vec u=\vec u\cdot\left(\vec u^T\cdot\vec u\right)+\vec v\cdot\left(\vec v^T\cdot\vec u\right)=\left(\vec u^T\cdot\vec u\right)\cdot\vec u=\|\vec u\|^2\cdot\vec u$$" "\n"
@@ -238,9 +250,9 @@ questions = [
     Q(4, "proof", "groups", r"סעיף א. הוכיחו ש-$(\mathbb{Z}^2,\circ)$ חבורה. (15%)", S4A, part="א", points=15, contextId="c4"),
     Q(4, "truefalse", "groups", r"סעיף ב. האם $(\mathbb{Z}^2,\circ)$ היא חבורה אבלית? (5%)", S4B, part="ב", points=5,
       contextId="c4", verdict=False),
-    {"num": 4, "part": "ג", "kind": "computation", "topic": "groups", "points": 5, "contextId": "c4",
-     "question": r"סעיף ג. מצאו את כל האברים $(a,b)\in\mathbb{Z}^2$ המקיימים $(a,b)\circ(x,y)=(x,y)\circ(a,b)$ לכל $(x,y)\in\mathbb{Z}^2$. (5%)",
-     "hold": "official answer wrong: it says \"a even and x even\" (x is the free variable, b=0 missing); the correct set is (a,0), a even"},
+    Q(4, "computation", "groups",
+      r"סעיף ג. מצאו את כל האברים $(a,b)\in\mathbb{Z}^2$ המקיימים $(a,b)\circ(x,y)=(x,y)\circ(a,b)$ לכל $(x,y)\in\mathbb{Z}^2$. (5%)",
+      S4C, part="ג", points=5, contextId="c4", solutionSource="solved", official=False),
 
     Q(5, "proof", "orthogonality", r"סעיף א.1. הוכיחו כי $\vec u,\vec v,\vec w$ הם וקטורים עצמיים של $P$. (5%)", S5A1,
       part="א", points=5, contextId="c5"),

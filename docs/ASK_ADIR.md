@@ -18,14 +18,14 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Page: 10
 - Question: Q4c asks for all (a,b) commuting with every (x,y). The official answer says "a even and x even", but x is the free variable and b=0 is missing. Checked by brute force and algebra: the correct set is (a,0) with a even.
 - Needed: confirm shipping the corrected answer (a even, b=0) as a non-official solution, or keep held.
-- Status: hold
+- Status: resolved by solver, pending refuter. Re-derived (tools/verify/26A-A/solve_Q4c.py): the official answer is truly wrong. Shipped under the typo ruling as solutionSource "solved", official false, prefix "הפתרון הרשמי עם תיקון".
 
 ### 23B-A Q5a - official final answer wrong
 - Path: sitting 23B-A official solution (compilation)
 - Page: 10 of the sitting (compilation p.190)
 - Question: Q5a asks for the projection of (0 a; b 0) onto Sp{(-1 1; 1 0), (1 0; 2 1)} with tr(B^T A). The official final answer is (a+b)/3 (-1 1; 1 0) + (5b-3a)/51 (4 -1; 5 3), but <(0 a; b 0),(4 -1; 5 3)> = 5b-a, not 5b-3a. Checked with sympy: the correct projection is [[-7a+b, 6a+4b],[4a+14b, -a+5b]]/17.
 - Needed: confirm shipping the corrected answer as a non-official solution, or keep held.
-- Status: hold
+- Status: resolved by solver, pending refuter. Re-derived (tools/verify/23B-A/solve_Q5a.py): 5b-a is right, the printed 5b-3a is wrong. Shipped under the typo ruling as solutionSource "solved", official false, prefix "הפתרון הרשמי עם תיקון".
 
 ### 26B-A (whole sitting) - no answer source
 - Path: sitting 26B-A exam, 2 pages (no solution exists)
@@ -39,7 +39,7 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Page: 1-2 (exam)
 - Question: 9 items are shipped from the student solution (official false, recomputed with sympy); Q1c, Q2.4, Q4a, Q4b, Q4c and Q5a have no solution and are held no-key. Student slip fixed silently: Q5b last coordinate of u (1/sqrt2 for 1/sqrt n).
 - Needed: route the 6 held items to the solver.
-- Status: hold
+- Status: resolved by solver, pending refuter. All 6 solved (solutionSource "solved", official false), sympy checks in tools/verify/26A-B/solve_held.py. Answers: Q1c x = (4/3, -1/3); Q2d yes, x = 2; Q4b |G| = 100; Q4c o(X) = 5; Q5a x = 116 (mod 120).
 
 ### 25B-A Q3b - official solution omits the order of G
 - Path: sitting 25B-A handwritten solution (the "lecturers' solution" file in the folder belongs to a different exam and was not used)
@@ -65,7 +65,11 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 ### 25A-A, 25A-B - handwritten student solutions
 - Page: whole sittings
 - 25A-A has no solution for Q4b (CRT) and Q5b: held as no-key for the solver. Other items ship as student-solution, official false. 25A-A Q3b (=>) used "cos = 1 so the angle is 0"; a direct argument was added as a labelled remark. 25A-B Q4a.1 had equalities in the wrong order (rewritten). 25A-B Q4b is (10%) on the sheet, (8%) in the solution copy.
-- Status: logged
+- Status: logged. 25A-A Q4b and Q5b: resolved by solver, pending refuter (solutionSource "solved", official false, sympy checks in tools/verify/25A-A/solve_Q4b_Q5b.py; Q4b x = 87 (mod 385), Q5b via Cauchy-Schwarz).
+
+### 23A-A Q5a - no key (SVD)
+- Page: 2 of the exam; the official solution gives only a link to an online SVD calculator.
+- Status: resolved by solver, pending refuter. Solved (solutionSource "solved", official false), sympy check in tools/verify/23A-A/solve_Q5a.py: singular values 2, sqrt2.
 
 ### 25A-C - no key; Q2b.2 flawed as printed
 - Page: 2 of the sitting (compilation p.274)

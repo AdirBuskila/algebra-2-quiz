@@ -3,7 +3,7 @@
 Run: PYTHONUTF8=1 py -W error::SyntaxWarning tools/gen/gen_23A-A.py
 
 Source: exam 2 pp. + typed official solution 8 pp. (both read from the rendered pages). Header: "4 of 5", 25% each;
-all 5 questions are transcribed, 13 items (12 shipped + 1 held).
+all 5 questions are transcribed, 13 items, all shipped (Q5a solver-written).
 
 Part letters: single-letter parts only, so numbered sub-parts get letters in order.
   Q3: a, b.1 -> b, b.2 -> c (the printed "b" setup is a context).   Q4: a.1, a.2, a.3, b -> a, b, c, d.
@@ -15,8 +15,9 @@ Typos in the official solution (checked with tools/verify/23A-A/check.py; no FIN
 - Q1b: the printed middle matrix of the second trace is (2 -2; 3 2); u2^T v is (2 -2; 4 2). Trace (4) unchanged.
 - Q2a / Q4b: transcribed as printed (Q2a does not argue that <f,f> = 0 forces f = 0; Q4b drops absolute values
   before squaring). No answer changes.
-HOLD: Q5a (SVD of a 3x2 matrix). The "solution" is a link to an online SVD calculator and no worked answer, so there
-  is no key: hold "no-key" (the orchestrator routes it to the solver).
+Q5a (SVD of a 3x2 matrix): the "solution" is a link to an online SVD calculator and no worked answer (no partial
+  evidence). Written by the solver: solutionSource "solved", official false; A = U S V^T checked in
+  tools/verify/23A-A/solve_Q5a.py. Pending the refuter.
 Checks: tools/verify/23A-A/check.py (sympy + brute force), all OK.
 """
 import json, pathlib
@@ -137,6 +138,22 @@ S4B = (
     r"מכאן $ab+ba\le\sqrt{a^2+b^2}\cdot\sqrt{a^2+b^2}$, ז״א $ab+ba\le a^2+b^2$ ולכן $(ab+ba)^2\le(a^2+b^2)^2$."
 )
 
+S5A = (
+    r"נמצא את פירוק $SVD$ של $A=\begin{pmatrix}-1&1\\-1&1\\1&1\end{pmatrix}$ דרך המטריצה הקטנה $A^TA$ (מסדר $2\times2$)." "\n"
+    r"$$A^TA=\begin{pmatrix}-1&-1&1\\1&1&1\end{pmatrix}\begin{pmatrix}-1&1\\-1&1\\1&1\end{pmatrix}=\begin{pmatrix}3&-1\\-1&3\end{pmatrix}$$" "\n"
+    r"$$|A^TA-\lambda I|=(3-\lambda)^2-1=(\lambda-4)(\lambda-2)=0\ \Rightarrow\ \lambda_1=4,\ \lambda_2=2$$" "\n"
+    r"**וקטור עצמי עבור $\lambda=4$:** $\begin{pmatrix}-1&-1\\-1&-1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\vec 0\ \Rightarrow\ y=-x$, ולאחר נרמול $\vec v_1=\frac1{\sqrt2}\begin{pmatrix}1\\-1\end{pmatrix}$." "\n"
+    r"**וקטור עצמי עבור $\lambda=2$:** $\begin{pmatrix}1&-1\\-1&1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\vec 0\ \Rightarrow\ y=x$, ולאחר נרמול $\vec v_2=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}$." "\n"
+    r"הערכים הסינגולריים: $\sigma_1=\sqrt4=2,\ \sigma_2=\sqrt2$, ולכן $\Sigma=\begin{pmatrix}2&0\\0&\sqrt2\\0&0\end{pmatrix}$." "\n"
+    r"עמודות $U$: $\vec u_i=\dfrac1{\sigma_i}A\vec v_i$ :" "\n"
+    r"$$\vec u_1=\frac12\cdot\frac1{\sqrt2}\begin{pmatrix}-1&1\\-1&1\\1&1\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix}=\frac1{2\sqrt2}\begin{pmatrix}-2\\-2\\0\end{pmatrix}=\frac1{\sqrt2}\begin{pmatrix}-1\\-1\\0\end{pmatrix}$$" "\n"
+    r"$$\vec u_2=\frac1{\sqrt2}\cdot\frac1{\sqrt2}\begin{pmatrix}-1&1\\-1&1\\1&1\end{pmatrix}\begin{pmatrix}1\\1\end{pmatrix}=\frac12\begin{pmatrix}0\\0\\2\end{pmatrix}=\begin{pmatrix}0\\0\\1\end{pmatrix}$$" "\n"
+    r"את $\vec u_3$ נשלים כווקטור יחידה הניצב ל-$\vec u_1,\vec u_2$ (וקטור עצמי של $AA^T$ לערך העצמי $0$): $\vec u_3=\frac1{\sqrt2}\begin{pmatrix}1\\-1\\0\end{pmatrix}$ (בדיקה: $A^T\vec u_3=\vec 0$)." "\n"
+    r"**תשובה סופית:**" "\n"
+    r"$$A=U\Sigma V^T,\qquad U=\begin{pmatrix}-\frac1{\sqrt2}&0&\frac1{\sqrt2}\\-\frac1{\sqrt2}&0&-\frac1{\sqrt2}\\0&1&0\end{pmatrix},\quad\Sigma=\begin{pmatrix}2&0\\0&\sqrt2\\0&0\end{pmatrix},\quad V=\begin{pmatrix}\frac1{\sqrt2}&\frac1{\sqrt2}\\-\frac1{\sqrt2}&\frac1{\sqrt2}\end{pmatrix}$$" "\n"
+    r"(הפירוק אינו יחיד: אפשר להחליף סימן של זוג $\vec v_i,\vec u_i$ יחד, או את הסימן של $\vec u_3$.)"
+)
+
 S5B = (
     r"נסדר את המשוואה הראשונה במערכת (על ידי ההכפלה בהופכי של 2):" "\n"
     r"$$\begin{cases}2x\equiv1\pmod 3\\x\equiv3\pmod 5\\x\equiv4\pmod 7\end{cases}\ \Rightarrow\ \begin{cases}x\equiv2\pmod 3\\x\equiv3\pmod 5\\x\equiv4\pmod 7\end{cases}$$" "\n"
@@ -186,9 +203,8 @@ questions = [
       r"סעיף ב. בעזרת אי-שוויון קושי-שוורץ הוכיחו ש: $(ab+ba)^2\le(a^2+b^2)^2$ לכל $a,b\in\mathbb{R}$. (7%)",
       S4B, part="ד", points=7),
 
-    {"num": 5, "part": "א", "kind": "computation", "topic": "svd", "points": 18,
-     "question": r"(18%) מצאו פירוק SVD עבור המטריצה $A=\begin{pmatrix}-1&1\\-1&1\\1&1\end{pmatrix}$.",
-     "hold": "no-key: the official solution for 5a is only a link to an online SVD calculator, no worked answer"},
+    Q(5, "computation", "svd", r"(18%) מצאו פירוק SVD עבור המטריצה $A=\begin{pmatrix}-1&1\\-1&1\\1&1\end{pmatrix}$.",
+      S5A, part="א", points=18, solutionSource="solved", official=False),
     Q(5, "computation", "crt",
       r"סעיף ב. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\begin{cases}2x\equiv1\pmod 3\\x\equiv3\pmod 5\\x\equiv4\pmod 7\end{cases}$. (7%)",
       S5B, part="ב", points=7),

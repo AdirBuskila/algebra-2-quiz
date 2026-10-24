@@ -185,13 +185,16 @@
   },
   {
    "num": 4,
-   "part": "ג",
    "kind": "computation",
    "topic": "groups",
-   "points": 5,
-   "contextId": "c4",
    "question": "סעיף ג. מצאו את כל האברים $(a,b)\\in\\mathbb{Z}^2$ המקיימים $(a,b)\\circ(x,y)=(x,y)\\circ(a,b)$ לכל $(x,y)\\in\\mathbb{Z}^2$. (5%)",
-   "hold": "official answer wrong: it says \"a even and x even\" (x is the free variable, b=0 missing); the correct set is (a,0), a even"
+   "solution": "**הפתרון הרשמי עם תיקון:** בפתרון הרשמי התשובה מודפסת כ-'$a$ זוגי ו-$x$ זוגי'. אבל $(x,y)$ הוא איבר כלשהו (המשתנה החופשי), ונוסף על כך חסר התנאי $b=0$. התשובה הנכונה: $(a,0)$ עם $a$ זוגי.\n$$\\forall(a,b),(x,y)\\in A\\ ,\\quad(a,b)\\circ(x,y)=\\left(a+x,\\ b+(-1)^a y\\right)$$\n$$(x,y)\\circ(a,b)=\\left(x+a,\\ y+(-1)^x b\\right)$$\nהרכיב הראשון שווה תמיד, לכן התנאי הוא $y+(-1)^x b=b+(-1)^a y$ לכל $x,y\\in\\mathbb{Z}$.\nנציב $x=0,\\ y=1$: $\\ 1+b=b+(-1)^a$, כלומר $(-1)^a=1$, ולכן $a$ זוגי.\nכעת ($a$ זוגי) התנאי הוא $y+(-1)^x b=b+y$, כלומר $(-1)^x b=b$ לכל $x$. נציב $x=1$: $\\ -b=b$, ולכן $b=0$.\nלהפך: אם $a$ זוגי ו-$b=0$ אז $(a,0)\\circ(x,y)=(a+x,\\ y)=(x+a,\\ y+(-1)^x\\cdot0)=(x,y)\\circ(a,0)$ לכל $(x,y)$.\n**תשובה:** $\\left\\{(a,0)\\ \\middle|\\ a\\in2\\mathbb{Z}\\right\\}$, כלומר $(a,b)$ עם $a$ זוגי ו-$b=0$.",
+   "solutionSource": "solved",
+   "official": false,
+   "confidence": "high",
+   "part": "ג",
+   "points": 5,
+   "contextId": "c4"
   },
   {
    "num": 5,

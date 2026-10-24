@@ -4,8 +4,9 @@ Run: PYTHONUTF8=1 py -W error::SyntaxWarning tools/gen/gen_25A-A.py
 
 Source: exam 2 pp.; the solution file (16 pp.) is a handwritten student solution, read from the rendered pages,
 so every shipped item is solutionSource "student-solution", official false (the refuter checks all of them).
-5 questions, 16 items (14 shipped, 2 held):
-HOLD (no-key): Q4b (CRT) and Q5b (the sum inequality) are not in the solution file. They go to the solver.
+5 questions, 16 items, all shipped.
+Q4b (CRT) and Q5b (the sum inequality) are not in the solution file: written by the solver (solutionSource "solved",
+  official false, no partial evidence), checked in tools/verify/25A-A/solve_Q4b_Q5b.py. Pending the refuter.
 Part letters: Q1: a.1 -> a, a.2 -> b, b -> c. Q4: a.1 -> a, a.2 -> b, a.3 -> c, b -> d.
 
 Checks: tools/verify/25A-A/check.py (sympy + brute force), all OK. Notes on the student solution:
@@ -146,6 +147,29 @@ S5A = (
     r"$$V=\begin{pmatrix}\frac1{\sqrt6}&\frac1{\sqrt3}&-\frac1{\sqrt2}\\-\frac2{\sqrt6}&\frac1{\sqrt3}&0\\\frac1{\sqrt6}&\frac1{\sqrt3}&\frac1{\sqrt2}\end{pmatrix},\qquad V^T=\begin{pmatrix}\frac1{\sqrt6}&-\frac2{\sqrt6}&\frac1{\sqrt6}\\\frac1{\sqrt3}&\frac1{\sqrt3}&\frac1{\sqrt3}\\-\frac1{\sqrt2}&0&\frac1{\sqrt2}\end{pmatrix}$$"
 )
 
+S4B = (
+    r"$\gcd(5,7)=\gcd(5,11)=\gcd(7,11)=1$ , לכן לפי משפט השאריות הסיני יש פתרון יחיד מודולו $M=5\cdot7\cdot11=385$." "\n"
+    r"$a_1=2,\ a_2=3,\ a_3=10$ ; $\ m_1=5,\ m_2=7,\ m_3=11$" "\n"
+    r"$$M_1=\frac{385}{5}=77,\qquad M_2=\frac{385}{7}=55,\qquad M_3=\frac{385}{11}=35$$" "\n"
+    r"$$M_1x_1\equiv1\pmod 5:\quad77x_1\equiv2x_1\equiv1\pmod 5\ \Rightarrow\ x_1\equiv3\pmod 5$$" "\n"
+    r"$$M_2x_2\equiv1\pmod 7:\quad55x_2\equiv6x_2\equiv1\pmod 7\ \Rightarrow\ x_2\equiv6\pmod 7$$" "\n"
+    r"$$M_3x_3\equiv1\pmod{11}:\quad35x_3\equiv2x_3\equiv1\pmod{11}\ \Rightarrow\ x_3\equiv6\pmod{11}$$" "\n"
+    r"$$x\equiv a_1M_1x_1+a_2M_2x_2+a_3M_3x_3=2\cdot77\cdot3+3\cdot55\cdot6+10\cdot35\cdot6=462+990+2100=3552\pmod{385}$$" "\n"
+    r"$$3552=9\cdot385+87\ \Rightarrow\ x\equiv87\pmod{385}$$" "\n"
+    r"בדיקה: $87=17\cdot5+2$ , $\ 87=12\cdot7+3$ , $\ 87=7\cdot11+10$."
+)
+
+S5B = (
+    r"נסמן $a=\sqrt x,\ b=\sqrt y,\ c=\sqrt z$ (מספרים חיוביים), כך ש-$x+y+z=a^2+b^2+c^2$ ו-$\left(\sqrt x+\sqrt y+\sqrt z\right)^2=(a+b+c)^2$." "\n"
+    r"**אי-השוויון השמאלי.** נפעיל את אי-שוויון קושי-שוורץ ב-$\mathbb{R}^3$ עם המכפלה הסטנדרטית על $\vec u=(a,b,c)$ ו-$\vec v=(1,1,1)$:" "\n"
+    r"$$|\langle\vec u,\vec v\rangle|\le\|\vec u\|\cdot\|\vec v\|\ \Rightarrow\ a+b+c\le\sqrt{a^2+b^2+c^2}\cdot\sqrt3\ \Rightarrow\ (a+b+c)^2\le3\left(a^2+b^2+c^2\right)$$" "\n"
+    r"מכיוון ש-$(a+b+c)^2>0$ , נחלק ונקבל $\dfrac{a^2+b^2+c^2}{(a+b+c)^2}\ge\dfrac13$ , כלומר $\dfrac13\le\dfrac{x+y+z}{\left(\sqrt x+\sqrt y+\sqrt z\right)^2}$." "\n"
+    r"**אי-השוויון הימני.** נפתח את הריבוע:" "\n"
+    r"$$(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ac)>a^2+b^2+c^2$$" "\n"
+    r"כי $a,b,c>0$ ולכן $2(ab+bc+ac)>0$. נחלק ב-$(a+b+c)^2>0$ ונקבל $\dfrac{x+y+z}{\left(\sqrt x+\sqrt y+\sqrt z\right)^2}<1$." "\n"
+    "מש\"ל"
+)
+
 questions = [
     Q(1, "computation", "orthogonality", r"סעיף א.1. מערכת אורתוגונלית? (8%)", S1A1, part="א", points=8, contextId="c1"),
     Q(1, "computation", "orthogonality", r"סעיף א.2. מערכת אורתונורמלית? (8%)", S1A2, part="ב", points=8, contextId="c1"),
@@ -174,14 +198,14 @@ questions = [
     Q(4, "proof", "groups",
       r"סעיף א.3. הראו ש-$J$ מטריצה אורתוגונלית, והוכיחו כי לכל מטריצה $A\in G$ מתקיים: $o(A)=o\left(J^TAJ\right)$. (7%)", S4A3,
       part="ג", points=7, contextId="c4"),
-    {"num": 4, "part": "ד", "kind": "computation", "topic": "crt", "points": 8,
-     "question": r"סעיף ב. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\begin{cases}x\equiv2\pmod5\\x\equiv3\pmod7\\x\equiv10\pmod{11}\end{cases}$. (8%)",
-     "hold": "no-key: the solution file has no answer for this question"},
+    Q(4, "computation", "crt",
+      r"סעיף ב. פתרו את המערכת הבאה באמצעות משפט השאריות הסיני: $\begin{cases}x\equiv2\pmod5\\x\equiv3\pmod7\\x\equiv10\pmod{11}\end{cases}$. (8%)",
+      S4B, part="ד", points=8, solutionSource="solved", official=False, confidence="high"),
 
     Q(5, "computation", "svd", r"סעיף א. מצאו פירוק $SVD$ עבור המטריצה $\begin{pmatrix}1&1&1\\1&-2&1\end{pmatrix}$. (15%)", S5A, part="א", points=15),
-    {"num": 5, "part": "ב", "kind": "proof", "topic": "cauchy_schwarz", "points": 10,
-     "question": r"סעיף ב. הוכיחו כי לכל שלושה מספרים ממשיים חיוביים $x,y,z$ מתקיים: $\dfrac13\le\dfrac{x+y+z}{\left(\sqrt x+\sqrt y+\sqrt z\right)^2}<1$. (10%)",
-     "hold": "no-key: the solution file has no answer for this question"},
+    Q(5, "proof", "cauchy_schwarz",
+      r"סעיף ב. הוכיחו כי לכל שלושה מספרים ממשיים חיוביים $x,y,z$ מתקיים: $\dfrac13\le\dfrac{x+y+z}{\left(\sqrt x+\sqrt y+\sqrt z\right)^2}<1$. (10%)",
+      S5B, part="ב", points=10, solutionSource="solved", official=False, confidence="high"),
 ]
 
 exam = {

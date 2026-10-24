@@ -160,12 +160,15 @@
   },
   {
    "num": 5,
-   "part": "א",
    "kind": "computation",
    "topic": "svd",
-   "points": 18,
    "question": "(18%) מצאו פירוק SVD עבור המטריצה $A=\\begin{pmatrix}-1&1\\\\-1&1\\\\1&1\\end{pmatrix}$.",
-   "hold": "no-key: the official solution for 5a is only a link to an online SVD calculator, no worked answer"
+   "solution": "נמצא את פירוק $SVD$ של $A=\\begin{pmatrix}-1&1\\\\-1&1\\\\1&1\\end{pmatrix}$ דרך המטריצה הקטנה $A^TA$ (מסדר $2\\times2$).\n$$A^TA=\\begin{pmatrix}-1&-1&1\\\\1&1&1\\end{pmatrix}\\begin{pmatrix}-1&1\\\\-1&1\\\\1&1\\end{pmatrix}=\\begin{pmatrix}3&-1\\\\-1&3\\end{pmatrix}$$\n$$|A^TA-\\lambda I|=(3-\\lambda)^2-1=(\\lambda-4)(\\lambda-2)=0\\ \\Rightarrow\\ \\lambda_1=4,\\ \\lambda_2=2$$\n**וקטור עצמי עבור $\\lambda=4$:** $\\begin{pmatrix}-1&-1\\\\-1&-1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\vec 0\\ \\Rightarrow\\ y=-x$, ולאחר נרמול $\\vec v_1=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\-1\\end{pmatrix}$.\n**וקטור עצמי עבור $\\lambda=2$:** $\\begin{pmatrix}1&-1\\\\-1&1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\vec 0\\ \\Rightarrow\\ y=x$, ולאחר נרמול $\\vec v_2=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\1\\end{pmatrix}$.\nהערכים הסינגולריים: $\\sigma_1=\\sqrt4=2,\\ \\sigma_2=\\sqrt2$, ולכן $\\Sigma=\\begin{pmatrix}2&0\\\\0&\\sqrt2\\\\0&0\\end{pmatrix}$.\nעמודות $U$: $\\vec u_i=\\dfrac1{\\sigma_i}A\\vec v_i$ :\n$$\\vec u_1=\\frac12\\cdot\\frac1{\\sqrt2}\\begin{pmatrix}-1&1\\\\-1&1\\\\1&1\\end{pmatrix}\\begin{pmatrix}1\\\\-1\\end{pmatrix}=\\frac1{2\\sqrt2}\\begin{pmatrix}-2\\\\-2\\\\0\\end{pmatrix}=\\frac1{\\sqrt2}\\begin{pmatrix}-1\\\\-1\\\\0\\end{pmatrix}$$\n$$\\vec u_2=\\frac1{\\sqrt2}\\cdot\\frac1{\\sqrt2}\\begin{pmatrix}-1&1\\\\-1&1\\\\1&1\\end{pmatrix}\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\frac12\\begin{pmatrix}0\\\\0\\\\2\\end{pmatrix}=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}$$\nאת $\\vec u_3$ נשלים כווקטור יחידה הניצב ל-$\\vec u_1,\\vec u_2$ (וקטור עצמי של $AA^T$ לערך העצמי $0$): $\\vec u_3=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\-1\\\\0\\end{pmatrix}$ (בדיקה: $A^T\\vec u_3=\\vec 0$).\n**תשובה סופית:**\n$$A=U\\Sigma V^T,\\qquad U=\\begin{pmatrix}-\\frac1{\\sqrt2}&0&\\frac1{\\sqrt2}\\\\-\\frac1{\\sqrt2}&0&-\\frac1{\\sqrt2}\\\\0&1&0\\end{pmatrix},\\quad\\Sigma=\\begin{pmatrix}2&0\\\\0&\\sqrt2\\\\0&0\\end{pmatrix},\\quad V=\\begin{pmatrix}\\frac1{\\sqrt2}&\\frac1{\\sqrt2}\\\\-\\frac1{\\sqrt2}&\\frac1{\\sqrt2}\\end{pmatrix}$$\n(הפירוק אינו יחיד: אפשר להחליף סימן של זוג $\\vec v_i,\\vec u_i$ יחד, או את הסימן של $\\vec u_3$.)",
+   "solutionSource": "solved",
+   "official": false,
+   "confidence": "high",
+   "part": "א",
+   "points": 18
   },
   {
    "num": 5,

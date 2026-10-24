@@ -5,16 +5,16 @@ Run: PYTHONUTF8=1 py -W error::SyntaxWarning tools/gen/gen_23B-A.py
 Source: this sitting exists only inside the 275-page compilation (pp. 182-197). The pages are the SOLUTION version
 of the exam ("פתרון מבחן"): each question is printed followed by its typed official solution, with a grader's red
 point marks. The second copy (pp. 191-197) is identical. The exam header (without solution) is not a separate page.
-5 printed questions (solve 4 of 5, 25% each); 11 items (Q2 has three), 10 shipped + 1 held.
+5 printed questions (solve 4 of 5, 25% each); 11 items (Q2 has three), all 11 shipped (Q5a with a typo correction).
 
 Part letters: Q2 items 1,2 of part A -> parts a, b; part B -> c.  Q1, Q3, Q4, Q5 keep printed parts a, b.
 Every question text starts with its printed label.
 
 Checked with tools/verify/23B-A/check.py (sympy):
-HOLD: Q5a. The official FINAL answer is wrong. It prints Proj_W = (a+b)/3 * (-1 1; 1 0) + (5b-3a)/51 * (4 -1; 5 3),
+Q5a (FINAL ANSWER typo): the official prints Proj_W = (a+b)/3 * (-1 1; 1 0) + (5b-3a)/51 * (4 -1; 5 3),
   but <(0 a; b 0), (4 -1; 5 3)> = 5b - a (not 5b - 3a). The correct projection is
-  [[-7a+b, 6a+4b], [4a+14b, -a+5b]] / 17. The Gram-Schmidt step above it (U2 = (4/3 -1/3; 5/3 1)) is right.
-  Official answers are never fixed, so the item is held and listed in docs/ASK_ADIR.md.
+  [[-7a+b, 6a+4b], [4a+14b, -a+5b]] / 17 (re-derived by the solver: tools/verify/23B-A/solve_Q5a.py). Per the typo
+  ruling: solutionSource "solved", official false, prefix "הפתרון הרשמי עם תיקון". Logged in docs/ASK_ADIR.md.
 Notes (no change to any answer):
 - Q3a: "positive definite" in the official is the course's term for positive SEMIdefinite (|a| <= 1/2).
 - Q4a is a pasted calculator output (U, Sigma, V); transcribed as the same matrices (A = U Sigma V^T verified).
@@ -133,6 +133,17 @@ S4B = (
     r"כלומר $x\equiv78\pmod{280}$."
 )
 
+S5A = (
+    r"**הפתרון הרשמי עם תיקון:** בפתרון הרשמי המקדם של $\begin{pmatrix}4&-1\\5&3\end{pmatrix}$ בתשובה הסופית מודפס כ-$\frac{5b-3a}{51}$, אבל $\left\langle\begin{pmatrix}0&a\\b&0\end{pmatrix},\begin{pmatrix}4&-1\\5&3\end{pmatrix}\right\rangle=-a+5b$, ולכן המקדם הנכון הוא $\frac{5b-a}{51}$. שאר הפתרון כפי שהודפס." "\n"
+    r"קודם כל נמצא בסיס אורתוגונלי עבור $W=Sp\left\{V_1=\begin{pmatrix}-1&1\\1&0\end{pmatrix},V_2=\begin{pmatrix}1&0\\2&1\end{pmatrix}\right\}$ (גרם-שמידט):" "\n"
+    r"$$U_1=V_1=\begin{pmatrix}-1&1\\1&0\end{pmatrix}$$" "\n"
+    r"$$U_2=V_2-Proj_{U_1}(V_2)=\begin{pmatrix}1&0\\2&1\end{pmatrix}-\frac{\left\langle\begin{pmatrix}1&0\\2&1\end{pmatrix},\begin{pmatrix}-1&1\\1&0\end{pmatrix}\right\rangle}{\left\|\begin{pmatrix}-1&1\\1&0\end{pmatrix}\right\|^2}\begin{pmatrix}-1&1\\1&0\end{pmatrix}=\begin{pmatrix}1&0\\2&1\end{pmatrix}-\frac13\begin{pmatrix}-1&1\\1&0\end{pmatrix}=\begin{pmatrix}\frac43&-\frac13\\\frac53&1\end{pmatrix}$$" "\n"
+    r"הבסיס $\left\{\begin{pmatrix}-1&1\\1&0\end{pmatrix},\begin{pmatrix}4&-1\\5&3\end{pmatrix}\right\}$ הוא בסיס אורתוגונלי ב-$W$. כעת ניתן לחשב את ההיטל המבוקש:" "\n"
+    r"$$\left\langle\begin{pmatrix}0&a\\b&0\end{pmatrix},\begin{pmatrix}-1&1\\1&0\end{pmatrix}\right\rangle=a+b,\qquad\left\|\begin{pmatrix}-1&1\\1&0\end{pmatrix}\right\|^2=3$$" "\n"
+    r"$$\left\langle\begin{pmatrix}0&a\\b&0\end{pmatrix},\begin{pmatrix}4&-1\\5&3\end{pmatrix}\right\rangle=-a+5b,\qquad\left\|\begin{pmatrix}4&-1\\5&3\end{pmatrix}\right\|^2=16+1+25+9=51$$" "\n"
+    r"$$Proj_W\begin{pmatrix}0&a\\b&0\end{pmatrix}=\frac{a+b}{3}\begin{pmatrix}-1&1\\1&0\end{pmatrix}+\frac{5b-a}{51}\begin{pmatrix}4&-1\\5&3\end{pmatrix}=\frac1{17}\begin{pmatrix}-7a+b&6a+4b\\4a+14b&-a+5b\end{pmatrix}$$"
+)
+
 S5B = (
     r"נתון ש-$c=(a*b)*a$. נכפיל את השוויון ב-$b$ מצד ימין ונקבל" "\n"
     r"$$c*b=\big((a*b)*a\big)*b=(a*b)*(a*b)=e$$" "\n"
@@ -165,9 +176,9 @@ questions = [
       r"(7%) פתרו את המערכות הבאות באמצעות משפט השאריות הסיני: $\begin{cases}x\equiv3\pmod 5\\x\equiv1\pmod 7\\x\equiv6\pmod 8\end{cases}$.",
       S4B, part="ב", points=7),
 
-    {"num": 5, "part": "א", "kind": "computation", "topic": "projection", "points": 15, "contextId": "c5a",
-     "question": r"(15%) חשבו את ההיטל של $\begin{pmatrix}0&a\\b&0\end{pmatrix}$ על $Sp\left\{\begin{pmatrix}-1&1\\1&0\end{pmatrix},\begin{pmatrix}1&0\\2&1\end{pmatrix}\right\}$, לכל $a,b\in\mathbb{R}$.",
-     "hold": "official final answer wrong: it prints (a+b)/3 (-1 1; 1 0) + (5b-3a)/51 (4 -1; 5 3), but <(0 a; b 0),(4 -1; 5 3)> = 5b-a; the correct projection is [[-7a+b, 6a+4b],[4a+14b, -a+5b]]/17"},
+    Q(5, "computation", "projection",
+      r"(15%) חשבו את ההיטל של $\begin{pmatrix}0&a\\b&0\end{pmatrix}$ על $Sp\left\{\begin{pmatrix}-1&1\\1&0\end{pmatrix},\begin{pmatrix}1&0\\2&1\end{pmatrix}\right\}$, לכל $a,b\in\mathbb{R}$.",
+      S5A, part="א", points=15, contextId="c5a", solutionSource="solved", official=False),
     Q(5, "proof", "groups", r"(10%) נסמן $c=(a*b)*a$. הוכיחו כי $c=b$.", S5B, part="ב", points=10, contextId="c5b"),
 ]
 
