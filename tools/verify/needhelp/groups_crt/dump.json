@@ -1,0 +1,726 @@
+{
+ "courseId": "groups_crt",
+ "levels": [
+  {
+   "id": "C01",
+   "order": 1,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C01-Q1",
+     "question": "נתבונן בקבוצה $G=\\{1,2,3,\\dots\\}$ של המספרים השלמים החיוביים ובפעולה $a*b=a-b$. האם $*$ היא פעולה בינארית על $G$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "לא, כי $1*2=-1$ אינו שייך ל-$G$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "כן, כי חיסור מוגדר לכל שני מספרים"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "כן, כי התוצאה היא תמיד מספר שלם"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "לא, כי הפעולה $a-b$ אינה קומוטטיבית"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "בקבוצה $S=\\{1,2,3,4,5\\}$ מגדירים $a*b=\\max(a,b)+1$. כמה זוגות סדורים $(a,b)\\in S\\times S$ גורמים לתוצאה לצאת מחוץ ל-$S$ ?"
+     }
+    },
+    {
+     "id": "bank:24A-B-Q2a",
+     "bankId": "24A-B-Q2a"
+    },
+    {
+     "id": "C01-Q3",
+     "question": "על $\\mathbb{Z}$ מגדירים $a*b=2a+b$. מחשבים עבור $a=1,\\ b=2,\\ c=3$ את שני האגפים של שוויון האסוציאטיביות. מה מתקבל, ומה המסקנה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(1*2)*3=11$ ו-$1*(2*3)=9$, ולכן הפעולה אינה אסוציאטיבית"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(1*2)*3=11$ ו-$1*(2*3)=11$, ולכן הפעולה אסוציאטיבית"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(1*2)*3=11$ ו-$1*(2*3)=9$, אבל דוגמה אחת אינה מפריכה אסוציאטיביות"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(1*2)*3=9$ ו-$1*(2*3)=11$, ולכן הפעולה אינה אסוציאטיבית"
+      }
+     ]
+    },
+    {
+     "id": "C01-Q4",
+     "step": {
+      "type": "findbug",
+      "prompt": "בפתרון הבא מוכיחים שהפעולה $a*b=a+b+ab$ על $\\mathbb{Z}$ אסוציאטיבית. שורה אחת מכילה טעות חישוב. מצאו אותה.",
+      "lines": [
+       "אגף שמאל: $(a*b)*c=(a+b+ab)*c$",
+       "$=(a+b+ab)+c+(a+b+ab)c$",
+       "$=a+b+c+ab+ac+bc$",
+       "אגף ימין: $a*(b*c)=a+(b+c+bc)+a(b+c+bc)=a+b+c+ab+ac+bc+abc$",
+       "האגפים שווים לכל $a,b,c$, ולכן הפעולה אסוציאטיבית"
+      ]
+     }
+    },
+    {
+     "id": "bank:24B-B-Q4b",
+     "bankId": "24B-B-Q4b"
+    }
+   ]
+  },
+  {
+   "id": "C02",
+   "order": 2,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C02-Q1",
+     "question": "מהו האיבר הניטרלי של $(\\mathbb{Z},*)$ כאשר $a*b=a+b-3$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$3$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$0$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$-3$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "אין איבר ניטרלי"
+      }
+     ]
+    },
+    {
+     "id": "C02-Q2",
+     "step": {
+      "type": "order",
+      "prompt": "על $\\mathbb{Z}$ מגדירים $a*b=a+b-ab$. סדרו את שלבי מציאת האיבר הניטרלי.",
+      "lines": [
+       "מצמצמים $a$ משני האגפים: $e-ae=0$, כלומר $e(1-a)=0$",
+       "התנאי חייב להתקיים גם עבור $a=2$, ואז $-e=0$ ולכן $e=0$",
+       "בודקים: $0\\in\\mathbb{Z}$ וגם $0*a=0+a-0\\cdot a=a$, ולכן $e=0$ הוא ניטרלי",
+       "דורשים $a*e=a$ לכל $a\\in\\mathbb{Z}$, כלומר $a+e-ae=a$"
+      ]
+     }
+    },
+    {
+     "id": "C02-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "ב-$(\\mathbb{Z},*)$ עם $a*b=a+b-3$ האיבר הניטרלי הוא $3$. מהו ההופכי של $5$ ?"
+     }
+    },
+    {
+     "id": "C02-Q4",
+     "question": "על $\\mathbb{Z}$ מגדירים $a*b=a+b+ab$. הניטרלי הוא $0$. לאיזה מהאיברים הבאים יש הופכי ב-$\\mathbb{Z}$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$-2$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$1$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$2$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$3$"
+      }
+     ]
+    },
+    {
+     "id": "bank:23A-A-Q4b",
+     "bankId": "23A-A-Q4b"
+    },
+    {
+     "id": "bank:24A-B-Q2c",
+     "bankId": "24A-B-Q2c"
+    }
+   ]
+  },
+  {
+   "id": "C03",
+   "order": 3,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C03-Q1",
+     "question": "במבנה $(\\mathbb{Z},\\cdot)$, כפל רגיל של שלמים, איזו מארבע דרישות החבורה נכשלת?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "סגירות"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "אסוציאטיביות"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "קיום איבר ניטרלי"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "קיום הופכי לכל איבר"
+      }
+     ]
+    },
+    {
+     "id": "C03-Q2",
+     "question": "איזה מהמבנים הבאים הוא חבורה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$(\\{0,1,2,3\\},\\ +\\bmod4)$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$(\\{0,1,2,3\\},\\ \\cdot\\bmod4)$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$(\\{1,2,3,4\\},\\ \\cdot\\bmod8)$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$(\\{0,1,2,3\\},\\ -\\bmod4)$"
+      }
+     ]
+    },
+    {
+     "id": "C03-Q3",
+     "question": "על $\\mathbb{Z}$ מגדירים $a*b=a+2b$. איזו טענה נכונה?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "הפעולה אינה אסוציאטיבית: $(1*2)*3=11$ אך $1*(2*3)=17$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "הפעולה אסוציאטיבית, ורק הקומוטטיביות נכשלת"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "הפעולה אסוציאטיבית וגם קומוטטיבית"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "הפעולה אינה סגורה, כי $a+2b$ עלול לצאת מ-$\\mathbb{Z}$"
+      }
+     ]
+    },
+    {
+     "id": "bank:24A-A-Q2b",
+     "bankId": "24A-A-Q2b"
+    },
+    {
+     "id": "bank:23A-A-Q4c",
+     "bankId": "23A-A-Q4c"
+    },
+    {
+     "id": "bank:24B-B-Q4d",
+     "bankId": "24B-B-Q4d"
+    }
+   ]
+  },
+  {
+   "id": "C04",
+   "order": 4,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C04-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "כמה איברים יש בחבורה $\\mathbb{Z}_9^*$ ?"
+     }
+    },
+    {
+     "id": "C04-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו הסדר של $5$ בחבורה $\\mathbb{Z}_{11}^*$ ?"
+     }
+    },
+    {
+     "id": "bank:23B-B-Q2c",
+     "bankId": "23B-B-Q2c"
+    },
+    {
+     "id": "C04-Q3",
+     "question": "מהו הסדר של האיבר $(3,2)$ בחבורה $\\mathbb{Z}_7^*\\times\\mathbb{Z}_5^*$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$12$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$24$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$6$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$10$"
+      }
+     ]
+    },
+    {
+     "id": "C04-Q4",
+     "question": "ב-$G$ חבורה סופית מסדר $24$. איזה מהמספרים הבאים לא יכול להיות הסדר של איבר ב-$G$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$5$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$6$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$8$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$12$"
+      }
+     ]
+    },
+    {
+     "id": "bank:23B-B-Q2d",
+     "bankId": "23B-B-Q2d"
+    }
+   ]
+  },
+  {
+   "id": "C05",
+   "order": 5,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C05-Q1",
+     "question": "איזו קבוצה היא תת-חבורה של $(\\mathbb{Z},+)$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "המספרים הזוגיים"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "המספרים האי-זוגיים"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "המספרים הלא-שליליים"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "המספרים השלמים בין $-10$ ל-$10$"
+      }
+     ]
+    },
+    {
+     "id": "C05-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו הגודל של התת-חבורה הציקלית $\\langle4\\rangle$ בתוך $\\mathbb{Z}_{13}^*$ ?"
+     }
+    },
+    {
+     "id": "C05-Q3",
+     "step": {
+      "type": "findbug",
+      "prompt": "בהוכחה הבאה מראים שחיתוך של שתי תת-חבורות $H,K$ של $G$ הוא תת-חבורה. שורה אחת שגויה. מצאו אותה.",
+      "lines": [
+       "נסמן $L=H\\cap K$",
+       "ניטרלי: $e\\in H$ וגם $e\\in K$, ולכן $e\\in L$",
+       "סגירות: אם $a,b\\in L$ אז $ab\\in H$ וגם $ab\\in K$, ולכן $ab\\in L$",
+       "הופכי: אם $a\\in L$ אז $a^{-1}\\in H$ או $a^{-1}\\in K$, ולכן $a^{-1}\\in L$",
+       "לכן $L$ תת-חבורה של $G$"
+      ]
+     }
+    },
+    {
+     "id": "bank:23B-B-Q4b",
+     "bankId": "23B-B-Q4b"
+    },
+    {
+     "id": "bank:24B-A-Q4b",
+     "bankId": "24B-A-Q4b"
+    }
+   ]
+  },
+  {
+   "id": "C06",
+   "order": 6,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C06-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו ההופכי של $3$ מודולו $7$ (ערך בין $1$ ל-$6$) ?"
+     }
+    },
+    {
+     "id": "C06-Q2",
+     "question": "לאיזה מהמספרים הבאים אין הופכי מודולו $12$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$9$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$5$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$7$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$11$"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "פתרו $5x\\equiv3\\pmod8$ וכתבו את הפתרון בין $0$ ל-$7$."
+     }
+    },
+    {
+     "id": "C06-Q4",
+     "question": "מצמצמים את הקונגרואנציות $x\\equiv17\\pmod5$, $x\\equiv6\\pmod2$ ו-$x\\equiv-1\\pmod7$ לצורה שבה כל שארית היא בין $0$ למודול פחות $1$. מה מתקבל?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$x\\equiv2\\pmod5,\\ \\ x\\equiv0\\pmod2,\\ \\ x\\equiv6\\pmod7$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$x\\equiv2\\pmod5,\\ \\ x\\equiv1\\pmod2,\\ \\ x\\equiv6\\pmod7$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$x\\equiv3\\pmod5,\\ \\ x\\equiv0\\pmod2,\\ \\ x\\equiv1\\pmod7$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$x\\equiv17\\pmod5,\\ \\ x\\equiv6\\pmod2,\\ \\ x\\equiv-1\\pmod7$"
+      }
+     ]
+    },
+    {
+     "id": "C06-Q5",
+     "step": {
+      "type": "findbug",
+      "prompt": "מחשבים את $5^{-1}\\bmod17$ באוקלידס המורחב. שורה אחת מכילה טעות חישוב. מצאו אותה.",
+      "lines": [
+       "$17=3\\cdot5+2$",
+       "$5=2\\cdot2+1$",
+       "$1=5-2\\cdot2=5-2(17-3\\cdot5)$",
+       "$1=5\\cdot5-2\\cdot17$",
+       "לכן $5^{-1}\\equiv7\\pmod{17}$"
+      ]
+     }
+    },
+    {
+     "id": "bank:23B-B-Q2b",
+     "bankId": "23B-B-Q2b"
+    }
+   ]
+  },
+  {
+   "id": "C07",
+   "order": 7,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C07-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "כמה מטריצות מהצורה $\\begin{pmatrix}a&b\\\\0&a\\end{pmatrix}$ עם $a\\ne0$ יש מעל $\\mathbb{Z}_7$ ?"
+     }
+    },
+    {
+     "id": "C07-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו הסדר של $\\begin{pmatrix}1&3\\\\0&1\\end{pmatrix}$ מעל $\\mathbb{Z}_7$ ?"
+     }
+    },
+    {
+     "id": "C07-Q3",
+     "question": "מהו ההופכי של $\\begin{pmatrix}1&3\\\\0&2\\end{pmatrix}$ מעל $\\mathbb{Z}_5$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&1\\\\0&3\\end{pmatrix}$"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix}$"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&3\\\\0&3\\end{pmatrix}$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "$\\begin{pmatrix}1&1\\\\0&2\\end{pmatrix}$"
+      }
+     ]
+    },
+    {
+     "id": "C07-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "מהו הסדר של $\\begin{pmatrix}2&0\\\\0&4\\end{pmatrix}$ מעל $\\mathbb{Z}_7$ ?"
+     }
+    },
+    {
+     "id": "bank:24A-A-Q4a",
+     "bankId": "24A-A-Q4a"
+    },
+    {
+     "id": "bank:24A-A-Q4c",
+     "bankId": "24A-A-Q4c"
+    }
+   ]
+  },
+  {
+   "id": "C08",
+   "order": 8,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C08-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "פותרים את המערכת $x\\equiv2\\pmod3,\\ x\\equiv3\\pmod4,\\ x\\equiv1\\pmod5$. מתקיים $M=60$. מהו $M_2$ ?"
+     }
+    },
+    {
+     "id": "C08-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותה מערכת, $M_3=12$. מהו $x_3$ שמקיים $12x_3\\equiv1\\pmod5$ (ערך בין $0$ ל-$4$) ?"
+     }
+    },
+    {
+     "id": "C08-Q3",
+     "step": {
+      "type": "numeric",
+      "prompt": "באותה מערכת, $x_1=2$, $x_2=3$ ו-$x_3=3$ (עם $M_1=20,\\ M_2=15,\\ M_3=12$). מהו הפתרון $x$ בין $0$ ל-$59$ ?"
+     }
+    },
+    {
+     "id": "C08-Q4",
+     "step": {
+      "type": "order",
+      "prompt": "סדרו את שלבי הפתרון של מערכת קונגרואנציות עם מודולים זרים.",
+      "lines": [
+       "מחשבים $M_i=M/m_i$ לכל $i$",
+       "לכל $i$ מוצאים $x_i$ מתוך $M_ix_i\\equiv1\\pmod{m_i}$",
+       "מחשבים $x=a_1M_1x_1+a_2M_2x_2+a_3M_3x_3$ ומצמצמים מודולו $M$",
+       "מציבים את התוצאה בכל אחת מהקונגרואנציות המקוריות לבדיקה",
+       "מוודאים שהמודולים זרים בזוגות ומחשבים $M=m_1m_2m_3$"
+      ]
+     }
+    },
+    {
+     "id": "bank:23B-B-Q3b",
+     "bankId": "23B-B-Q3b"
+    },
+    {
+     "id": "bank:23A-B-Q5b",
+     "bankId": "23A-B-Q5b"
+    }
+   ]
+  },
+  {
+   "id": "C09",
+   "order": 9,
+   "boss": false,
+   "questions": [
+    {
+     "id": "C09-Q1",
+     "step": {
+      "type": "numeric",
+      "prompt": "פתרו $4x\\equiv3\\pmod7$ וכתבו את הפתרון בין $0$ ל-$6$."
+     }
+    },
+    {
+     "id": "C09-Q2",
+     "step": {
+      "type": "numeric",
+      "prompt": "פתרו את המערכת $2x\\equiv3\\pmod7,\\ \\ x\\equiv11\\pmod4,\\ \\ x\\equiv4\\pmod5$ וכתבו את הפתרון בין $0$ ל-$139$."
+     }
+    },
+    {
+     "id": "C09-Q3",
+     "question": "מה נכון לגבי המערכת $x\\equiv1\\pmod4,\\ \\ x\\equiv2\\pmod6$ ?",
+     "options": [
+      {
+       "id": "a",
+       "type": "text",
+       "value": "אין לה פתרון, כי לפי המשוואה מודולו $4$ המספר $x$ אי-זוגי, ולפי המשוואה מודולו $6$ הוא זוגי"
+      },
+      {
+       "id": "b",
+       "type": "text",
+       "value": "יש לה פתרון יחיד מודולו $24$, לפי משפט השאריות הסיני"
+      },
+      {
+       "id": "c",
+       "type": "text",
+       "value": "יש לה פתרון יחיד מודולו $12$"
+      },
+      {
+       "id": "d",
+       "type": "text",
+       "value": "יש לה אינסוף פתרונות שונים מודולו $12$, כי המודולים אינם זרים"
+      }
+     ]
+    },
+    {
+     "id": "C09-Q4",
+     "step": {
+      "type": "numeric",
+      "prompt": "למערכת $x\\equiv3\\pmod4,\\ \\ x\\equiv1\\pmod6$ יש פתרון, והוא יחיד מודולו $12$. מהו הפתרון בין $0$ ל-$11$ ?"
+     }
+    },
+    {
+     "id": "C09-Q5",
+     "step": {
+      "type": "findbug",
+      "prompt": "פותרים את $x\\equiv1\\pmod3,\\ x\\equiv2\\pmod5,\\ x\\equiv5\\pmod7$. שורה אחת בחישוב שגויה. מצאו אותה.",
+      "lines": [
+       "$M=3\\cdot5\\cdot7=105,\\quad M_1=35,\\ M_2=21,\\ M_3=15$",
+       "$35x_1\\equiv1\\pmod3$, כלומר $2x_1\\equiv1$ ולכן $x_1=1$",
+       "$21x_2\\equiv1\\pmod5$, כלומר $x_2\\equiv1$ ולכן $x_2=1$",
+       "$15x_3\\equiv1\\pmod7$, כלומר $x_3\\equiv1$ ולכן $x_3=1$",
+       "$x=1\\cdot35\\cdot x_1+2\\cdot21\\cdot x_2+5\\cdot15\\cdot x_3\\pmod{105}$"
+      ]
+     }
+    },
+    {
+     "id": "bank:24A-C-Q4b",
+     "bankId": "24A-C-Q4b"
+    }
+   ]
+  },
+  {
+   "id": "C10",
+   "order": 10,
+   "boss": true,
+   "questions": [
+    {
+     "id": "bank:24A-B-Q2b",
+     "bankId": "24A-B-Q2b"
+    },
+    {
+     "id": "bank:23B-A-Q2b",
+     "bankId": "23B-A-Q2b"
+    },
+    {
+     "id": "bank:23B-B-Q4c",
+     "bankId": "23B-B-Q4c"
+    },
+    {
+     "id": "bank:24A-B-Q4a",
+     "bankId": "24A-B-Q4a"
+    },
+    {
+     "id": "bank:24A-A-Q5b",
+     "bankId": "24A-A-Q5b"
+    },
+    {
+     "id": "bank:24B-A-Q5b",
+     "bankId": "24B-A-Q5b"
+    }
+   ]
+  }
+ ]
+}
