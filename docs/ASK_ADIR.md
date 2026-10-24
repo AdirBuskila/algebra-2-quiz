@@ -32,7 +32,7 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Page: 1-2
 - Question: all 15 items are held "no-key". A 17-page scan in the folder is a handwritten student solution of this sitting with a student grade-report page (personal data); it is not a distinct sitting and was not used.
 - Needed: route to the solver and refuter, or confirm using the scan for the parts that earned full marks.
-- Status: hold
+- Status: resolved by solver, pending refuter. All 15 items solved from the exam text only (scan not used), solutionSource "solved", official false; checks in tools/verify/26B-A/solve_26B-A.py, all OK. None held.
 
 ### 26A-B (Q1c, Q2d, Q4a-c, Q5a) - no answer source
 - Path: sitting 26A-B exam; the only solution is a partial handwritten student solution
