@@ -1,0 +1,487 @@
+{
+ "examCode": "24A-B",
+ "refuter": "refute-algebra-2-24ABB",
+ "scope": "all items, solution/rubric/pitfalls/steps",
+ "derivationsWrittenBeforeClaims": {
+  "1א": "y=0.4x+3.6",
+  "1ב": "[[9/5,9/10],[6/5,21/10]]",
+  "2א": "closed: (a+b)/(ab)>0",
+  "2ב": "false (a=1,b=2,c=3: 1 vs 11/5)",
+  "2ג": "false (a=1: 1+e=e)",
+  "2ד": "x=sqrt2",
+  "2ה": "strict PD => no zero eigenvalue",
+  "2ו": "A^-1 symmetric, eigenvalues 1/lambda>0",
+  "3א": "eig 0,2a^2,2a^2+1: PSD all a; strict never; neg never; never indefinite",
+  "3ב": "expand ||u+tv||^2, t->0 both signs",
+  "4א": "closure/assoc/I/inverse [[a^-1,-c],[0,a]]",
+  "4ב": "20",
+  "4ג": "[[3,1],[0,2]]",
+  "4ד": "x=922 mod 1800",
+  "5א": "eig -2,7,7; Q cols (2,1,-2)/3 (sign free), (-1,2,0)/sqrt5, (-4,-2,-5)/(3sqrt5)",
+  "5ב": "CS with y=(1..1)"
+ },
+ "scripts": "tools/verify/24A-B/refute_*.py, tools/verify/24B-B/refute_svd.py",
+ "items": [
+  {
+   "index": 0,
+   "num": 1,
+   "part": "א",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 10,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "num": 1,
+   "part": "ב",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 15,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 4,
+     "type": "order",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "num": 2,
+   "part": "א",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "num": 2,
+   "part": "ב",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 4,
+   "num": 2,
+   "part": "ג",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 5,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 5,
+   "num": 2,
+   "part": "ד",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 6,
+   "num": 2,
+   "part": "ה",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 3,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 7,
+   "num": 2,
+   "part": "ו",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 8,
+   "num": 3,
+   "part": "א",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 15,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "choice",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 9,
+   "num": 3,
+   "part": "ב",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 10,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "disagree",
+     "note": "text defect: explain cites options by position (\"האפשרות השנייה ... והשלישית\"); key correctId is right"
+    },
+    {
+     "step": 1,
+     "type": "order",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 10,
+   "num": 4,
+   "part": "א",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 7,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 11,
+   "num": 4,
+   "part": "ב",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 4,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 12,
+   "num": 4,
+   "part": "ג",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 6,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 13,
+   "num": 4,
+   "part": "ד",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 8,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 14,
+   "num": 5,
+   "part": "א",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 17,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "numeric",
+     "verdict": "agree"
+    }
+   ]
+  },
+  {
+   "index": 15,
+   "num": 5,
+   "part": "ב",
+   "verdict": "agree",
+   "solution": "agree",
+   "rubricSum": 8,
+   "rubricMatchesPoints": true,
+   "pitfalls": "agree",
+   "transcriptionVsPage": "agree",
+   "steps": [
+    {
+     "step": 0,
+     "type": "choice",
+     "verdict": "agree"
+    },
+    {
+     "step": 1,
+     "type": "numeric",
+     "verdict": "agree"
+    },
+    {
+     "step": 2,
+     "type": "order",
+     "verdict": "agree"
+    },
+    {
+     "step": 3,
+     "type": "findbug",
+     "verdict": "agree"
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "items_agree": 16,
+  "items_disagree": 0,
+  "steps_disagree": [
+   "24A-B/9/S0"
+  ]
+ }
+}
