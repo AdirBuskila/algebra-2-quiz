@@ -96,7 +96,10 @@
    "topic": "svd",
    "points": 18,
    "question": "מצאו פירוק $SVD$ עבור המטריצה $A=\\begin{pmatrix}0&-1&1\\\\1&1&0\\end{pmatrix}$. (18%)",
-   "hold": "no-key: the file has no solution for this question"
+   "solution": "$A$ מסדר $2\\times3$, לכן נעבוד עם המטריצה הקטנה $AA^T$ ($2\\times2$):\n$$AA^T=\\begin{pmatrix}0&-1&1\\\\1&1&0\\end{pmatrix}\\begin{pmatrix}0&1\\\\-1&1\\\\1&0\\end{pmatrix}=\\begin{pmatrix}2&-1\\\\-1&2\\end{pmatrix},\\qquad|AA^T-\\lambda I|=(2-\\lambda)^2-1=0\\Rightarrow\\lambda_1=3,\\ \\lambda_2=1$$\nהערכים הסינגולריים: $\\sigma_1=\\sqrt3$, $\\sigma_2=1$, ולכן $\\Sigma=\\begin{pmatrix}\\sqrt3&0&0\\\\0&1&0\\end{pmatrix}$.\n**וקטורים עצמיים של $AA^T$ (עמודות $U$):** עבור $\\lambda=3$: $\\begin{pmatrix}-1&-1\\\\-1&-1\\end{pmatrix}\\vec u=\\vec0\\Rightarrow\\vec u_1=\\frac1{\\sqrt2}\\begin{pmatrix}-1\\\\1\\end{pmatrix}$. עבור $\\lambda=1$: $\\begin{pmatrix}1&-1\\\\-1&1\\end{pmatrix}\\vec u=\\vec0\\Rightarrow\\vec u_2=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\1\\end{pmatrix}$.\n**עמודות $V$:** $\\vec v_i=\\frac1{\\sigma_i}A^T\\vec u_i$:\n$$\\vec v_1=\\frac1{\\sqrt3}\\cdot\\frac1{\\sqrt2}\\begin{pmatrix}0&1\\\\-1&1\\\\1&0\\end{pmatrix}\\begin{pmatrix}-1\\\\1\\end{pmatrix}=\\frac1{\\sqrt6}\\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix},\\qquad\\vec v_2=\\frac11\\cdot\\frac1{\\sqrt2}\\begin{pmatrix}0&1\\\\-1&1\\\\1&0\\end{pmatrix}\\begin{pmatrix}1\\\\1\\end{pmatrix}=\\frac1{\\sqrt2}\\begin{pmatrix}1\\\\0\\\\1\\end{pmatrix}$$\nאת $\\vec v_3$ משלימים לבסיס אורתונורמלי של $\\mathbb{R}^3$ מתוך $\\ker A$ (ערך עצמי $0$ של $A^TA$): $A\\vec x=\\vec0\\Rightarrow-x_2+x_3=0,\\ x_1+x_2=0\\Rightarrow\\vec v_3=\\frac1{\\sqrt3}\\begin{pmatrix}-1\\\\1\\\\1\\end{pmatrix}$ (אורתוגונלי ל-$\\vec v_1,\\vec v_2$).\n$$A=U\\Sigma V^T,\\qquad U=\\begin{pmatrix}-\\frac1{\\sqrt2}&\\frac1{\\sqrt2}\\\\\\frac1{\\sqrt2}&\\frac1{\\sqrt2}\\end{pmatrix},\\quad\\Sigma=\\begin{pmatrix}\\sqrt3&0&0\\\\0&1&0\\end{pmatrix},\\quad V=\\begin{pmatrix}\\frac1{\\sqrt6}&\\frac1{\\sqrt2}&-\\frac1{\\sqrt3}\\\\\\frac2{\\sqrt6}&0&\\frac1{\\sqrt3}\\\\-\\frac1{\\sqrt6}&\\frac1{\\sqrt2}&\\frac1{\\sqrt3}\\end{pmatrix}$$\nבדיקה: $U^TU=I$, $V^TV=I$ ו-$U\\Sigma V^T=A$. (הפירוק אינו יחיד: אפשר להחליף סימן של זוג $\\vec u_i,\\vec v_i$ יחד, ושל $\\vec v_3$.)",
+   "solutionSource": "solved",
+   "official": false,
+   "confidence": "high"
   },
   {
    "num": 3,
@@ -105,7 +108,10 @@
    "topic": "inner_product",
    "points": 7,
    "question": "יהי $V$ מרחב מכפלה פנימית ממשי. הוכיחו כי עבור כל $\\vec v,\\vec u\\in V$ מתקיים $\\langle\\vec u,\\vec v\\rangle=\\dfrac14\\left(\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2\\right)$. (7%)",
-   "hold": "no-key: the file has no solution for this question"
+   "solution": "נפתח את שני הריבועים לפי לינאריות וסימטריה של המכפלה הפנימית הממשית ($\\langle\\vec v,\\vec u\\rangle=\\langle\\vec u,\\vec v\\rangle$):\n$$\\|\\vec u+\\vec v\\|^2=\\langle\\vec u+\\vec v,\\vec u+\\vec v\\rangle=\\langle\\vec u,\\vec u\\rangle+\\langle\\vec u,\\vec v\\rangle+\\langle\\vec v,\\vec u\\rangle+\\langle\\vec v,\\vec v\\rangle=\\|\\vec u\\|^2+2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2$$\n$$\\|\\vec u-\\vec v\\|^2=\\langle\\vec u-\\vec v,\\vec u-\\vec v\\rangle=\\langle\\vec u,\\vec u\\rangle-\\langle\\vec u,\\vec v\\rangle-\\langle\\vec v,\\vec u\\rangle+\\langle\\vec v,\\vec v\\rangle=\\|\\vec u\\|^2-2\\langle\\vec u,\\vec v\\rangle+\\|\\vec v\\|^2$$\nנחסר את השוויון השני מהראשון:\n$$\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2=4\\langle\\vec u,\\vec v\\rangle\\ \\Rightarrow\\ \\langle\\vec u,\\vec v\\rangle=\\frac14\\left(\\|\\vec u+\\vec v\\|^2-\\|\\vec u-\\vec v\\|^2\\right)\\qquad\\blacksquare$$\n(הסימטריה היא המקום שבו משתמשים בכך שהמרחב ממשי: $\\langle\\vec u,\\vec v\\rangle+\\langle\\vec v,\\vec u\\rangle=2\\langle\\vec u,\\vec v\\rangle$.)",
+   "solutionSource": "solved",
+   "official": false,
+   "confidence": "high"
   },
   {
    "num": 4,
@@ -138,7 +144,10 @@
    "topic": "groups",
    "points": 18,
    "question": "הוכיחו כי הקבוצה $G=\\left\\{A=\\begin{pmatrix}1&a&b\\\\0&1&c\\\\0&0&1\\end{pmatrix}\\in M_3(\\mathbb{R})\\ \\middle|\\ a,b,c\\in\\mathbb{R}\\right\\}$ עם כפל מטריצות מהווה חבורה. (18%)",
-   "hold": "no-key: the file has no solution for this question"
+   "solution": "נסמן $A(a,b,c)=\\begin{pmatrix}1&a&b\\\\0&1&c\\\\0&0&1\\end{pmatrix}$ ונבדוק את אקסיומות החבורה.\n**סגירות:** לכל $a_1,b_1,c_1,a_2,b_2,c_2\\in\\mathbb{R}$:\n$$A(a_1,b_1,c_1)\\cdot A(a_2,b_2,c_2)=\\begin{pmatrix}1&a_1+a_2&b_2+a_1c_2+b_1\\\\0&1&c_1+c_2\\\\0&0&1\\end{pmatrix}=A(a_1+a_2,\\ b_1+b_2+a_1c_2,\\ c_1+c_2)\\in G$$\nכי הרכיבים ממשיים והמבנה (אלכסון $1$, אפסים מתחת לאלכסון) נשמר.\n**אסוציאטיביות:** כפל מטריצות ב-$M_3(\\mathbb{R})$ אסוציאטיבי, ובפרט על אברי $G$: $(XY)Z=X(YZ)$.\n**איבר ניטרלי:** $I=A(0,0,0)\\in G$ ומתקיים $XI=IX=X$ לכל $X\\in G$.\n**הופכי:** $\\det A(a,b,c)=1\\ne0$ (משולשית עם אלכסון $1$), ונמצא את ההופכי בתוך $G$: מהדרישה $A(a,b,c)A(x,y,z)=I$ לפי נוסחת הכפל: $a+x=0$, $c+z=0$, $b+y+az=0$, כלומר $x=-a$, $z=-c$, $y=ac-b$.\n$$A(a,b,c)^{-1}=\\begin{pmatrix}1&-a&ac-b\\\\0&1&-c\\\\0&0&1\\end{pmatrix}\\in G$$\nובדיקה גם בכיוון השני: $A(-a,ac-b,-c)A(a,b,c)=A(0,\\ ac-b+b-ac,\\ 0)=I$.\nכל האקסיומות מתקיימות, לכן $G$ עם כפל מטריצות היא חבורה (לא אבלית). $\\blacksquare$",
+   "solutionSource": "solved",
+   "official": false,
+   "confidence": "high"
   },
   {
    "num": 5,
@@ -147,7 +156,10 @@
    "topic": "groups",
    "points": 7,
    "question": "תהי $(G,*)$ חבורה כך שלכל $x\\in G$ מתקיים $x*x=e$, כלומר $x^{-1}=x$. יהיו $a,b\\in G$. נסמן $c=(a*b)*a$. הוכיחו כי $c=b$. (7%)",
-   "hold": "no-key: the file has no solution for this question"
+   "solution": "**שלב 1: $a*b=b*a$.** האיבר $a*b$ שייך ל-$G$, ולכן לפי הנתון $(a*b)^{-1}=a*b$. מצד שני, בכל חבורה $(a*b)^{-1}=b^{-1}*a^{-1}$, ולפי הנתון $a^{-1}=a$, $b^{-1}=b$. לכן\n$$a*b=(a*b)^{-1}=b^{-1}*a^{-1}=b*a$$\n**שלב 2:** נשתמש באסוציאטיביות ובנתון $a*a=e$:\n$$c=(a*b)*a=(b*a)*a=b*(a*a)=b*e=b\\qquad\\blacksquare$$\n(דרך שקולה: $(a*b)*(a*b)=e$; נכפול משמאל ב-$a$ ומימין ב-$b$ ונקבל $b*a=a*b$, ומשם כמו בשלב 2.)",
+   "solutionSource": "solved",
+   "official": false,
+   "confidence": "high"
   }
  ]
 }

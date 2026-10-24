@@ -73,4 +73,14 @@ Open questions for Adir. One entry per item; the orchestrator moves it to Resolv
 - Needed: decide whether the solver states "B invertible" as an assumption.
 - Status: resolved by solver, pending refuter. All 15 solved (solutionSource "solved", official false). Q2b.2 is not flawed in the course's terms ("מוגדרת חיובית" = v^T M v >= 0, "לחלוטין" = strict, see Q4a), so it holds for any B; a visible "הערה:" covers the strict reading (needs B invertible).
 
+### 23A-S - no key; student Q1a wrong
+- Page: compilation pp.149-150 (exam); the only solution is a partial student scan (Q1a, Q3b).
+- 8 items were held: Q1a (the student's answer "PD for a >= 1+sqrt3" is wrong: the matrix is not symmetric unless a=1, and at a=1 it is indefinite) and 7 with no key. Q3b ships as the student solution.
+- Status: resolved by solver, pending refuter. All 8 solved (solutionSource "solved", official false), sympy checks in tools/verify/23A-S/solve_23AS.py. Q1a answer: no such a (course definition is for symmetric matrices). A visible "הערה:" gives the quadratic-form reading (symmetric part: PD iff a>3, ND iff a<-1).
+
+### 24A-C Q3a, Q3b, Q5a, Q5b - no key
+- Page: 7 of the solution file (exam page 2)
+- The student solution does not cover Q3 or Q5; these 4 items were held no-key. The other 8 ship as student solutions.
+- Status: resolved by solver, pending refuter. All 4 solved (solutionSource "solved", official false), sympy checks in tools/verify/24A-C/solve_24AC.py.
+
 ## Resolved

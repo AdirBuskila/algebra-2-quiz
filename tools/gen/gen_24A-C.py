@@ -11,8 +11,9 @@ forecasting question (p.4, "week 5 forecast", not on the exam sheet) and a copy 
 
 Student solution only (official: false, solutionSource student-solution, labelled "פתרון סטודנט"; the file carries
 no author name). It covers Q1a, Q1b, Q2a(1-3), Q2b, Q4a, Q4b. NO answer source for Q3a (SVD), Q3b (polarization
-identity), Q5a (Heisenberg group), Q5b (x*x=e => abelian-type proof): held "no-key" (the orchestrator routes them
-to the solver); their texts are transcribed in full.
+identity), Q5a (Heisenberg group), Q5b (x*x=e => abelian-type proof): were held "no-key"; now solved by the
+solver (SOLVED below: solutionSource "solved", official false, confidence high, pending the refuter; checks in
+tools/verify/24A-C/solve_24AC.py, all OK). Q3a: SVD via AA^T (2x2), sigma = sqrt3, 1, v3 from ker A.
 
 Part letters (single letters only): Q2: a.1..a.3 -> a..c, printed b -> d.
 
@@ -139,6 +140,55 @@ questions = [
      "question": r"תהי $(G,*)$ חבורה כך שלכל $x\in G$ מתקיים $x*x=e$, כלומר $x^{-1}=x$. יהיו $a,b\in G$. נסמן $c=(a*b)*a$. הוכיחו כי $c=b$. (7%)",
      "hold": "no-key: the file has no solution for this question"},
 ]
+
+# ------------------------------------------------------------------ solver solutions (no key; checked by
+# tools/verify/24A-C/solve_24AC.py, all OK). solutionSource "solved", official false, pending the refuter.
+SOLVED = {
+    (3, "א"): (
+        r"$A$ מסדר $2\times3$, לכן נעבוד עם המטריצה הקטנה $AA^T$ ($2\times2$):" "\n"
+        r"$$AA^T=\begin{pmatrix}0&-1&1\\1&1&0\end{pmatrix}\begin{pmatrix}0&1\\-1&1\\1&0\end{pmatrix}=\begin{pmatrix}2&-1\\-1&2\end{pmatrix},\qquad|AA^T-\lambda I|=(2-\lambda)^2-1=0\Rightarrow\lambda_1=3,\ \lambda_2=1$$" "\n"
+        r"הערכים הסינגולריים: $\sigma_1=\sqrt3$, $\sigma_2=1$, ולכן $\Sigma=\begin{pmatrix}\sqrt3&0&0\\0&1&0\end{pmatrix}$." "\n"
+        r"**וקטורים עצמיים של $AA^T$ (עמודות $U$):** עבור $\lambda=3$: $\begin{pmatrix}-1&-1\\-1&-1\end{pmatrix}\vec u=\vec0\Rightarrow\vec u_1=\frac1{\sqrt2}\begin{pmatrix}-1\\1\end{pmatrix}$. עבור $\lambda=1$: $\begin{pmatrix}1&-1\\-1&1\end{pmatrix}\vec u=\vec0\Rightarrow\vec u_2=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}$." "\n"
+        r"**עמודות $V$:** $\vec v_i=\frac1{\sigma_i}A^T\vec u_i$:" "\n"
+        r"$$\vec v_1=\frac1{\sqrt3}\cdot\frac1{\sqrt2}\begin{pmatrix}0&1\\-1&1\\1&0\end{pmatrix}\begin{pmatrix}-1\\1\end{pmatrix}=\frac1{\sqrt6}\begin{pmatrix}1\\2\\-1\end{pmatrix},\qquad\vec v_2=\frac11\cdot\frac1{\sqrt2}\begin{pmatrix}0&1\\-1&1\\1&0\end{pmatrix}\begin{pmatrix}1\\1\end{pmatrix}=\frac1{\sqrt2}\begin{pmatrix}1\\0\\1\end{pmatrix}$$" "\n"
+        r"את $\vec v_3$ משלימים לבסיס אורתונורמלי של $\mathbb{R}^3$ מתוך $\ker A$ (ערך עצמי $0$ של $A^TA$): $A\vec x=\vec0\Rightarrow-x_2+x_3=0,\ x_1+x_2=0\Rightarrow\vec v_3=\frac1{\sqrt3}\begin{pmatrix}-1\\1\\1\end{pmatrix}$ (אורתוגונלי ל-$\vec v_1,\vec v_2$)." "\n"
+        r"$$A=U\Sigma V^T,\qquad U=\begin{pmatrix}-\frac1{\sqrt2}&\frac1{\sqrt2}\\\frac1{\sqrt2}&\frac1{\sqrt2}\end{pmatrix},\quad\Sigma=\begin{pmatrix}\sqrt3&0&0\\0&1&0\end{pmatrix},\quad V=\begin{pmatrix}\frac1{\sqrt6}&\frac1{\sqrt2}&-\frac1{\sqrt3}\\\frac2{\sqrt6}&0&\frac1{\sqrt3}\\-\frac1{\sqrt6}&\frac1{\sqrt2}&\frac1{\sqrt3}\end{pmatrix}$$" "\n"
+        r"בדיקה: $U^TU=I$, $V^TV=I$ ו-$U\Sigma V^T=A$. (הפירוק אינו יחיד: אפשר להחליף סימן של זוג $\vec u_i,\vec v_i$ יחד, ושל $\vec v_3$.)"
+    ),
+    (3, "ב"): (
+        r"נפתח את שני הריבועים לפי לינאריות וסימטריה של המכפלה הפנימית הממשית ($\langle\vec v,\vec u\rangle=\langle\vec u,\vec v\rangle$):" "\n"
+        r"$$\|\vec u+\vec v\|^2=\langle\vec u+\vec v,\vec u+\vec v\rangle=\langle\vec u,\vec u\rangle+\langle\vec u,\vec v\rangle+\langle\vec v,\vec u\rangle+\langle\vec v,\vec v\rangle=\|\vec u\|^2+2\langle\vec u,\vec v\rangle+\|\vec v\|^2$$" "\n"
+        r"$$\|\vec u-\vec v\|^2=\langle\vec u-\vec v,\vec u-\vec v\rangle=\langle\vec u,\vec u\rangle-\langle\vec u,\vec v\rangle-\langle\vec v,\vec u\rangle+\langle\vec v,\vec v\rangle=\|\vec u\|^2-2\langle\vec u,\vec v\rangle+\|\vec v\|^2$$" "\n"
+        r"נחסר את השוויון השני מהראשון:" "\n"
+        r"$$\|\vec u+\vec v\|^2-\|\vec u-\vec v\|^2=4\langle\vec u,\vec v\rangle\ \Rightarrow\ \langle\vec u,\vec v\rangle=\frac14\left(\|\vec u+\vec v\|^2-\|\vec u-\vec v\|^2\right)\qquad\blacksquare$$" "\n"
+        r"(הסימטריה היא המקום שבו משתמשים בכך שהמרחב ממשי: $\langle\vec u,\vec v\rangle+\langle\vec v,\vec u\rangle=2\langle\vec u,\vec v\rangle$.)"
+    ),
+    (5, "א"): (
+        r"נסמן $A(a,b,c)=\begin{pmatrix}1&a&b\\0&1&c\\0&0&1\end{pmatrix}$ ונבדוק את אקסיומות החבורה." "\n"
+        r"**סגירות:** לכל $a_1,b_1,c_1,a_2,b_2,c_2\in\mathbb{R}$:" "\n"
+        r"$$A(a_1,b_1,c_1)\cdot A(a_2,b_2,c_2)=\begin{pmatrix}1&a_1+a_2&b_2+a_1c_2+b_1\\0&1&c_1+c_2\\0&0&1\end{pmatrix}=A(a_1+a_2,\ b_1+b_2+a_1c_2,\ c_1+c_2)\in G$$" "\n"
+        r"כי הרכיבים ממשיים והמבנה (אלכסון $1$, אפסים מתחת לאלכסון) נשמר." "\n"
+        r"**אסוציאטיביות:** כפל מטריצות ב-$M_3(\mathbb{R})$ אסוציאטיבי, ובפרט על אברי $G$: $(XY)Z=X(YZ)$." "\n"
+        r"**איבר ניטרלי:** $I=A(0,0,0)\in G$ ומתקיים $XI=IX=X$ לכל $X\in G$." "\n"
+        r"**הופכי:** $\det A(a,b,c)=1\ne0$ (משולשית עם אלכסון $1$), ונמצא את ההופכי בתוך $G$: מהדרישה $A(a,b,c)A(x,y,z)=I$ לפי נוסחת הכפל: $a+x=0$, $c+z=0$, $b+y+az=0$, כלומר $x=-a$, $z=-c$, $y=ac-b$." "\n"
+        r"$$A(a,b,c)^{-1}=\begin{pmatrix}1&-a&ac-b\\0&1&-c\\0&0&1\end{pmatrix}\in G$$" "\n"
+        r"ובדיקה גם בכיוון השני: $A(-a,ac-b,-c)A(a,b,c)=A(0,\ ac-b+b-ac,\ 0)=I$." "\n"
+        r"כל האקסיומות מתקיימות, לכן $G$ עם כפל מטריצות היא חבורה (לא אבלית). $\blacksquare$"
+    ),
+    (5, "ב"): (
+        r"**שלב 1: $a*b=b*a$.** האיבר $a*b$ שייך ל-$G$, ולכן לפי הנתון $(a*b)^{-1}=a*b$. מצד שני, בכל חבורה $(a*b)^{-1}=b^{-1}*a^{-1}$, ולפי הנתון $a^{-1}=a$, $b^{-1}=b$. לכן" "\n"
+        r"$$a*b=(a*b)^{-1}=b^{-1}*a^{-1}=b*a$$" "\n"
+        r"**שלב 2:** נשתמש באסוציאטיביות ובנתון $a*a=e$:" "\n"
+        r"$$c=(a*b)*a=(b*a)*a=b*(a*a)=b*e=b\qquad\blacksquare$$" "\n"
+        r"(דרך שקולה: $(a*b)*(a*b)=e$; נכפול משמאל ב-$a$ ומימין ב-$b$ ונקבל $b*a=a*b$, ומשם כמו בשלב 2.)"
+    ),
+}
+for q in questions:
+    key = (q["num"], q.get("part"))
+    if key in SOLVED and "hold" in q:
+        del q["hold"]
+        q.update({"solution": SOLVED[key], "solutionSource": "solved", "official": False, "confidence": "high"})
+assert all("hold" not in q for q in questions), "an item is still held"
 
 exam = {
     "examCode": "24A-C",
