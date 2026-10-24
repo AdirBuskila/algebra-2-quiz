@@ -55,7 +55,86 @@
       "חבורות וסדר איבר"
     ]
   ],
-  "briefs": [],
+  "briefs": [
+    [
+      "01 - inner_product.md",
+      "inner_product",
+      "inner_product",
+      "topic"
+    ],
+    [
+      "02 - cauchy_schwarz.md",
+      "cauchy_schwarz",
+      "cauchy_schwarz",
+      "topic"
+    ],
+    [
+      "03 - orthogonality.md",
+      "orthogonality",
+      "orthogonality",
+      "topic"
+    ],
+    [
+      "04 - projection.md",
+      "projection",
+      "projection",
+      "topic"
+    ],
+    [
+      "05 - least_squares.md",
+      "least_squares",
+      "least_squares",
+      "topic"
+    ],
+    [
+      "06 - parseval_bessel.md",
+      "parseval_bessel",
+      "parseval_bessel",
+      "topic"
+    ],
+    [
+      "07 - orthodiag.md",
+      "orthodiag",
+      "orthodiag",
+      "topic"
+    ],
+    [
+      "08 - pos_def.md",
+      "pos_def",
+      "pos_def",
+      "topic"
+    ],
+    [
+      "09 - qr.md",
+      "qr",
+      "qr",
+      "topic"
+    ],
+    [
+      "10 - svd.md",
+      "svd",
+      "svd",
+      "topic"
+    ],
+    [
+      "11 - crt.md",
+      "crt",
+      "crt",
+      "topic"
+    ],
+    [
+      "12 - groups.md",
+      "groups",
+      "groups",
+      "topic"
+    ],
+    [
+      "13 - cheat_sheet.md",
+      "cheat",
+      "inner_product",
+      "cheat"
+    ]
+  ],
   "needHelp": [
     {
       "id": "proj_gs",
