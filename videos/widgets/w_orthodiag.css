@@ -1,0 +1,53 @@
+/* orthodiag video widgets (w_orthodiag.py). Every class starts with od- : this file is merged into all videos. */
+.od-stack{display:flex;flex-direction:column;align-items:center;gap:24px;width:100%}
+.od-row{display:flex;align-items:center;justify-content:center;gap:26px;direction:ltr}
+.od-big{font-size:52px;direction:ltr;text-align:center}
+.od-mid{font-size:40px;direction:ltr;text-align:center}
+.od-note{font-size:30px;color:var(--muted);direction:rtl;text-align:center}
+
+/* matrix grid with bracket borders */
+.od-matw{display:inline-flex;align-items:center;gap:14px;direction:ltr}
+.od-mlab{white-space:nowrap}
+.od-mat{position:relative;padding:8px 26px}
+.od-mat::before,.od-mat::after{content:"";position:absolute;top:0;bottom:0;width:16px;border:3px solid var(--ink)}
+.od-mat::before{left:0;border-right:none;border-radius:16px 0 0 16px}
+.od-mat::after{right:0;border-left:none;border-radius:0 16px 16px 0}
+.od-grid{position:relative;display:grid;column-gap:34px;row-gap:12px;align-items:center;justify-items:center}
+.od-cell{position:relative;min-width:1.1em;text-align:center;padding:2px 4px}
+.od-cell>span{position:relative}
+.od-hi{position:absolute;top:-4px;bottom:-4px;left:-12px;right:-12px;border-radius:12px;background:rgba(45,212,191,.20);
+  border:3px solid var(--brand)}
+.od-tint{position:absolute;top:-4px;bottom:-4px;left:-10px;right:-10px;border-radius:12px;border:2px solid}
+.od-chi{position:absolute;top:-4px;bottom:-4px;left:-8px;right:-8px;border-radius:10px;background:rgba(251,191,36,.22);
+  border:3px solid var(--warn)}
+
+/* formula lines */
+.od-lines{display:flex;flex-direction:column;align-items:center;gap:14px;direction:ltr}
+.od-lines.left{align-items:flex-start}
+.od-line{white-space:nowrap}
+
+/* small table */
+table.od-tab{border-collapse:separate;border-spacing:0;background:var(--card2);border:1px solid var(--line);border-radius:14px}
+table.od-tab th,table.od-tab td{padding:8px 26px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+table.od-tab thead th{color:var(--muted);font-weight:600}
+table.od-tab tbody tr:last-child>*{border-bottom:none}
+.od-dot{display:inline-block;width:18px;height:18px;border-radius:50%;margin-right:12px;vertical-align:middle}
+
+/* number line */
+svg.od-nl{overflow:visible}
+svg.od-nl .od-ax{stroke:#c9cdf0;stroke-width:3}
+svg.od-nl .od-guide{stroke:rgba(255,255,255,.14);stroke-width:2;stroke-dasharray:6 8}
+svg.od-nl .od-tk{font-family:"Cambria Math",serif;font-size:30px;fill:var(--ink);text-anchor:middle}
+svg.od-nl .od-rl{font-size:28px;fill:var(--ink);text-anchor:end}
+
+/* plane */
+svg.od-pl{overflow:visible}
+svg.od-pl .od-grd{stroke:rgba(255,255,255,.07);stroke-width:1.5}
+svg.od-pl .od-ax{stroke:#c9cdf0;stroke-width:2.5}
+svg.od-pl .od-dash{stroke:#c9cdf0;stroke-width:3;stroke-dasharray:8 8}
+svg.od-pl .od-vl{font-family:"Cambria Math",serif;font-size:30px;text-anchor:middle}
+
+.od-chip{display:inline-block;font-size:32px;font-weight:700;padding:4px 22px;border-radius:999px;border:3px solid;
+  background:rgba(255,255,255,.04);direction:rtl;white-space:nowrap}
+.od-chip{align-self:flex-start}
+.od-stack>.od-chip{align-self:center}

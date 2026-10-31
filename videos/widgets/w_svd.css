@@ -1,0 +1,37 @@
+/* SVD video widgets (videos/widgets/w_svd.py), appended to video.css by vid.py. Every class is sv- prefixed. */
+.sv-stack{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%}
+.sv-stack.left{align-items:flex-start;width:auto}
+.sv-stack.tight{gap:12px}
+.sv-line{font-size:40px;direction:ltr;text-align:center;line-height:1.3}
+.sv-line.big{font-size:54px}
+.sv-line.small{font-size:34px}
+.sv-line.hl{border:3px solid var(--brand);border-radius:14px;padding:4px 22px;background:rgba(45,212,191,.08)}
+.sv-line.bad{border:3px solid var(--bad);border-radius:14px;padding:4px 22px;background:rgba(251,113,133,.08)}
+.sv-note{font-size:30px;color:var(--muted);direction:rtl;text-align:center}
+
+/* A = U S V^T as proportional boxes */
+.sv-shapes{display:flex;align-items:center;gap:26px}
+.sv-term{display:flex;flex-direction:column;align-items:center;gap:10px}
+.sv-box{position:relative;border:3px solid #c9cdf0;border-radius:8px;box-sizing:border-box;display:flex;align-items:center;justify-content:center}
+.sv-box.a{background:rgba(255,255,255,.06)}
+.sv-box.u{background:rgba(45,212,191,.16);border-color:var(--brand)}
+.sv-box.s{background:rgba(251,191,36,.08);border-color:var(--warn)}
+.sv-box.v{background:rgba(56,189,248,.16);border-color:var(--brand2)}
+.sv-bname{position:relative;font-size:40px;opacity:.55}
+.sv-dot{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--warn)}
+.sv-blab{font-size:30px;color:var(--muted)}
+.sv-op{font-size:52px}
+
+/* the U S V^T assembly: TeX terms with a label under each */
+.sv-asm{display:flex;align-items:center;gap:14px}
+.sv-tm{font-size:36px}
+.sv-row{display:flex;gap:18px 40px;direction:rtl;justify-content:center;flex-wrap:wrap;max-width:1700px}
+.sv-row .card{max-width:none}
+/* matrix options two by two (st.options inside .sv-optgrid) */
+.sv-optgrid{width:100%}
+.sv-optgrid .opts{display:grid;grid-template-columns:1fr 1fr;column-gap:62px;row-gap:14px}
+.sv-optgrid .opt{font-size:28px;padding:8px 14px;flex-direction:column;align-items:center;gap:4px}
+.sv-optgrid .onote{margin-inline-start:0;font-size:24px}
+.sv-optgrid .ol{display:none}
+.qstem.sv-small{font-size:30px}
+.sv-optgrid .ox{background-size:calc(100% - 40px) 100%}

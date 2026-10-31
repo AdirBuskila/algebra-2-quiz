@@ -1,0 +1,32 @@
+/* proj_gs video widgets (w_proj_gs.py): every class is pg-* so the other courses' widgets are untouched */
+svg.pg-svg{overflow:visible}
+svg.pg-svg .pg-ax{stroke:#5b6090;stroke-width:2}
+svg.pg-svg .pg-tk{stroke:#5b6090;stroke-width:2}
+svg.pg-svg .pg-tl{fill:var(--muted);font-size:22px;text-anchor:middle;font-family:"Segoe UI",sans-serif}
+svg.pg-svg .pg-vec{stroke-width:5;stroke-linecap:round}
+svg.pg-svg .pg-dash{stroke-dasharray:10 8}
+svg.pg-svg .pg-vl{font-family:"Cambria Math",serif;font-style:italic;font-size:36px;text-anchor:middle;font-weight:700}
+svg.pg-svg .pg-line{stroke:#9aa0cf;stroke-width:2.5;stroke-dasharray:12 10}
+svg.pg-svg .pg-ra{fill:none;stroke:#fbbf24;stroke-width:3}
+svg.pg-svg .pg-side{stroke:#9aa0cf;stroke-width:2.5;stroke-dasharray:8 8}
+svg.pg-svg .pg-pt{fill:#eaedff;stroke:#0a0c18;stroke-width:2}
+svg.pg-svg .pg-fit{stroke-width:4}
+svg.pg-svg .pg-res{stroke:#fbbf24;stroke-width:3.5;stroke-dasharray:6 5}
+svg.pg-svg .pg-xbar{stroke:#c084fc;stroke-width:3;stroke-dasharray:10 8}
+svg.pg-svg .pg-curve{fill:none;stroke-width:4.5}
+svg.pg-svg .pg-apos{fill:rgba(52,211,153,.32)}
+svg.pg-svg .pg-aneg{fill:rgba(251,113,133,.32)}
+
+.pg-stack{display:flex;flex-direction:column;align-items:center;gap:22px;width:100%}
+.pg-big{font-size:46px;direction:ltr;text-align:center}
+.pg-big.sm{font-size:38px}
+.pg-rows{display:flex;flex-direction:column;gap:14px;width:100%;align-items:center;font-size:36px;direction:ltr}
+.pg-rows.sm{font-size:34px;gap:10px}
+.pg-rows.left{align-items:flex-start}
+.pg-row{direction:ltr;text-align:center}
+.pg-row .he{direction:rtl;unicode-bidi:isolate;font-family:"Segoe UI",sans-serif;color:var(--muted);font-size:.8em;margin-inline-start:14px}
+.pg-two{display:flex;gap:40px;align-items:center;justify-content:center;width:100%}
+.pg-ok{color:var(--ok)}
+.pg-bad{color:var(--bad)}
+.pg-tag{display:inline-block;font-size:26px;color:var(--brand);border:1px solid var(--brand);border-radius:999px;padding:2px 14px;direction:rtl}
+.panel .pg-big{font-size:38px}

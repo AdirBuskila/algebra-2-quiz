@@ -1,0 +1,51 @@
+/* groups_crt video widgets (w_groups_crt.py). Every class starts with gc- : this file is merged into all videos. */
+.gc-stack{display:flex;flex-direction:column;align-items:center;gap:22px;width:100%}
+.gc-row{display:flex;align-items:center;justify-content:center;gap:40px;direction:ltr}
+.gc-big{font-size:50px;direction:ltr;text-align:center}
+.gc-mid{font-size:40px;direction:ltr;text-align:center}
+.gc-note{font-size:30px;color:var(--muted);direction:rtl;text-align:center}
+.gc-lines{display:flex;flex-direction:column;align-items:center;gap:12px;direction:ltr}
+.gc-lines.left{align-items:flex-start}
+.gc-line{white-space:nowrap}
+.gc-ctx{font-size:28px;color:var(--muted);margin-bottom:8px}
+
+/* operation (Cayley) table */
+.gc-cay{position:relative;display:grid;gap:0;background:var(--card2);border:1px solid var(--line);border-radius:14px;
+  padding:6px 10px;align-items:center;justify-items:center}
+.gc-ch{color:var(--muted);font-weight:600;padding:8px 22px;font-family:"Cambria Math",serif}
+.gc-op{color:var(--brand)}
+.gc-cell{position:relative;padding:8px 22px;font-family:"Cambria Math",serif;text-align:center;min-width:1.2em}
+.gc-cell>span{position:relative}
+.gc-hi{position:absolute;top:0;bottom:0;left:0;right:0;border-radius:10px;background:rgba(45,212,191,.16);
+  border:3px solid var(--brand)}
+.gc-chi{position:absolute;top:2px;bottom:2px;left:4px;right:4px;border-radius:9px;background:rgba(251,191,36,.25);
+  border:3px solid var(--warn)}
+.gc-xm{position:absolute;top:2px;bottom:2px;left:4px;right:4px;border-radius:9px;background:rgba(251,113,133,.22);
+  border:3px solid var(--bad)}
+
+/* cycle of powers */
+svg.gc-cyc{overflow:visible}
+svg.gc-cyc .gc-node{fill:var(--card);stroke:var(--brand);stroke-width:3.5}
+svg.gc-cyc .gc-nl{font-family:"Cambria Math",serif;fill:var(--ink);text-anchor:middle}
+svg.gc-cyc .gc-pw{font-family:"Cambria Math",serif;font-style:italic;font-size:30px;fill:var(--warn);text-anchor:middle}
+svg.gc-cyc .gc-arc{stroke:#c9cdf0;stroke-width:3;fill:none}
+
+/* table */
+table.gc-tab{border-collapse:separate;border-spacing:0;background:var(--card2);border:1px solid var(--line);border-radius:14px}
+table.gc-tab th,table.gc-tab td{padding:8px 22px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+table.gc-tab thead th{color:var(--muted);font-weight:600}
+table.gc-tab tbody tr:last-child>*{border-bottom:none}
+
+/* number strip */
+.gc-strip{position:relative}
+.gc-num{position:absolute;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--ink);
+  border:1px solid var(--line);border-radius:10px;background:var(--card);box-sizing:border-box}
+.gc-layer{position:absolute;left:0;top:0;right:0;bottom:0;z-index:1}
+.gc-layer>i{position:absolute;border-radius:50%}
+.gc-num{z-index:2;background:var(--card);align-items:flex-start;padding-top:9px;line-height:1}
+.gc-layer{z-index:3}
+.gc-sol{position:absolute;z-index:3;border:6px solid var(--warn);border-radius:14px;box-sizing:border-box;
+  box-shadow:0 0 20px rgba(251,191,36,.7)}
+
+.gc-chip{display:inline-block;font-size:34px;font-weight:700;padding:4px 22px;border-radius:999px;border:3px solid;
+  width:fit-content;align-self:center}
